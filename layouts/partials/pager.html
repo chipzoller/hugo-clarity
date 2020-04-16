@@ -1,0 +1,19 @@
+{{- $imageBase := absURL "images/icons/" }}
+{{- $paginator := .Paginator }}
+{{- if gt $paginator.TotalPages 1 }}
+  <div class = 'pager' id = 'pager'>
+    {{- if $paginator.HasPrev }}
+      <a href='{{ $paginator.Prev.URL }}#pager'  class = ' pager_item pager_prev'></a>
+    {{- else }}
+      <span class = ' pager_item pager_active pager_prev'></span>
+    {{- end }}
+    {{- range first 4 $paginator.Pagers }}
+      <a href="{{ .URL }}#pager" class = 'pager_item{{ if eq . $paginator }} pager_active{{ end }}'>{{ .PageNumber }}</a>
+    {{- end }}
+    {{- if $paginator.HasNext -}}
+      <a href='{{ $paginator.Next.URL }}#pager' class = ' pager_item pager_next'></a>
+    {{- else -}}
+      <span class = ' pager_item pager_active pager_next'></span>
+    {{- end }}
+  </div>
+{{- end }}

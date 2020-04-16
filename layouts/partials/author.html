@@ -1,0 +1,14 @@
+{{- $author := (lower .Params.author) }}
+{{- range .Site.Data.authors }}
+{{- if eq .name $author }}
+  <div class = 'author'>
+    <a href = '{{ .url }}' target = "{{ $author }}'s profile" class = 'author_pic'>
+      <img src = '{{ absURL (printf "images/%s.jpg" $author) }}' alt = ''>
+    </a>
+    <div class = 'author_meta'>
+      <a class = 'author_name' href = '{{ .url }}' title = "{{ i18n "author_profile" .name }}">{{ .name }}</a>
+      <p class = 'pale author_bio solo'>{{ .bio }}</p>
+    </div>
+  </div>
+{{- end }}
+{{- end }}

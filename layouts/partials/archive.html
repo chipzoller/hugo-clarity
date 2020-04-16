@@ -1,0 +1,18 @@
+{{- $pages := .Pages }}
+{{- if .IsHome }}
+{{- $pages = .Site.RegularPages }}
+{{- with .Site.Params.blogDir }}
+  {{- $pages = where $.Site.RegularPages "Section" . }}
+{{- end }}
+{{- end }}
+<div class='grid-inverse wrap content'>
+  <ul class='posts' id = 'posts'>
+    {{- range (.Paginate $pages).Pages }}
+      {{ partial "excerpt" . }}
+    {{- end }}
+    <li>
+      {{- template "_internal/pagination.html" . }}
+    </li>
+  </ul>
+  {{- partial "sidebar" . }}
+</div>

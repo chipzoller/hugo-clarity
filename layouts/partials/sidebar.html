@@ -1,0 +1,50 @@
+{{ $title := .Title }}
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    {{ if .IsHome }}
+    <h2>Featured Posts</h2>
+    {{ else }}
+    <h2>{{ .Site.Params.Author }}</h2>
+    <div>
+      {{ .Site.Params.IntroDescription }}
+    </div>
+    <a href="/about/" class="button mt-1" role="button">Read More</a>
+    <h2 class="mt-4">Featured Posts</h2>
+    {{ end }}
+    <ul>
+    {{ range .Site.Taxonomies.tags.featured }}
+     {{- if ne $title .Title }}
+      <li>
+        <a href="{{ .RelPermalink }}" class="nav-link">{{ .Title }}</a>
+      </li>
+    {{- end }}
+    {{ end }}
+    </ul>
+    <h2 class="mt-4">Recent Posts</h2>
+    <ul class="flex-column">
+      {{ range first 8 (where (where .Site.RegularPages "Type" "in" site.Params.mainSections) ".Params.hidden" "!=" true) }}
+      {{- if ne $title .Title }}
+      <li>
+        <a href="{{ .RelPermalink }}" class="nav-link">{{ .Title }}</a>
+      </li>
+      {{- end }}
+      {{- end }}
+    </ul>
+    {{ range $key, $value := .Site.Taxonomies }}
+    <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ $key }}</h2>
+    <nav>
+      {{ range $value.ByCount }}
+      <a href='/{{ $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
+        {{ .Name }}
+        <span class='button_tally'>{{ .Count }}</span>
+      </a>
+      {{ end }}
+    </nav>
+    {{ end }}
+  </section>
+  <div class='to_top'>
+    <svg class="icon">
+      <use xlink:href="#arrow"></use>
+    </svg>
+  </div>
+</aside>

@@ -1,0 +1,19 @@
+<head>
+  <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
+  <meta charset='utf-8'>
+  {{ hugo.Generator }}
+  {{- with .Site.Params.ga_verify }}
+  <meta name="google-site-verification" content="{{ . }}" />
+  {{- end }}
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
+  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+  {{- if (ne hugo.Environment "development") }}
+  {{- partial "analytics.html" . }}
+  {{- end }}
+  {{ template "_internal/opengraph.html" . }}
+  {{- partial "favicon.html" . }}
+  <link rel='canonical' href='{{ .Permalink }}'>
+  {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
+  {{- $styles := resources.Get "sass/main.sass" | resources.ExecuteAsTemplate "main.sass" . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
+  <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
+</head>

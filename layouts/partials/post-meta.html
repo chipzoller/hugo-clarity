@@ -1,0 +1,16 @@
+<div class = 'post_meta'>
+  <svg class="icon">
+    <use xlink:href="#calendar"></use>
+  </svg>
+  <span class="post_date">
+    {{ .Date.Format "Jan 2, 2006" -}}
+  </span>
+  {{- with .Params.tags -}}
+  {{- range . }}
+  {{- $tag := . | urlize }}
+  <a href = '{{ absURL (printf "tags/%s" $tag) }}' class = 'post_tag button button_translucent'>
+    {{- . }}
+  </a>
+  {{- end }}
+  {{- end }}
+</div>

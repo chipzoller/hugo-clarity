@@ -1,0 +1,63 @@
+@media screen and (max-width: 769px)
+  .nav
+    // padding-bottom: 2rem
+    &, &_body
+      flex-direction: column
+    &_body
+      transform: translateX(-100vw)
+      position: fixed
+      width: 80%
+      top: 0
+      bottom: 0
+      left: 0
+      background-color: $bg
+      transition: transform 0.3s var(--easing)
+    &_close 
+      width: 3rem
+      background-image: url(/icons/bar.svg)
+      background-repeat: no-repeat
+      background-size: 1rem
+      background-position: center
+      position: absolute
+      right: -4rem
+      top: 0
+      bottom: 0
+      cursor: pointer
+      z-index: 1000
+    
+    &_brand
+      position: relative
+      z-index: 999
+      width: calc(100% - 3rem)
+      padding-left: 0
+      
+    &_parent
+      display: grid
+    &_sub
+      position: relative
+      top: initial
+      padding-top: 0
+    
+  .jsopen
+    &::after
+      content: ""
+      position: fixed
+      z-index: 2
+      background-color: rgba(0,0,0,0.3)
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+    .nav
+      &_body
+        transform: translateX(0)
+        padding-left: 0.5rem
+        padding-right: 0.5rem
+      &_parent
+        &:first-child
+         margin-top: 3.5rem
+      &_close
+        background-image: url(/icons/cancel.svg)
+
+      .follow
+        justify-content: flex-start

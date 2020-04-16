@@ -1,0 +1,64 @@
+# hugo-clarity
+
+A theme for Hugo based on VMware Clarity
+
+## Files for "neonmirrors" blog based on Hugo and Silhouette theme.
+
+## Modify Menu
+
+To add, remove or reorganize top menu links, [edit this yaml file](./data/menu.yaml)
+
+## Edit social profile links
+
+[Edit this yaml file](./data/social.yaml)
+
+## Specify blog directory
+
+Check the `config.toml` file
+
+```
+[params]
+...
+blogDir = "blog_directory"
+...
+```
+
+## Manipulate Images
+### Inline Images
+
+To make an image inline, append `:inline` to its alt text.
+
+#### Example:
+
+```markdown
+<!-- some image without alt text -->
+![:inline](someImageUrl)
+
+<!-- some image with alt text -->
+
+![some alt text:inline](someOtherImageUrl)
+```
+### Float Images to the left
+
+To make an image inline, append `:left` to its alt text.
+
+#### Example:
+
+```markdown
+<!-- some image without alt text -->
+![:left](someImageUrl)
+
+<!-- some image with alt text -->
+
+![some alt text:left](someOtherImageUrl)
+```
+
+### Article thumbnails
+
+They ought to of a height: width ratio of `2:1`. They will be specified using a frontmatter variable as follows
+
+```yaml
+...
+thumbnail: "/images/2020-04/capv-overview/featured.jpg"
+...
+```

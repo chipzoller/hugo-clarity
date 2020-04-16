@@ -1,0 +1,33 @@
+{{- $scratch := newScratch }}
+{{- if isset .Params "image" }}
+{{- $scratch.Set "image" .Params.image }}
+{{- else }}
+{{- $scratch.Set "image" "thumbnail.svg" }}
+{{- end }}
+{{- $image := $scratch.Get "image" }}
+{{- $bg := (path.Join "images" $image | absLangURL) }}
+<li class = 'post_item'>
+  <div>
+    <a class = 'post_card' href='{{ .RelPermalink }}' title = '{{ .Title }}' style = 'background-image: url({{ $bg }});'>
+    </a>
+    <div class = 'excerpt'>
+      <div class = 'excerpt_header'>
+        <h3 class = 'post_link'>
+          <a href='{{ .RelPermalink }}'>{{ .Title  }}</a>
+        </h3>
+        {{ partial "post-meta.html" . }}
+      </div>
+      {{- with .Params.featureImage }}
+        <div class = 'excerpt_footer partition'>
+          <div style='background-image: url({{ . }})' class = 'excerpt_thumbnail'></div>
+          {{ else }}
+          <div class = 'excerpt_footer'>
+          {{- end }}
+        <div>
+          <p class = 'pale'>{{ .Summary | truncate 320 }}</p>
+          <a href='{{ .RelPermalink }}' class='excerpt_more button'>Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

@@ -2,8 +2,6 @@
 
 A theme for Hugo based on VMware Clarity
 
-## Files for "neonmirrors" blog based on Hugo and Silhouette theme.
-
 ## Modify Menu
 
 To add, remove or reorganize top menu links, [edit this yaml file](./data/menu.yaml)

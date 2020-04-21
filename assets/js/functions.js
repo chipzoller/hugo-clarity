@@ -105,7 +105,7 @@ function isMatch(element, selectors) {
   }
 }
 
-const copyToClipboard = str => {
+function copyToClipboard(str) {
   let copy, selection, selected;
   copy = createEl('textarea');
   copy.value = str;
@@ -123,4 +123,15 @@ const copyToClipboard = str => {
     selection.removeAllRanges(); // unselect existing selection
     selection.addRange(selected); // restore the original selection
   }
+}
+
+function loadSvg(file, parent, path = 'icons/') {
+  const link = `${parentURL}${path}${file}.svg`;
+  fetch(link)
+  .then((response) => {
+    return response.text();
+  })
+  .then((data) => {
+    parent.innerHTML = data;
+  });
 }

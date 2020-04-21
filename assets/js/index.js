@@ -45,10 +45,8 @@ function fileClosure(){
   
   headingNodes.forEach(function(node){
     link = createEl('a');
-    icon = createEl('img');
-    icon.src = '{{ absURL "icons/link.svg" }}';
+    loadSvg('link', link);
     link.className = 'link icon';
-    link.appendChild(icon);
     id = node.getAttribute('id');
     if(id) {
       link.href = `${current}#${id}`;

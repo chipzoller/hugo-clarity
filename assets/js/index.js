@@ -239,7 +239,18 @@ function fileClosure(){
       const target = event.target;
       const isCopyIcon = target.matches(`.${copyClass}`);
       if(isCopyIcon) {
-        const codeToCopy = target.previousElementSibling.firstElementChild.firstElementChild.textContent;
+        const codeElement = target.previousElementSibling.firstElementChild.firstElementChild;
+        // clone code element
+        const codeElementClone = codeElement.cloneNode(true);
+        const lineNumbers = elems('.ln', codeElementClone);
+        // remove line numbers before copying
+        if(lineNumbers) {
+          lineNumbers.forEach(function(line){
+            line.remove();
+          });
+        }
+        const codeToCopy = codeElementClone.textContent;
+
         copyToClipboard(codeToCopy);
         target.textContent = copyFeedbackLabel;
       }

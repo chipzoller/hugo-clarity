@@ -1,3 +1,7 @@
+// global variables
+const parentURL = '{{ absURL "" }}';
+const doc = document.documentElement;
+
 function isObj(obj) {
   return (obj && typeof obj === 'object' && obj !== null) ? true : false;
 }

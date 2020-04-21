@@ -1,10 +1,6 @@
 function fileClosure(){ 
   // everything in this file should be declared within this closure (function).
   
-  // global variables
-  const parentURL = '{{ absURL "" }}';
-  const doc = document.documentElement;
-  
   (function updateDate() {
     var date = new Date();
     var year = date.getFullYear();

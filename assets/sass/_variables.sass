@@ -63,6 +63,9 @@ html
   
   &[data-mode="dim"]
     @include darkmode
+    blockquote
+      background: rgba(255,255,255,0.06)
+      color: #dedede
     svg.icon
       fill: var(--light)
     img:not(.nav_icon)
@@ -90,6 +93,9 @@ html
 
     &:not([data-mode="lit"])
       @include darkmode
+      blockquote
+        background: rgba(255,255,255,0.06)
+        color: #dedede
       svg.icon
         fill: var(--light)
       img:not(.nav_icon)

@@ -17,7 +17,7 @@
         </h3>
         {{ partial "post-meta.html" . }}
       </div>
-      {{- with .Params.featureImage }}
+      {{- with .Params.thumbnail }}
         <div class = 'excerpt_footer partition'>
           <div style='background-image: url({{ . }})' class = 'excerpt_thumbnail'></div>
           {{ else }}

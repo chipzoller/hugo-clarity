@@ -1,8 +1,11 @@
 {{- $highlightPath := "js/highlight.js" }}
 {{- $highlight := resources.Get $highlightPath | resources.ExecuteAsTemplate $highlightPath . }}
 
+{{- $functionsScriptPath := "js/functions.js" }}
+{{- $functions := resources.Get $functionsScriptPath | resources.ExecuteAsTemplate $functionsScriptPath . }}
+
 {{- $mainScriptPath := "js/index.js" }}
 {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
 
-{{- $bundle := slice $highlight $main | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
+{{- $bundle := slice $highlight $functions $main | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script src = '{{ $bundle.Permalink }}'></script>

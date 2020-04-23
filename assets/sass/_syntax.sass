@@ -136,21 +136,6 @@ code
   .p &-attr
     color: var(--light)
 
-  &-copy
-    background-color: rgba(255,255,255,0.05)
-    max-width: 4.5rem
-    text-align: center
-    font-size: 0.9rem
-    border-radius: 0.1rem
-    position: absolute
-    right: 0.5rem
-    top: 0.5rem
-    padding: 0.25rem 0.5rem
-    cursor: pointer
-    color: var(--light)
-    opacity: 0
-    transition: opacity 0.3s var(--easing)
-
 .pre
   &_wrap
     white-space: pre-wrap
@@ -160,3 +145,35 @@ code
     word-wrap: break-word
   &_nolines
     display: none
+
+// crayon-like widget styles
+.panel
+  &_box
+    display: inline-grid
+    grid-template-columns: repeat(3, 1fr)
+    max-width: 10rem
+    grid-gap: 0.5rem
+    // background-color: rgba(255,255,255,0.05)
+    transition: opacity 0.3s var(--easing)
+    background: var(--code-bg)
+    padding: 0.5rem 1.5rem
+    border-radius: 2rem
+    align-items: center
+    position: absolute
+    right: 0rem
+    top: -2rem
+    opacity: 0
+  &_icon
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    transition: opacity 0.3s var(--easing)
+    padding: 0.1rem
+    &.active
+      opacity: 0.6
+    svg
+      fill: var(--light)
+      width: 1.5rem
+      height: 1.5rem
+    

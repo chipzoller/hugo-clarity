@@ -43,15 +43,20 @@ function toggleLineWrap(elem) {
   modifyClass(elem, 'pre_wrap');
 }
 
-function copyCode(code, lineNumbers = {}) {
+function copyCode(codeElement) {
+  lineNumbers = elems('.ln', codeElement);
+  
   // remove line numbers before copying
   if(lineNumbers.length) {
     lineNumbers.forEach(function(line){
       line.remove();
     });
   }
+  
+  const codeToCopy = codeElement.textContent;
+  // copy code
 
-  copyToClipboard(code);
+  copyToClipboard(codeToCopy);
 }
 
 (function codeActions(){
@@ -91,9 +96,9 @@ function copyCode(code, lineNumbers = {}) {
       return child !== targetElement
     });
     siblings.forEach(function(sibling){
-      containsClass(sibling, active) ? deleteClass(sibling, active) : false;
+      // containsClass(sibling, active) ? deleteClass(sibling, active) : false;
     });
-    pushClass(targetElement, active);
+    modifyClass(targetElement, active);
   }
 
   doc.addEventListener('click', function(event){
@@ -117,10 +122,7 @@ function copyCode(code, lineNumbers = {}) {
       if(isCopyIcon) {
         // clone code element
         const codeElementClone = codeElement.cloneNode(true);
-        lineNumbers = elems('.ln', codeElementClone);
-        const codeToCopy = codeElementClone.textContent;
-        // copy code
-        copyCode(codeToCopy, lineNumbers);
+        copyCode(codeElementClone);
       }
     }
   

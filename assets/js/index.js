@@ -64,52 +64,6 @@ function fileClosure(){
     })
   }
   
-  (function copyCode(){
-    const markedCodeBlocks = elems('code');
-    const copyClass = 'hljs-copy';
-    const copyLabel = 'copy';
-    const copyFeedbackLabel = 'copied';
-    const blocks = Array.from(markedCodeBlocks).filter(function(block){
-      return hasClasses(block) && !Array.from(block.classList).includes('noClass');
-    }).map(function(block){
-      return block
-    });
-    
-    blocks.forEach(function(block){
-      // add copy button
-      const button = createEl()
-      button.className = copyClass;
-      button.textContent = copyLabel;
-      const highlightElement = block.parentNode.parentNode;
-      const highlightWrapper = createEl();
-      highlightWrapper.className = 'highlight_wrap';
-      wrapEl(highlightElement, highlightWrapper);
-      highlightWrapper.appendChild(button);
-    });
-    
-    doc.addEventListener('click', function(event){
-      // copy code block
-      const target = event.target;
-      const isCopyIcon = target.matches(`.${copyClass}`);
-      if(isCopyIcon) {
-        const codeElement = target.previousElementSibling.firstElementChild.firstElementChild;
-        // clone code element
-        const codeElementClone = codeElement.cloneNode(true);
-        const lineNumbers = elems('.ln', codeElementClone);
-        // remove line numbers before copying
-        if(lineNumbers) {
-          lineNumbers.forEach(function(line){
-            line.remove();
-          });
-        }
-        const codeToCopy = codeElementClone.textContent;
-
-        copyToClipboard(codeToCopy);
-        target.textContent = copyFeedbackLabel;
-      }
-    })
-  })();  
-  
   function copyFeedback(parent) {
     const copyText = document.createElement('div');
     const yanked = 'link_yanked';

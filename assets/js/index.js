@@ -7,10 +7,6 @@ function fileClosure(){
     elem('.year').innerHTML = year;
   })();
   
-  (function() {
-    
-  })();
-  
   (function makeExternalLinks(){
     let links = elems('a');
     if(links) {

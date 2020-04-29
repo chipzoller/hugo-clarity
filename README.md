@@ -60,3 +60,15 @@ They ought to of a height: width ratio of `2:1`. They will be specified using a 
 thumbnail: "/images/2020-04/capv-overview/featured.jpg"
 ...
 ```
+
+### Align Logo
+
+You can align your logo either to the left of the navbar or right at the center.
+
+To center, 
+
+```yaml
+...
+centerLogo = true # change to false to align left
+...
+```

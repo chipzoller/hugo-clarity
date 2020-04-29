@@ -67,6 +67,19 @@
       img
         background: transparent !important
 
+  &_center
+    display: none
+    @media screen and (min-width: 769px)
+      display: flex
+      flex: 1
+      align-items: center
+      justify-content: center
+      + .follow
+        flex: initial
+
+  &_hide
+    @media screen and (min-width: 769px)
+      display: none
 
 .content, .footer
   padding: 1.5rem

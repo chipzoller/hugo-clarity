@@ -377,9 +377,11 @@
     // width: 3rem
     height: 1.5rem
     display: grid
-    grid-template-columns: 1fr 3rem
     align-items: center
-    margin: 0 1.5rem
+    margin: 0 0.5rem
+    @media screen and (min-width: 769px)
+      margin: 0 1.5rem
+      grid-template-columns: 1fr 3rem
   
   &_choice 
     width: 3rem

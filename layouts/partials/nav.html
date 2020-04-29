@@ -1,6 +1,7 @@
+{{- $centerLogo := .Site.Params.centerLogo }}
 <header class = 'nav_header' >
   <nav class = 'nav'>
-    <a href='{{ absURL "" }}' class = 'nav_brand nav_item'>
+    <a href='{{ absURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
       <!-- {{ .Site.Title }} -->
       <img src="/logos/logo.png" class="logo">
       <div class = 'nav_close'></div>
@@ -18,6 +19,11 @@
         </div>
         {{- end }}
       </div>
+      {{- end }}
+      {{- if eq $centerLogo true }}
+      <a href='{{ absURL "" }}' class = 'nav_brand nav_center nav_item'>
+        <img src="/logos/logo.png" class="logo">
+      </a>
       {{- end }}
       {{- partial "follow" . }}
     </div>

@@ -27,6 +27,8 @@ body
 a
   text-decoration: none
   color: inherit
+  &:focus, &:focus-within
+    outline: none !important
 
 h1,h2,h3,h4,h5
   font-family: inherit
@@ -61,7 +63,8 @@ img
   margin: 1rem auto
   padding: 0
   &:focus, &:focus-within
-    outline: none
+    outline: none !important
+    border: none !important
 
 main
   padding-bottom: 45px

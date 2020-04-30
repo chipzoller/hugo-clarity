@@ -275,7 +275,9 @@
     background-position: center
     background-repeat: no-repeat
     min-height: 10rem
-    @media screen and (min-width: 769px) 
+    display: none
+    @media screen and (min-width: 769px)
+      display: initial 
       border-radius: 0.5rem
       border: 1px solid $xhaze
       background-color: $bg
@@ -284,7 +286,7 @@
     &.partition
       display: grid
       @media screen and (min-width: 769px) 
-        grid-template-columns: 1fr 5fr
+        grid-template-columns: 2fr 7fr
         grid-gap: 1rem
 .sidebar
   &_inner

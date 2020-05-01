@@ -9,7 +9,9 @@
     </div>
     {{- with .Params.thumbnail }}
     <div class = 'excerpt_footer partition'>
-      <div style='background-image: url({{ . }})' class = 'excerpt_thumbnail'></div>
+      <div class = 'excerpt_thumbnail'>
+      <img src = '{{ . }}'>
+      </div>
       {{ else }}
       <div class = 'excerpt_footer'>
         {{- end }}

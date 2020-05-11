@@ -1,2 +1,12 @@
-name = "clarity"
+name = "hugo-clarity"
 license = "MIT"
+licenselink = "https://github.com/chipzoller/hugo-clarity/blob/master/LICENSE.md"
+description = "A simple open source theme for publishing technical blogs with hugo"
+homepage = "https://github.com/chipzoller/hugo-clarity"
+tags = ["blog", "technical", "simple", "dark", "fast"]
+features = ["blog", "technical", "simple", "dark", "fast"]
+min_version = "0.58.0"
+
+[author]
+    name ="Chip Zoller"
+    homepage = "https://github.com/chipzoller/hugo-clarity"

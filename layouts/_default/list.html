@@ -1,13 +1,3 @@
 {{ define "main" }}
-<br>
-<br>
-<br>
-<br>
-<br>
-  {{ range .Site.RegularPages }}
-   <h1>
-     {{ .RelPermalink }}
-   </h1>
-  {{ end }}
   {{- partial "archive" . }}
 {{ end }}

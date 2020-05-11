@@ -6,11 +6,11 @@ A theme for Hugo based on VMware Clarity
 
 ## Modify Menu
 
-To add, remove or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/exampleSite/data/menu.yaml)
+To add, remove or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
 
 ## Edit social profile links
 
-[Edit this yaml file](https://github.com/chipzoller/hugo-clarity/exampleSite/data/social.yaml)
+[Edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/social.yaml)
 
 ## Specify blog directory
 

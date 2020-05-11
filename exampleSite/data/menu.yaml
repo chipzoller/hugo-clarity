@@ -1,0 +1,14 @@
+- name: Home
+  link: /
+- name: Homepage
+  link: homepage/
+# - name: Mus
+#   link: /categories/music/
+- name: Links
+  submenu:
+    - name: Ultimate vSphere VM Migration Guide
+      link: https://chipzoller.gitbook.io/vspheremigration/
+    - name: Twitter
+      link: https://twitter.com
+- name: About
+  link: about/

@@ -2,6 +2,8 @@
 
 A theme for Hugo based on VMware Clarity
 
+![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
+
 ## Modify Menu
 
 To add, remove or reorganize top menu links, [edit this yaml file](./data/menu.yaml)

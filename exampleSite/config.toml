@@ -22,8 +22,9 @@ theme = "hugo-clarity"
 author = "Chip Zoller"
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
 contentSharing = "I'm happy for you to share content on this site, but please provide attribution."
-fallBackOgImage = "/images/thumbnail.png" # will be used on share >> twitter, facebook, linkedin 
+fallBackOgImage = "images/thumbnail.png" # will be used on share >> twitter, facebook, linkedin 
 
 blogDir = "post" # directory where your articles are
 
 centerLogo = true # center logo on navbar
+logo = "logos/logo.png"

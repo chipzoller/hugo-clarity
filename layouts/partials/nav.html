@@ -1,20 +1,22 @@
-{{- $centerLogo := .Site.Params.centerLogo }}
+{{- $params := .Site.Params }}
+{{- $centerLogo := $params.centerLogo }}
+{{ $logo := $params.logo }}
 <header class = 'nav_header' >
   <nav class = 'nav'>
     <a href='{{ absURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
       <!-- {{ .Site.Title }} -->
-      <img src="/logos/logo.png" class="logo">
+      <img src="{{ absURL $logo }}" class="logo">
       <div class = 'nav_close'></div>
     </a>
     <div class = 'nav_body'>
       {{- $link := .RelPermalink }}
       {{- range .Site.Data.menu }}
       <div class = 'nav_parent{{ if eq .link $link }} nav_active{{ end}}'>
-        <a href = '{{ absURL .link }}' class = 'nav_item'>{{ .name }} {{ with .submenu }}<img src="/icons/caret-icon.svg" alt="icon" class="nav_icon">{{ end }}</a>
+        <a href = '{{ absURL .link }}' class = 'nav_item'>{{ .name }} {{ with .submenu }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
         {{- with .submenu }}
         <div class = 'nav_sub'>
           {{- range . }}
-          <a href = '{{ .link }}' class = 'nav_child nav_item'>{{ .name }}</a>
+          <a href = '{{ absURL .link }}' class = 'nav_child nav_item'>{{ .name }}</a>
           {{- end }}
         </div>
         {{- end }}
@@ -22,7 +24,7 @@
       {{- end }}
       {{- if eq $centerLogo true }}
       <a href='{{ absURL "" }}' class = 'nav_brand nav_center nav_item'>
-        <img src="/logos/logo.png" class="logo">
+        <img src="{{ absURL $logo }}" class="logo">
       </a>
       {{- end }}
       {{- partial "follow" . }}

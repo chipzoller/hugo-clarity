@@ -7,14 +7,14 @@
 {{- end }}
 {{- $image := $scratch.Get "image" }}
 {{- $bg := (path.Join "images" $image | absLangURL) }}
-{{ with .Params.featureImage }}
-<div class = 'post_header' style = 'background-image: url({{ . }});'></div>
-{{ end }}
 <div class = 'grid-inverse wrap content'>
   <article class='post_content'>
     <h1 class='post_title'>{{ .Title }}</h1>
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
+    {{ with .Params.featureImage }}
+    <img src = '{{ . }}' alt = '{{ $.Page.Title }}'>
+    {{ end }}
     {{ if .Params.toc }}
     <h2>Overview</h2>
     {{ .TableOfContents }}

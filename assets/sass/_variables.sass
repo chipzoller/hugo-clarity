@@ -1,5 +1,6 @@
 $font-path: '../fonts'
 $icons: '../icons/'
+$images: '../images/'
 
 $light: #fff
 $haze: #fafafa
@@ -88,7 +89,7 @@ html
     .color
       &_choice
         &::after
-          background-image: url(/images/night-moon.jpg)
+          background-image: url("#{$images}night-moon.jpg")
           transform: translateX(1.4rem)
   
   @media (prefers-color-scheme: dark)
@@ -120,5 +121,5 @@ html
       .color
         &_choice
           &::after
-            background-image: url(/images/night-moon.jpg)
+            background-image: url("#{$images}night-moon.jpg")
             transform: translateX(1.4rem)

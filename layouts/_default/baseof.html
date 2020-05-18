@@ -9,7 +9,7 @@
   {{- with .Params.codeMaxLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
-  <body{{ with $maxCodeLines }} data-code="{{ . }}"{{ end }}{{ with $params.codeLineNumbers }} data-lines="{{ . }}"{{ end }}>
+  <body{{ with $maxCodeLines }} data-code="{{ . }}"{{ end }} data-lines="{{ with $params.codeLineNumbers }}true{{ else }}false{{ end }}">
     {{- partial "nav" . }}
     <main>
       {{- block "main" . }}{{ end }}

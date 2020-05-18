@@ -116,12 +116,8 @@ function actionPanel() {
   return panel;
 }
 
-function toggleLineNumbers() {
-  const body = elem('body');
-  let state = body.dataset.lines;
-  const show = 'true';
-  const hide = 'false';
-  body.dataset.lines = state === show ? hide : show;
+function toggleLineNumbers(elems) {
+  elems.forEach(elem => modifyClass(elem, 'pre_nolines'));
 }
 
 function toggleLineWrap(elem) {
@@ -144,11 +140,19 @@ function copyCode(codeElement) {
   copyToClipboard(codeToCopy);
 }
 
+function disableCodeLineNumbers(block){
+  const lines = elems('.ln', block)
+  toggleLineNumbers(lines);
+}
+
 (function codeActions(){
   const blocks = codeBlocks();
-  
+
   const highlightWrapId = 'highlight_wrap';
   blocks.forEach(function(block){
+    // disable line numbers if disabled globally
+    elem('body').dataset.lines === "false" ? disableCodeLineNumbers(block) : false;
+
     const highlightElement = block.parentNode.parentNode;
     // wrap code block in a div
     const highlightWrapper = createEl();

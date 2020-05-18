@@ -74,3 +74,25 @@ To center,
 centerLogo = true # change to false to align left
 ...
 ```
+
+### Limit how tall a codeblock can be
+
+Under params in `config.toml` file, add a value as follows
+
+```toml
+[params]
+...
+codeBlocksLines = 7 # 7 is a placeholder feel free to change it to your liking
+...
+```
+
+> if the value already exists, change it edit it
+
+If you need more granular control i.e pagewise-control, add a value on your article frontmatter as follows
+
+```yaml
+# 
+...
+codeBlocksLines = 8 # 8 is a placeholder that overrides your default settings set from the previous snippet .feel free to change it to your liking
+...
+```

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang='{{ .Lang }}'>
   {{- partial "head" . }}
-  {{- $maxCodeLines := 0 }}
+  {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}
   {{- with $params.codeBlocksLines }}
+    {{- $maxCodeLines = . }}
+    {{- end }}
+  {{- with .Params.codeBlocksLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
   <body {{ with $maxCodeLines }}data-code="{{ . }}"{{ end }}>

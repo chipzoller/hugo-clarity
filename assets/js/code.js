@@ -1,14 +1,3 @@
-/*
-
-1. show action buttons conditionally
-2. don't show codewrap icon if it's not needed
-3. don't show a code expand icon if it's not needed
-
-4. detect line width& height changes
-
-
-*/
-
 const codeActionButtons = [
   {
     icon: 'copy', 
@@ -64,7 +53,7 @@ function maxHeightIsSet(elem) {
   return maxHeight.includes('px')
 }
 
-function expandCodeBlock() {
+function collapseCodeBlock() {
   const blocks = codeBlocks();
   const body = elem('body');
   const maxLines = parseInt(body.dataset.code);
@@ -83,11 +72,12 @@ function expandCodeBlock() {
 
     const lastLine = lines[maxLines-1];
 
-    const maxCodeBlockHeight = lastLine.offsetTop;
+    const maxCodeBlockHeight = `${lastLine.offsetTop}px`;
 
     const codeBlock = lines[0].parentNode;
-
-    codeBlock.style.maxHeight = maxHeightIsSet(codeBlock) ? `100vh` : `${maxCodeBlockHeight}px`;
+    
+    codeBlock.dataset.height = maxCodeBlockHeight;
+    codeBlock.style.maxHeight = maxCodeBlockHeight;
 
     const highlightElement = codeBlock.parentNode.parentNode;
     
@@ -100,10 +90,10 @@ function expandCodeBlock() {
   });
 }
 
-expandCodeBlock();
+collapseCodeBlock();
 
 window.addEventListener('resize', function(event) {
-  expandCodeBlock();
+  collapseCodeBlock();
 });
 
 function actionPanel() {
@@ -132,7 +122,6 @@ function toggleLineNumbers(elems) {
 
 function toggleLineWrap(elem) {
   modifyClass(elem, 'pre_wrap');
-  // expandCodeBlock();
 }
 
 function copyCode(codeElement) {
@@ -212,8 +201,11 @@ function copyCode(codeElement) {
       
       isLinesIcon ? toggleLineNumbers(lineNumbers) : false;
 
-      isExpandIcon ? expandCodeBlock() : false;
-      
+      if (isExpandIcon) {
+        let thisCodeBlock = codeElement.firstElementChild;
+        thisCodeBlock.style.maxHeight = maxHeightIsSet(thisCodeBlock) ? `100vh` : thisCodeBlock.dataset.height;
+      }
+
       if(isCopyIcon) {
         // clone code element
         const codeElementClone = codeElement.cloneNode(true);

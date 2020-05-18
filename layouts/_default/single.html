@@ -13,7 +13,7 @@
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
     {{ with .Params.featureImage }}
-    <img src = '{{ . }}' alt = '{{ $.Page.Title }}'>
+    <img src = '{{ . }}'>
     {{ end }}
     {{ if .Params.toc }}
     <h2>Overview</h2>

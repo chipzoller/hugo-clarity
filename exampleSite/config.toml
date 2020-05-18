@@ -30,7 +30,7 @@ fallBackOgImage = "images/thumbnail.png"
 codeMaxLines = 7
 
 # disable showing line numbers by default : switcth to `true` if you'ld rather have them on
-codeLineNumbers = true 
+codeLineNumbers = false 
 
 
 # directory where your articles are

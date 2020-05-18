@@ -1,3 +1,14 @@
+@keyframes pulse
+  0%
+    transform: scale(1) translate(0) 
+    opacity: 0.7
+  25
+    transform: scale(1.25)
+  75%
+    transform: scale(1.25)
+  100%
+    transform: scale(1) translate(0)
+    opacity: 1
 
 code
   font-size: 0.96rem
@@ -158,6 +169,7 @@ code
     display: inline-flex
     // grid-template-columns: repeat(3, 1fr)
     // max-width: 10rem
+    perspective: 300px
     grid-gap: 0.5rem
     transition: opacity 0.3s var(--easing)
     background: var(--code-bg)
@@ -173,11 +185,12 @@ code
     align-items: center
     justify-content: center
     cursor: pointer
-    transition: opacity 0.3s var(--easing)
+    // transition: opacity 0.3s var(--easing)
     padding: 0.1rem
-    opacity: 0.6
+    transform-orign: 50% 50%
+    // opacity: 0.7
     &.active
-      opacity: 1
+      animation: pulse 0.67s linear
     svg
       fill: var(--light)
       width: 1.5rem

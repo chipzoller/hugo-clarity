@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang='{{ .Lang }}'>
   {{- partial "head" . }}
-  <body>
+  {{- $maxCodeLines := 0 }}
+  {{- $params := .Site.Params }}
+  {{- with $params.codeBlocksLines }}
+    {{- $maxCodeLines = . }}
+  {{- end }}
+  <body {{ with $maxCodeLines }}data-code="{{ . }}"{{ end }}>
     {{- partial "nav" . }}
     <main>
       {{- block "main" . }}{{ end }}

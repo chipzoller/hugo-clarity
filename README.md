@@ -79,7 +79,7 @@ centerLogo = true # change to false to align left
 
 Under params in `config.toml` file, add a value as follows
 
-```toml
+```
 [params]
 ...
 codeBlocksLines = 7 # 7 is a placeholder feel free to change it to your liking

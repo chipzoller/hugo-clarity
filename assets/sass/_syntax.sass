@@ -1,6 +1,8 @@
 
 code
   font-size: 0.96rem
+  overflow-y: auto
+  display: block
   &.noClass
     --inlineColor: rgb(194, 29, 0)
     color: var(--inlineColor)
@@ -149,11 +151,10 @@ code
 // crayon-like widget styles
 .panel
   &_box
-    display: inline-grid
-    grid-template-columns: repeat(3, 1fr)
-    max-width: 10rem
+    display: inline-flex
+    // grid-template-columns: repeat(3, 1fr)
+    // max-width: 10rem
     grid-gap: 0.5rem
-    // background-color: rgba(255,255,255,0.05)
     transition: opacity 0.3s var(--easing)
     background: var(--code-bg)
     padding: 0.5rem 1.5rem
@@ -176,4 +177,6 @@ code
       fill: var(--light)
       width: 1.5rem
       height: 1.5rem
-    
+  &_hide
+    // hide icon if not needed
+    display: none

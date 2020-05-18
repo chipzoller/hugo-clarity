@@ -10,6 +10,11 @@
     transform: scale(1) translate(0)
     opacity: 1
 
+%hideLines
+  transform: translateX(-5rem)
+  opacity: 0
+  margin-right: -1rem
+
 code
   font-size: 0.96rem
   overflow-y: auto
@@ -78,6 +83,9 @@ code
   transition: opacity 0.3s var(--ease)
   &, span
     color: #666
+body[data-lines=false] .ln
+  @extend %hideLines
+
 .k, .kc, .kd, .kn, .kp, .kr, .kt, .nt  
   color: #6ab825
   font-weight: 500
@@ -158,10 +166,6 @@ code
     white-space: -pre-wrap
     white-space: -o-pre-wrap
     word-wrap: break-word
-  &_nolines
-    transform: translateX(-5rem)
-    opacity: 0
-    margin-right: -1rem
 
 // crayon-like widget styles
 .panel

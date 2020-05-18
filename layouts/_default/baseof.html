@@ -3,13 +3,13 @@
   {{- partial "head" . }}
   {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}
-  {{- with $params.codeBlocksLines }}
+  {{- with $params.codeMaxLines }}
     {{- $maxCodeLines = . }}
     {{- end }}
-  {{- with .Params.codeBlocksLines }}
+  {{- with .Params.codeMaxLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
-  <body {{ with $maxCodeLines }}data-code="{{ . }}"{{ end }}>
+  <body{{ with $maxCodeLines }} data-code="{{ . }}"{{ end }}{{ with $params.codeLineNumbers }} data-lines="{{ . }}"{{ end }}>
     {{- partial "nav" . }}
     <main>
       {{- block "main" . }}{{ end }}

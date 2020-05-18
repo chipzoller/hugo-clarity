@@ -79,10 +79,10 @@ centerLogo = true # change to false to align left
 
 Under params in `config.toml` file, add a value as follows
 
-```
+```yaml
 [params]
 ...
-codeBlocksLines = 7 # 7 is a placeholder feel free to change it to your liking
+codeMaxLines = 7 #7 is a placeholder feel free to change it to your liking
 ...
 ```
 
@@ -93,6 +93,6 @@ If you need more granular control i.e pagewise-control, add a value on your arti
 ```yaml
 # 
 ...
-codeBlocksLines = 8 # 8 is a placeholder that overrides your default settings set from the previous snippet .feel free to change it to your liking
+codeMaxLines = 8 # 8 is a placeholder that overrides your default settings set from the previous snippet .feel free to change it to your liking
 ...
 ```

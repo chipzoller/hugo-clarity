@@ -116,8 +116,12 @@ function actionPanel() {
   return panel;
 }
 
-function toggleLineNumbers(elems) {
-  elems.forEach(elem => modifyClass(elem, 'pre_nolines'))
+function toggleLineNumbers() {
+  const body = elem('body');
+  let state = body.dataset.lines;
+  const show = 'true';
+  const hide = 'false';
+  body.dataset.lines = state === show ? hide : show;
 }
 
 function toggleLineWrap(elem) {

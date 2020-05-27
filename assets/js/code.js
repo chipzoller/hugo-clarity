@@ -92,10 +92,6 @@ function collapseCodeBlock() {
 
 collapseCodeBlock();
 
-window.addEventListener('resize', function(event) {
-  collapseCodeBlock();
-});
-
 function actionPanel() {
   const panel = createEl();
   panel.className = 'panel_box';

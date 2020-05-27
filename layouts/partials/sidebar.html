@@ -35,7 +35,7 @@
     <nav>
       {{- range $value.ByCount }}
       <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
-        {{ .Name }}
+        {{ upper .Name }}
         <span class='button_tally'>{{ .Count }}</span>
       </a>
       {{ end }}

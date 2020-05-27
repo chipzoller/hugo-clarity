@@ -41,6 +41,20 @@ function codeBlocks() {
   return blocks;
 }
 
+(function wrapTextNodesOnCodeBlocks(){
+  const blocks = codeBlocks();
+  blocks.forEach(function(block, index){
+    const nodes = block.childNodes;
+    if(index === 1) {
+      console.log(block.innerHTML);
+      nodes.forEach(function(node){
+        let nodeType = node.nodeName;
+        console.log(nodeType.parentNode);
+      });
+    }
+  });
+})();
+
 function codeBlockFits(block) {
   // return false if codeblock overflows
   const blockWidth = block.offsetWidth;

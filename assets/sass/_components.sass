@@ -419,3 +419,22 @@
 
 .taxonomy
   text-transform: capitalize
+
+.image
+  &-scale 
+    position: fixed
+    z-index: 999999
+    left: 0
+    right: 0
+    height: 100vh
+    top: 0
+    padding: 1.5rem
+    background-color: var(--bg)
+    display: grid
+    align-items: center
+    overflow: auto
+  &-scale &-scalable
+    background-color: var(--text)
+  &-scalable
+    cursor: pointer
+    transition: transform 0.3s var(--ease)

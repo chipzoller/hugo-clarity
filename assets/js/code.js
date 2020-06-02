@@ -22,13 +22,7 @@ const codeActionButtons = [
     id: 'expand',
     title: 'Expand code block',
     show: false 
-  },
-  // {
-  //   icon: 'light',
-  //   id: 'light',
-  //   title: 'Change code block theme',
-  //   show: false 
-  // }
+  }
 ];
 
 function codeBlocks() {
@@ -52,6 +46,18 @@ function maxHeightIsSet(elem) {
   let maxHeight = elem.style.maxHeight;
   return maxHeight.includes('px')
 }
+
+(function addLangLabel() {
+  const blocks = codeBlocks();
+  blocks.forEach(function(block){
+    let label = block.dataset.lang;
+    label = label === 'sh' ? 'bash' : label;
+    const labelEl = createEl();
+    labelEl.textContent = label;
+    pushClass(labelEl, 'lang');
+    block.parentNode.appendChild(labelEl);
+  });
+})();
 
 function collapseCodeBlock() {
   const blocks = codeBlocks();

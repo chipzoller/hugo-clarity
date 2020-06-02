@@ -173,9 +173,6 @@ function fileClosure(){
       if (alt.length > 0 && !containsClass(image, 'alt')) {
         image.addEventListener('load', function() {
           let desc = document.createElement('p');
-          const imageWidth = image.clientWidth;
-          desc.style.width = `${imageWidth}px`;
-          // desc.dataset.width = `${imageWidth}px`;
           desc.classList.add('img_alt');
           desc.textContent = image.alt;
           image.insertAdjacentHTML('afterend', desc.outerHTML);

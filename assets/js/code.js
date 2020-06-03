@@ -47,18 +47,6 @@ function maxHeightIsSet(elem) {
   return maxHeight.includes('px')
 }
 
-(function addLangLabel() {
-  const blocks = codeBlocks();
-  blocks.forEach(function(block){
-    let label = block.dataset.lang;
-    label = label === 'sh' ? 'bash' : label;
-    const labelEl = createEl();
-    labelEl.textContent = label;
-    pushClass(labelEl, 'lang');
-    block.parentNode.appendChild(labelEl);
-  });
-})();
-
 function collapseCodeBlock() {
   const blocks = codeBlocks();
   const body = elem('body');
@@ -223,5 +211,17 @@ function disableCodeLineNumbers(block){
       }
     }
   });
+
+  (function addLangLabel() {
+    const blocks = codeBlocks();
+    blocks.forEach(function(block){
+      let label = block.dataset.lang;
+      label = label === 'sh' ? 'bash' : label;
+      const labelEl = createEl();
+      labelEl.textContent = label;
+      pushClass(labelEl, 'lang');
+      block.closest('.highlight_wrap').appendChild(labelEl);
+    });
+  })();  
   
 })();  

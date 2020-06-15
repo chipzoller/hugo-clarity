@@ -1,13 +1,9 @@
 @keyframes pulse
   0%
-    transform: scale(1) translate(0) 
-    opacity: 0.7
-  25
-    transform: scale(1.25)
+    opacity: 1
   75%
-    transform: scale(1.25)
+    opacity: 0.1
   100%
-    transform: scale(1) translate(0)
     opacity: 1
 
 code
@@ -65,6 +61,10 @@ code
   table 
     display: grid
     max-width: 100%
+    margin-bottom: 0
+    background: transparent
+  td, th
+    padding: 0
   
   .lntd 
     width: 100%
@@ -91,7 +91,7 @@ code
 .hl
   width: 100%
   background-color: rgba(255,255,255,0.25)
-.ln
+.ln, .lnt
   margin-right: 0.4rem
   padding: 0 0.4em 0 0.4rem
   transition: opacity 0.3s var(--ease)

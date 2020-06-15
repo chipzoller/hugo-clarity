@@ -171,13 +171,11 @@ function disableCodeLineNumbers(block){
   function showActive(target, targetClass,activeClass = 'active') {
     const active = activeClass;
     const targetElement = target.matches(`.${targetClass}`) ? target : target.closest(`.${targetClass}`);
-    const siblings = Array.from(targetElement.parentNode.children).filter(function(child){
-      return child !== targetElement
-    });
-    siblings.forEach(function(sibling){
-      // containsClass(sibling, active) ? deleteClass(sibling, active) : false;
-    });
-    modifyClass(targetElement, active);
+    
+    deleteClass(targetElement, active);
+    setTimeout(function() {
+      modifyClass(targetElement, active)
+    }, 50)
   }
   
   doc.addEventListener('click', function(event){

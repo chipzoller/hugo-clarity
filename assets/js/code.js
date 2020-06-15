@@ -217,10 +217,12 @@ function disableCodeLineNumbers(block){
     blocks.forEach(function(block){
       let label = block.dataset.lang;
       label = label === 'sh' ? 'bash' : label;
-      const labelEl = createEl();
-      labelEl.textContent = label;
-      pushClass(labelEl, 'lang');
-      block.closest('.highlight_wrap').appendChild(labelEl);
+      if(label !== "fallback") {
+        const labelEl = createEl();
+        labelEl.textContent = label;
+        pushClass(labelEl, 'lang');
+        block.closest('.highlight_wrap').appendChild(labelEl);
+      }
     });
   })();  
   

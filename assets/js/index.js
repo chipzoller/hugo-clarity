@@ -197,14 +197,17 @@ function fileClosure(){
         let parentWidth = baseParent.offsetWidth;
         
         let actionableRatio = actualWidth / parentWidth;
+
+        // console.log(actionableRatio);
         
-        if (!(actionableRatio <= 1)) {
+        if (actionableRatio > 1) {
           pushClass(image, "image-scalable");
           image.dataset.scale = actionableRatio;
-          
           let figure = createEl('figure');
           
           wrapEl(image, figure)
+        } else {
+          console.log(actionableRatio, baseParent);
         }
         
       })
@@ -212,7 +215,7 @@ function fileClosure(){
   }
   
   (function AltImage() {
-    let post = elem('.content');
+    let post = elem('.post_content');
     let images = post ? post.querySelectorAll('img') : false;
     images ? populateAlt(images) : false;
     largeImages(post, images);
@@ -349,4 +352,5 @@ function fileClosure(){
 
   // add new code above this line
 }
-window.addEventListener('load', fileClosure());
+
+document.addEventListener('load', fileClosure());

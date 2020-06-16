@@ -192,22 +192,26 @@ function fileClosure(){
   function largeImages(baseParent, images = []) {
     if(images) {
       images.forEach(function(image) {
-        let actualWidth = image.naturalWidth;
-        
-        let parentWidth = baseParent.offsetWidth;
-        
-        let actionableRatio = actualWidth / parentWidth;
 
-        // console.log(actionableRatio);
-        
-        if (actionableRatio > 1) {
-          pushClass(image, "image-scalable");
-          image.dataset.scale = actionableRatio;
-          let figure = createEl('figure');
+        image.addEventListener('load', function(){
+
+          let actualWidth = image.naturalWidth;
           
-          wrapEl(image, figure)
-        }
-        
+          let parentWidth = baseParent.offsetWidth;
+          
+          let actionableRatio = actualWidth / parentWidth;
+  
+          // console.log(actionableRatio);
+          
+          if (actionableRatio > 1) {
+            pushClass(image, "image-scalable");
+            image.dataset.scale = actionableRatio;
+            let figure = createEl('figure');
+            
+            wrapEl(image, figure)
+          }
+          
+        });
       })
     }
   }

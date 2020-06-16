@@ -355,4 +355,4 @@ function fileClosure(){
   // add new code above this line
 }
 
-document.addEventListener('load', fileClosure());
+window.addEventListener('load', fileClosure());

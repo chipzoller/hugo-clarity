@@ -35,7 +35,8 @@ function fileClosure(){
   current = document.URL;
   
   tags.forEach(function(tag){
-    results = document.getElementsByTagName(tag);
+    const article = elem('.post_content');
+    results = article.getElementsByTagName(tag);
     Array.prototype.push.apply(headingNodes, results);
   });
   

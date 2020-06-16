@@ -206,8 +206,6 @@ function fileClosure(){
           let figure = createEl('figure');
           
           wrapEl(image, figure)
-        } else {
-          console.log(actionableRatio, baseParent);
         }
         
       })

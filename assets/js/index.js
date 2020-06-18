@@ -152,10 +152,18 @@ function fileClosure(){
       });
     }
   })();
+
+  function showingImagePosition(){
+    // whether or not to track image position for non-linear images within the article body element.
+    if(showImagePosition) {
+      return showImagePositionLabel;
+    }
+    return false;
+  }
   
   function populateAlt(images) {
+    let imagePosition = 0;
     images.forEach((image) => {
-      const inline = ":inline";
       let alt = image.alt;
       
       const modifiers = [':left', ':right'];
@@ -171,11 +179,19 @@ function fileClosure(){
       
       const isInline = alt.includes(inline);
       alt = alt.replace(inline, "");
-      if (alt.length > 0 && !containsClass(image, 'alt')) {
+
+      // wait for position to load and a caption if the image is not online and has an alt attribute
+      if (!containsClass(image, 'alt' && !isInline)) {
         image.addEventListener('load', function() {
+          imagePosition += 1;
+          const imagePositionLabel = showingImagePosition();
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
-          desc.textContent = image.alt;
+          let imageAlt = image.alt;
+
+          // modify image caption is necessary
+          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${imagePosition}.0: ${imageAlt}` : imageAlt;
+          desc.textContent = imageAlt;
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         })
       }
@@ -188,7 +204,7 @@ function fileClosure(){
     
     hljs.initHighlightingOnLoad();
   }
-  
+
   function largeImages(baseParent, images = []) {
     if(images) {
       images.forEach(function(image) {

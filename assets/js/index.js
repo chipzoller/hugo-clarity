@@ -181,7 +181,7 @@ function fileClosure(){
       alt = alt.replace(inline, "");
 
       // wait for position to load and a caption if the image is not online and has an alt attribute
-      if (!containsClass(image, 'alt' && !isInline)) {
+      if (alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {
         image.addEventListener('load', function() {
           imagePosition += 1;
           const imagePositionLabel = showingImagePosition();

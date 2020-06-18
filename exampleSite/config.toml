@@ -42,3 +42,7 @@ blogDir = "post"
 centerLogo = true
 
 logo = "logos/logo.png"
+
+# Label Non inline images on an article body
+figurePositionShow = false # toggle on or off
+figurePositionLabel = "Figure" # the text before image number e.g Figure 1.0

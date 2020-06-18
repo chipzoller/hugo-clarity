@@ -190,7 +190,7 @@ function fileClosure(){
           let imageAlt = image.alt;
 
           // modify image caption is necessary
-          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${imagePosition}.0: ${imageAlt}` : imageAlt;
+          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${imagePosition}: ${imageAlt}` : imageAlt;
           desc.textContent = imageAlt;
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         })

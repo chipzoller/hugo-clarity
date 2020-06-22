@@ -393,6 +393,15 @@ function fileClosure(){
     });
   })();
 
+  (function ifiOS(){
+    // modify backto top button
+    const backToTopButton = elem('.to_top');
+    const thisOS = getMobileOperatingSystem();
+    if(backToTopButton && thisOS === 'iOS') {
+      pushClass(backToTopButton, 'ios');
+    }
+  })();
+
   // add new code above this line
 }
 

@@ -163,6 +163,34 @@
   &_tag
     padding: 0.2rem 0.8rem
     font-size: 0.8rem
+    &s
+      display: none
+      &.show
+        display: initial
+        position: fixed
+        display: grid
+        place-content: center
+        top: 0
+        left: 0
+        min-height: 100vh
+        width: 100vw
+        padding: 1.5rem
+        // background: rgba(0,0,0,0.5)
+        cursor: pointer
+        z-index: 999
+        div
+          cursor: initial
+          background: var(--choice-bg)
+          padding: 1.5rem
+          border-radius: 1rem
+          max-width: 720px
+          margin: 0 auto
+          box-shadow: 0 2rem 8rem rgba(0,0,0,0.12)
+          filter: drop-shadow(0 2rem 8rem rgba(0,0,0 ,0.12 ));
+      &_toggle
+        margin-top: 0.5rem
+        margin-left: 0.5rem
+        cursor: pointer
   &_tag, &_share
     margin: 0.5rem
   &_share

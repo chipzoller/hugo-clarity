@@ -7,15 +7,18 @@
 {{- $params := .Site.Params }}
 {{- $permalink := .Permalink }}
 {{- $logo := absURL $params.logo }}
-{{- $image := absURL $params.fallBackOgImage }}
 {{- $author := $params.author }}
 {{- with .Params.author }}
   {{ $author := . }}
 {{- end }}
+{{- $image := absURL $params.fallBackOgImage }}
 {{- with .Params.featureImage }}
   {{- $image = absURL .  }}
 {{- end }}
 {{- with .Params.thumbnail }}
+  {{- $image = absURL .  }}
+{{- end }}
+{{- with .Params.shareImage }}
   {{- $image = absURL .  }}
 {{- end }}
 <meta property = 'og:locale' content = 'en_US' />

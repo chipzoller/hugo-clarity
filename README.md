@@ -6,8 +6,6 @@ A theme for Hugo based on VMware Clarity
 
 ![Clarity Hugo Theme Showcase](https://github.com/chipzoller/hugo-clarity/blob/master/images/showcase.gif)
 
-
-
 ## Modify Menu
 
 To add, remove or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
@@ -67,7 +65,7 @@ thumbnail: "/images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
-This will take precedence on opengraph share tags
+This will take precedence on opengraph share tags if the [shareImage](#share-image) below is not specified
 
 ### Article featured image
 
@@ -76,6 +74,16 @@ If a thumnail is not specified, the featured Image will be used as a fallback on
 ```yaml
 ...
 featureImage: "/images/2020-04/capv-overview/featured.jpg"
+...
+```
+
+### Share Image
+
+Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in your fron matter.
+
+```yaml
+...
+shareImage = "images/theImageToBeUsedOnShare.png"
 ...
 ```
 

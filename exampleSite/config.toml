@@ -47,5 +47,6 @@ centerLogo = true
 logo = "logos/logo.png"
 
 # Label Non inline images on an article body
-figurePositionShow = false # toggle on or off
+figurePositionShow = false # toggle on or off globally
+# you can toggle this behaviour on or off on per page using the same variable inside your articles frontmatter
 figurePositionLabel = "Figure" # the text before image number e.g Figure 1.0

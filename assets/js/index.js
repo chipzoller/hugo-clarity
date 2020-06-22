@@ -157,10 +157,12 @@ function fileClosure(){
 
   function showingImagePosition(){
     // whether or not to track image position for non-linear images within the article body element.
-    if(showImagePosition) {
-      return showImagePositionLabel;
+    const thisPage = document.documentElement;
+    let showImagePositionOnPage = thisPage.dataset.figures;
+    if(!showImagePositionOnPage) {
+      showImagePosition = showImagePositionOnPage;
     }
-    return false;
+    return showImagePosition === "true" ? true : false;
   }
   
   function populateAlt(images) {
@@ -188,6 +190,7 @@ function fileClosure(){
         image.dataset.pos = imagePosition;
         image.addEventListener('load', function() {
           const imagePositionLabel = showingImagePosition();
+
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
           let imageAlt = image.alt;
@@ -221,8 +224,6 @@ function fileClosure(){
           
           let actionableRatio = actualWidth / parentWidth;
   
-          // console.log(actionableRatio);
-          
           if (actionableRatio > 1) {
             pushClass(image, "image-scalable");
             image.dataset.scale = actionableRatio;
@@ -295,7 +296,6 @@ function fileClosure(){
           pushClass(allTagsWrapper, tagsShowClass);
         } else {
           isActionable ? deleteClass(target, tagsShowClass) : false;
-          console.log(target);
         }
       }
     }) 

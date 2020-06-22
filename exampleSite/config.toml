@@ -25,6 +25,9 @@ author = "Chip Zoller"
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
 contentSharing = "I'm happy for you to share content on this site, but please provide attribution."
 
+# number of taxonomies links shown per article e.g how many tags ought should be shown on the tag.
+numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
+
 # will be used on share >> twitter, facebook, linkedin
 fallBackOgImage = "images/thumbnail.png" 
 

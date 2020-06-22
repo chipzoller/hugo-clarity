@@ -36,8 +36,10 @@ function fileClosure(){
   
   tags.forEach(function(tag){
     const article = elem('.post_content');
-    results = article.getElementsByTagName(tag);
-    Array.prototype.push.apply(headingNodes, results);
+    if (article) {
+      results = article.getElementsByTagName(tag);
+      Array.prototype.push.apply(headingNodes, results);
+    }
   });
   
   headingNodes.forEach(function(node){
@@ -182,15 +184,17 @@ function fileClosure(){
 
       // wait for position to load and a caption if the image is not online and has an alt attribute
       if (alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {
+        imagePosition += 1;
+        image.dataset.pos = imagePosition;
         image.addEventListener('load', function() {
-          imagePosition += 1;
           const imagePositionLabel = showingImagePosition();
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
           let imageAlt = image.alt;
-
+          
+          const thisImgPos = image.dataset.pos;
           // modify image caption is necessary
-          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${imagePosition}: ${imageAlt}` : imageAlt;
+          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
           desc.textContent = imageAlt;
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         })
@@ -275,6 +279,27 @@ function fileClosure(){
       wrapEl(table, wrapper);
     });
   }
+
+  (function showAllPostTags(){
+    const tagsButtonClass = 'post_tags_toggle';
+    const tagsShowClass = 'show';
+    doc.addEventListener('click', function(event){
+      const target = event.target;
+      const showingAllTags = target.matches(`.${tagsShowClass}`);
+      const isButton = target.matches(`.${tagsButtonClass}`);
+      const isActionable = isButton || showingAllTags;
+
+      if(isActionable) {
+        if(isButton) {
+          let allTagsWrapper = target.nextElementSibling;
+          pushClass(allTagsWrapper, tagsShowClass);
+        } else {
+          isActionable ? deleteClass(target, tagsShowClass) : false;
+          console.log(target);
+        }
+      }
+    }) 
+  })();
   
   (function navToggle() {
     doc.addEventListener('click', function(event){

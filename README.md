@@ -4,6 +4,10 @@ A theme for Hugo based on VMware Clarity
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
+![Clarity Hugo Theme Showcase](https://github.com/chipzoller/hugo-clarity/blob/master/images/showcase.gif)
+
+
+
 ## Modify Menu
 
 To add, remove or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
@@ -60,6 +64,18 @@ They ought to of a height: width ratio of `2:1`. They will be specified using a 
 ```yaml
 ...
 thumbnail: "/images/2020-04/capv-overview/featured.jpg"
+...
+```
+
+This will take precedence on opengraph share tags
+
+### Article featured image
+
+If a thumnail is not specified, the featured Image will be used as a fallback on opengraph share tags.
+
+```yaml
+...
+featureImage: "/images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 

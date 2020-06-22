@@ -8,5 +8,9 @@ features = ["blog", "technical", "simple", "dark", "fast"]
 min_version = "0.58.0"
 
 [author]
-    name ="Chip Zoller"
-    homepage = "https://github.com/chipzoller/hugo-clarity"
+# If the theme has multiple authors
+authors = [
+  {name = "Chip Zoller", homepage = "https://neonmirrors.net"},
+  {name = "Dan Weru", homepage = "https://github.com/onweru"},
+]
+

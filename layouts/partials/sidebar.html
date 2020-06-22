@@ -31,15 +31,32 @@
       {{- end }}
     </ul>
     {{ range $key, $value := .Site.Taxonomies }}
-    <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ $key }}</h2>
-    <nav>
-      {{- range $value.ByCount }}
-      <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
-        {{ upper .Name }}
-        <span class='button_tally'>{{ .Count }}</span>
-      </a>
-      {{ end }}
-    </nav>
+    <div>
+      <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ $key }}</h2>
+      <nav>
+        {{- $onPageTags := $.Page.Params.tags }}
+        {{- $slicedTags := ($value.ByCount | first 4) }}
+        {{- range $slicedTags }}
+        <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
+          {{ upper .Name }}
+          <span class='button_tally'>{{ .Count }}</span>
+        </a>
+        {{ end }}
+        {{ if gt (len $value.ByCount) 4 }}
+        <div class="post_tags_toggle button">All {{ $key }}</div>
+        <div class="post_tags">
+          <div>
+            {{- range $value.ByCount }}
+            <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
+              {{ upper .Name }}
+              <span class='button_tally'>{{ .Count }}</span>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </nav>
+    </div>
     {{ end }}
   </section>
   <div class='to_top'>

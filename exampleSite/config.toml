@@ -2,11 +2,12 @@
 # if you set it to "/" share icons won't work properly on production
 baseurl = "https://example.com/"  # Include trailing slash
 title = "Clarity"
-author = "Chip Zoller"
+author = "Jane Doe"
 copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
 # canonifyurls = true
 paginate = 10
 theme = "hugo-clarity"
+themesDir = "../." # uncomment if you site files are at the root level
 
 [markup]
   [markup.highlight]
@@ -21,7 +22,8 @@ theme = "hugo-clarity"
     tabWidth = 2
 
 [params]
-author = "Chip Zoller"
+author = "Jane Doe"
+twitter = "@janedoe"
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
 contentSharing = "I'm happy for you to share content on this site, but please provide attribution."
 

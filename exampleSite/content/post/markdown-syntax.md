@@ -73,8 +73,7 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 
 #### Code block with backticks
 
-```
-html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +83,7 @@ html
 <body>
   <p>Test</p>
 </body>
+<!-- this line is extraneous 2Error from server (Forbidden): deployments.apps is forbidden: User "chiptest" cannot create resource "deployments" in API group "apps" in the namespace "default" ->
 </html>
 ```
 #### Code block indented with four spaces

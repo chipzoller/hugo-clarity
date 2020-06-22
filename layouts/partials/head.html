@@ -10,7 +10,7 @@
   {{- if (ne hugo.Environment "development") }}
   {{- partial "analytics.html" . }}
   {{- end }}
-  {{ template "_internal/opengraph.html" . }}
+  {{- partial "opengraph.html" . }}
   {{- partial "favicon.html" . }}
   <link rel='canonical' href='{{ .Permalink }}'>
   {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}

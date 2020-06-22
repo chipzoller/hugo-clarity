@@ -6,14 +6,17 @@
 {{- $title := .Title }}
 {{- $params := .Site.Params }}
 {{- $permalink := .Permalink }}
-{{- $logo := absURL (printf "images/%s" $params.logo) }}
-{{- $image := absURL (printf "images/%s" $params.image) }}
+{{- $logo := absURL $params.logo }}
+{{- $image := absURL $params.fallBackOgImage }}
 {{- $author := $params.author }}
 {{- with .Params.author }}
   {{ $author := . }}
 {{- end }}
-{{- with .Params.image }}
-  {{- $image = absURL (printf "images/%s" .)  }}
+{{- with .Params.featureImage }}
+  {{- $image = absURL .  }}
+{{- end }}
+{{- with .Params.thumbnail }}
+  {{- $image = absURL .  }}
 {{- end }}
 <meta property = 'og:locale' content = 'en_US' />
 {{- if .IsHome }}
@@ -31,7 +34,8 @@
 <meta name = 'twitter:title' content = '{{ .Title }}' />
 <meta property = 'twitter:description'  content = '{{ $summary }}'/>
 <meta name = 'twitter:image' content = '{{ $image }}' />
-{{- if eq .Section "blog" -}}
+{{- if eq .Section $params.blogDir -}}
+yes
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}
   {{- $lastMod := (time .Lastmod) }}

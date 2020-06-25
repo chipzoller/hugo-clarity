@@ -3,14 +3,12 @@ license = "MIT"
 licenselink = "https://github.com/chipzoller/hugo-clarity/blob/master/LICENSE.md"
 description = "A simple open source theme for publishing technical blogs with hugo"
 homepage = "https://github.com/chipzoller/hugo-clarity"
-tags = ["blog", "technical", "simple", "dark", "fast"]
-features = ["blog", "technical", "simple", "dark", "fast"]
+tags = ["blog", "technical", "simple", "dark", "syntax highlighting"]
+features = ["blog", "technical", "simple", "dark", "syntax highlighting"]
 min_version = "0.58.0"
 
-[author]
 # If the theme has multiple authors
 authors = [
   {name = "Chip Zoller", homepage = "https://neonmirrors.net"},
   {name = "Dan Weru", homepage = "https://github.com/onweru"},
 ]
-

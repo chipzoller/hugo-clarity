@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}"{{ with .Params.figurePositionShow }} data-figures="{{ . }}"{{ end }}{{ if .IsPage }} class="page"{{ end }}>
+<html lang="{{ .Lang }}" data-figures="{{ .Params.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}>
   {{- partial "head" . }}
   {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}

@@ -21,7 +21,7 @@
     width: 100%
     z-index: 99
   &_item
-    padding: 1rem 1rem
+    padding: 0.5rem 1rem
     display: inline-flex
     align-items: center
 
@@ -40,6 +40,8 @@
     position: relative
     display: flex
     align-items: center
+    margin: 0.25rem 0
+    border-radius: 0.5rem
   
   &_open + &_sub
     height: initial
@@ -155,11 +157,10 @@
     & + .content
       padding-top: 0
   &_item
-    border: 1px solid $xhaze
-    border-bottom: 3px solid $xhaze
-    box-shadow: 0  2.25rem 1.25rem -1.25rem rgba(0,0,0,0.06)
-    margin-bottom: 2.5rem
-    border-radius: 0.25rem
+    box-shadow: 0  2.25rem 1.25rem -1.25rem var(--shadow)
+    margin-bottom: 3rem
+    border-radius: 0.5rem
+    background: var(--post-bg)
   &_tag
     padding: 0.2rem 0.8rem
     font-size: 0.8rem
@@ -262,6 +263,8 @@
       left: 1.5rem
       border-radius: 1.5rem
       padding: 0.1rem
+      &, span
+        user-select: none
       span
         display: inline-flex
         justify-content: center
@@ -345,7 +348,7 @@
   &_header, &_footer
     padding: 1rem
   &_header
-    border-bottom: 1px solid $xhaze
+    border-bottom: 1px solid var(--choice-bg)
   
   &_thumbnail
     min-height: 10rem

@@ -159,7 +159,8 @@ function fileClosure(){
     // whether or not to track image position for non-linear images within the article body element.
     const thisPage = document.documentElement;
     let showImagePositionOnPage = thisPage.dataset.figures;
-    if(!showImagePositionOnPage) {
+    
+    if(showImagePositionOnPage) {
       showImagePosition = showImagePositionOnPage;
     }
     return showImagePosition === "true" ? true : false;
@@ -189,7 +190,7 @@ function fileClosure(){
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         image.addEventListener('load', function() {
-          const imagePositionLabel = showingImagePosition();
+          const showImagePosition = showingImagePosition();
 
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
@@ -197,7 +198,7 @@ function fileClosure(){
           
           const thisImgPos = image.dataset.pos;
           // modify image caption is necessary
-          imageAlt = imagePositionLabel ? `${imagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
+          imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
           desc.textContent = imageAlt;
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         })

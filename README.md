@@ -57,7 +57,7 @@ To make an image inline, append `:left` to its alt text.
 
 ### Article thumbnails
 
-They ought to of a height: width ratio of `2:1`. They will be specified using a frontmatter variable as follows
+They ought to of a height: width ratio of `1:1`. They will be specified using a frontmatter variable as follows
 
 ```yaml
 ...

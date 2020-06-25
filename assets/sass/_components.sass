@@ -168,25 +168,16 @@
       &.show
         display: initial
         position: fixed
-        display: grid
-        place-content: center
         top: 0
         left: 0
-        min-height: 100vh
+        height: 100vh
+        overflow-y: auto
         width: 100vw
-        padding: 1.5rem
-        background: rgba(255,255,255,0.05)
+        padding: 5rem 1.5rem 1.5rem 1.5rem
+        background: var(--translucent-light)
         cursor: pointer
         z-index: 999
-        div
-          cursor: initial
-          background: var(--choice-bg)
-          padding: 1.5rem
-          border-radius: 1rem
-          max-width: 720px
-          margin: 0 auto
-          box-shadow: 0 2rem 8rem rgba(0,0,0,0.12)
-          filter: drop-shadow(0 2rem 8rem rgba(0,0,0 ,0.12 ));
+        overflow-y: auto
       &_toggle
         margin-top: 0.5rem
         margin-left: 0.5rem
@@ -246,19 +237,69 @@
 .mb-0
   margin-bottom: 0 !important
 
-.tag-title
-  border-bottom: none !important
-  display: inline-block !important
-  position: relative
-  font-size: 2rem
-  margin-bottom: -1rem
-  &::after
-    content: attr(data-count)
-    margin-left: 1.5rem
-    background-color: #eee
-    padding: 0.25rem 1rem
-    border-radius: 15%
-    font-size: 1.5rem
+.tag
+  &s
+    &_list
+      cursor: initial
+      background: var(--choice-bg)
+      padding: 4.5rem 1.5rem 1.5rem 1.5rem
+      border-radius: 1rem
+      max-width: 720px
+      margin: 0 auto
+      box-shadow: 0 2rem 8rem rgba(0,0,0,0.12)
+      filter: drop-shadow(0 2rem 8rem rgba(0,0,0 ,0.12 ))
+      position: relative
+      display: flex
+      flex-flow: row wrap
+    &_nav
+      position: relative
+    &_sort
+      font-size: 1rem
+      color: var(--light)
+      background: var(--theme)
+      position: absolute
+      top: 1.5rem
+      left: 1.5rem
+      border-radius: 1.5rem
+      padding: 0.1rem
+      span
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        height: 2rem
+        position: relative
+        z-index: 5
+        cursor: pointer
+        width: 5rem
+        font-weight: 500
+      &::before
+        content: ""
+        position: absolute
+        width: 4.5rem
+        top: 0.25rem
+        bottom: 0.25rem
+        left: 0.25rem
+        z-index: 3
+        background: var(--bg)
+        opacity: 0.5
+        border-radius: 1.5rem
+        transition: 0.25s transform var(--ease)
+      &.sorted
+        &::before
+          transform: translateX(5rem)
+  &-title
+    border-bottom: none !important
+    display: inline-block !important
+    position: relative
+    font-size: 2rem
+    margin-bottom: -1rem
+    &::after
+      content: attr(data-count)
+      margin-left: 1.5rem
+      background-color: #eee
+      padding: 0.25rem 1rem
+      border-radius: 15%
+      font-size: 1.5rem
 
 .icon
   display: inline-flex
@@ -419,7 +460,7 @@
   
   &_choice 
     width: 3rem
-    background-color: rgba(255,255,255,0.06)
+    background-color: var(--translucent-light)
     border-radius: 1rem
     height: 1.5rem
     outline: none

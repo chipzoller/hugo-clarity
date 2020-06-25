@@ -401,6 +401,26 @@ function fileClosure(){
       pushClass(backToTopButton, 'ios');
     }
   })();
+  
+  (function sortTags() {
+    doc.addEventListener('click', function(event){
+      const active = 'active';
+      const target = event.target;
+      const isSortButton = target.matches('.tags_sort') || target.matches('.tags_sort span');
+      if(isSortButton) {
+        const tagsList = target.closest('.tags_list');
+        const sortButton = elem('.tags_sort', tagsList);
+        modifyClass(sortButton, 'sorted');
+        const tags = elems('.post_tag', tagsList);
+        Array.from(tags).forEach(function(tag){
+          const order = tag.dataset.position;
+          const reverseSorting = containsClass(tag, active);
+            tag.style.order = reverseSorting ? 0 : -order;
+            modifyClass(tag, active);
+        })
+      }
+    })
+  })();
 
   // add new code above this line
 }

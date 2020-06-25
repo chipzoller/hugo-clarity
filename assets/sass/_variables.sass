@@ -43,6 +43,8 @@ html
   --table-haze: var(--haze)
   --table-border: #dedede
   --footer-bg: var(--haze)
+  --shadow: rgba(0,0,0,0.15)
+  --translucent-light: rgba(255,255,255,0.06)
 
   --ease: cubic-bezier(0.39, 0.575, 0.565, 1)
   --easing: cubic-bezier(.19,1,.22,1)
@@ -65,7 +67,7 @@ html
   &[data-mode="dim"]
     @include darkmode
     blockquote
-      background: rgba(255,255,255,0.06)
+      background: var(--translucent-light)
       color: #dedede
     svg.icon
       fill: var(--light)
@@ -97,7 +99,7 @@ html
     &:not([data-mode="lit"])
       @include darkmode
       blockquote
-        background: rgba(255,255,255,0.06)
+        background: var(--translucent-light)
         color: #dedede
       svg.icon
         fill: var(--light)

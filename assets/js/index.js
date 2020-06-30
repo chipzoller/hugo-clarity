@@ -287,17 +287,24 @@ function fileClosure(){
     
   function toggleTags(target = null) {
     const tagsButtonClass = 'post_tags_toggle';
-    const tagsShowClass = 'jsopen';
+    const tagsButtonClass2 = 'tags_hide';
+    const tagsShowClass = 'jswidgetopen';
     const postTagsWrapper = elem(`.${tagsShowClass}`);
     target = target === null ? postTagsWrapper : target;
     const showingAllTags = target.matches(`.${tagsShowClass}`);
-    const isButton = target.matches(`.${tagsButtonClass}`);
+    const isExandButton = target.matches(`.${tagsButtonClass}`);
+    const isCloseButton = target.matches(`.${tagsButtonClass2}`) || target.closest(`.${tagsButtonClass2}`);
+    const isButton =  isExandButton || isCloseButton;
     const isActionable = isButton || showingAllTags;
     
     if(isActionable) {
       if(isButton) {
-        let allTagsWrapper = target.nextElementSibling;
-        pushClass(allTagsWrapper, tagsShowClass);
+        if(isExandButton) {
+          let allTagsWrapper = target.nextElementSibling 
+          pushClass(allTagsWrapper, tagsShowClass); 
+        } else {
+          deleteClass(postTagsWrapper, tagsShowClass);
+        }
       } else {
         isActionable ? deleteClass(target, tagsShowClass) : false;
       }

@@ -154,7 +154,7 @@ function fileClosure(){
       });
     }
   })();
-
+  
   function showingImagePosition(){
     // whether or not to track image position for non-linear images within the article body element.
     const thisPage = document.documentElement;
@@ -184,14 +184,14 @@ function fileClosure(){
       
       const isInline = alt.includes(inline);
       alt = alt.replace(inline, "");
-
+      
       // wait for position to load and a caption if the image is not online and has an alt attribute
       if (alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         image.addEventListener('load', function() {
           const showImagePosition = showingImagePosition();
-
+          
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
           let imageAlt = image.alt;
@@ -212,19 +212,19 @@ function fileClosure(){
     
     hljs.initHighlightingOnLoad();
   }
-
+  
   function largeImages(baseParent, images = []) {
     if(images) {
       images.forEach(function(image) {
-
+        
         image.addEventListener('load', function(){
-
+          
           let actualWidth = image.naturalWidth;
           
           let parentWidth = baseParent.offsetWidth;
           
           let actionableRatio = actualWidth / parentWidth;
-  
+          
           if (actionableRatio > 1) {
             pushClass(image, "image-scalable");
             image.dataset.scale = actionableRatio;
@@ -282,24 +282,35 @@ function fileClosure(){
     });
   }
 
-  (function showAllPostTags(){
+  // track if there's an expanded tags' widget
+  let tagWidgetOpen = false;
+    
+  function toggleTags(target = null) {
     const tagsButtonClass = 'post_tags_toggle';
-    const tagsShowClass = 'show';
+    const tagsShowClass = 'jsopen';
+    const postTagsWrapper = elem(`.${tagsShowClass}`);
+    target = target === null ? postTagsWrapper : target;
+    const showingAllTags = target.matches(`.${tagsShowClass}`);
+    const isButton = target.matches(`.${tagsButtonClass}`);
+    const isActionable = isButton || showingAllTags;
+    
+    if(isActionable) {
+      if(isButton) {
+        let allTagsWrapper = target.nextElementSibling;
+        pushClass(allTagsWrapper, tagsShowClass);
+      } else {
+        isActionable ? deleteClass(target, tagsShowClass) : false;
+      }
+    }
+  }
+  
+  (function showAllPostTags(){
     doc.addEventListener('click', function(event){
       const target = event.target;
-      const showingAllTags = target.matches(`.${tagsShowClass}`);
-      const isButton = target.matches(`.${tagsButtonClass}`);
-      const isActionable = isButton || showingAllTags;
-
-      if(isActionable) {
-        if(isButton) {
-          let allTagsWrapper = target.nextElementSibling;
-          pushClass(allTagsWrapper, tagsShowClass);
-        } else {
-          isActionable ? deleteClass(target, tagsShowClass) : false;
-        }
-      }
-    }) 
+      toggleTags(target)
+    });
+    
+    horizontalSwipe(doc, toggleTags, 'left');
   })();
   
   (function navToggle() {
@@ -393,7 +404,7 @@ function fileClosure(){
       }
     });
   })();
-
+  
   (function ifiOS(){
     // modify backto top button
     const backToTopButton = elem('.to_top');
@@ -416,13 +427,13 @@ function fileClosure(){
         Array.from(tags).forEach(function(tag){
           const order = tag.dataset.position;
           const reverseSorting = containsClass(tag, active);
-            tag.style.order = reverseSorting ? 0 : -order;
-            modifyClass(tag, active);
+          tag.style.order = reverseSorting ? 0 : -order;
+          modifyClass(tag, active);
         })
       }
     })
   })();
-
+  
   // add new code above this line
 }
 

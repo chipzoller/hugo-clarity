@@ -167,7 +167,7 @@
     font-size: 0.8rem
     &s
       display: none
-      &.jsopen
+      &.jswidgetopen
         display: initial
         position: fixed
         top: 0
@@ -255,6 +255,15 @@
       flex-flow: row wrap
     &_nav
       position: relative
+    &_hide
+      position: absolute
+      top: 1rem
+      right: 1.5rem
+      padding: 0.5rem
+      border-radius: 50%
+      cursor: pointer
+      @media screen and (min-width: 992px)
+        display: none
     &_sort
       font-size: 1rem
       color: var(--light)

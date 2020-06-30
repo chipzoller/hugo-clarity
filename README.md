@@ -1,6 +1,9 @@
 # Hugo Clarity
 
 A theme for Hugo based on VMware Clarity
+
+![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
+
 ## Preview
 
 | Light Mode | Dark Mode |

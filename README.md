@@ -16,11 +16,11 @@ There are at least 2 ways of going about it
    Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
      
     ```
-    hugo new site yourSiteName
-    cd yourSiteName
-    git init
-    git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-    cp -a themes/hugo-clarity/exampleSite/ .
+    $ hugo new site yourSiteName
+    $ cd yourSiteName
+    $ git init
+    $ git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+    $ cp -a themes/hugo-clarity/exampleSite/ .
     ```
 
     Uncomment this line from the `config.toml` file
@@ -40,10 +40,12 @@ There are at least 2 ways of going about it
 2. ### Option 2
 
     If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
-
-    $ git clone git@github.com:themefisher/educenter-hugo.git
-    $ cd educenter-hugo/exampleSite/
+    
+    ```
+    $ git clonehttps://github.com/chipzoller/hugo-clarity
+    $ cd hugo-clarity/exampleSite/
     $ hugo server --themesDir ../..
+    ```
 
 ## Modify Menu
 

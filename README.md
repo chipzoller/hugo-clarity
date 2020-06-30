@@ -48,7 +48,7 @@ If you think you want to go with the traditional, you can run your site directly
 ```
 $ git clone https://github.com/chipzoller/hugo-clarity
 $ cd hugo-clarity/exampleSite/
-$ hugo server --themesDir ../..
+$ hugo server
 ```
 
 Once set, jump over to the `config.toml` file, and start customizing your site.

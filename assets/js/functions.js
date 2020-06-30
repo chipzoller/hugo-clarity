@@ -154,3 +154,26 @@ function getMobileOperatingSystem() {
   
   return "unknown";
 }
+
+function horizontalSwipe(element, func, direction) {
+  // call func if result of swipeDirection() 👇🏻 is equal to direction
+  
+  let touchstartX = 0;
+  let touchendX = 0;
+  let swipeDirection = null;
+
+  function handleGesure() {
+    return (touchendX + 50 < touchstartX) ? 'left' : (touchendX < touchstartX + 50) ? 'right' : false;
+  }
+
+  element.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX
+  });
+
+  element.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    swipeDirection = handleGesure()
+    swipeDirection === direction ? func() : false;
+  });
+
+}

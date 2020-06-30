@@ -38,7 +38,6 @@
 <meta property = 'twitter:description'  content = '{{ $summary }}'/>
 <meta name = 'twitter:image' content = '{{ $image }}' />
 {{- if eq .Section $params.blogDir -}}
-yes
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}
   {{- $lastMod := (time .Lastmod) }}

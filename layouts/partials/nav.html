@@ -8,7 +8,7 @@
       <img src="{{ absURL $logo }}" class="logo">
       <div class = 'nav_close'></div>
     </a>
-    <div class = 'nav_body'>
+    <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{- $link := .RelPermalink }}
       {{- range .Site.Data.menu }}
       <div class = 'nav_parent{{ if eq .link $link }} nav_active{{ end}}'>

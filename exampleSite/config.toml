@@ -52,3 +52,6 @@ logo = "logos/logo.png"
 figurePositionShow = false # toggle on or off globally
 # you can toggle this behaviour on or off on per page using the same variable inside your articles frontmatter
 figurePositionLabel = "Figure" # the text before image number e.g Figure 1.0
+
+# Set the collapesed mobile navigation to either appear from the left or the right
+mobileNavigation = "left" # if you prefer right change to 'right'

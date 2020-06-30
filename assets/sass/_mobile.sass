@@ -4,15 +4,20 @@
     &, &_body
       flex-direction: column
     &_body
-      transform: translateX(-100vw)
       position: fixed
       width: 90%
       max-width: 16.5rem
       top: 0
       bottom: 0
-      left: 0
       background-color: $bg
       transition: transform 0.3s var(--easing)
+      &_right
+        transform: translateX(100vw)
+        right: 0
+      &_left
+        transform: translateX(-100vw)
+        left: 0
+
     &_close 
       width: 3rem
       background-image: url("#{$icons}bar.svg")

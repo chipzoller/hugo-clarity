@@ -12,40 +12,41 @@ Firstly, ensure you have installed the [extended version of hugo](https://github
 
 There are at least 2 ways of going about it
 
-1. ### Option 1
-   Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
-     
-    ```
-    $ hugo new site yourSiteName
-    $ cd yourSiteName
-    $ git init
-    $ git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-    $ cp -a themes/hugo-clarity/exampleSite/ .
-    ```
+### Option 1
 
-    Uncomment this line from the `config.toml` file
+Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
+  
+```
+$ hugo new site yourSiteName
+$ cd yourSiteName
+$ git init
+$ git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+$ cp -a themes/hugo-clarity/exampleSite/ .
+```
 
-    ```
-    themesDir = "../." # uncomment if you site files are at the root level
-    ```
+Uncomment this line from the `config.toml` file
 
-    Then run
+```
+themesDir = "../." # uncomment if you site files are at the root level
+```
 
-    ```
-    hugo server
-    ```
-    
-    Hurray!
+Then run
 
-2. ### Option 2
+```
+hugo server
+```
 
-    If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
-    
-    ```
-    $ git clone https://github.com/chipzoller/hugo-clarity
-    $ cd hugo-clarity/exampleSite/
-    $ hugo server --themesDir ../..
-    ```
+Hurray!
+
+### Option 2
+
+If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
+
+```
+$ git clone https://github.com/chipzoller/hugo-clarity
+$ cd hugo-clarity/exampleSite/
+$ hugo server --themesDir ../..
+```
 
 Once set, jump over to the `config.toml` file, and start customizing your site.
 

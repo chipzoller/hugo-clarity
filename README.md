@@ -108,7 +108,7 @@ They ought to of a height: width ratio of `1:1`. They will be specified using a 
 
 ```yaml
 ...
-thumbnail: "/images/2020-04/capv-overview/featured.jpg"
+thumbnail: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
@@ -120,7 +120,7 @@ If a thumnail is not specified, the featured Image will be used as a fallback on
 
 ```yaml
 ...
-featureImage: "/images/2020-04/capv-overview/featured.jpg"
+featureImage: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 

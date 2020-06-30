@@ -1,10 +1,49 @@
-# hugo-clarity
+# Hugo Clarity
 
 A theme for Hugo based on VMware Clarity
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
-![Clarity Hugo Theme Showcase](https://github.com/chipzoller/hugo-clarity/blob/master/images/showcase.gif)
+## Prerequisites
+
+Firstly, ensure you have installed the [extended version of hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/). 
+
+## Getting up and running
+
+There are at least 2 ways of going about it
+
+1. ### Option 1
+   Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
+     
+    ```
+    hugo new site yourSiteName
+    cd yourSiteName
+    git init
+    git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+    cp -a themes/hugo-clarity/exampleSite/ .
+    ```
+
+    Uncomment this line from the `config.toml` file
+
+    ```
+    themesDir = "../." # uncomment if you site files are at the root level
+    ```
+
+    Then run
+
+    ```
+    hugo server
+    ```
+    
+    Hurray!
+
+2. ### Option 2
+
+    If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
+
+    $ git clone git@github.com:themefisher/educenter-hugo.git
+    $ cd educenter-hugo/exampleSite/
+    $ hugo server --themesDir ../..
 
 ## Modify Menu
 

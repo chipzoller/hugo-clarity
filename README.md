@@ -42,10 +42,12 @@ There are at least 2 ways of going about it
     If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
     
     ```
-    $ git clonehttps://github.com/chipzoller/hugo-clarity
+    $ git clone https://github.com/chipzoller/hugo-clarity
     $ cd hugo-clarity/exampleSite/
     $ hugo server --themesDir ../..
     ```
+
+Once set, jump over to the `config.toml` file, and start customizing your site.
 
 ## Modify Menu
 

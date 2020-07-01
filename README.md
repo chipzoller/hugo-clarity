@@ -18,7 +18,7 @@ Firstly, ensure you have installed the [extended version of hugo](https://github
 
 There are at least 2 ways of going about it
 
-### Option 1
+### Option 1 (recommended)
 
 Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
   
@@ -44,15 +44,17 @@ hugo server
 
 Hurray!
 
-### Option 2
+### Option 2 (Great for testing quickly)
 
-If you think you want to go with the traditional, you can run your site directly from the `exampleSite`. To do so, use the following commands:
+You can run your site directly from the `exampleSite`. To do so, use the following commands:
 
 ```
 $ git clone https://github.com/chipzoller/hugo-clarity
 $ cd hugo-clarity/exampleSite/
 $ hugo server
 ```
+
+> Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
 
 Once set, jump over to the `config.toml` file, and start customizing your site.
 
@@ -129,7 +131,7 @@ featureImage: "images/2020-04/capv-overview/featured.jpg"
 
 ### Share Image
 
-Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in your fron matter.
+Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in your front matter.
 
 ```yaml
 ...

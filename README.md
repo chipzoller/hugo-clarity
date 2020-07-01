@@ -60,11 +60,19 @@ Once set, jump over to the `config.toml` file, and start [configuring](#configur
 
 ## Configuration
 
-This section will only cover settings that are unique to this theme. If something is not covered here, there's a good chance it is covered in [this hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file)
+This section will only cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file)
 
 ### Global Settings
 
 These options set global values that some pages or all pages in the site use by default.
+
+| variable | setable on page | overidable |
+|:---- | ---- | ---- |
+| twitter | N/A | N/A |
+| author | N/A | N/A |
+| introDescription | N/A | N/A |
+| numberOfTagsShownPerArticle | N/A | N/A |
+| fallBackOgImage | yes | N/A |
 
 ### Page level Settings
 

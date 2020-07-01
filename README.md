@@ -56,7 +56,19 @@ $ hugo server
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
 
-Once set, jump over to the `config.toml` file, and start customizing your site.
+Once set, jump over to the `config.toml` file, and start [configuring](#configuration) your site.
+
+## Configuration
+
+This section will only cover settings that are unique to this theme. If something is not covered here, there's a good chance it is covered in [this hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file)
+
+### Global Settings
+
+These options set global values that some pages or all pages in the site use by default.
+
+### Page level Settings
+
+These options can be set from a page [frontmatter](https://gohugo.io/content-management/front-matter#readout) or via [archetypes](https://gohugo.io/content-management/archetypes/#readout)
 
 ## Modify Menu
 

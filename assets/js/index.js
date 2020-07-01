@@ -416,8 +416,18 @@ function fileClosure(){
     // modify backto top button
     const backToTopButton = elem('.to_top');
     const thisOS = getMobileOperatingSystem();
+    const ios = 'ios';
     if(backToTopButton && thisOS === 'iOS') {
-      pushClass(backToTopButton, 'ios');
+      pushClass(backToTopButton, ios);
+    }
+    // precisely position back to top button on large screens
+    const buttonParentWidth = backToTopButton.parentNode.offsetWidth;
+    const docWidth = doc.offsetWidth;
+    let leftOffset = (docWidth - buttonParentWidth) / 2;
+    const buttonWidth = backToTopButton.offsetWidth;
+    leftOffset = leftOffset + buttonParentWidth - buttonWidth;
+    if(!containsClass(backToTopButton, ios)){
+      backToTopButton.style.left = `${leftOffset}px`;
     }
   })();
   
@@ -440,7 +450,7 @@ function fileClosure(){
       }
     })
   })();
-  
+
   // add new code above this line
 }
 

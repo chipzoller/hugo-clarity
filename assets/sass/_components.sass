@@ -90,6 +90,8 @@
 
 .content, .footer
   padding: 1.5rem
+  @media screen and (min-width: 1441px)
+    padding: 1.5rem 0
 
 .content
   padding-top: 5rem
@@ -98,13 +100,14 @@
 .footer 
   // border-top: 1px solid $xhaze
   background: var(--footer-bg)
-  margin-top: 3rem
+  margin-top: 2rem
   font-size: 0.9rem
   &_inner
     @include content
     display: grid
     grid-template-columns: 4rem 1fr
     align-items: center
+    position: relative
 
 .button
   background-color: $theme
@@ -444,12 +447,13 @@
     cursor: pointer
     border-radius: 50%
     position: fixed
-    bottom: 1rem
+    bottom: 1.5rem
     right: 1.5rem
     z-index: 99
     &.ios
       position: absolute
-      bottom: 3rem
+      bottom: 0.75rem
+      right: 0
     &:hover
       background-color: $theme
     svg

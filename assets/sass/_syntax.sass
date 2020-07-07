@@ -9,9 +9,11 @@
 code
   font-size: 15px
   font-weight: 400
-  overflow-y: auto
+  overflow: hidden
   display: block
   font-family: 'Monaco', monospace
+  &:hover
+    overflow: auto
   &.noClass
     --inlineColor: rgb(194, 29, 0)
     color: var(--inlineColor)
@@ -24,7 +26,9 @@ code
   width: 100%
   background: var(--code-bg)
   border-radius: 0 0.2rem 0.2rem 0
-  overflow-x: auto
+  overflow: hidden
+  &:hover
+    overflow: auto
   position: relative
   &_wrap
     position: relative

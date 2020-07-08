@@ -93,9 +93,11 @@ Check the `config.toml` file
 ```
 [params]
 ...
-blogDir = "blog_directory"
+mainSections = ["posts", "docs", "blogs"]
 ...
 ```
+
+For more info, checkout [hugo docs recommendation](details  https://gohugo.io/functions/where/#mainsections)
 
 ## Manipulate Images
 ### Inline Images

@@ -40,8 +40,8 @@ codeMaxLines = 7
 codeLineNumbers = false 
 
 
-# directory where your articles are
-blogDir = "post"
+# directory(s) where your articles are
+mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # center logo on navbar
 centerLogo = true

@@ -12,6 +12,7 @@ code
   overflow: hidden
   display: block
   font-family: 'Monaco', monospace
+  word-break: break-all
   &:hover
     overflow: auto
   &.noClass
@@ -20,11 +21,12 @@ code
     display: inline
     line-break: anywhere
 
-.highlight, code
-  -ms-overflow-style: none
-  scrollbar-width: none
-  &::-webkit-scrollbar
-    display: none
+// optionally hide scrollbars
+// .highlight, code
+//   -ms-overflow-style: none
+//   scrollbar-width: none
+//   &::-webkit-scrollbar
+//     display: none
 .highlight 
   margin: 1.5rem 0 2.5rem
   display: grid

@@ -1,10 +1,6 @@
-{{- $filteredPosts := .Site.Params.blogDir }}
 {{ $pages := .Pages }}
 {{ if .IsHome }}
-  {{ $pages = .Site.RegularPages }}
-  {{ if $filteredPosts }}
-    {{ $pages = where $.Site.RegularPages "Section" $filteredPosts }}
-  {{ end }}
+  {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ end }}
 <div class='grid-inverse wrap content'>
   <ul class='posts' id = 'posts'>

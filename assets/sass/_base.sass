@@ -3,6 +3,14 @@
   -webkit-appearance: none
   margin: 0
   padding: 0
+  scrollbar-width: thin
+  scrollbar-color: var(--translucent-light) var(--theme)
+  &::-webkit-scrollbar-track
+    background: var(--translucent-light)
+
+  &::-webkit-scrollbar-thumb
+    background-color: var(--theme)
+    border-radius: 20px
 
 body, html 
   scroll-behavior: smooth
@@ -28,6 +36,7 @@ body
   min-height: 100vh
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  // experimental scrollbar
 
 a
   text-decoration: none
@@ -146,29 +155,5 @@ blockquote
 p
   padding: 0.8rem 0 
 
-// customize scrollbar
-// ::-webkit-scrollbar 
-//   width: 1rem
-// // Track
-// ::-webkit-scrollbar-track
-//   border-radius: 10px
-//   background: transparent // var(--translucent-light)
-//   opacity: 0
-//   &:hover
-//     opacity: 1
- 
-// // Handle
-// ::-webkit-scrollbar-thumb 
-//   background: var(--theme) 
-//   border-radius: 10px
-//   opacity: 0
-//   &:hover
-//     opacity: 1
 
-// // Handle on hover
-// ::-webkit-scrollbar-thumb:hover 
-//   background: var(--theme)
-//   opacity: 0
-//   &:hover
-//     opacity: 1
 

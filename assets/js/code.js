@@ -16,14 +16,15 @@ const codeActionButtons = [
     id: 'wrap',
     title: 'Toggle Line Wrap',
     show: false
-  },
-  {
-    icon: 'expand',
-    id: 'expand',
-    title: 'Expand code block',
-    show: false 
   }
 ];
+
+const body = elem('body');
+const maxLines = parseInt(body.dataset.code);
+const copyId = 'panel_copy';
+const wrapId = 'panel_wrap';
+const linesId = 'panel_lines';
+const expandId = 'panel_expand';
 
 function codeBlocks() {
   const markedCodeBlocks = elems('code');
@@ -47,49 +48,46 @@ function maxHeightIsSet(elem) {
   return maxHeight.includes('px')
 }
 
-function collapseCodeBlock() {
-  const blocks = codeBlocks();
-  const body = elem('body');
-  const maxLines = parseInt(body.dataset.code);
+function restrainCodeBlockHeight(lines) {
+  const lastLine = lines[maxLines-1];
+  let maxCodeBlockHeight = '100vh';
 
-  const tallBlocks = [];
-  
-  Array.from(blocks).map(function(block){
-    const lines = elems('.ln', block);
-    const codeLines = lines.length;
-    if (codeLines > maxLines) {
-      tallBlocks.push(lines);
+  if(lastLine) {
+    const lastLinePos = lastLine.offsetTop;
+    if(lastLinePos !== 0) {
+      maxCodeBlockHeight = `${lastLinePos}px`;
+      const codeBlock = lines[0].parentNode;
+      codeBlock.dataset.height = maxCodeBlockHeight;
+      codeBlock.style.maxHeight = maxCodeBlockHeight;
     }
-  });
-  
-  tallBlocks.forEach(function(lines){
-
-    const lastLine = lines[maxLines-1];
-
-    const maxCodeBlockHeight = `${lastLine.offsetTop}px`;
-
-    const codeBlock = lines[0].parentNode;
-    
-    codeBlock.dataset.height = maxCodeBlockHeight;
-    codeBlock.style.maxHeight = maxCodeBlockHeight;
-
-    const highlightElement = codeBlock.parentNode.parentNode;
-    
-    // wait for a second before quering the expand button
-    setTimeout(function(){
-      const expandIcon = elem('.panel_expand', highlightElement.nextElementSibling);
-      deleteClass(expandIcon, 'panel_hide');
-    }, 1000)
-
-  });
+  }
 }
 
-collapseCodeBlock();
+const blocks = codeBlocks();
+
+function collapseCodeBlock(block) {
+  const lines = elems('.ln', block);
+  const codeLines = lines.length;
+  if (codeLines > maxLines) {
+    const expandDot = createEl()
+    expandDot.className = 'panel_expand panel_from';
+    expandDot.title = "See more";
+    expandDot.textContent = "...";
+
+    restrainCodeBlockHeight(lines);
+    const highlightElement = block.parentNode.parentNode;
+    highlightElement.appendChild(expandDot);
+  }
+}
+
+blocks.forEach(function(block){
+  collapseCodeBlock(block);
+})
 
 function actionPanel() {
   const panel = createEl();
   panel.className = 'panel_box';
-  
+
   codeActionButtons.forEach(function(button) {
     // create button
     const btn = createEl('a');
@@ -102,31 +100,35 @@ function actionPanel() {
     // append button on panel
     panel.appendChild(btn);
   });
-  
+
   return panel;
 }
 
 function toggleLineNumbers(elems) {
-  elems.forEach(elem => modifyClass(elem, 'pre_nolines'));
+  elems.forEach(function (elem, index) {
+    // mark the code element when there are no lines
+    modifyClass(elem, 'pre_nolines')
+  });
 }
 
 function toggleLineWrap(elem) {
   modifyClass(elem, 'pre_wrap');
+  // retain max number of code lines on line wrap
+  const lines = elems('.ln', elem);
+  restrainCodeBlockHeight(lines);
 }
 
 function copyCode(codeElement) {
   lineNumbers = elems('.ln', codeElement);
-  
   // remove line numbers before copying
   if(lineNumbers.length) {
     lineNumbers.forEach(function(line){
       line.remove();
     });
   }
-  
+
   const codeToCopy = codeElement.textContent;
   // copy code
-  
   copyToClipboard(codeToCopy);
 }
 
@@ -148,7 +150,7 @@ function disableCodeLineNumbers(block){
     const highlightWrapper = createEl();
     highlightWrapper.className = highlightWrapId;
     wrapEl(highlightElement, highlightWrapper);
-    
+
     const panel = actionPanel();
     // show wrap icon only if the code block needs wrapping
     const wrapIcon = elem('.panel_wrap', panel);
@@ -157,27 +159,22 @@ function disableCodeLineNumbers(block){
     // append buttons 
     highlightWrapper.appendChild(panel);
   });
-  
-  const copyId = 'panel_copy';
-  const wrapId = 'panel_wrap';
-  const linesId = 'panel_lines';
-  const expandId = 'panel_expand';
-  
+
   function isItem(target, id) {
     // if is item or within item
     return target.matches(`.${id}`) || target.closest(`.${id}`);
   }
-  
+
   function showActive(target, targetClass,activeClass = 'active') {
     const active = activeClass;
     const targetElement = target.matches(`.${targetClass}`) ? target : target.closest(`.${targetClass}`);
-    
+
     deleteClass(targetElement, active);
     setTimeout(function() {
       modifyClass(targetElement, active)
     }, 50)
   }
-  
+
   doc.addEventListener('click', function(event){
     // copy code block
     const target = event.target;
@@ -186,15 +183,15 @@ function disableCodeLineNumbers(block){
     const isLinesIcon = isItem(target, linesId);
     const isExpandIcon = isItem(target, expandId);
     const isActionable = isCopyIcon || isWrapIcon || isLinesIcon || isExpandIcon;
-    
+
     if(isActionable) {
       event.preventDefault();
       showActive(target, 'icon');
       const codeElement = target.closest(`.${highlightWrapId}`).firstElementChild.firstElementChild;
       let lineNumbers = elems('.ln', codeElement);
-      
-      isWrapIcon ? toggleLineWrap(codeElement) : false; 
-      
+
+      isWrapIcon ? toggleLineWrap(codeElement) : false;
+
       isLinesIcon ? toggleLineNumbers(lineNumbers) : false;
 
       if (isExpandIcon) {
@@ -222,6 +219,5 @@ function disableCodeLineNumbers(block){
         block.closest('.highlight_wrap').appendChild(labelEl);
       }
     });
-  })();  
-  
-})();  
+  })();
+})();

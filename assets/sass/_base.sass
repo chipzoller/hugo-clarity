@@ -3,14 +3,6 @@
   -webkit-appearance: none
   margin: 0
   padding: 0
-  scrollbar-width: thin
-  scrollbar-color: var(--translucent-light) var(--theme)
-  &::-webkit-scrollbar-track
-    background: var(--translucent-light)
-
-  &::-webkit-scrollbar-thumb
-    background-color: var(--theme)
-    border-radius: 20px
 
 body, html 
   scroll-behavior: smooth
@@ -20,6 +12,8 @@ body, html
   text-rendering: geometricPrecision
   -webkit-text-size-adjust: 100%
   font-size: 100%
+  &::-webkit-scrollbar-corner
+    background-color: transparent
 body
   font-family: var(--font)
   background: var(--choice-bg)
@@ -36,8 +30,6 @@ body
   min-height: 100vh
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  // experimental scrollbar
-
 a
   text-decoration: none
   color: inherit

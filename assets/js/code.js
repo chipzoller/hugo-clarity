@@ -130,6 +130,7 @@ function toggleLineNumbers(elems) {
     // mark the code element when there are no lines
     modifyClass(elem, 'pre_nolines')
   });
+  restrainCodeBlockHeight(elems);
 }
 
 function toggleLineWrap(elem) {
@@ -215,7 +216,7 @@ function disableCodeLineNumbers(block){
 
       isLinesIcon ? toggleLineNumbers(lineNumbers) : false;
 
-      if (isExpandIcon && !isWrapIcon) {
+      if (isExpandIcon) {
         let thisCodeBlock = codeElement.firstElementChild;
         const outerBlock = thisCodeBlock.closest('.highlight');
         if(maxHeightIsSet(thisCodeBlock)) {

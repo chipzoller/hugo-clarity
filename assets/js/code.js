@@ -16,6 +16,12 @@ const codeActionButtons = [
     id: 'wrap',
     title: 'Toggle Line Wrap',
     show: false
+  },
+  {
+    icon: 'expand',
+    id: 'expand',
+    title: 'Expand code block',
+    show: false 
   }
 ];
 
@@ -24,7 +30,13 @@ const maxLines = parseInt(body.dataset.code);
 const copyId = 'panel_copy';
 const wrapId = 'panel_wrap';
 const linesId = 'panel_lines';
-const expandId = 'panel_expand';
+const panelExpand = 'panel_expand';
+const panelExpanded = 'panel_expanded';
+const panelHide = 'panel_hide';
+const panelFrom = 'panel_from';
+const panelBox = 'panel_box';
+const fullHeight = '100vh';
+const highlightWrap = 'highlight_wrap'
 
 function codeBlocks() {
   const markedCodeBlocks = elems('code');
@@ -50,15 +62,18 @@ function maxHeightIsSet(elem) {
 
 function restrainCodeBlockHeight(lines) {
   const lastLine = lines[maxLines-1];
-  let maxCodeBlockHeight = '100vh';
-
+  let maxCodeBlockHeight = fullHeight;
   if(lastLine) {
     const lastLinePos = lastLine.offsetTop;
     if(lastLinePos !== 0) {
       maxCodeBlockHeight = `${lastLinePos}px`;
       const codeBlock = lines[0].parentNode;
-      codeBlock.dataset.height = maxCodeBlockHeight;
-      codeBlock.style.maxHeight = maxCodeBlockHeight;
+      const outerBlock = codeBlock.closest('.highlight');
+      const isExpanded = containsClass(outerBlock, panelExpanded);
+      if(!isExpanded) {
+        codeBlock.dataset.height = maxCodeBlockHeight;
+        codeBlock.style.maxHeight = maxCodeBlockHeight;
+      }
     }
   }
 }
@@ -70,9 +85,15 @@ function collapseCodeBlock(block) {
   const codeLines = lines.length;
   if (codeLines > maxLines) {
     const expandDot = createEl()
-    expandDot.className = 'panel_expand panel_from';
+    pushClass(expandDot, panelExpand);
+    pushClass(expandDot, panelFrom);
     expandDot.title = "See more";
     expandDot.textContent = "...";
+    const outerBlock = block.closest('.highlight');
+    window.setTimeout(function(){
+      const expandIcon = outerBlock.nextElementSibling.lastElementChild;
+      deleteClass(expandIcon, panelHide);
+    }, 150)
 
     restrainCodeBlockHeight(lines);
     const highlightElement = block.parentNode.parentNode;
@@ -86,7 +107,7 @@ blocks.forEach(function(block){
 
 function actionPanel() {
   const panel = createEl();
-  panel.className = 'panel_box';
+  panel.className = panelBox;
 
   codeActionButtons.forEach(function(button) {
     // create button
@@ -94,7 +115,7 @@ function actionPanel() {
     btn.href = '#';
     btn.title = button.title;
     btn.className = `icon panel_icon panel_${button.id}`;
-    button.show ? false : pushClass(btn, 'panel_hide');
+    button.show ? false : pushClass(btn, panelHide);
     // load icon inside button
     loadSvg(button.icon, btn);
     // append button on panel
@@ -140,7 +161,7 @@ function disableCodeLineNumbers(block){
 (function codeActions(){
   const blocks = codeBlocks();
 
-  const highlightWrapId = 'highlight_wrap';
+  const highlightWrapId = highlightWrap;
   blocks.forEach(function(block){
     // disable line numbers if disabled globally
     elem('body').dataset.lines === "false" ? disableCodeLineNumbers(block) : false;
@@ -153,8 +174,8 @@ function disableCodeLineNumbers(block){
 
     const panel = actionPanel();
     // show wrap icon only if the code block needs wrapping
-    const wrapIcon = elem('.panel_wrap', panel);
-    codeBlockFits(block) ? false : deleteClass(wrapIcon, 'panel_hide');
+    const wrapIcon = elem(`.${wrapId}`, panel);
+    codeBlockFits(block) ? false : deleteClass(wrapIcon, panelHide);
 
     // append buttons 
     highlightWrapper.appendChild(panel);
@@ -181,7 +202,7 @@ function disableCodeLineNumbers(block){
     const isCopyIcon = isItem(target, copyId);
     const isWrapIcon = isItem(target, wrapId);
     const isLinesIcon = isItem(target, linesId);
-    const isExpandIcon = isItem(target, expandId);
+    const isExpandIcon = isItem(target, panelExpand);
     const isActionable = isCopyIcon || isWrapIcon || isLinesIcon || isExpandIcon;
 
     if(isActionable) {
@@ -194,9 +215,18 @@ function disableCodeLineNumbers(block){
 
       isLinesIcon ? toggleLineNumbers(lineNumbers) : false;
 
-      if (isExpandIcon) {
+      if (isExpandIcon && !isWrapIcon) {
         let thisCodeBlock = codeElement.firstElementChild;
-        thisCodeBlock.style.maxHeight = maxHeightIsSet(thisCodeBlock) ? `100vh` : thisCodeBlock.dataset.height;
+        const outerBlock = thisCodeBlock.closest('.highlight');
+        if(maxHeightIsSet(thisCodeBlock)) {
+          thisCodeBlock.style.maxHeight = `100vh`;
+          // mark code block as expanded
+          pushClass(outerBlock, panelExpanded)
+        } else {
+          thisCodeBlock.style.maxHeight = thisCodeBlock.dataset.height;
+          // unmark code block as expanded
+          deleteClass(outerBlock, panelExpanded)
+        }
       }
 
       if(isCopyIcon) {
@@ -216,7 +246,7 @@ function disableCodeLineNumbers(block){
         const labelEl = createEl();
         labelEl.textContent = label;
         pushClass(labelEl, 'lang');
-        block.closest('.highlight_wrap').appendChild(labelEl);
+        block.closest(`.${highlightWrap}`).appendChild(labelEl);
       }
     });
   })();

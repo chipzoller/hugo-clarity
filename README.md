@@ -1,6 +1,6 @@
 # Hugo Clarity
 
-A theme for Hugo based on VMware Clarity, see [a robust demo on the __Neon Mirrors site__](https://festive-agnesi-58e7e4.netlify.app/).
+A theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://festive-agnesi-58e7e4.netlify.app/).
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
@@ -17,31 +17,32 @@ A theme for Hugo based on VMware Clarity, see [a robust demo on the __Neon Mirro
 * Native Image Lazy Loading
 * Customizable (see config)
 * Dark Mode (with UI controls for user preference setting)
-* Syntax Highlighting.
+* Flexible image configuration
+* Logo alignment
+* Mobile support with configurable menu alignment
+* Syntax Highlighting
+* Rich code block functions including:
+    1. Copy to clipboard
+    2. Toggle line wrap (dynamic)
+    3. Toggle line numbers
+    4. Language label
+    5. Toggle block expansion/contraction (dynamic)
 
-    Besides basic syntax highlighting, this theme adds the following capabilities to your code snippets:
-
-    1. Ability to copy code snippet to clipboard
-    2. Toggle line wraps on and off
-    3. Show and hide line numbers
-    4. Show which programing language is used to write the code snippet
-    5. Set a max number of lines to show. There's at least one UI control to expand the codeblock to show all code snippet
-
-    To put it all in context, here is a preview
+    To put it all in context, here is a preview showing all functionality.
 
     ![](./images/syntax-block.gif)
 
 ## Prerequisites
 
-Firstly, ensure you have installed the [extended version of hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/). 
+Firstly, ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/). 
 
 ## Getting up and running
 
-There are at least 2 ways of going about it
+There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
 
 ### Option 1 (recommended)
 
-Generate a new hugo site and add this theme as a Git submodule inside your themes folder:
+Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
   
 ```
 $ hugo new site yourSiteName
@@ -54,7 +55,7 @@ $ cp -a themes/hugo-clarity/exampleSite/ .
 Uncomment this line from the `config.toml` file
 
 ```
-themesDir = "../." # uncomment if you site files are at the root level
+themesDir = "../." # Uncomment if your site files are at the root level
 ```
 
 Then run
@@ -77,7 +78,7 @@ $ hugo server
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
 
-Once set, jump over to the `config.toml` file, and start [configuring](#configuration) your site.
+Once set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
 
 ## Configuration
 
@@ -101,7 +102,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 
 ## Modify Menu
 
-To add, remove or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
+To add, remove, or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
 
 ## Edit social profile links
 
@@ -118,12 +119,12 @@ mainSections = ["posts", "docs", "blogs"]
 ...
 ```
 
-For more info, checkout [hugo docs recommendation](details  https://gohugo.io/functions/where/#mainsections)
+For more info, checkout [Hugo docs recommendation](details  https://gohugo.io/functions/where/#mainsections)
 
-## Manipulate Images
+## Images
 ### Inline Images
 
-To make an image inline, append `:inline` to its alt text.
+To make a blog image inline, append `:inline` to its alt text.
 
 #### Example:
 
@@ -137,7 +138,7 @@ To make an image inline, append `:inline` to its alt text.
 ```
 ### Float Images to the left
 
-To make an image inline, append `:left` to its alt text.
+To make a blog image inline, append `:left` to its alt text.
 
 #### Example:
 
@@ -150,9 +151,9 @@ To make an image inline, append `:left` to its alt text.
 ![some alt text:left](someOtherImageUrl)
 ```
 
-### Article thumbnails
+### Article thumbnail image
 
-They ought to of a height: width ratio of `1:1`. They will be specified using a frontmatter variable as follows
+Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`). They will be specified using a frontmatter variable as follows:
 
 ```yaml
 ...
@@ -160,11 +161,11 @@ thumbnail: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
-This will take precedence on opengraph share tags if the [shareImage](#share-image) below is not specified
+The thumbnail image will take precedence on opengraph share tags if the [shareImage](#share-image) parameter is not specified.
 
 ### Article featured image
 
-If a thumnail is not specified, the featured Image will be used as a fallback on opengraph share tags.
+Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumnail is not specified, the featured image will be used as a fallback on opengraph share tags.
 
 ```yaml
 ...
@@ -184,7 +185,7 @@ shareImage = "images/theImageToBeUsedOnShare.png"
 
 ### Align Logo
 
-You can align your logo either to the left of the navbar or right at the center.
+You can align your logo either to the left of the navbar or in the center.
 
 To center, 
 
@@ -193,25 +194,27 @@ To center,
 centerLogo = true # change to false to align left
 ...
 ```
+## Code
+### Limit code block height
 
-### Limit how tall a codeblock can be
-
-Under params in `config.toml` file, add a value as follows
+You can globally control the number of lines which are displayed by default for your code blocks. Code which has the number of lines exceed this value will dynamically cause two code block expansion buttons to appear, allowing the user to expand to full length and contract. This is useful when sharing code or scripts with tens or hundreds of lines where you wish to control how many are displayed. Under params in `config.toml` file, add a value as follows:
 
 ```yaml
 [params]
 ...
-codeMaxLines = 7 #7 is a placeholder feel free to change it to your liking
+codeMaxLines = 10 #Maximum number of lines to be shown by default across all articles.
 ...
 ```
 
-> if the value already exists, change it edit it
+> if the value already exists, change it to the desired number. This will apply globally.
 
-If you need more granular control i.e pagewise-control, add a value on your article frontmatter as follows
+If you need more granular control, this parameter can be overridden at the blog article level. Add the same value to your article frontmatter as follows:
 
 ```yaml
 # 
 ...
-codeMaxLines = 8 # 8 is a placeholder that overrides your default settings set from the previous snippet .feel free to change it to your liking
+codeMaxLines = 15 #Maximum number of lines to be shown in code blocks in this blog post.
 ...
 ```
+
+If `codeMaxLines` is specified both in `config.toml` and in the article frontmatter, the value specified in the article frontmatter will apply to the given article. In the above example, the global default is `10` and yet the article value is `15` so code blocks in this article will auto-collapse after 15 lines.

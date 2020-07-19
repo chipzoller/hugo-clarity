@@ -19,7 +19,7 @@ A theme for Hugo based on VMware Clarity, see [a robust demo on the __Neon Mirro
 * Dark Mode (with UI controls for user preference setting)
 * Syntax Highlighting.
 
-    Besides basic syntax highlighting, this theme add the following capabilities to your code blocks:
+    Besides basic syntax highlighting, this theme adds the following capabilities to your code snippets:
 
     1. Ability to copy code snippet to clipboard
     2. Toggle line wraps on and off

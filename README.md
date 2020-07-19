@@ -25,7 +25,7 @@ A theme for Hugo based on VMware Clarity, see [a robust demo on the __Neon Mirro
     2. Toggle line wraps on and off
     3. Show and hide line numbers
     4. Show which programing language is used to write the code snippet
-    5. Set a max number of lines to show. There's at least one UI controls to expand the codeblock to show all code line numbers
+    5. Set a max number of lines to show. There's at least one UI control to expand the codeblock to show all code snippet
 
     To put it all in context, here is a preview
 

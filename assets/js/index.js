@@ -170,7 +170,7 @@ function fileClosure(){
     let imagePosition = 0;
     images.forEach((image) => {
       let alt = image.alt;
-      
+      image.loading = "lazy";
       const modifiers = [':left', ':right'];
       
       modifiers.forEach(function(modifier){

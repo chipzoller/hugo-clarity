@@ -82,7 +82,7 @@ Once set, jump over to the `config.toml` file and start [configuring](#configura
 
 ## Configuration
 
-This section will only cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file)
+This section will only cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 
 ### Global Settings
 
@@ -185,15 +185,14 @@ shareImage = "images/theImageToBeUsedOnShare.png"
 
 ### Align Logo
 
-You can align your logo either to the left of the navbar or in the center.
-
-To center, 
+You can align your site's logo either to the left or in the center.
 
 ```yaml
 ...
-centerLogo = true # change to false to align left
+centerLogo = true # Change to false to align left
 ...
 ```
+
 ## Code
 ### Limit code block height
 
@@ -202,18 +201,18 @@ You can globally control the number of lines which are displayed by default for 
 ```yaml
 [params]
 ...
-codeMaxLines = 10 #Maximum number of lines to be shown by default across all articles.
+codeMaxLines = 10 # Maximum number of lines to be shown by default across all articles.
 ...
 ```
 
-> if the value already exists, change it to the desired number. This will apply globally.
+> If the value already exists, change it to the desired number. This will apply globally.
 
 If you need more granular control, this parameter can be overridden at the blog article level. Add the same value to your article frontmatter as follows:
 
 ```yaml
 # 
 ...
-codeMaxLines = 15 #Maximum number of lines to be shown in code blocks in this blog post.
+codeMaxLines = 15 # Maximum number of lines to be shown in code blocks in this blog post.
 ...
 ```
 

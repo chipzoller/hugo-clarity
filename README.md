@@ -1,6 +1,6 @@
 # Hugo Clarity
 
-A theme for Hugo based on VMware Clarity
+A theme for Hugo based on VMware Clarity, see [a robust demo on the __Neon Mirrors site__](https://festive-agnesi-58e7e4.netlify.app/).
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
@@ -9,6 +9,27 @@ A theme for Hugo based on VMware Clarity
 | Light Mode | Dark Mode |
 |---| --- |
 | ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png) | ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-darkmode.png) |
+
+## Features
+
+* Blog
+* Deeplinks
+* Native Image Lazy Loading
+* Customizable (see config)
+* Dark Mode (with UI controls for user preference setting)
+* Syntax Highlighting.
+
+    Besides basic syntax highlighting, this theme add the following capabilities to your code blocks:
+
+    1. Ability to copy code snippet to clipboard
+    2. Toggle line wraps on and off
+    3. Show and hide line numbers
+    4. Show which programing language is used to write the code snippet
+    5. Set a max number of lines to show. There's at least one UI controls to expand the codeblock to show all code line numbers
+
+    To put it all in context, here is a preview
+
+    ![](./images/syntax-block.gif)
 
 ## Prerequisites
 

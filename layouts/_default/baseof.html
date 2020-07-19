@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" data-figures="{{ .Params.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}>
-  {{- partial "head" . }}
+  <head>
+    {{- partial "head" . }}
+    <!-- styles definition-->
+    {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
+    {{ $mainSassFile :=  "sass/main.sass" }}
+    {{- $styles := resources.Get $mainSassFile | resources.ExecuteAsTemplate $mainSassFile . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
+
+    <!-- scripts definition -->
+    {{- $highlightPath := "js/highlight.js" }}
+    {{- $highlight := resources.Get $highlightPath | resources.ExecuteAsTemplate $highlightPath . }}
+
+    {{- $functionsScriptPath := "js/functions.js" }}
+    {{- $functions := resources.Get $functionsScriptPath | resources.ExecuteAsTemplate $functionsScriptPath . }}
+
+    {{- $codeScriptPath := "js/code.js" }}
+    {{- $code := resources.Get $codeScriptPath | resources.ExecuteAsTemplate $codeScriptPath . }}
+
+    {{- $mainScriptPath := "js/index.js" }}
+    {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
+
+    {{- $bundle := slice $highlight $functions $code $main | resources.Concat "js/bundle.js" | resources.Fingerprint "sha512" -}}
+
+    <!-- preload assets declaration -->
+    <link rel="preload" href="{{ $styles.Permalink }}" integrity = '{{ $styles.Data.Integrity }}' as="style">
+    <link rel="preload" href="{{ $bundle.Permalink }}" as="script">
+
+    <!-- styles file -->
+    <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
+  </head>
   {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}
   {{- with $params.codeMaxLines }}
@@ -16,5 +44,6 @@
     </main>
     {{- partial "icons" }}
     {{- partial "footer" . }}
+    <script src = '{{ $bundle.Permalink }}'></script>
   </body>
 </html>

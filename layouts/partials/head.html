@@ -1,4 +1,3 @@
-<head>
   <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
   <meta charset='utf-8'>
   {{ hugo.Generator }}
@@ -13,8 +12,3 @@
   {{- partial "opengraph.html" . }}
   {{- partial "favicon.html" . }}
   <link rel='canonical' href='{{ .Permalink }}'>
-  {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
-  {{ $mainSassFile :=  "sass/main.sass" }}
-  {{- $styles := resources.Get $mainSassFile | resources.ExecuteAsTemplate $mainSassFile . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
-  <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
-</head>

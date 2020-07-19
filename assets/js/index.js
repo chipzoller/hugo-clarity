@@ -1,3 +1,63 @@
+(function toggleColorModes(){
+  const light = 'lit';
+  const dark = 'dim';
+  const storageKey = 'colorMode';
+  const key = '--color-mode';
+  const data = 'data-mode';
+  const bank = window.localStorage;
+  
+  function currentMode() {
+    let acceptableChars = light + dark;
+    acceptableChars = [...acceptableChars];
+    let mode = getComputedStyle(doc).getPropertyValue(key).replace(/\"/g, '').trim();
+    
+    mode = [...mode].filter(function(letter){
+      return acceptableChars.includes(letter);
+    });
+    
+    return mode.join('');
+  }
+  
+  function changeMode(isDarkMode) {
+    if(isDarkMode) {
+      bank.setItem(storageKey, light)
+      elemAttribute(doc, data, light);
+    } else {
+      bank.setItem(storageKey, dark);
+      elemAttribute(doc, data, dark);
+    }
+  }
+  
+  function setUserColorMode(mode = false) {
+    const isDarkMode = currentMode() == dark;
+    const storedMode = bank.getItem(storageKey);
+    if(storedMode) {
+      if(mode) {
+        changeMode(isDarkMode);
+      } else {
+        elemAttribute(doc, data, storedMode);
+      }
+    } else {
+      if(mode === true) {
+        changeMode(isDarkMode) 
+      }
+    }
+  }
+  
+  setUserColorMode();
+  
+  doc.addEventListener('click', function(event) {
+    let target = event.target;
+    let modeClass = 'color_choice';
+    let animateClass = 'color_animate';
+    let isModeToggle = containsClass(target, modeClass);
+    if(isModeToggle) {
+      pushClass(target, animateClass);
+      setUserColorMode(true);        
+    }
+  });
+})();
+
 function fileClosure(){ 
   // everything in this file should be declared within this closure (function).
   
@@ -94,7 +154,7 @@ function fileClosure(){
       });
     }
   })();
-  
+
   (function copyLinkToShare() {
     let  copy, copied, excerpt, isCopyIcon, isInExcerpt, link, postCopy, postLink, target;
     copy = 'copy';
@@ -349,66 +409,6 @@ function fileClosure(){
         } 
       }
       
-    });
-  })();
-  
-  (function toggleColorModes(){
-    const light = 'lit';
-    const dark = 'dim';
-    const storageKey = 'colorMode';
-    const key = '--color-mode';
-    const data = 'data-mode';
-    const bank = window.localStorage;
-    
-    function currentMode() {
-      let acceptableChars = light + dark;
-      acceptableChars = [...acceptableChars];
-      let mode = getComputedStyle(doc).getPropertyValue(key).replace(/\"/g, '').trim();
-      
-      mode = [...mode].filter(function(letter){
-        return acceptableChars.includes(letter);
-      });
-      
-      return mode.join('');
-    }
-    
-    function changeMode(isDarkMode) {
-      if(isDarkMode) {
-        bank.setItem(storageKey, light)
-        elemAttribute(doc, data, light);
-      } else {
-        bank.setItem(storageKey, dark);
-        elemAttribute(doc, data, dark);
-      }
-    }
-    
-    function setUserColorMode(mode = false) {
-      const isDarkMode = currentMode() == dark;
-      const storedMode = bank.getItem(storageKey);
-      if(storedMode) {
-        if(mode) {
-          changeMode(isDarkMode);
-        } else {
-          elemAttribute(doc, data, storedMode);
-        }
-      } else {
-        if(mode === true) {
-          changeMode(isDarkMode) 
-        }
-      }
-    }
-    
-    setUserColorMode();
-    
-    doc.addEventListener('click', function(event) {
-      let target = event.target;
-      let modeClass = 'color_choice';
-      let animateClass = 'color_animate';
-      let isModeToggle = containsClass(target, modeClass);
-      if(isModeToggle) {
-        pushClass(target, animateClass);
-        setUserColorMode(true);        
-      }
     });
   })();
   

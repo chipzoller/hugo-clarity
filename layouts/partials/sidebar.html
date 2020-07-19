@@ -44,6 +44,7 @@
         </a>
         {{ end }}
         {{ if gt (len $value.ByCount) $numberOfTagsLimit }}
+        <br>
         <div class="post_tags_toggle button">All {{ $key }}</div>
         {{- $tagsInfo := newScratch }}
         <div class="post_tags">

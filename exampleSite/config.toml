@@ -43,7 +43,7 @@ codeLineNumbers = false
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # center logo on navbar
-centerLogo = true
+centerLogo = false # Set to "true" for centering or "false" for left aligned.
 
 logo = "logos/logo.png"
 

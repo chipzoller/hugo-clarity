@@ -1,6 +1,6 @@
 # Hugo Clarity
 
-A theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://festive-agnesi-58e7e4.netlify.app/).
+A technology-minded theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://festive-agnesi-58e7e4.netlify.app/).
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
@@ -136,9 +136,9 @@ To make a blog image inline, append `:inline` to its alt text.
 
 ![some alt text:inline](someOtherImageUrl)
 ```
-### Float Images to the left
+### Float images to the left
 
-To make a blog image inline, append `:left` to its alt text.
+To align a blog image to the left, append `:left` to its alt text. Article text will then flow to the right of the image.
 
 #### Example:
 
@@ -175,7 +175,7 @@ featureImage: "images/2020-04/capv-overview/featured.jpg"
 
 ### Share Image
 
-Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in your front matter.
+Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in the front matter.
 
 ```yaml
 ...
@@ -183,7 +183,7 @@ shareImage = "images/theImageToBeUsedOnShare.png"
 ...
 ```
 
-### Align Logo
+### Align logo
 
 You can align your site's logo either to the left or in the center.
 

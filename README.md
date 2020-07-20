@@ -8,10 +8,14 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 | Light Mode | Dark Mode |
 |---| --- |
-| ![Clarity Hugo Theme](./images/screenshot.png) | ![Clarity Hugo Theme](./images/screenshot-darkmode.png) |
+| ![Clarity Hugo Theme desktop light](./images/screenshot.png) | ![Clarity Hugo Theme desktop dark](./images/screenshot-darkmode.png) |
 
 ## Preview on Mobile
-(Coming soon)
+
+| Light Mode | Dark Mode |
+|---| --- |
+| ![Clarity Hugo Theme mobile light](./images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](./images/screenshot-mobile-darkmode.png) |
+
 ## Features
 
 * Blog with tagging and category options
@@ -33,7 +37,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
     To put it all in context, here is a preview showing all functionality.
 
-    ![](./images/syntax-block.gif)
+    ![code block functions](./images/syntax-block.gif)
 
 ## Prerequisites
 
@@ -116,20 +120,42 @@ To add, remove, or reorganize top menu links, [edit this yaml file](https://gith
 
 ## Specify blog directory
 
-Check the `config.toml` file
+Edit the `config.toml` file and change the `mainSections` key. Values will be directories where the blogs reside.
 
-```
+```yaml
 [params]
 ...
 mainSections = ["posts", "docs", "blogs"]
 ...
 ```
 
-For more info, checkout the [Hugo docs](https://gohugo.io/functions/where/#mainsections).
+For more info, see the [Hugo docs](https://gohugo.io/functions/where/#mainsections).
 
 ## Mobile menu positioning
 
-Show menu positioning and param control here.
+The navigation menu when mobile browsing can be configured in `config.toml` to open right or left depending on preference. The "hamburger" menu icon will always display in the upper right hand corner regardless.
+
+```yaml
+[params]
+...
+mobileNavigation = "left" # Mobile nav menu will open to the left of the screen.
+...
+```
+
+## Tags
+
+The number of tags that should be shown can be configured so that any more than this value will only be accessible when clicking the All Tags button. This is to ensure a large number of tags can be easily managed without consuming excess screen real estate. Edit the `numberOfTagsShownPerArticle` parameter and set accordingly.
+
+```yaml
+[params]
+...
+numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
+...
+```
+#### Example:
+
+![Tags](./images/tags.png)
+
 
 ## Images
 
@@ -229,6 +255,18 @@ centerLogo = true # Change to false to align left
 ```
 
 ## Code
+
+### Display line numbers
+
+Choose whether to display line numbers within a code block globally with the parameter `codeLineNumbers` setting to `true` or `false`.
+
+```yaml
+[params]
+...
+codeLineNumbers = true # Shows line numbers for all code blocks globally.
+...
+```
+
 ### Limit code block height
 
 You can globally control the number of lines which are displayed by default for your code blocks. Code which has the number of lines exceed this value will dynamically cause two code block expansion buttons to appear, allowing the user to expand to full length and contract. This is useful when sharing code or scripts with tens or hundreds of lines where you wish to control how many are displayed. Under params in `config.toml` file, add a value as follows:

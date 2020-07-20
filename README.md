@@ -2,21 +2,24 @@
 
 A technology-minded theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://festive-agnesi-58e7e4.netlify.app/).
 
-![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
+![Clarity Hugo Theme](./images/screenshot.png)
 
-## Preview
+## Preview on Desktop
 
 | Light Mode | Dark Mode |
 |---| --- |
-| ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png) | ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-darkmode.png) |
+| ![Clarity Hugo Theme](./images/screenshot.png) | ![Clarity Hugo Theme](./images/screenshot-darkmode.png) |
 
+## Preview on Mobile
+(Coming soon)
 ## Features
 
-* Blog
+* Blog with tagging and category options
 * Deeplinks
 * Native Image Lazy Loading
 * Customizable (see config)
 * Dark Mode (with UI controls for user preference setting)
+* Toggleable table of contents
 * Flexible image configuration
 * Logo alignment
 * Mobile support with configurable menu alignment
@@ -73,7 +76,7 @@ You can run your site directly from the `exampleSite`. To do so, use the followi
 ```
 $ git clone https://github.com/chipzoller/hugo-clarity
 $ cd hugo-clarity/exampleSite/
-$ hugo server
+$ hugo server --themesDir ../..
 ```
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
@@ -84,7 +87,7 @@ Once set, jump over to the `config.toml` file and start [configuring](#configura
 
 This section will only cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 
-### Global Settings
+### Global Settings (Work-in-Progress, needs redesign)
 
 These options set global values that some pages or all pages in the site use by default.
 
@@ -95,12 +98,15 @@ These options set global values that some pages or all pages in the site use by 
 | introDescription | N/A | N/A |
 | numberOfTagsShownPerArticle | N/A | N/A |
 | fallBackOgImage | yes | N/A |
+| mobileNavigation | no | N/A |
+| figurePositionShow | yes | yes |
+| figurePositionLabel | no | no |
 
 ### Page level Settings
 
 These options can be set from a page [frontmatter](https://gohugo.io/content-management/front-matter#readout) or via [archetypes](https://gohugo.io/content-management/archetypes/#readout)
 
-## Modify Menu
+## Modify links menu
 
 To add, remove, or reorganize top menu links, [edit this yaml file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml)
 
@@ -119,12 +125,38 @@ mainSections = ["posts", "docs", "blogs"]
 ...
 ```
 
-For more info, checkout [Hugo docs recommendation](details  https://gohugo.io/functions/where/#mainsections)
+For more info, checkout the [Hugo docs](https://gohugo.io/functions/where/#mainsections).
+
+## Mobile menu positioning
+
+Show menu positioning and param control here.
 
 ## Images
-### Inline Images
 
-To make a blog image inline, append `:inline` to its alt text.
+### Image figure captions
+
+You have the option of adding captions to images in blog posts and automatically prepending a desired string such as "Figure N" to the alt text. This is controlled via two global settings.
+
+`figurePositionLabel` is a string which will be prepended to any alt text of an article image. By default, this is set to "Figure." And `figurePositionShow` controls, globally, whether to show this label. It does not affect whether to show the image alt text, only the prefix figure caption. For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+
+The number will be automatically calculated and assigned after the `figurePositionLabel` text starting from the top of the article and counting down. Featured images will be excluded from this figuration.
+
+#### Example:
+
+In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
+
+```markdown
+![Antrea Kubernetes nodes prepared](./images/image-figure.png)
+```
+
+![Here is my alt text for this image.](./images/image-figure.png)
+
+
+### Inline images
+
+To make a blog image inline, append `:inline` to its alt text. Typically, inline images will have no alt text associated with them.
+
+
 
 #### Example:
 
@@ -136,6 +168,9 @@ To make a blog image inline, append `:inline` to its alt text.
 
 ![some alt text:inline](someOtherImageUrl)
 ```
+
+![Inline image example](./images/image-inline.png)
+
 ### Float images to the left
 
 To align a blog image to the left, append `:left` to its alt text. Article text will then flow to the right of the image.
@@ -217,3 +252,12 @@ codeMaxLines = 15 # Maximum number of lines to be shown in code blocks in this b
 ```
 
 If `codeMaxLines` is specified both in `config.toml` and in the article frontmatter, the value specified in the article frontmatter will apply to the given article. In the above example, the global default is `10` and yet the article value is `15` so code blocks in this article will auto-collapse after 15 lines.
+
+## Page controls (not sure what to do with this)
+### Toggle table of contents
+
+Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.
+
+#### Example:
+
+![Article table of contents](./images/article-toc.png)

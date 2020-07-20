@@ -7,7 +7,6 @@ copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all r
 # canonifyurls = true
 paginate = 10
 theme = "hugo-clarity"
-themesDir = "../." # uncomment if you site files are at the root level
 
 [markup]
   [markup.highlight]

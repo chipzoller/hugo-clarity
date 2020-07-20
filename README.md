@@ -59,16 +59,10 @@ $ git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clari
 $ cp -a themes/hugo-clarity/exampleSite/ .
 ```
 
-Uncomment this line from the `config.toml` file
-
-```
-themesDir = "../." # Uncomment if your site files are at the root level
-```
-
 Then run
 
 ```
-hugo server
+hugo server --themesDir ../..
 ```
 
 Hurray!

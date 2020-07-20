@@ -41,7 +41,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Prerequisites
 
-Firstly, ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/). 
+Firstly, ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
 
 ## Getting up and running
 
@@ -51,7 +51,7 @@ There are at least two ways of quickly getting started with Hugo and the VMware 
 
 Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
   
-```
+```bash
 $ hugo new site yourSiteName
 $ cd yourSiteName
 $ git init
@@ -61,7 +61,7 @@ $ cp -a themes/hugo-clarity/exampleSite/ .
 
 Then run
 
-```
+```bash
 hugo server --themesDir ../..
 ```
 
@@ -71,7 +71,7 @@ Hurray!
 
 You can run your site directly from the `exampleSite`. To do so, use the following commands:
 
-```
+```bash
 $ git clone https://github.com/chipzoller/hugo-clarity
 $ cd hugo-clarity/exampleSite/
 $ hugo server --themesDir ../..
@@ -138,6 +138,8 @@ mobileNavigation = "left" # Mobile nav menu will open to the left of the screen.
 
 ## Tags
 
+### Show number of tags
+
 The number of tags that should be shown can be configured so that any more than this value will only be accessible when clicking the All Tags button. This is to ensure a large number of tags can be easily managed without consuming excess screen real estate. Edit the `numberOfTagsShownPerArticle` parameter and set accordingly.
 
 ```yaml
@@ -146,10 +148,10 @@ The number of tags that should be shown can be configured so that any more than 
 numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
 ...
 ```
-#### Example:
+
+#### Example
 
 ![Tags](./images/tags.png)
-
 
 ## Images
 
@@ -161,7 +163,7 @@ You have the option of adding captions to images in blog posts and automatically
 
 The number will be automatically calculated and assigned after the `figurePositionLabel` text starting from the top of the article and counting down. Featured images will be excluded from this figuration.
 
-#### Example:
+#### Example
 
 In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
 
@@ -171,14 +173,11 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 
 ![Here is my alt text for this image.](./images/image-figure.png)
 
-
 ### Inline images
 
 To make a blog image inline, append `:inline` to its alt text. Typically, inline images will have no alt text associated with them.
 
-
-
-#### Example:
+#### Example
 
 ```markdown
 <!-- some image without alt text -->
@@ -195,7 +194,7 @@ To make a blog image inline, append `:inline` to its alt text. Typically, inline
 
 To align a blog image to the left, append `:left` to its alt text. Article text will then flow to the right of the image.
 
-#### Example:
+#### Example
 
 ```markdown
 <!-- some image without alt text -->
@@ -277,7 +276,6 @@ codeMaxLines = 10 # Maximum number of lines to be shown by default across all ar
 If you need more granular control, this parameter can be overridden at the blog article level. Add the same value to your article frontmatter as follows:
 
 ```yaml
-# 
 ...
 codeMaxLines = 15 # Maximum number of lines to be shown in code blocks in this blog post.
 ...
@@ -286,10 +284,11 @@ codeMaxLines = 15 # Maximum number of lines to be shown in code blocks in this b
 If `codeMaxLines` is specified both in `config.toml` and in the article frontmatter, the value specified in the article frontmatter will apply to the given article. In the above example, the global default is `10` and yet the article value is `15` so code blocks in this article will auto-collapse after 15 lines.
 
 ## Page controls (not sure what to do with this)
+
 ### Toggle table of contents
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.
 
-#### Example:
+#### Example
 
 ![Article table of contents](./images/article-toc.png)

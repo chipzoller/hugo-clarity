@@ -32,14 +32,14 @@ numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.
 # will be used on share >> twitter, facebook, linkedin
 fallBackOgImage = "images/thumbnail.png" 
 
-# sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable
+# sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable.
 codeMaxLines = 7
 
-# disable showing line numbers by default : switcth to `true` if you'ld rather have them on
+# disable showing line numbers by default. Switch to `true` if you'd rather have them on.
 codeLineNumbers = false 
 
 
-# directory(s) where your articles are
+# directory(s) where your articles are located
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # center logo on navbar

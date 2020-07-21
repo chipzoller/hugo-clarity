@@ -20,7 +20,7 @@ const codeActionButtons = [
   {
     icon: 'expand',
     id: 'expand',
-    title: 'Expand code block',
+    title: 'Toggle code block expand',
     show: false 
   }
 ];
@@ -87,7 +87,7 @@ function collapseCodeBlock(block) {
     const expandDot = createEl()
     pushClass(expandDot, panelExpand);
     pushClass(expandDot, panelFrom);
-    expandDot.title = "See more";
+    expandDot.title = "Toggle code block expand";
     expandDot.textContent = "...";
     const outerBlock = block.closest('.highlight');
     window.setTimeout(function(){

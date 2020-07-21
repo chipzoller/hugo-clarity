@@ -30,7 +30,7 @@
       {{- end }}
       {{- end }}
     </ul>
-    {{- $numberOfTagsLimit := $.Site.Params.numberOfTagsShownPerArticle }} <!-- See config -->
+    {{- $numberOfTagsLimit := $.Site.Params.numberOfTagsShown }} <!-- See config -->
     {{ range $key, $value := .Site.Taxonomies }}
     <div>
       <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ $key }}</h2>

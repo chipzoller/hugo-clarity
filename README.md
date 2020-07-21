@@ -69,11 +69,11 @@ There are at least two ways of quickly getting started with Hugo and the VMware 
 Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
   
 ```bash
-$ hugo new site yourSiteName
-$ cd yourSiteName
-$ git init
-$ git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-$ cp -a themes/hugo-clarity/exampleSite/ .
+hugo new site yourSiteName
+cd yourSiteName
+git init
+git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+cp -a themes/hugo-clarity/exampleSite/ .
 ```
 
 Then run
@@ -89,9 +89,9 @@ Hurray!
 You can run your site directly from the `exampleSite`. To do so, use the following commands:
 
 ```bash
-$ git clone https://github.com/chipzoller/hugo-clarity
-$ cd hugo-clarity/exampleSite/
-$ hugo server --themesDir ../..
+git clone https://github.com/chipzoller/hugo-clarity
+cd hugo-clarity/exampleSite/
+hugo server --themesDir ../..
 ```
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
@@ -275,6 +275,7 @@ Sometimes, you want to explicitly set the image that will be used in the preview
 shareImage = "images/theImageToBeUsedOnShare.png"
 ...
 ```
+
 Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`.
 
 #### Align logo

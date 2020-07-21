@@ -324,12 +324,6 @@ function fileClosure(){
       modifyClass(figure, 'image-scale');
     }
     
-    const toTop = 'to_top';
-    let isToTop = target.matches(`.${toTop}`)|| target.closest(`.${toTop}`);
-    
-    if (isToTop) {
-      window.scrollTo(0,0);
-    }
   });
   
   const tables = elems('table');
@@ -430,7 +424,7 @@ function fileClosure(){
       backToTopButton.style.left = `${leftOffset}px`;
     }
   })();
-  
+
   (function sortTags() {
     doc.addEventListener('click', function(event){
       const active = 'active';

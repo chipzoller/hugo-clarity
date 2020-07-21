@@ -275,6 +275,7 @@ Sometimes, you want to explicitly set the image that will be used in the preview
 shareImage = "images/theImageToBeUsedOnShare.png"
 ...
 ```
+Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`.
 
 #### Align logo
 

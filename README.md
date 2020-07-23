@@ -2,19 +2,19 @@
 
 A technology-minded theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://festive-agnesi-58e7e4.netlify.app/).
 
-![Clarity Hugo Theme](./images/screenshot.png)
+![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
 ## Preview on Desktop
 
 | Light Mode | Dark Mode |
 |---| --- |
-| ![Clarity Hugo Theme desktop light](./images/screenshot.png) | ![Clarity Hugo Theme desktop dark](./images/screenshot-darkmode.png) |
+| ![Clarity Hugo Theme desktop light](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png) | ![Clarity Hugo Theme desktop dark](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-darkmode.png) |
 
 ## Preview on Mobile
 
 | Light Mode | Dark Mode |
 |---| --- |
-| ![Clarity Hugo Theme mobile light](./images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](./images/screenshot-mobile-darkmode.png) |
+| ![Clarity Hugo Theme mobile light](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-mobile-darkmode.png) |
 
 ## Table of Contents
 
@@ -54,7 +54,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
     To put it all in context, here is a preview showing all functionality.
 
-    ![code block functions](./images/syntax-block.gif)
+    ![code block functions](https://github.com/chipzoller/hugo-clarity/blob/master/images/syntax-block.gif)
 
 ## Prerequisites
 
@@ -190,7 +190,7 @@ numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.
 
 #### Number of tags example
 
-![Tags](./images/tags.png)
+![Tags](https://github.com/chipzoller/hugo-clarity/blob/master/images/tags.png)
 
 ### Images
 
@@ -210,7 +210,7 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 ![Antrea Kubernetes nodes prepared](./images/image-figure.png)
 ```
 
-![Here is my alt text for this image.](./images/image-figure.png)
+![Here is my alt text for this image.](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
 
 #### Inline images
 
@@ -227,7 +227,7 @@ To make a blog image inline, append `:inline` to its alt text. Typically, inline
 ![some alt text:inline](someOtherImageUrl)
 ```
 
-![Inline image example](./images/image-inline.png)
+![Inline image example](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-inline.png)
 
 #### Float images to the left
 
@@ -330,4 +330,4 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 ### Table of contents example
 
-![Article table of contents](./images/article-toc.png)
+![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)

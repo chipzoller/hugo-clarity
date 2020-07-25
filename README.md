@@ -250,7 +250,7 @@ Blog articles can specify a thumbnail image which will be displayed to the left 
 
 ```yaml
 ...
-thumbnail: "images/2020-04/capv-overview/featured.jpg"
+thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
 ...
 ```
 
@@ -276,11 +276,11 @@ shareImage = "images/theImageToBeUsedOnShare.png"
 ...
 ```
 
-Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`.
+Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. When sharing a link to the home page address of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
 
 #### Align logo
 
-You can align your site's logo either to the left or in the center.
+You can left align or center your site's logo.
 
 ```yaml
 ...

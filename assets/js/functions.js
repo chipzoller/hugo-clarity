@@ -193,8 +193,8 @@ function parseBoolean(string) {
 
 (function() {
   const bodyElement = elem('body');
-  const platform = navigator.platform;
-  if(platform.includes('win')) {
+  const platform = navigator.platform.toLowerCase();
+  if(platform.includes("win")) {
     pushClass(bodyElement, 'windows');
   }
 })();

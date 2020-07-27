@@ -405,7 +405,11 @@ function fileClosure(){
       
     });
   })();
-  
+
+  function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  };
+
   (function ifiOS(){
     // modify backto top button
     const backToTopButton = elem('.to_top');
@@ -420,7 +424,7 @@ function fileClosure(){
     let leftOffset = (docWidth - buttonParentWidth) / 2;
     const buttonWidth = backToTopButton.offsetWidth;
     leftOffset = leftOffset + buttonParentWidth - buttonWidth;
-    if(!containsClass(backToTopButton, ios)){
+    if(!containsClass(backToTopButton, ios) && !isMobileDevice()){
       backToTopButton.style.left = `${leftOffset}px`;
     }
   })();

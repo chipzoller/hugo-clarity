@@ -1,7 +1,7 @@
-name = "hugo-clarity"
+name = "Clarity"
 license = "MIT"
 licenselink = "https://github.com/chipzoller/hugo-clarity/blob/master/LICENSE.md"
-description = "A simple open source theme for publishing technical blogs with hugo"
+description = "A theme based on VMware's Clarity Design System for publishing technical blogs with Hugo."
 homepage = "https://github.com/chipzoller/hugo-clarity"
 tags = ["blog", "technical", "simple", "dark", "syntax highlighting"]
 features = ["blog", "technical", "simple", "dark", "syntax highlighting"]

@@ -325,6 +325,8 @@ codeMaxLines = 15 # Maximum number of lines to be shown in code blocks in this b
 
 If `codeMaxLines` is specified both in `config.toml` and in the article frontmatter, the value specified in the article frontmatter will apply to the given article. In the above example, the global default is `10` and yet the article value is `15` so code blocks in this article will auto-collapse after 15 lines.
 
+If `codeMaxLines` is not specified anywhere, an internal default value of `100` will be assumed.
+
 ### Table of contents
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.

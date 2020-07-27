@@ -33,11 +33,22 @@
   {{- $params := .Site.Params }}
   {{- with $params.codeMaxLines }}
     {{- $maxCodeLines = . }}
-    {{- end }}
+  {{- end }}
   {{- with .Params.codeMaxLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
-  <body{{ with $maxCodeLines }} data-code="{{ . }}"{{ end }} data-lines="{{ with $params.codeLineNumbers }}true{{ else }}false{{ end }}" id="documentTop">
+  {{- $codeLineNumbers := false }}
+  {{ with $params.codeLineNumbers }}
+    {{- $codeLineNumbers = . }}
+  {{ end }}
+  {{ with .Params.codeLineNumbers }}
+    {{- $codeLineNumbers = . }}
+    {{ else }}
+    {{ if eq .Params.codeLineNumbers false }}
+      {{- $codeLineNumbers = false }}
+    {{ end }}
+  {{ end }}
+  <body data-code="{{ $maxCodeLines }}" data-lines="{{ $codeLineNumbers }}" id="documentTop">
     {{- partial "nav" . }}
     <main>
       {{- block "main" . }}{{ end }}

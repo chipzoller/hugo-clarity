@@ -177,3 +177,16 @@ function horizontalSwipe(element, func, direction) {
   });
 
 }
+
+function parseBoolean(string) {
+  let bool;
+  string = string.trim().toLowerCase();
+  switch (string) {
+    case 'true':
+      return true;
+    case 'false':
+      return false;
+    default:
+      return undefined;
+  }
+};

@@ -165,7 +165,9 @@ function disableCodeLineNumbers(block){
   const highlightWrapId = highlightWrap;
   blocks.forEach(function(block){
     // disable line numbers if disabled globally
-    elem('body').dataset.lines === "false" ? disableCodeLineNumbers(block) : false;
+    const showLines = elem('body').dataset.lines;
+    console.log(showLines, 'show lines');
+    parseBoolean(showLines) === false ? disableCodeLineNumbers(block) : false;
 
     const highlightElement = block.parentNode.parentNode;
     // wrap code block in a div

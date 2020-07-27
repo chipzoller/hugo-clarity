@@ -190,3 +190,11 @@ function parseBoolean(string) {
       return undefined;
   }
 };
+
+(function() {
+  const bodyElement = elem('body');
+  const platform = navigator.platform;
+  if(platform.includes('win')) {
+    pushClass(bodyElement, 'windows');
+  }
+})();

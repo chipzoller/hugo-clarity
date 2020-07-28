@@ -378,9 +378,15 @@ function fileClosure(){
     doc.addEventListener('click', function(event){
       const target = event.target;
       const open = 'jsopen';
-      if(target.matches('.nav_close')) {
+      const isNavToggle = target.matches('.nav_close') || target.closest('.nav_close');
+      const targetIcon = elem('.nav_close_icon');
+      const harmburgerIcon = '{{ absURL "/icons/bar.svg" }}';
+      const closeIcon = '{{ absURL "/icons/cancel.svg" }}';
+      if(isNavToggle) {
         event.preventDefault();
         modifyClass(doc, open);
+        const navIsOpen = containsClass(doc, open);
+        targetIcon.src = navIsOpen  ? closeIcon : harmburgerIcon;
       }
       
       if(!target.closest('.nav') && elem(`.${open}`)) {

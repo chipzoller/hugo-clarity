@@ -79,7 +79,7 @@ cp -a themes/hugo-clarity/exampleSite/ .
 Then run
 
 ```bash
-hugo server --themesDir ../..
+hugo server
 ```
 
 Hurray!

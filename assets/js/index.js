@@ -407,7 +407,9 @@ function fileClosure(){
   })();
 
   function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    const agent = navigator.userAgent.toLowerCase();
+    const isMobile = agent.includes('android') || agent.includes('iphone');
+    return  isMobile;
   };
 
   (function ifiOS(){
@@ -424,9 +426,9 @@ function fileClosure(){
     let leftOffset = (docWidth - buttonParentWidth) / 2;
     const buttonWidth = backToTopButton.offsetWidth;
     leftOffset = leftOffset + buttonParentWidth - buttonWidth;
-    if(!containsClass(backToTopButton, ios) && !isMobileDevice()){
+    if(!isMobileDevice()){
       backToTopButton.style.left = `${leftOffset}px`;
-    }
+    } 
   })();
 
   (function sortTags() {

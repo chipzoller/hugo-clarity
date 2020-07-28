@@ -20,17 +20,17 @@
 
     &_close 
       width: 3rem
-      background-image: url("#{$icons}bar.svg")
-      background-repeat: no-repeat
-      background-size: 1rem
-      background-position: center
       position: absolute
       right: -4rem
       top: 0
       bottom: 0
       cursor: pointer
       z-index: 1000
-    
+      display: grid
+      place-items: center
+      &_icon
+        width: 1.25rem
+
     &_brand
       position: relative
       z-index: 999
@@ -62,8 +62,6 @@
       &_parent
         &:first-child
          margin-top: 4.4rem
-      &_close
-        background-image: url("#{$icons}cancel.svg")
 
       .follow
         justify-content: flex-start

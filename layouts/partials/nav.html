@@ -6,7 +6,9 @@
     <a href='{{ absURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
       <!-- {{ .Site.Title }} -->
       <img src="{{ absURL $logo }}" class="logo">
-      <div class = 'nav_close'></div>
+      <div class = 'nav_close'>
+        <img src = '{{ absURL "/icons/bar.svg" }}' class="nav_close_icon">
+      </div>
     </a>
     <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{- $link := .RelPermalink }}

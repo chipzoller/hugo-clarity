@@ -385,12 +385,14 @@ function fileClosure(){
       if(isNavToggle) {
         event.preventDefault();
         modifyClass(doc, open);
-        const navIsOpen = containsClass(doc, open);
+        let navIsOpen = containsClass(doc, open);
         targetIcon.src = navIsOpen  ? closeIcon : harmburgerIcon;
       }
       
       if(!target.closest('.nav') && elem(`.${open}`)) {
         modifyClass(doc, open);
+        let navIsOpen = containsClass(doc, open);
+        targetIcon.src = navIsOpen  ? closeIcon : harmburgerIcon;
       }
       
       const navItem = 'nav_item';

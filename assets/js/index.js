@@ -391,7 +391,7 @@ function fileClosure(){
       if(!target.closest('.nav') && elem(`.${open}`)) {
         modifyClass(doc, open);
         let navIsOpen = containsClass(doc, open);
-        navIsOpen  ? modifyClass(harmburgerIcon, 'isopen') : false;
+        !navIsOpen  ? modifyClass(harmburgerIcon, 'isopen') : false;
       }
       
       const navItem = 'nav_item';

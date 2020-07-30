@@ -28,15 +28,24 @@
       z-index: 1000
       display: grid
       place-items: center
-      &_icon
+      svg
         width: 1.25rem
+        fill: var(--light)
+        height: 1.25rem
+        display: none
+        &:first-child
+          display: initial
+        &.isopen
+          display: none
+          + svg
+            display: initial
 
     &_brand
       position: relative
       z-index: 999
       width: calc(100% - 3rem)
       padding-left: 0
-      
+
     &_parent
       display: grid
     &_sub

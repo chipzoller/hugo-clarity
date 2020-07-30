@@ -10,7 +10,12 @@
         {{ .Site.Title }}
       {{- end }}
       <div class = 'nav_close'>
-        <img src = '{{ absURL "/icons/bar.svg" }}' class="nav_close_icon">
+        <svg class="icon">
+          <use xlink:href="#open-menu"></use>
+        </svg>
+        <svg class="icon">
+          <use xlink:href="#closeme"></use>
+        </svg>
       </div>
     </a>
     <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>

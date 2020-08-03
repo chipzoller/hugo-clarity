@@ -246,6 +246,22 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 ![some alt text:left](someOtherImageUrl)
 ```
 
+#### Add classes to images
+
+To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`. 
+
+#### Image class example
+
+```markdown
+<!-- some image without alt text -->
+![::img-medium](someImageUrl)
+
+<!-- some image with alt text -->
+
+![some alt text::img-large img-shadow](someOtherImageUrl)
+```
+
+
 #### Article thumbnail image
 
 Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`). They will be specified using a frontmatter variable as follows:

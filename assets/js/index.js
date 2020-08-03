@@ -228,11 +228,18 @@ function fileClosure(){
   
   function populateAlt(images) {
     let imagePosition = 0;
+    
     images.forEach((image) => {
       let alt = image.alt;
       image.loading = "lazy";
       const modifiers = [':left', ':right'];
-      
+      const altArr = alt.split('::').map(x => x.trim())
+
+      altArr[1]?.split(' ').filter(Boolean).forEach(cls =>{
+        pushClass(image, cls);
+        alt = altArr[0]
+      })
+
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);
         if(canModify) {
@@ -241,7 +248,7 @@ function fileClosure(){
           alt = alt.replace(modifier, "");
         }
       });
-      
+
       const isInline = alt.includes(inline);
       alt = alt.replace(inline, "");
       
@@ -254,7 +261,7 @@ function fileClosure(){
           
           let desc = document.createElement('p');
           desc.classList.add('img_alt');
-          let imageAlt = image.alt;
+          let imageAlt = alt;
           
           const thisImgPos = image.dataset.pos;
           // modify image caption is necessary

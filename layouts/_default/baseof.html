@@ -25,9 +25,16 @@
     <!-- preload assets declaration -->
     <link rel="preload" href="{{ $styles.Permalink }}" integrity = '{{ $styles.Data.Integrity }}' as="style">
     <link rel="preload" href="{{ $bundle.Permalink }}" as="script">
+    
+    {{ range .Site.Params.customJS -}}
+    <script type="text/javascript" src="{{ . | relURL }}" ></script>
+	  {{- end }}
 
     <!-- styles file -->
     <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
+    {{ range .Site.Params.customCSS -}}
+	  <link rel="stylesheet" href="{{ . | relURL }}">
+	  {{- end }}
   </head>
   {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}

@@ -122,6 +122,8 @@ These options set global values that some pages or all pages in the site use by 
 | mobileNavigation | string | no |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
+| customCSS | array of file path (string) | no |
+| customJS | array of file path (string) | no |
 
 ### Page Parameters
 
@@ -351,3 +353,15 @@ Each article can optionally have a table of contents (TOC) generated for it base
 ### Table of contents example
 
 ![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)
+
+### Custom CSS and JS
+
+You can add custom `.css` and `.js` files to override default behaviour and add new features. Similar to images, these paths should be relative to `static` directory.
+
+```yaml
+[params]
+...
+customCSS = ["css/custom.css"] # Include custom CSS files
+customJS = ["js/custom.js"] # Include custom JS files
+...
+```

@@ -1,4 +1,4 @@
-  <title>{{ if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
+  <title>{{ if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta charset='utf-8'>
   {{ hugo.Generator }}
   {{- with .Site.Params.ga_verify }}

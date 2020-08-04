@@ -123,6 +123,8 @@ These options set global values that some pages or all pages in the site use by 
 | mobileNavigation | string | no |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
+| customCSS | array of file path (string) | no |
+| customJS | array of file path (string) | no |
 
 ### Page Parameters
 
@@ -247,6 +249,22 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 ![some alt text:left](someOtherImageUrl)
 ```
 
+#### Add classes to images
+
+To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`. 
+
+#### Image class example
+
+```markdown
+<!-- some image without alt text -->
+![::img-medium](someImageUrl)
+
+<!-- some image with alt text -->
+
+![some alt text::img-large img-shadow](someOtherImageUrl)
+```
+
+
 #### Article thumbnail image
 
 Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`). They will be specified using a frontmatter variable as follows:
@@ -336,3 +354,21 @@ Each article can optionally have a table of contents (TOC) generated for it base
 ### Table of contents example
 
 ![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)
+
+### Custom CSS and JS
+
+To minimize http requests per page, we would recommend loading css styles and javasript helpers in single bundles. That's one css file, and one javascript file. Using hugo minify functions, these files will be minified to optimize the size.
+
+Going by the above 👆🏻 reason, we recommend adding custom css and js via [this custom sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom javascript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/_custom.js).
+
+However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to `static` directory.
+
+```yaml
+[params]
+...
+customCSS = ["css/custom.css"] # Include custom CSS files
+customJS = ["js/custom.js"] # Include custom JS files
+...
+```
+
+> __Pro Tip__: You can change the theme colors via the [this variables' sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 

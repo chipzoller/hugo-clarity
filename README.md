@@ -110,6 +110,7 @@ These options set global values that some pages or all pages in the site use by 
 |:---- | ---- | ---- |
 | author | string | no |
 | twitter | string | no |
+| largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
 | introDescription | string | no |
 | numberOfTagsShown | integer | no |

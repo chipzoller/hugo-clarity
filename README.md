@@ -32,6 +32,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Images](#images)
   * [Code](#code)
   * [Table of contents](#table-of-contents)
+  * [Custom CSS and JS](#custom-css-and-js)
 
 ## Features
 
@@ -351,7 +352,7 @@ If `codeMaxLines` is not specified anywhere, an internal default value of `100` 
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.
 
-### Table of contents example
+### Table of contents (TOC) example
 
 ![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)
 

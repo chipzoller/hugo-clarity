@@ -10,7 +10,7 @@
     {{- with .Params.thumbnail }}
     <div class = 'excerpt_footer partition'>
       <div class = 'excerpt_thumbnail'>
-      <img src = '{{ . }}'>
+      <img src = '{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}'>
       </div>
       {{ else }}
       <div class = 'excerpt_footer'>

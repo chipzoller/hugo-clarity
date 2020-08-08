@@ -360,7 +360,7 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 To minimize http requests per page, we would recommend loading css styles and javasript helpers in single bundles. That's one css file, and one javascript file. Using hugo minify functions, these files will be minified to optimize the size.
 
-Going by the above 👆🏻 reason, we recommend adding custom css and js via [this custom sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom javascript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/_custom.js).
+Going by the above 👆🏻 reason, we recommend adding custom css and js via [this custom sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom javascript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
 However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to `static` directory.
 

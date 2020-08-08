@@ -35,7 +35,7 @@ const panelExpanded = 'panel_expanded';
 const panelHide = 'panel_hide';
 const panelFrom = 'panel_from';
 const panelBox = 'panel_box';
-const fullHeight = '100vh';
+const fullHeight = 'initial';
 const highlightWrap = 'highlight_wrap'
 
 function codeBlocks() {
@@ -221,7 +221,7 @@ function disableCodeLineNumbers(block){
         let thisCodeBlock = codeElement.firstElementChild;
         const outerBlock = thisCodeBlock.closest('.highlight');
         if(maxHeightIsSet(thisCodeBlock)) {
-          thisCodeBlock.style.maxHeight = `100vh`;
+          thisCodeBlock.style.maxHeight = fullHeight;
           // mark code block as expanded
           pushClass(outerBlock, panelExpanded)
         } else {

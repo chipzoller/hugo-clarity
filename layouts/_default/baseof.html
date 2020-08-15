@@ -26,8 +26,8 @@
     {{- $bundle := slice $highlight $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Fingerprint "sha512" -}}
 
     <!-- preload assets declaration -->
-    <link rel="preload" href="{{ $styles.Permalink }}" integrity = '{{ $styles.Data.Integrity }}' as="style">
-    <link rel="preload" href="{{ $bundle.Permalink }}" as="script">
+    <link rel="preload" href="{{ $styles.Permalink }}" integrity = '{{ $styles.Data.Integrity }}' as="style" crossorigin="anonymous">
+    <link rel="preload" href="{{ $bundle.Permalink }}" as="script" crossorigin="anonymous">
     
     
     {{- with .Site.Params.customJS }}
@@ -37,7 +37,7 @@
     {{- end }}
 
     <!-- styles file -->
-    <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}'>
+    <link rel = 'stylesheet' href = '{{ $styles.Permalink }}' integrity = '{{ $styles.Data.Integrity }}' crossorigin="anonymous">
     {{- with .Site.Params.customCSS }}
     {{- range . -}}
 	  <link rel="stylesheet" href="{{ . | relURL }}">
@@ -71,6 +71,6 @@
     </main>
     {{- partial "icons" }}
     {{- partial "footer" . }}
-    <script src = '{{ $bundle.Permalink }}'></script>
+    <script src = '{{ $bundle.Permalink }}' crossorigin="anonymous"></script>
   </body>
 </html>

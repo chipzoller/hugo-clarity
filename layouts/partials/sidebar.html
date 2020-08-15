@@ -8,7 +8,7 @@
     <a href = '{{ absURL "about/" }}' class="button mt-1" role="button">Read More</a>
     <h2 class="mt-4">Featured Posts</h2>
     <ul>
-    {{ range .Site.Taxonomies.tags.featured }}
+    {{ range where .Site.RegularPages "Params.featured" true }}
      {{- if ne $title .Title }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>

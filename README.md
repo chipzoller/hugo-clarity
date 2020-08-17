@@ -26,6 +26,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Page Parameters](#page-parameters)
   * [Modify links](#modify-links-menu)
   * [Social media](#social-media)
+  * [Search Engine](#search-engine)
   * [Blog directory](#blog-directory)
   * [Mobile menu positioning](#mobile-menu-positioning)
   * [Tags and taxonomies](#tags-and-taxonomies)
@@ -157,6 +158,12 @@ To add, remove, or reorganize top menu items, [edit this YAML file](https://gith
 
 To edit your social media profile links, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/social.yaml).
 
+If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
+
+### Search engine
+
+If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID.
+
 ### Blog directory
 
 Edit the `config.toml` file and change the `mainSections` key. Values will be directories where the blogs reside.
@@ -268,7 +275,7 @@ To add a class image to the left, append `::<classname>` to its alt text. You ca
 
 #### Article thumbnail image
 
-Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`). They will be specified using a frontmatter variable as follows:
+Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They will be specified using a frontmatter variable as follows:
 
 ```yaml
 ...
@@ -309,6 +316,8 @@ You can left align or center your site's logo.
 centerLogo = true # Change to false to align left
 ...
 ```
+
+If no logo is specified, the title of the site will appear in its place.
 
 ### Code
 

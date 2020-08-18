@@ -1,6 +1,6 @@
 # Hugo Clarity
 
-A technology-minded theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://neonmirrors.net/). Test.
+A technology-minded theme for Hugo based on VMware's open-source [Clarity Design System](https://clarity.design/) featuring rich code support, dark/light mode, mobile support, and much more. See [a live demo at __neonmirrors.net__](https://neonmirrors.net/).
 
 ![Clarity Hugo Theme](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png)
 
@@ -64,7 +64,7 @@ Firstly, __ensure you have installed the [extended version of Hugo](https://gith
 
 ## Getting up and running
 
-There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
+Read the [prerequisites](#prerequisites) above and verify you're using the extended version of Hugo. There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
 
 ### Option 1 (recommended)
 
@@ -367,11 +367,11 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 ### Custom CSS and JS
 
-To minimize http requests per page, we would recommend loading css styles and javasript helpers in single bundles. That's one css file, and one javascript file. Using hugo minify functions, these files will be minified to optimize the size.
+To minimize HTTP requests per page, we would recommend loading CSS styles and JavaScript helpers in single bundles. That is to say, one CSS file and one JavaScript file. Using Hugo minify functions, these files will be minified to optimize the size.
 
-Going by the above 👆🏻 reason, we recommend adding custom css and js via [this custom sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom javascript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via [this custom SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom JavaScript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to `static` directory.
+However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to the `static` directory.
 
 ```yaml
 [params]
@@ -381,4 +381,4 @@ customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
 
-> __Pro Tip__: You can change the theme colors via the [this variables' sass file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
+> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 

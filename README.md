@@ -60,7 +60,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Prerequisites
 
-Firstly, ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases). See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
+Firstly, __ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
 
 ## Getting up and running
 

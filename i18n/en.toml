@@ -1,0 +1,23 @@
+[read_more]
+other = "Read More"
+
+[all_rights]
+other = "All Rights Reserved"
+
+[share_on]
+other = "Share on"
+
+[featured_posts]
+other = "Featured Posts"
+
+[recent_posts]
+other = "Recent Posts"
+
+[404_title]
+other = "Lost"
+
+[could_not_find]
+other = "We couldn't find the page you're looking for"
+
+[go_back]
+other = "Go Back"

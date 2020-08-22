@@ -17,7 +17,7 @@
         {{- end }}
         <div>
           <p class = 'pale'>{{ .Summary | truncate 320 }}</p>
-          <a href='{{ .Permalink }}' class='excerpt_more button'>Read More</a>
+          <a href='{{ .Permalink }}' class='excerpt_more button'>{{ i18n "read_more" }}</a>
         </div>
       </div>
     </div>

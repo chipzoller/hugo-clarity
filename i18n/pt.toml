@@ -1,0 +1,23 @@
+[read_more]
+other = "Ler Mais"
+
+[all_rights]
+other = "Todos os Direitos Reservados"
+
+[share_on]
+other = "Partilhar em"
+
+[featured_posts]
+other = "Principais Artigos"
+
+[recent_posts]
+other = "Artigos Mais Recentes"
+
+[404_title]
+other = "Ooops"
+
+[could_not_find]
+other = "Não foi possível encontrar esta página"
+
+[go_back]
+other = "Voltar"

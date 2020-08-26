@@ -388,7 +388,7 @@ function fileClosure(){
       const navCloseIconClass = '.nav_close';
       const navClose = elem(navCloseIconClass);
       const isNavToggle = target.matches(navCloseIconClass) || target.closest(navCloseIconClass);
-      const harmburgerIcon = navClose.firstElementChild;
+      const harmburgerIcon = navClose.firstElementChild.firstElementChild;
       if(isNavToggle) {
         event.preventDefault();
         modifyClass(doc, open);

@@ -19,6 +19,10 @@ theme = "hugo-clarity"
     noClasses = false
     # style = "monokai"
     tabWidth = 2
+  [markup.goldmark.renderer]
+    hardWraps = false
+    unsafe = false # change to true to enable inclusion of rawHTML and math functions
+    xhtml = false
 
 [params]
 author = "Jane Doe"

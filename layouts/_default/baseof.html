@@ -18,15 +18,15 @@
     {{- $code := resources.Get $codeScriptPath | resources.ExecuteAsTemplate $codeScriptPath . }}
 
     {{- $customScriptPath := "js/custom.js" }}
+    {{ if (fileExists "../../assets/js/custom.js") }}
+      {{ $customScriptPath := "../../assets/js/custom.js" }}
+    {{ end }}
     {{- $custom := resources.Get $customScriptPath | resources.ExecuteAsTemplate $customScriptPath . }}
 
     {{- $mainScriptPath := "js/index.js" }}
     {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
 
-    {{- $customSiteScriptPath := "../../assets/js/custom.js" }}
-    {{- $customSite := resources.Get $customSiteScriptPath | resources.ExecuteAsTemplate $customSiteScriptPath . }}
-
-    {{- $bundle := slice $highlight $functions $code $main $custom $customSite | resources.Concat "js/bundle.js" | resources.Fingerprint "sha512" -}}
+    {{- $bundle := slice $highlight $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Fingerprint "sha512" -}}
 
     <!-- preload assets declaration -->
     <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">

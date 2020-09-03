@@ -143,21 +143,20 @@ function loadSvg(file, parent, path = 'icons/') {
 
 function getMobileOperatingSystem() {
   let userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  
+
   if (/android/i.test(userAgent)) {
     return "Android";
   }
-  
+
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
     return "iOS";
   }
-  
+
   return "unknown";
 }
 
 function horizontalSwipe(element, func, direction) {
   // call func if result of swipeDirection() 👇🏻 is equal to direction
-  
   let touchstartX = 0;
   let touchendX = 0;
   let swipeDirection = null;

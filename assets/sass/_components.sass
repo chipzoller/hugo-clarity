@@ -141,8 +141,7 @@
     color: $light
     margin: 0.1rem 0 0.1rem 0.2rem
     font-size: 0.7rem
-    
-  
+
 .post
   &_link, &_title
     margin-bottom: 0
@@ -241,7 +240,7 @@
   cursor: pointer
   &, &:focus
     outline: none
-  
+
 .mb-0
   margin-bottom: 0 !important
 
@@ -462,7 +461,6 @@
       fill: $light
       opacity: 0.5
       transition: 0.3s opacity var(--ease)
-    
     &:hover svg
       opacity: 1
 
@@ -476,8 +474,8 @@
     @media screen and (min-width: 769px)
       margin: 0 1.5rem
       grid-template-columns: 1fr
-  
-  &_choice 
+
+  &_choice
     width: 3rem
     background-color: var(--translucent-light)
     border-radius: 1rem
@@ -490,7 +488,7 @@
     position: relative
     overflow: hidden
     box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.15)
-    &::after 
+    &::after
       content: ""
       position: absolute
       top: 0.1rem
@@ -503,17 +501,16 @@
       border-radius: 50%
       z-index: 2
   &_animate
-    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)
     &::after
       transition: transform 0.5s cubic-bezier(.19,1,.22,1)
       will-change: transform
-  
 
 .taxonomy
   text-transform: capitalize
 
 .image
-  &-scale 
+  &-scale
     position: fixed
     z-index: 999999
     left: 0

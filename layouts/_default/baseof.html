@@ -26,7 +26,7 @@
     {{- $mainScriptPath := "js/index.js" }}
     {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
 
-    {{- $bundle := slice $highlight $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Fingerprint "sha512" -}}
+    {{- $bundle := slice $highlight $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint "sha512" -}}
 
     <!-- preload assets declaration -->
     <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">

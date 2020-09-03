@@ -1,26 +1,25 @@
-@for $i from 1 through 2 
+@for $i from 1 through 2
   $size: $i * 1.5rem
-  $x-size: $size * 0.5 
-  .pt-#{$i} 
+  $x-size: $size * 0.5
+  .pt-#{$i}
     padding-top: $size
-  
-  .pb-#{$i} 
+
+  .pb-#{$i}
     padding-bottom: $size
-  
-  .mt-#{$i} 
+
+  .mt-#{$i}
     margin-top: $size
-  
-  .mb-#{$i} 
+
+  .mb-#{$i}
     margin-bottom: $size
-  
+
 .flex
   display: flex
   flex-direction: column
   align-items: center
 
-.shadow 
+.shadow
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.17)
-
 
 @media screen and (min-width: 42rem)
   %grid
@@ -37,19 +36,19 @@
     grid-column-gap: 4rem
   .grid-2
     grid-template-columns: 1fr 1fr
-  .grid-3 
+  .grid-3
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr))
-  .grid-4 
+  .grid-4
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr))
 
 $sites: ("facebook": #325c94, "twitter": #00abdc,"linkedin": #007bb6)
 
-@each $item, $color in $sites 
+@each $item, $color in $sites
   .#{$item}
-    svg 
+    svg
       fill: $color
 
-// 404 page 
+// 404 page
 .never
   height: 75vh
   display: flex

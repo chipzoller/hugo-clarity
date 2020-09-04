@@ -38,6 +38,28 @@ const panelBox = 'panel_box';
 const fullHeight = 'initial';
 const highlightWrap = 'highlight_wrap'
 
+function wrapOrphanedPreElements() {
+  const pres = elems('pre');
+  Array.from(pres).forEach(function(pre){
+    const parent = pre.parentNode;
+    const isOrpaned = !containsClass(parent, 'highlight');
+    if(isOrpaned) {
+      const preWrapper = createEl();
+      preWrapper.className = 'highlight';
+      const outerWrapper = createEl();
+      outerWrapper.className = highlightWrap;
+      wrapEl(pre, preWrapper);
+      wrapEl(preWrapper, outerWrapper);
+    }
+  })
+  /*
+  @Todo
+  1. Add UI control to orphaned blocks
+  */
+}
+
+wrapOrphanedPreElements();
+
 function codeBlocks() {
   const markedCodeBlocks = elems('code');
   const blocks = Array.from(markedCodeBlocks).filter(function(block){

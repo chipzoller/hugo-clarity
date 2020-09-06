@@ -75,7 +75,7 @@ hugo new site yourSiteName
 cd yourSiteName
 git init
 git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-cp -a themes/hugo-clarity/exampleSite/ .
+cp -a themes/hugo-clarity/exampleSite/* .
 ```
 
 Then run

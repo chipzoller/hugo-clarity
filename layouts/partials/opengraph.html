@@ -2,9 +2,15 @@
 {{- with .Params.description }}
   {{- $summary = (. | truncate 160) }}
 {{- end }}
+{{- $params := .Site.Params }}
+{{- if .IsHome }}
+  {{- $summary = $params.description }}
+  {{- with .Params.description }}
+    {{- $summary = . }}
+  {{- end }}
+{{- end }}
 {{- $site := .Site.Title }}
 {{- $title := .Title }}
-{{- $params := .Site.Params }}
 {{- $permalink := .Permalink }}
 {{- $logo := absURL $params.logo }}
 {{- $author := $params.author }}

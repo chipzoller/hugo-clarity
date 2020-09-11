@@ -114,6 +114,7 @@ These options set global values that some pages or all pages in the site use by 
 | twitter | string | no |
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
+| description | string | yes |
 | introDescription | string | no |
 | numberOfTagsShown | integer | no |
 | fallBackOgImage | file path (string) | no |

@@ -61,9 +61,10 @@
 function fileClosure(){
 
   (function updateDate() {
-    var date = new Date();
-    var year = date.getFullYear();
-    elem('.year').innerHTML = year;
+    const date = new Date();
+    const year = date.getFullYear();
+    const yearEl = elem('.year');
+    yearEl ? yearEl.innerHTML = year : false;
   })();
 
   (function makeExternalLinks(){

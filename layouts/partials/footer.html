@@ -1,7 +1,7 @@
 <footer class = 'footer'>
   <div class = 'footer_inner wrap pale'>
     <img src = '{{ absURL "icons/apple-touch-icon.png" }}' class = 'icon icon_2 transparent'>
-    <p>Copyright &copy;&nbsp;<span class = 'year'></span>&nbsp;{{ .Site.Title | upper }}. All Rights Reserved</p>
+    <p>Copyright &copy;&nbsp;<span class = 'year'>{{ now.Format "2006"}}</span>&nbsp;{{ .Site.Title | upper }}. All Rights Reserved</p>
     {{- partial "top" .}}
   </div>
 </footer>

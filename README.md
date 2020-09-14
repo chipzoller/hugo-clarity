@@ -403,4 +403,4 @@ To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
 
 Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?.
 
-> ⚠️ Please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way. Best of both worlds
+> ⚠️ Please also note that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way. Best of both worlds

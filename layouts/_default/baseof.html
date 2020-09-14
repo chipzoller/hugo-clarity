@@ -1,5 +1,6 @@
+{{- $params := .Site.Params }}
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" data-figures="{{ .Params.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}>
+<html lang="{{ .Lang }}" data-figures="{{ .Params.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ with $params.enforceLightMode }} data-mode="lit"{{ end }}{{ with $params.enforceDarkMode }} data-mode="dim"{{ end }}>
   <head>
     {{- partial "head" . }}
     <!-- styles definition-->

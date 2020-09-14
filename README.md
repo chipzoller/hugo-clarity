@@ -128,6 +128,8 @@ These options set global values that some pages or all pages in the site use by 
 | figurePositionLabel | string | no |
 | customCSS | array of file path (string) | no |
 | customJS | array of file path (string) | no |
+| enforceLightMode | boolean | N/A |
+| enforceDarkMode | boolean | N/A |
 
 ### Page Parameters
 
@@ -383,3 +385,22 @@ customJS = ["js/custom.js"] # Include custom JS files
 ```
 
 > __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
+
+## I would like my site to load in X-Mode (light/dark) by default.
+
+On default, sites authored using this theme will load using the system-wide settings. i.e if your mac/pc os is set to darkmode/lightmode.
+
+From issue #36
+>  users who visit your site using this theme will experience dark/light depending on their system settings.
+
+Other than that, there's a UI control which users can use to switch to the mode they like.
+
+> ⚠️ Look for the values mentioned in this section in your `config.toml` file. If there are not there, add them under `[params]`
+
+To enforce Light Mode by default, turn `enforceLightMode`  to `true`
+
+To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
+
+Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?.
+
+> ⚠️ Please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way. Best of both worlds

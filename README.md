@@ -69,7 +69,7 @@ Read the [prerequisites](#prerequisites) above and verify you're using the exten
 ### Option 1 (recommended)
 
 Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
-  
+
 ```bash
 hugo new site yourSiteName
 cd yourSiteName

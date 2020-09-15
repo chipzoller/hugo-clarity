@@ -21,7 +21,7 @@ theme = "hugo-clarity"
     tabWidth = 2
   [markup.goldmark.renderer]
     hardWraps = false
-    unsafe = false # change to true to enable inclusion of rawHTML and math functions
+    unsafe = true # change to false to disable inclusion of rawHTML and math functions
     xhtml = false
 
 [params]
@@ -69,5 +69,5 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 # please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way.
 
-enforceLightMode = false 
+enforceLightMode = false
 # enforceDarkMode = false

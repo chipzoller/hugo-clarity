@@ -13,11 +13,19 @@ DefaultContentLanguage = "en"
 [languages]
   [languages.en]
     weight = 1
+  [languages.pt]
+    weight = 2
 
+# This is not automatically translated, you must include manually
 [taxonomies]
+#-- en
 category = "categories"
 tag = "tags"
 series = "series"
+#-- pt
+categoria = "categorias"
+etiqueta = "etiquetas"
+"série" = "séries"
 
 
 [markup]

@@ -24,3 +24,6 @@ other = "We couldn't find the page you're looking for"
 
 [go_back]
 other = "Go Back"
+
+[translations]
+other = "Translations"

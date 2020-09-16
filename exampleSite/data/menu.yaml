@@ -12,3 +12,9 @@
       link: https://twitter.com/
 - name: About
   link: about/
+- name: 🌐
+  submenu:
+    - name: English
+      link: /en
+    - name: Português
+      link: /pt

@@ -24,3 +24,6 @@ other = "Não foi possível encontrar esta página"
 
 [go_back]
 other = "Voltar"
+
+[translations]
+other = "Traduções"

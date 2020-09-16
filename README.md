@@ -200,7 +200,7 @@ The number of tags and taxonomies (including categories) that should be shown ca
 ```yaml
 [params]
 ...
-numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
+numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 ...
 ```
 
@@ -262,7 +262,7 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 
 #### Add classes to images
 
-To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`. 
+To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
 
 #### Image class example
 
@@ -384,7 +384,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
 
-> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
+> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass)
 
 ## I would like my site to load in X-Mode (light/dark) by default.
 

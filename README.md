@@ -34,6 +34,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Code](#code)
   * [Table of contents](#table-of-contents)
   * [Custom CSS and JS](#custom-css-and-js)
+  * [Forcing light or dark mode](#forcing-light-or-dark-mode)
 
 ## Features
 
@@ -275,7 +276,6 @@ To add a class image to the left, append `::<classname>` to its alt text. You ca
 ![some alt text::img-large img-shadow](someOtherImageUrl)
 ```
 
-
 #### Article thumbnail image
 
 Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They will be specified using a frontmatter variable as follows:
@@ -386,21 +386,23 @@ customJS = ["js/custom.js"] # Include custom JS files
 
 > __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass)
 
-## I would like my site to load in X-Mode (light/dark) by default.
+### Forcing light or dark mode
 
-On default, sites authored using this theme will load using the system-wide settings. i.e if your mac/pc os is set to darkmode/lightmode.
+By default, sites authored using Clarity will load in the browser with the user's system-wide settings. I.e., if the underlying OS is set to dark mode, the site will automatically load in dark mode. Regardless of the default mode, a UI control switch exists to override the theme mode at the user's discretion.
 
-From issue #36
->  users who visit your site using this theme will experience dark/light depending on their system settings.
+In order to override this behavior and force one mode or another, add either `enforceLightMode` or `enforceDarkMode` to your `config.toml` file. If neither value is present, add it.
 
-Other than that, there's a UI control which users can use to switch to the mode they like.
-
-> ⚠️ Look for the values mentioned in this section in your `config.toml` file. If there are not there, add them under `[params]`
-
-To enforce Light Mode by default, turn `enforceLightMode`  to `true`
+To enforce Light Mode by default, turn `enforceLightMode`  to `true`.
 
 To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
 
-Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?.
+```yaml
+[params]
+...
+enforceLightMode = true # Force the site to always load in light mode.
+...
+```
 
-> ⚠️ Please also note that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way. Best of both worlds
+Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?
+
+> ⚠️ Please also note that the mode toggle UI will remain in place. That way, if a user prefers dark mode, they can have their way. The best of both worlds.

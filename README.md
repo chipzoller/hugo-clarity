@@ -34,6 +34,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Code](#code)
   * [Table of contents](#table-of-contents)
   * [Custom CSS and JS](#custom-css-and-js)
+  * [Internationalization - I18N](#i18n)
 
 ## Features
 
@@ -385,6 +386,25 @@ customJS = ["js/custom.js"] # Include custom JS files
 ```
 
 > __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
+
+
+### I18N
+
+This theme supports Multilingual (i18n / internationalization / translations)
+
+The `exampleSite` gives you some examples already. 
+You may extend the multilingual functionality by following the [official documentation](https://gohugo.io/content-management/multilingual/).
+
+Things to consider in multilingual:
+- **supported languages** are configured in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml)
+- **add new language support** by creating a new file inside [i18n](./i18n/) directory.  
+  Check for missing translations using `hugo server --i18n-warnings`
+- **taxonomies** names (tags, categories, etc...) are translated in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml) as well
+- **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
+- **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
+- **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
+
+
 
 ## I would like my site to load in X-Mode (light/dark) by default.
 

@@ -11,15 +11,13 @@ weight = 0
 
 DefaultContentLanguage = "en"
 # [languages]
-# config/_default/language.toml
+# config/_default/languages.toml
 
-[menus]
-#-- Default: en # override this for each language inside [language.xx.Menus]
-
-
+# [menus]
+# config/_default/menus/menu.xx.toml
 
 [taxonomies]
-#-- Default: en # override this for each language inside [language.xx.Taxonomies]
+#-- Default: en # override this for each language inside config/_default/languages.toml
 category = "categories"
 tag = "tags"
 series = "series"
@@ -90,4 +88,4 @@ enforceLightMode = false
 # enforceDarkMode = false
 
 # Text for the languages menu.
-languageMenuName="🌐"
+languageMenuName = "🌐"

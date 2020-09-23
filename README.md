@@ -34,6 +34,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Code](#code)
   * [Table of contents](#table-of-contents)
   * [Custom CSS and JS](#custom-css-and-js)
+  * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
 
 ## Features
@@ -156,7 +157,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 
 ### Modify links menu
 
-To add, remove, or reorganize top menu items, [edit this TOML file](./exampleSite/config/_default/menus/menu.en.toml). Also modify the respective translation, if using translations.
+To add, remove, or reorganize top menu items, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml). These menu items also display any categories (taxonomies) that might be configured for articles.
 
 ### Social media
 
@@ -201,7 +202,7 @@ The number of tags and taxonomies (including categories) that should be shown ca
 ```yaml
 [params]
 ...
-numberOfTagsShownPerArticle = 4 # Applies for categories & custom taxonomies. e.g brands
+numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 ...
 ```
 
@@ -387,6 +388,26 @@ customJS = ["js/custom.js"] # Include custom JS files
 
 > __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
 
+### Forcing light or dark mode
+
+By default, sites authored using Clarity will load in the browser with the user's system-wide settings. I.e., if the underlying OS is set to dark mode, the site will automatically load in dark mode. Regardless of the default mode, a UI control switch exists to override the theme mode at the user's discretion.
+
+In order to override this behavior and force one mode or another, add either `enforceLightMode` or `enforceDarkMode` to your `config.toml` file. If neither value is present, add it.
+
+To enforce Light Mode by default, turn `enforceLightMode`  to `true`.
+
+To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
+
+```yaml
+[params]
+...
+enforceLightMode = true # Force the site to always load in light mode.
+...
+```
+
+Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?
+
+> ⚠️ Please also note that the mode toggle UI will remain in place. That way, if a user prefers dark mode, they can have their way. The best of both worlds.
 
 ### I18N
 
@@ -404,23 +425,3 @@ Things to consider in multilingual:
 - **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 - **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
-
-
-## I would like my site to load in X-Mode (light/dark) by default.
-
-On default, sites authored using this theme will load using the system-wide settings. i.e if your mac/pc os is set to darkmode/lightmode.
-
-From issue #36
->  users who visit your site using this theme will experience dark/light depending on their system settings.
-
-Other than that, there's a UI control which users can use to switch to the mode they like.
-
-> ⚠️ Look for the values mentioned in this section in your `config.toml` file. If there are not there, add them under `[params]`
-
-To enforce Light Mode by default, turn `enforceLightMode`  to `true`
-
-To enforce Dark Mode by default, turn `enforceDarkMode`  to `true`
-
-Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?.
-
-> ⚠️ Please also note that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way. Best of both worlds

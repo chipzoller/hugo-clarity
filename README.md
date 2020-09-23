@@ -155,7 +155,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 
 ### Modify links menu
 
-To add, remove, or reorganize top menu items, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml). These menu items also display any categories (taxonomies) that might be configured for articles.
+To add, remove, or reorganize top menu items, [edit this TOML file](./exampleSite/config/_default/menus/menu.en.toml). Also modify the respective translation, if using translations.
 
 ### Social media
 

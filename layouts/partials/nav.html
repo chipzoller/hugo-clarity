@@ -3,7 +3,7 @@
 {{ $logo := $params.logo }}
 <header class = 'nav_header' >
   <nav class = 'nav'>
-    <a href='{{ absURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
+    <a href='{{ absLangURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
       {{- with $logo }}
       <img src="{{ absURL . }}" class="logo">
       {{- else }}
@@ -22,20 +22,33 @@
     </a>
     <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{- $link := .RelPermalink }}
-      {{- range .Site.Data.menu }}
-      <div class = 'nav_parent{{ if eq .link $link }} nav_active{{ end}}'>
-        <a href = '{{ absURL .link }}' class = 'nav_item'>{{ .name }} {{ with .submenu }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
-        {{- with .submenu }}
+      {{- range .Site.Menus.main }}
+      <div class = 'nav_parent{{ if eq .URL $link }} nav_active{{ end}}'>
+        <a href = '{{ absLangURL .URL }}' class = 'nav_item'>{{ .Name }} {{ if .HasChildren }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
+        {{- if .HasChildren }}
         <div class = 'nav_sub'>
-          {{- range . }}
-          <a href = '{{ absURL .link }}' class = 'nav_child nav_item'>{{ .name }}</a>
+          {{- range .Children }}
+          <a href = '{{ absLangURL .URL }}' class = 'nav_child nav_item'>{{ .Name }}</a>
           {{- end }}
         </div>
         {{- end }}
       </div>
       {{- end }}
+
+      {{ if .Site.IsMultiLingual }}
+      <div class = 'nav_parent'>
+        <a href="#" class = 'nav_item'>{{ .Site.Params.languageMenuName }}</a>
+        <div class = 'nav_sub'>
+          {{ range .Site.Home.AllTranslations }}
+          <a href = '{{ .Permalink }}' class = 'nav_child nav_item'>{{ .Language.LanguageName }}</a>
+          <div style="display: none;">  {{range .Site.Languages }}  {{printf "%+#v\n\n" .}} {{end}}</div>
+          {{ end }}
+        </div>
+      </div>
+      {{end}}
+        
       {{- if eq $centerLogo true }}
-      <a href='{{ absURL "" }}' class = 'nav_brand nav_center nav_item'>
+      <a href='{{ absLangURL "" }}' class = 'nav_brand nav_center nav_item'>
         <img src="{{ absURL $logo }}" class="logo">
       </a>
       {{- end }}

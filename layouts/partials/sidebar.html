@@ -30,7 +30,7 @@
     {{ range $key, $value := .Site.Taxonomies }}
     {{ if gt $value 0 }}
     <div>
-      <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ $key }}</h2>
+      <h2 class="mt-4 taxonomy" id="{{ $key }}-section">{{ i18n $key }}</h2>
       <nav class="tags_nav">
         {{- $onPageTags := $.Page.Params.tags }}
         {{- $slicedTags := ($value.ByCount | first $numberOfTagsLimit) }}

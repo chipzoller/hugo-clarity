@@ -27,3 +27,12 @@ other = "Voltar"
 
 [translations]
 other = "Traduções"
+
+[categories]
+other = "Categorias"
+
+[tags]
+other = "Etiquetas"
+
+[series]
+other = "Séries"

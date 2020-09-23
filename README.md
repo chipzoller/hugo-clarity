@@ -420,7 +420,7 @@ Things to consider in multilingual:
 - **supported languages** are configured in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml)
 - **add new language support** by creating a new file inside [i18n](./i18n/) directory.  
   Check for missing translations using `hugo server --i18n-warnings`
-- **taxonomies** names (tags, categories, etc...) are translated in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml) as well
+- **taxonomies** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
 - **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
 - **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 - **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.

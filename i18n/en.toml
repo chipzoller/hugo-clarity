@@ -27,3 +27,12 @@ other = "Go Back"
 
 [translations]
 other = "Translations"
+
+[categories]
+other = "Categories"
+
+[tags]
+other = "Tags"
+
+[series]
+other = "Series"

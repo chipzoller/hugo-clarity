@@ -1,15 +1,15 @@
 +++
 author = "Hugo Authors"
 title = "Guia de Sintaxe Markdown"
-date = "2019-03-11"
+date = "2019-02-11"
 description = "Um artigo simples para demonstrar a sintaxe básica de Markdown e como formatar elementos HTML."
 featured = true
 etiquetas = [
-    "markdown",
-    "css",
-    "html",
-    "temas",
-    "destacado"
+  "markdown",
+  "css",
+  "html",
+  "temas",
+  "destacado"
 ]
 categorias = [
     "temas",

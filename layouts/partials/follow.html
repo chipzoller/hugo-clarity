@@ -3,7 +3,7 @@
   {{- range $items }}
   {{- $url := .url }}
   {{- if .internal }}
-  {{ $url = absURL .url }}
+  {{ $url = absLangURL .url }}
   {{- end }}
   <a href='{{ $url }}'>
     <svg class="icon">

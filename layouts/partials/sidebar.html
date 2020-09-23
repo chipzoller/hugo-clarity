@@ -5,7 +5,7 @@
     <div>
       {{ .Site.Params.IntroDescription }}
     </div>
-    <a href = '{{ absURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
+    <a href = '{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
     <h2 class="mt-4">{{ i18n "featured_posts" }}</h2>
     <ul>
     {{ range where .Site.RegularPages "Params.featured" true }}
@@ -35,7 +35,7 @@
         {{- $onPageTags := $.Page.Params.tags }}
         {{- $slicedTags := ($value.ByCount | first $numberOfTagsLimit) }}
         {{- range $slicedTags }}
-        <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
+        <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent">
           {{ upper .Name }}
           <span class='button_tally'>{{ .Count }}</span>
         </a>
@@ -48,7 +48,7 @@
           <div class="tags_list">
             {{- range $value.Alphabetical }}
             {{ $tagsInfo.Add "tagsInfo" (slice .Name .Count)}}
-            <a href='{{ absURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent" data-position={{ .Count }}>
+            <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent" data-position={{ .Count }}>
               {{- upper .Name -}}
               <span class='button_tally'>{{ .Count }}</span>
             </a>

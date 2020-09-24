@@ -22,6 +22,21 @@
     </a>
     <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{- $link := .RelPermalink }}
+      {{ $menuData := .Site.Data.menu }}
+      {{ with $menuData }}
+      {{- range . }}
+      <div class = 'nav_parent{{ if eq .link $link }} nav_active{{ end}}'>
+        <a href = '{{ absURL .link }}' class = 'nav_item'>{{ .name }} {{ with .submenu }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
+        {{- with .submenu }}
+        <div class = 'nav_sub'>
+          {{- range . }}
+          <a href = '{{ absURL .link }}' class = 'nav_child nav_item'>{{ .name }}</a>
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+      {{- end }}
+      {{- else }}
       {{- range .Site.Menus.main }}
       <div class = 'nav_parent{{ if eq .URL $link }} nav_active{{ end}}'>
         <a href = '{{ absLangURL .URL }}' class = 'nav_item'>{{ .Name }} {{ if .HasChildren }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
@@ -34,7 +49,7 @@
         {{- end }}
       </div>
       {{- end }}
-
+      {{- end }}
       {{ if .Site.IsMultiLingual }}
       <div class = 'nav_parent'>
         <a href="#" class = 'nav_item'>{{ .Site.Params.languageMenuName }}</a>
@@ -46,7 +61,7 @@
         </div>
       </div>
       {{end}}
-        
+
       {{- if eq $centerLogo true }}
       <a href='{{ absLangURL "" }}' class = 'nav_brand nav_center nav_item'>
         <img src="{{ absURL $logo }}" class="logo">

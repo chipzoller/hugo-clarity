@@ -2,11 +2,6 @@ timeout = 30000
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
-
 [privacy]
 
 [privacy.vimeo]

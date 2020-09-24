@@ -8,6 +8,19 @@ copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all r
 paginate = 10
 theme = "hugo-clarity"
 
+DefaultContentLanguage = "en"
+# [languages]
+# config/_default/languages.toml
+
+# [menus]
+# config/_default/menus/menu.xx.toml
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+
 [markup]
   [markup.highlight]
     codeFences = true
@@ -71,3 +84,6 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 enforceLightMode = false
 # enforceDarkMode = false
+
+# Text for the languages menu.
+languageMenuName = "🌐"

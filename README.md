@@ -35,6 +35,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Table of contents](#table-of-contents)
   * [Custom CSS and JS](#custom-css-and-js)
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
+  * [Internationalization - I18N](#i18n)
 
 ## Features
 
@@ -263,7 +264,7 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 
 #### Add classes to images
 
-To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
+To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`. 
 
 #### Image class example
 
@@ -275,6 +276,7 @@ To add a class image to the left, append `::<classname>` to its alt text. You ca
 
 ![some alt text::img-large img-shadow](someOtherImageUrl)
 ```
+
 
 #### Article thumbnail image
 
@@ -384,7 +386,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
 
-> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass)
+> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass) 
 
 ### Forcing light or dark mode
 
@@ -406,3 +408,20 @@ enforceLightMode = true # Force the site to always load in light mode.
 Please note that you cannot enforce both modes at the same time. It wouldn't make sense, would it?
 
 > ⚠️ Please also note that the mode toggle UI will remain in place. That way, if a user prefers dark mode, they can have their way. The best of both worlds.
+
+### I18N
+
+This theme supports Multilingual (i18n / internationalization / translations)
+
+The `exampleSite` gives you some examples already. 
+You may extend the multilingual functionality by following the [official documentation](https://gohugo.io/content-management/multilingual/).
+
+Things to consider in multilingual:
+- **supported languages** are configured in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml)
+- **add new language support** by creating a new file inside [i18n](./i18n/) directory.  
+  Check for missing translations using `hugo server --i18n-warnings`
+- **taxonomies** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
+- **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
+- **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
+- **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
+

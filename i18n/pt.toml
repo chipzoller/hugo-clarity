@@ -36,3 +36,12 @@ other = "Etiquetas"
 
 [series]
 other = "Séries"
+
+[all_categories]
+other = "Todas as Categorias"
+
+[all_tags]
+other = "Todas as Etiquetas"
+
+[all_series]
+other = "Todas as Séries"

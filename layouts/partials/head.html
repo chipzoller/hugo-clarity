@@ -1,4 +1,4 @@
-  <title>{{ if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}{{ if eq .Kind "taxonomy" }}{{ i18n (lower .Title) }}{{ else }}{{ .Title }}{{ end }} | {{ end }}{{ .Site.Title }}</title>
+  <title>{{ if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}{{ if eq .Kind "taxonomy" }}{{ i18n (lower .Title) }}{{ else }}{{ .Title }}{{ end }} {{ default "|" .Site.Params.titleSeparator }} {{ end }}{{ .Site.Title }}</title>
   <meta charset='utf-8'>
   {{ hugo.Generator }}
   {{- with .Site.Params.ga_verify }}

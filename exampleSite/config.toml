@@ -87,3 +87,6 @@ enforceLightMode = false
 
 # Text for the languages menu.
 languageMenuName = "🌐"
+
+# Title separator, default to |.
+# titleSeparator = "|"

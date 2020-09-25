@@ -132,6 +132,7 @@ These options set global values that some pages or all pages in the site use by 
 | customJS | array of file path (string) | no |
 | enforceLightMode | boolean | N/A |
 | enforceDarkMode | boolean | N/A |
+| titleSeparator| string | no |
 
 ### Page Parameters
 

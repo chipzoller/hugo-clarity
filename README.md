@@ -36,6 +36,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Custom CSS and JS](#custom-css-and-js)
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
+  * [Hooks](#hooks)
 
 ## Features
 
@@ -425,3 +426,19 @@ Things to consider in multilingual:
 * **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
 * **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
+
+### Hooks
+
+Clarity provides some hooks for adding code on page.
+
+If you need to add some code(CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
+
+```
+layouts/partials/hooks/head-end.html
+```
+
+Similar, if you want to add some code right before the body end, create your own version of the following file:
+
+```
+layouts/partials/hooks/body-end.html
+```

@@ -21,6 +21,7 @@
     {{ .TableOfContents }}
     {{ end }}
     {{- .Content }}
+    {{ partial "comments" . }}
   </article>
   {{- partial "sidebar" . }}
 </div>

@@ -2,7 +2,7 @@
 const doc = document.documentElement;
 const inline = ":inline";
 // variables read from your hugo configuration
-const parentURL = '{{ absLangURL "" }}';
+const parentURL = '{{ absURL "" }}';
 let showImagePosition = "{{ .Site.Params.figurePositionShow }}";
 
 const showImagePositionLabel = '{{ .Site.Params.figurePositionLabel }}';

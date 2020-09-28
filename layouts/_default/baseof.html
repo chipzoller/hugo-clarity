@@ -41,7 +41,7 @@
 	  <link rel="stylesheet" href="{{ . | relURL }}">
     {{- end }}
     {{- end }}
-	  
+    {{ partial "hooks/head-end.html" . }}
   </head>
   {{- $maxCodeLines := 100 }}
   {{- $params := .Site.Params }}
@@ -76,5 +76,6 @@
     <script type="text/javascript" src="{{ . | relURL }}" ></script>
     {{- end }}
     {{- end }}
+    {{ partial "hooks/body-end.html" . }}
   </body>
 </html>

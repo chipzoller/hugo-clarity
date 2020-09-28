@@ -21,7 +21,9 @@
     {{ .TableOfContents }}
     {{ end }}
     {{- .Content }}
-    {{ partial "comments" . }}
+    {{ if and ( ne .Site.Params.comment false ) ( ne .Params.comment false ) }}
+      {{ partial "comments" . }}
+    {{ end }}
   </article>
   {{- partial "sidebar" . }}
 </div>

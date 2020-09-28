@@ -37,6 +37,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
   * [Hooks](#hooks)
+  * [Comments](#comments)
 
 ## Features
 
@@ -134,6 +135,7 @@ These options set global values that some pages or all pages in the site use by 
 | enforceLightMode | boolean | N/A |
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
+| comment | boolean | no |
 
 ### Page Parameters
 
@@ -156,6 +158,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | codeLineNumbers | boolean | yes |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
+| comment | boolean | no |
 
 ### Modify links menu
 
@@ -442,3 +445,9 @@ Similar, if you want to add some code right before the body end, create your own
 ```
 layouts/partials/hooks/body-end.html
 ```
+
+### Comments
+
+Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by setting `disqusShortname` in your configuration file.
+
+You can also override `layouts/partials/comments.html` to customize the your comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.

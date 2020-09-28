@@ -36,6 +36,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Custom CSS and JS](#custom-css-and-js)
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
+  * [Comments](#comments)
 
 ## Features
 
@@ -133,6 +134,7 @@ These options set global values that some pages or all pages in the site use by 
 | enforceLightMode | boolean | N/A |
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
+| comment | boolean | no |
 
 ### Page Parameters
 
@@ -155,6 +157,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | codeLineNumbers | boolean | yes |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
+| comment | boolean | no |
 
 ### Modify links menu
 
@@ -425,3 +428,9 @@ Things to consider in multilingual:
 * **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
 * **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
+
+### Comments
+
+Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by setting `disqusShortname` in your configuration file.
+
+You can also override `layouts/partials/comments.html` to customize the your comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.

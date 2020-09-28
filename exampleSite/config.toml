@@ -90,3 +90,6 @@ languageMenuName = "🌐"
 
 # Title separator, default to |.
 # titleSeparator = "|"
+
+# Enable or disable comment globally. Default to true.
+# comment = false

@@ -28,6 +28,9 @@
   {{- $image = absURL .  }}
 {{- end }}
 <meta property = "og:locale" content = "{{ .Lang }}" />
+{{ range .Translations }}
+<meta property="og:locale:alternate" content="{{ .Lang }}" />
+{{ end }}
 {{- if .IsHome }}
 <meta property="og:type" content="website">
 {{- else }}

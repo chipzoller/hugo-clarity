@@ -1,7 +1,5 @@
 <div class="post_meta">
-  <svg class="icon">
-    <use xlink:href="#calendar"></use>
-  </svg>
+  {{ partial "sprite" (dict "icon" "calendar")  }}
   <span class="post_date">
     {{ .Date.Format "Jan 2, 2006" -}}
   </span>

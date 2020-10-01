@@ -6,9 +6,7 @@
   {{ $url = absLangURL .url }}
   {{- end }}
   <a href="{{ $url }}">
-    <svg class="icon">
-      <use xlink:href="#{{ .item }}"></use>
-    </svg>
+    {{ partial "sprite" (dict "icon" .item)  }}
   </a>
   {{- end }}
   {{- partial "mode" . }}

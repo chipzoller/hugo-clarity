@@ -27,7 +27,7 @@
 {{- with .Params.shareImage }}
   {{- $image = absURL .  }}
 {{- end }}
-<meta property = "og:locale" content = "{{ .Lang }}" />
+<meta property="og:locale" content="{{ .Lang }}" />
 {{ range .Translations }}
 <meta property="og:locale:alternate" content="{{ .Lang }}" />
 {{ end }}
@@ -37,18 +37,18 @@
 <meta property="og:type" content="article">
 {{- end }}
 <meta name="description" content="{{ $summary }}">
-<meta name = "twitter:card" content = "{{ if $params.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
-<meta name = "twitter:creator" content = "{{ $params.twitter }}">
-<meta name = "twitter:title" content = "{{ .Title }}" />
-<meta property = "og:url" content = "{{ $permalink }}" />
-<meta property = "og:title" content = "{{ $title }}" />
-<meta property = "og:description" content = "{{ $summary }}" />
-<meta property = "og:image" content = "{{ $image }}" />
+<meta name="twitter:card" content="{{ if $params.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
+<meta name="twitter:creator" content="{{ $params.twitter }}">
+<meta name="twitter:title" content="{{ .Title }}" />
+<meta property="og:url" content="{{ $permalink }}" />
+<meta property="og:title" content="{{ $title }}" />
+<meta property="og:description" content="{{ $summary }}" />
+<meta property="og:image" content="{{ $image }}" />
 {{- if eq .Section $params.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}
   {{- $lastMod := (time .Lastmod) }}
-  <script type = "application/ld+json">
+  <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "BlogPosting",

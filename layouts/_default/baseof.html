@@ -36,7 +36,7 @@
 
     <!-- styles file -->
     <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
-    {{- with .Site.Params.customCSS }}
+    {{- with $params.customCSS }}
     {{- range . -}}
 	  <link rel="stylesheet" href="{{ . | relURL }}">
     {{- end }}
@@ -69,9 +69,8 @@
     </main>
     {{- partial "icons" }}
     {{- partial "footer" . }}
-    <script type="text/javascript" src = "{{ $bundle.Permalink }}" integrity=
-    "{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- with .Site.Params.customJS }}
+    <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- with $params.customJS }}
     {{- range . -}}
     <script type="text/javascript" src="{{ . | relURL }}" ></script>
     {{- end }}

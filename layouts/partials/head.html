@@ -1,14 +1,14 @@
   <title>{{ if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}{{ if eq .Kind "taxonomy" }}{{ i18n (lower .Title) }}{{ else }}{{ .Title }}{{ end }} {{ default "|" .Site.Params.titleSeparator }} {{ end }}{{ .Site.Title }}</title>
-  <meta charset='utf-8'>
+  <meta charset="utf-8">
   {{ hugo.Generator }}
   {{- with .Site.Params.ga_verify }}
-  <meta name="google-site-verification" content="{{ . }}" />
+  <meta name="google-site-verification" content="{{ . }}">
   {{- end }}
-  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-  <meta http-equiv = 'X-UA-Compatible' content = 'IE=edge'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {{- if (ne hugo.Environment "development") }}
-  {{- partial "analytics.html" . }}
+  {{- partial "analytics" . }}
   {{- end }}
-  {{- partial "opengraph.html" . }}
-  {{- partial "favicon.html" . }}
-  <link rel='canonical' href='{{ .Permalink }}'>
+  {{- partial "opengraph" . }}
+  {{- partial "favicon" . }}
+  <link rel="canonical" href="{{ .Permalink }}">

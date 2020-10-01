@@ -7,14 +7,14 @@
 {{- end }}
 {{- $image := $scratch.Get "image" }}
 {{- $bg := (path.Join "images" $image | absLangURL) }}
-<div class = 'grid-inverse wrap content'>
-  <article class='post_content'>
+<div class="grid-inverse wrap content">
+  <article class="post_content">
     {{- partial "i18nlist" . }}
-    <h1 class='post_title'>{{ .Title }}</h1>
+    <h1 class="post_title">{{ .Title }}</h1>
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
     {{ with .Params.featureImage }}
-    <img src = '{{ . }}' class="image_featured">
+    <img src="{{ . }}" class="image_featured">
     {{ end }}
     {{ if .Params.toc }}
     <h2>Overview</h2>

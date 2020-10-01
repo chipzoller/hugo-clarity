@@ -1,4 +1,4 @@
-<div class = 'post_meta'>
+<div class="post_meta">
   <svg class="icon">
     <use xlink:href="#calendar"></use>
   </svg>
@@ -8,7 +8,7 @@
   {{- with .Params.tags -}}
   {{- range . }}
   {{- $tag := . | urlize }}
-  <a href = '{{ absLangURL (printf "tags/%s" $tag) }}' class = 'post_tag button button_translucent'>
+  <a href='{{ absLangURL (printf "tags/%s" $tag) }}' class="post_tag button button_translucent">
     {{- . }}
   </a>
   {{- end }}

@@ -2,8 +2,8 @@
 {{ if .IsHome }}
   {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ end }}
-<div class='grid-inverse wrap content'>
-  <ul class='posts' id = 'posts'>
+<div class="grid-inverse wrap content">
+  <ul class="posts" id="posts">
     {{- range (.Paginate $pages).Pages }}
       {{ partial "excerpt" . }}
     {{- end }}

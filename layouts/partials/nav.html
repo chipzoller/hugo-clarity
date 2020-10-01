@@ -1,15 +1,15 @@
 {{- $params := .Site.Params }}
 {{- $centerLogo := $params.centerLogo }}
 {{ $logo := $params.logo }}
-<header class = 'nav_header' >
-  <nav class = 'nav'>
-    <a href='{{ absLangURL "" }}' class = 'nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}'>
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
       {{- with $logo }}
       <img src="{{ absURL . }}" class="logo">
       {{- else }}
         {{ .Site.Title }}
       {{- end }}
-      <div class = 'nav_close'>
+      <div class="nav_close">
         <div>
           <svg class="icon">
             <use xlink:href="#open-menu"></use>
@@ -20,17 +20,17 @@
         </div>
       </div>
     </a>
-    <div class = 'nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
+    <div class='nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{- $link := .RelPermalink }}
       {{ $menuData := .Site.Data.menu }}
       {{ with $menuData }}
       {{- range . }}
-      <div class = 'nav_parent{{ if eq .link $link }} nav_active{{ end}}'>
-        <a href = '{{ absURL .link }}' class = 'nav_item'>{{ .name }} {{ with .submenu }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
+      <div class="nav_parent{{ if eq .link $link }} nav_active{{ end}}">
+        <a href="{{ absURL .link }}" class="nav_item">{{ .name }} {{ with .submenu }}<img src='{{ absURL "icons/caret-icon.svg" }}' alt="icon" class="nav_icon">{{ end }}</a>
         {{- with .submenu }}
-        <div class = 'nav_sub'>
+        <div class="nav_sub">
           {{- range . }}
-          <a href = '{{ absURL .link }}' class = 'nav_child nav_item'>{{ .name }}</a>
+          <a href="{{ absURL .link }}" class="nav_child nav_item">{{ .name }}</a>
           {{- end }}
         </div>
         {{- end }}
@@ -38,12 +38,12 @@
       {{- end }}
       {{- else }}
       {{- range .Site.Menus.main }}
-      <div class = 'nav_parent{{ if eq .URL $link }} nav_active{{ end}}'>
-        <a href = '{{ absLangURL .URL }}' class = 'nav_item'>{{ .Name }} {{ if .HasChildren }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
+      <div class="nav_parent{{ if eq .URL $link }} nav_active{{ end}}">
+        <a href="{{ absLangURL .URL }}" class="nav_item">{{ .Name }} {{ if .HasChildren }}<img src= {{ absURL "icons/caret-icon.svg" }} alt="icon" class="nav_icon">{{ end }}</a>
         {{- if .HasChildren }}
-        <div class = 'nav_sub'>
+        <div class="nav_sub">
           {{- range .Children }}
-          <a href = '{{ absLangURL .URL }}' class = 'nav_child nav_item'>{{ .Name }}</a>
+          <a href="{{ absLangURL .URL }}" class="nav_child nav_item">{{ .Name }}</a>
           {{- end }}
         </div>
         {{- end }}
@@ -51,19 +51,19 @@
       {{- end }}
       {{- end }}
       {{ if .Site.IsMultiLingual }}
-      <div class = 'nav_parent'>
-        <a href="#" class = 'nav_item'>{{ .Site.Params.languageMenuName }}</a>
-        <div class = 'nav_sub'>
+      <div class="nav_parent">
+        <a href="#" class="nav_item">{{ .Site.Params.languageMenuName }}</a>
+        <div class="nav_sub">
           {{ range .Site.Home.AllTranslations }}
-          <a href = '{{ .Permalink }}' class = 'nav_child nav_item'>{{ .Language.LanguageName }}</a>
-          <div style="display: none;">  {{range .Site.Languages }}  {{printf "%+#v\n\n" .}} {{end}}</div>
+          <a href="{{ .Permalink }}" class="nav_child nav_item">{{ .Language.LanguageName }}</a>
+          <div class="hidden">  {{range .Site.Languages }}  {{printf "%+#v\n\n" .}} {{end}}</div>
           {{ end }}
         </div>
       </div>
       {{end}}
 
       {{- if eq $centerLogo true }}
-      <a href='{{ absLangURL "" }}' class = 'nav_brand nav_center nav_item'>
+      <a href='{{ absLangURL "" }}' class="nav_brand nav_center nav_item">
         <img src="{{ absURL $logo }}" class="logo">
       </a>
       {{- end }}

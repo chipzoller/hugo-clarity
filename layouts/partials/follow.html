@@ -5,7 +5,7 @@
   {{- if .internal }}
   {{ $url = absLangURL .url }}
   {{- end }}
-  <a href='{{ $url }}'>
+  <a href="{{ $url }}">
     <svg class="icon">
       <use xlink:href="#{{ .item }}"></use>
     </svg>

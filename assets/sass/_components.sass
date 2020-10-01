@@ -1,3 +1,10 @@
+%upcaret
+  width: 0
+  height: 0
+  border-left: 0.5rem solid transparent
+  border-right: 0.5rem solid transparent
+  top: -0.5rem
+  left: 1rem
 .nav
   color: $haze
   display: flex
@@ -25,8 +32,9 @@
     padding: 0.5rem 1rem
     display: inline-flex
     align-items: center
-
   &_sub
+    width: 100%
+    left: 0
     position: absolute
     z-index: 20
     border-radius: 0 0 0.5rem 0.5rem 
@@ -36,26 +44,58 @@
     overflow: hidden
     padding: 0.96rem 0 0
     background: transparent
-  
+
   &_parent
     position: relative
     display: flex
     align-items: center
     margin: 0.25rem 0
     border-radius: 0.5rem
-  
+
+  &_open + &_sub &_child
+    padding-top: 0.5rem
+    padding-bottom: 0.5rem
+    z-index: 3
+    &:not(:first-child)
+      position: relative
+    &:first-child::before
+      position: absolute
+      content: ""
+      @extend %upcaret
+      border-bottom: 0.5rem solid var(--translucent-light)
+      z-index: 2
   &_open + &_sub
     height: initial
     z-index: 999
-    @media screen and (min-width: 769px) 
-      background-color: $bg
-      min-width: 20.5rem
-      box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.17)
+    color: var(--text)
+    overflow: initial
+    border-radius: 0.5rem
+    padding-bottom: 0.5rem
+    &::before, &::after
+      content: ""
+      position: absolute
+    &::before
+      @extend %upcaret
+      border-bottom: 0.5rem solid var(--choice-bg)
+      z-index: 1
+    &::after
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background: var(--translucent-light)
+      border-radius: 0.5rem
+    @media screen and (min-width: 769px)
+      background: var(--choice-bg)
+      width: auto
+      white-space: nowrap;
+      box-shadow: 0 0.5rem 2rem var(--translucent)
   &_open &_icon
     transform: rotate(180deg)
 
   &_sub &_item
-    position: relative
+    &:not(.nav_child)
+      position: relative
     z-index: 5
     display: block
     padding-top: 0.75rem

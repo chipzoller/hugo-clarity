@@ -18,6 +18,7 @@
     <a href="{{ $url }}" class="nav_item">{{ $name }} {{ with $children }}<img src='{{ absURL "icons/caret-icon.svg" }}' alt="icon" class="nav_icon">{{ end }}</a>
     {{- with $children }}
     <div class="nav_sub">
+      <span class="nav_child"></span>
       {{- range . }}
         {{- if eq $menu $menuData }}
           {{- $name = .name }}

@@ -399,6 +399,10 @@ function fileClosure(){
         const hasSubNav = hasNext ? hasNext.matches(`.${navSub}`) : null;
         if (hasSubNav) {
           event.preventDefault();
+          Array.from(thisItem.parentNode.parentNode.children).forEach(function(item){
+            const targetItem = item.firstElementChild;
+             targetItem != thisItem ? deleteClass(targetItem, showSub) : false;
+          });
           modifyClass(thisItem, showSub);
         }
       }

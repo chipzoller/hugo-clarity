@@ -22,8 +22,9 @@
     </a>
     <div class='nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
       {{ $context := . }}
+      {{ $menuData := .Site.Data.menu }}
       {{ with $menuData }}
-        {{ partial "nav" (dict "context" $context "menu" .Site.Data.menu) }}
+        {{ partial "nav" (dict "context" $context "menu" $menuData) }}
       {{- else }}
         {{ partial "nav" (dict "context" . "menu" .Site.Menus.main) }}
       {{- end }}

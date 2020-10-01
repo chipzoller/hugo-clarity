@@ -430,6 +430,13 @@ Things to consider in multilingual:
 * **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
+**note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations. 
+In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this onliner:
+
+```
+sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
+``` 
+
 ### Hooks
 
 Clarity provides some hooks for adding code on page.

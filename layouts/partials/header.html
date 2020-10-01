@@ -21,14 +21,11 @@
       </div>
     </a>
     <div class='nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
-      {{- $link := .RelPermalink }}
-      {{ $menuData := .Site.Data.menu }}
-      {{ $siteMenu := .Site.Menus.main }}
       {{ $context := . }}
       {{ with $menuData }}
-      {{ partial "nav" (dict "context" $context "menu" $menuData) }}
+        {{ partial "nav" (dict "context" $context "menu" .Site.Data.menu) }}
       {{- else }}
-      {{ partial "nav" (dict "context" . "menu" $siteMenu) }}
+        {{ partial "nav" (dict "context" . "menu" .Site.Menus.main) }}
       {{- end }}
       {{ if .Site.IsMultiLingual }}
       <div class="nav_parent">

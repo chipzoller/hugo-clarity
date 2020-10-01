@@ -1,0 +1,53 @@
+{{- $params := .Site.Params }}
+{{- $centerLogo := $params.centerLogo }}
+{{ $logo := $params.logo }}
+<header class="nav_header" >
+  <nav class="nav">
+    <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
+      {{- with $logo }}
+      <img src="{{ absURL . }}" class="logo">
+      {{- else }}
+        {{ .Site.Title }}
+      {{- end }}
+      <div class="nav_close">
+        <div>
+          <svg class="icon">
+            <use xlink:href="#open-menu"></use>
+          </svg>
+          <svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg>
+        </div>
+      </div>
+    </a>
+    <div class='nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
+      {{- $link := .RelPermalink }}
+      {{ $menuData := .Site.Data.menu }}
+      {{ $siteMenu := .Site.Menus.main }}
+      {{ $context := . }}
+      {{ with $menuData }}
+      {{ partial "nav" (dict "context" $context "menu" $menuData) }}
+      {{- else }}
+      {{ partial "nav" (dict "context" . "menu" $siteMenu) }}
+      {{- end }}
+      {{ if .Site.IsMultiLingual }}
+      <div class="nav_parent">
+        <a href="#" class="nav_item">{{ .Site.Params.languageMenuName }}</a>
+        <div class="nav_sub">
+          {{ range .Site.Home.AllTranslations }}
+          <a href="{{ .Permalink }}" class="nav_child nav_item">{{ .Language.LanguageName }}</a>
+          <div class="hidden">  {{range .Site.Languages }}  {{printf "%+#v\n\n" .}} {{end}}</div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{- if eq $centerLogo true }}
+      <a href='{{ absLangURL "" }}' class="nav_brand nav_center nav_item">
+        <img src="{{ absURL $logo }}" class="logo">
+      </a>
+      {{- end }}
+      {{- partial "follow" . }}
+    </div>
+  </nav>
+</header>

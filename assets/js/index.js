@@ -450,6 +450,16 @@ function fileClosure(){
     })
   })();
 
+  (function shareViaLinkedin() {
+    doc.addEventListener('click', function(event){
+      const linkedin = '.linkedin';
+      const target = event.target;
+      if(target.matches(linkedin) || target.closest(linkedin)) {
+        window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(window.location.href), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+      }
+    });
+  })();
+
   // add new code above this line
 }
 

@@ -35,7 +35,6 @@
           <span class="nav_child"></span>
           {{ range .Site.Home.AllTranslations }}
           <a href="{{ .Permalink }}" class="nav_child nav_item">{{ .Language.LanguageName }}</a>
-          <div class="hidden">  {{range .Site.Languages }}  {{printf "%+#v\n\n" .}} {{end}}</div>
           {{ end }}
         </div>
       </div>

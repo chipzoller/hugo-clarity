@@ -1,8 +1,8 @@
 %upcaret
   width: 0
   height: 0
-  border-left: 0.5rem solid transparent
-  border-right: 0.5rem solid transparent
+  border-left: 0.33rem solid transparent
+  border-right: 0.33rem solid transparent
   top: -0.5rem
   left: 1rem
 .nav
@@ -55,9 +55,10 @@
   &_open + &_sub &_child
     padding-top: 0.5rem
     padding-bottom: 0.5rem
-    & + a
-      padding-top: 0
     z-index: 3
+    & + a
+      @media screen and (min-width: 769px)
+        padding-top: 0
     &:not(:first-child)
       position: relative
     &:first-child::before
@@ -69,17 +70,19 @@
   &_open + &_sub
     height: initial
     z-index: 999
-    color: var(--text)
     overflow: initial
     border-radius: 0.5rem
     padding-bottom: 0.5rem
+    @media screen and (min-width: 769px)
+      color: var(--text)
     &::before, &::after
       content: ""
       position: absolute
     &::before
       @extend %upcaret
-      border-bottom: 0.5rem solid var(--choice-bg)
       z-index: 1
+      @media screen and (min-width: 769px)
+        border-bottom: 0.5rem solid var(--choice-bg)
     &::after
       top: 0
       left: 0
@@ -106,7 +109,7 @@
     margin: 0
 
   &_brand
-    img 
+    img
       max-width: 15rem
       margin: 0
     @media screen and (min-width: 769px)

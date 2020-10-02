@@ -22,7 +22,7 @@
     {{ end }}
     {{- .Content }}
     {{ if and ( ne .Site.Params.comment false ) ( ne .Params.comment false ) }}
-      {{ template "_internal/disqus.html" . }}
+      {{ partial "comments" . }}
     {{ end }}
   </article>
   {{- partial "sidebar" . }}

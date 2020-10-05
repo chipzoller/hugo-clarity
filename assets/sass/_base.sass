@@ -6,6 +6,7 @@
 
 body, html
   scroll-behavior: smooth
+  -webkit-text-size-adjust: 100%
   font-kerning: normal
   -webkit-font-feature-settings: "kern" 1
   text-rendering: optimizeLegibility
@@ -23,11 +24,11 @@ body
   max-width: 1920px
   margin: 0 auto
   position: relative
-  font-kerning: normal
   display: flex
   flex-direction: column
   justify-content: space-between
   min-height: 100vh
+  font-kerning: normal
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 a
@@ -133,6 +134,7 @@ tbody
 
 blockquote
   margin: 25px auto
+  quotes: '\201C''\201D''\2018''\2019'
   padding: 1.5rem
   color: #555555
   padding: 1rem 1.5rem

@@ -234,10 +234,12 @@ function fileClosure(){
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
 
-      altArr[1]?.split(' ').filter(Boolean).forEach(cls =>{
-        pushClass(image, cls);
-        alt = altArr[0]
-      })
+      if (altArr.length > 1) {
+        altArr[1].split(' ').filter(Boolean).forEach(cls =>{
+          pushClass(image, cls);
+          alt = altArr[0]
+        })
+      }
 
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);

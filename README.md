@@ -106,6 +106,8 @@ hugo server --themesDir ../..
 
 This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain in your website.
 
+Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install).
+
 ```bash
 git clone https://github.com/chipzoller/hugo-clarity.git clarity
 cd clarity/exampleSite/
@@ -119,9 +121,7 @@ Hurray you can now run
 hugo server
 ```
 
-> There's one drawback to this technique. Your site will always use the most up-to-date version of the theme. This might break your site if there are substantial / breaking changes that you don't like.
-
-You can work around this forking the repo instead and following the same approach. Be sure the edit `theme = ["github.com/chipzoller/hugo-clarity"]` from the config.toml file to `theme = ["github.com/yourUsername/hugo-clarity"]`.
+To pull in theme updates, run `hugo mod get -u ./...` from the theme folder. If unsure, [learn how to update hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
 
 > There [is more you could do with hugo modules](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758), but this will suffice for our use case here.
 

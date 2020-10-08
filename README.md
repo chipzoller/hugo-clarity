@@ -102,9 +102,32 @@ hugo server --themesDir ../..
 
 > Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
 
-Once set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
+### Option 3 (The new, most fun & painless approach)
+
+This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain in your website.
+
+```bash
+git clone https://github.com/chipzoller/hugo-clarity.git clarity
+cd clarity/exampleSite/
+hugo mod init my-site
+```
+Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
+
+Hurray you can now run
+
+```yaml
+hugo server
+```
+
+> There's one drawback to this technique. Your site will always use the most up-to-date version of the theme. This might break your site if there are substantial / breaking changes that you don't like.
+
+You can work around this forking the repo instead and following the same approach. Be sure the edit `theme = ["github.com/chipzoller/hugo-clarity"]` from the config.toml file to `theme = ["github.com/yourUsername/hugo-clarity"]`.
+
+> There [is more you could do with hugo modules](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758), but this will suffice for our use case here.
 
 ## Configuration
+
+If set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
 
 This section will mainly cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 
@@ -423,19 +446,19 @@ You may extend the multilingual functionality by following the [official documen
 Things to consider in multilingual:
 
 * **supported languages** are configured in [config/_default/languages.toml](./exampleSite/config/_default/languages.toml)
-* **add new language support** by creating a new file inside [i18n](./i18n/) directory.  
+* **add new language support** by creating a new file inside [i18n](./i18n/) directory.
   Check for missing translations using `hugo server --i18n-warnings`
 * **taxonomy** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
 * **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
 * **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
-**note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations. 
+**note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
 In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this onliner:
 
 ```
 sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
-``` 
+```
 
 ### Hooks
 

@@ -1,4 +1,3 @@
-{{ $title := .Title }}
 <aside class="sidebar">
   <section class="sidebar_inner">
     <h2>{{ .Site.Params.Author }}</h2>
@@ -6,24 +5,24 @@
       {{ .Site.Params.IntroDescription }}
     </div>
     <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
+    {{- $numberOfFeaturedPosts := default 8 .Site.Params.numberOfFeaturedPosts }}
+    {{- with first $numberOfFeaturedPosts (where (where .Site.RegularPages "Params.featured" true) "File.UniqueID" "!=" .File.UniqueID) }}
     <h2 class="mt-4">{{ i18n "featured_posts" }}</h2>
     <ul>
-    {{ range where .Site.RegularPages "Params.featured" true }}
-     {{- if ne $title .Title }}
-      <li>
-        <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
-      </li>
-    {{- end }}
-    {{ end }}
-    </ul>
-    <h2 class="mt-4">{{ i18n "recent_posts" }}</h2>
-    <ul class="flex-column">
-      {{ range first 8 (where (where .Site.RegularPages "Type" "in" site.Params.mainSections) ".Params.hidden" "!=" true) }}
-      {{- if ne $title .Title }}
+      {{- range . }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
       </li>
       {{- end }}
+    </ul>
+    {{- end }}
+    <h2 class="mt-4">{{ i18n "recent_posts" }}</h2>
+    <ul class="flex-column">
+      {{- $numberOfRecentPosts := default 8 .Site.Params.numberOfRecentPosts }}
+      {{- range first $numberOfRecentPosts (where (where (where .Site.RegularPages "Type" "in" site.Params.mainSections) ".Params.hidden" "!=" true) "File.UniqueID" "!=" .File.UniqueID) }}
+      <li>
+        <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
+      </li>
       {{- end }}
     </ul>
     {{- $numberOfTagsLimit := $.Site.Params.numberOfTagsShown }} <!-- See config -->

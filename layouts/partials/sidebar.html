@@ -5,15 +5,18 @@
       {{ .Site.Params.IntroDescription }}
     </div>
     <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
+    {{- $numberOfFeaturedPosts := default 8 .Site.Params.numberOfFeaturedPosts }}
+    {{- $featuredPosts := first $numberOfFeaturedPosts (where (where .Site.RegularPages "Params.featured" true) "File.UniqueID" "!=" .File.UniqueID) }}
+    {{- if $featuredPosts }}
     <h2 class="mt-4">{{ i18n "featured_posts" }}</h2>
     <ul>
-      {{- $numberOfFeaturedPosts := default 8 .Site.Params.numberOfFeaturedPosts }}
-      {{- range first $numberOfFeaturedPosts (where (where .Site.RegularPages "Params.featured" true) "File.UniqueID" "!=" .File.UniqueID) }}
+      {{- range $featuredPosts }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
       </li>
       {{- end }}
     </ul>
+    {{- end }}
     <h2 class="mt-4">{{ i18n "recent_posts" }}</h2>
     <ul class="flex-column">
       {{- $numberOfRecentPosts := default 8 .Site.Params.numberOfRecentPosts }}

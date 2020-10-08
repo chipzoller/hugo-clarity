@@ -18,12 +18,11 @@
     </ul>
     <h2 class="mt-4">{{ i18n "recent_posts" }}</h2>
     <ul class="flex-column">
-      {{ range first 8 (where (where .Site.RegularPages "Type" "in" site.Params.mainSections) ".Params.hidden" "!=" true) }}
-      {{- if ne $title .Title }}
+      {{- $numberOfRecentPosts := default 8 .Site.Params.numberOfRecentPosts }}
+      {{- range first $numberOfRecentPosts (where (where (where .Site.RegularPages "Type" "in" site.Params.mainSections) ".Params.hidden" "!=" true) "File.UniqueID" "!=" .File.UniqueID) }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
       </li>
-      {{- end }}
       {{- end }}
     </ul>
     {{- $numberOfTagsLimit := $.Site.Params.numberOfTagsShown }} <!-- See config -->

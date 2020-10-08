@@ -136,6 +136,7 @@ These options set global values that some pages or all pages in the site use by 
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
 | comment | boolean | no |
+| numberOfRecentPosts | integer | no |
 
 ### Page Parameters
 

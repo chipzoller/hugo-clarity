@@ -8,13 +8,12 @@
     <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
     <h2 class="mt-4">{{ i18n "featured_posts" }}</h2>
     <ul>
-    {{ range where .Site.RegularPages "Params.featured" true }}
-     {{- if ne $title .Title }}
+      {{- $numberOfFeaturedPosts := default 8 .Site.Params.numberOfFeaturedPosts }}
+      {{- range first $numberOfFeaturedPosts (where (where .Site.RegularPages "Params.featured" true) "File.UniqueID" "!=" .File.UniqueID) }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
       </li>
-    {{- end }}
-    {{ end }}
+      {{- end }}
     </ul>
     <h2 class="mt-4">{{ i18n "recent_posts" }}</h2>
     <ul class="flex-column">

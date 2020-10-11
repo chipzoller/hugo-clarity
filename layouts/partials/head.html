@@ -1,23 +1,24 @@
-  {{- $titleSeparator := default "|" .Site.Params.titleSeparator }}
-  {{- $title := "" }}
-  {{- if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}
+{{- $params := .Site.Params }}
+{{- $separator := default "|" $params.titleSeparator }}
+{{- $title := "" }}
+{{- if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}
   {{- if eq .Kind "taxonomy" }}
-  {{- $title = default .Title ( i18n (lower .Title) ) }}
+    {{- $title = default .Title ( i18n (lower .Title) ) }}
   {{- else }}
-  {{- $title = .Title }}
+    {{- $title = .Title }}
   {{- end }}
-  {{- end }}
-  <title>{{ if $title }}{{ $title }} {{ $titleSeparator }} {{ end }}{{ .Site.Title }}</title>
-  <meta charset="utf-8">
-  {{ hugo.Generator }}
-  {{- with .Site.Params.ga_verify }}
+{{- end }}
+<title>{{ with $title }}{{ . }} {{ $separator }} {{ end }}{{ .Site.Title }}</title>
+<meta charset="utf-8">
+{{ hugo.Generator }}
+{{- with $params.ga_verify }}
   <meta name="google-site-verification" content="{{ . }}">
-  {{- end }}
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  {{- if (ne hugo.Environment "development") }}
+{{- end }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{{- if (ne hugo.Environment "development") }}
   {{- partial "analytics" . }}
-  {{- end }}
-  {{- partial "opengraph" . }}
-  {{- partial "favicon" . }}
-  <link rel="canonical" href="{{ .Permalink }}">
+{{- end }}
+{{- partial "opengraph" . }}
+{{- partial "favicon" . }}
+<link rel="canonical" href="{{ .Permalink }}">

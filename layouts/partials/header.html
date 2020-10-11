@@ -11,12 +11,8 @@
       {{- end }}
       <div class="nav_close">
         <div>
-          <svg class="icon">
-            <use xlink:href="#open-menu"></use>
-          </svg>
-          <svg class="icon">
-            <use xlink:href="#closeme"></use>
-          </svg>
+          {{ partial "sprite" (dict "icon" "open-menu") }}
+          {{ partial "sprite" (dict "icon" "closeme") }}
         </div>
       </div>
     </a>

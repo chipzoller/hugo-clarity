@@ -1,30 +1,31 @@
-{{- $summary := .Summary | truncate 160 }}
-{{- with .Params.description }}
-  {{- $summary = (. | truncate 160) }}
+{{- $summary := truncate 160 .Summary }}
+{{- $s := .Site.Params }}
+{{- $p := .Params }}
+{{- with $p.description }}
+  {{- $summary = truncate 160 . }}
 {{- end }}
-{{- $params := .Site.Params }}
 {{- if .IsHome }}
-  {{- $summary = $params.description }}
-  {{- with .Params.description }}
+  {{- $summary = $s.description }}
+  {{- with $p.description }}
     {{- $summary = . }}
   {{- end }}
 {{- end }}
 {{- $site := .Site.Title }}
 {{- $title := .Title }}
 {{- $permalink := .Permalink }}
-{{- $logo := absURL $params.logo }}
-{{- $author := $params.author }}
-{{- with .Params.author }}
+{{- $logo := absURL $s.logo }}
+{{- $author := $s.author }}
+{{- with $p.author }}
   {{ $author := . }}
 {{- end }}
-{{- $image := absURL $params.fallBackOgImage }}
-{{- with .Params.featureImage }}
+{{- $image := absURL $s.fallBackOgImage }}
+{{- with $p.featureImage }}
   {{- $image = absURL .  }}
 {{- end }}
-{{- with .Params.thumbnail }}
+{{- with $p.thumbnail }}
   {{- $image = absURL .  }}
 {{- end }}
-{{- with .Params.shareImage }}
+{{- with $p.shareImage }}
   {{- $image = absURL .  }}
 {{- end }}
 <meta property="og:locale" content="{{ .Lang }}" />
@@ -37,14 +38,14 @@
 <meta property="og:type" content="article">
 {{- end }}
 <meta name="description" content="{{ $summary }}">
-<meta name="twitter:card" content="{{ if $params.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
-<meta name="twitter:creator" content="{{ $params.twitter }}">
+<meta name="twitter:card" content="{{ if $s.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
+<meta name="twitter:creator" content="{{ $s.twitter }}">
 <meta name="twitter:title" content="{{ .Title }}" />
 <meta property="og:url" content="{{ $permalink }}" />
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />
 <meta property="og:image" content="{{ $image }}" />
-{{- if eq .Section $params.blogDir -}}
+{{- if eq .Section $s.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}
   {{- $lastMod := (time .Lastmod) }}

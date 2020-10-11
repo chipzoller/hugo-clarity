@@ -1,14 +1,14 @@
 <div class="post_meta">
-  {{ partial "sprite" (dict "icon" "calendar")  }}
+  {{ partial "sprite" (dict "icon" "calendar") }}
   <span class="post_date">
     {{ .Date.Format "Jan 2, 2006" -}}
   </span>
   {{- with .Params.tags -}}
-  {{- range . }}
-  {{- $tag := . | urlize }}
-  <a href='{{ absLangURL (printf "tags/%s" $tag) }}' class="post_tag button button_translucent">
-    {{- . }}
-  </a>
+    {{- range . }}
+    {{- $tag := urlize . }}
+    <a href='{{ absLangURL (printf "tags/%s" $tag) }}' class="post_tag button button_translucent">
+      {{- . }}
+    </a>
   {{- end }}
   {{- end }}
 </div>

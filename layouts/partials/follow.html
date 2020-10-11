@@ -3,10 +3,10 @@
   {{- range $items }}
   {{- $url := .url }}
   {{- if .internal }}
-  {{ $url = absLangURL .url }}
+    {{ $url = absLangURL .url }}
   {{- end }}
   <a href="{{ $url }}">
-    {{ partial "sprite" (dict "icon" .item)  }}
+    {{ partial "sprite" (dict "icon" .item) }}
   </a>
   {{- end }}
   {{- partial "mode" . }}

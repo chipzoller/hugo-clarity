@@ -1,6 +1,7 @@
-{{- $params := .Site.Params }}
+{{- $s := .Site.Params }}
+{{- $p := .Params }}
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" data-figures="{{ .Params.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ with $params.enforceLightMode }} data-mode="lit"{{ end }}{{ with $params.enforceDarkMode }} data-mode="dim"{{ end }}>
+<html lang="{{ .Lang }}" data-figures="{{ $p.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ with $s.enforceLightMode }} data-mode="lit"{{ end }}{{ with $s.enforceDarkMode }} data-mode="dim"{{ end }}>
   <head>
     {{- partial "head" . }}
     <!-- styles definition-->
@@ -36,29 +37,28 @@
 
     <!-- styles file -->
     <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
-    {{- with $params.customCSS }}
+    {{- with $s.customCSS }}
     {{- range . -}}
-	  <link rel="stylesheet" href="{{ . | relURL }}">
+	  <link rel="stylesheet" href="{{ relURL . }}">
     {{- end }}
     {{- end }}
     {{ partial "hooks/head-end.html" . }}
   </head>
   {{- $maxCodeLines := 100 }}
-  {{- $params := .Site.Params }}
-  {{- with $params.codeMaxLines }}
+  {{- with $s.codeMaxLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
-  {{- with .Params.codeMaxLines }}
+  {{- with $p.codeMaxLines }}
     {{- $maxCodeLines = . }}
   {{- end }}
   {{- $codeLineNumbers := false }}
-  {{ with $params.codeLineNumbers }}
+  {{ with $s.codeLineNumbers }}
     {{- $codeLineNumbers = . }}
   {{ end }}
-  {{ with .Params.codeLineNumbers }}
+  {{ with $p.codeLineNumbers }}
     {{- $codeLineNumbers = . }}
     {{ else }}
-    {{ if eq .Params.codeLineNumbers false }}
+    {{ if eq $p.codeLineNumbers false }}
       {{- $codeLineNumbers = false }}
     {{ end }}
   {{ end }}
@@ -70,9 +70,9 @@
     {{- partial "icons" }}
     {{- partial "footer" . }}
     <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- with $params.customJS }}
+    {{- with $s.customJS }}
     {{- range . -}}
-    <script type="text/javascript" src="{{ . | relURL }}" ></script>
+    <script type="text/javascript" src="{{ relURL . }}" ></script>
     {{- end }}
     {{- end }}
     {{ partial "hooks/body-end.html" . }}

@@ -6,7 +6,7 @@
       {{ $s.IntroDescription }}
     </div>
     <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ i18n "read_more" }}</a>
-    {{- $posts := where (where .Site.RegularPages "File.UniqueID" "!=" .File.UniqueID) "Type" "in" $s.mainSections }}
+    {{- $posts := where (where .Site.RegularPages "Permalink" "!=" .Permalink) "Type" "in" $s.mainSections }}
     {{- $featured := default 8 $s.numberOfFeaturedPosts }}
     {{- with first $featured (where $posts "Params.featured" true)}}
     <h2 class="mt-4">{{ i18n "featured_posts" }}</h2>

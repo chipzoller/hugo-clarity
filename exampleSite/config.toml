@@ -104,3 +104,6 @@ languageMenuName = "🌐"
 
 # Maximum number of featured posts.
 # numberOfFeaturedPosts = 8
+
+# Date format. Checkout https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference for details.
+# dateFormat = "2006-01-02" # Default to "Jan 2, 2006".

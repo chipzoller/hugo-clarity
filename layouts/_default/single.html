@@ -9,7 +9,7 @@
 {{- $bg := (path.Join "images" $image | absLangURL) }}
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    {{ partial "breadcrumb" . }}
+    {{- partial "breadcrumb" . }}
     {{- partial "i18nlist" . }}
     <h1 class="post_title">{{ .Title }}</h1>
     {{- partial "post-meta" . }}

@@ -1,6 +1,8 @@
+{{ if ne .Site.Params.breadcrumb false }}
 <ol class="breadcrumb">
     {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
 </ol>
+{{ end }}
 {{ define "breadcrumbnav" }}
 {{ if .p1.Parent }}
 {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}

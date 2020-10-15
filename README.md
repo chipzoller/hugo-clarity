@@ -162,6 +162,7 @@ These options set global values that some pages or all pages in the site use by 
 | numberOfRecentPosts | integer | no |
 | numberOfFeaturedPosts | integer | no |
 | dateFormat | string | no |
+| breadcrumb | boolean | no |
 
 ### Page Parameters
 

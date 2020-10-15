@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ $pages := .Pages }}
+<div class="grid-inverse wrap content">
+  <div>
+    <h1>{{ default .Title (i18n (lower .Title)) }}</h1>
+    <div>
+      {{ range .Data.Terms.ByCount }}
+      <a href="{{ .Page.Permalink }}" class="post_tag button button_translucent">
+        {{ .Page.Title }}
+        <span class="button_tally">{{ .Count }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{- partial "sidebar" . }}
+</div>
+{{ end }}

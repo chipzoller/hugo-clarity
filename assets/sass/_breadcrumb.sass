@@ -1,0 +1,18 @@
+ol.breadcrumb
+  padding: .75rem 1rem
+  list-style: none
+  background-color: rgba(0,119,184,0.15)
+    color: #0077b8
+  border-radius: .25rem 
+  li
+    display: inline
+    & + li
+      &:before
+        padding: .5rem
+        color: #6c757d
+        content: "/"
+    a
+      color: #0275d8
+      text-decoration: none
+      &:hover
+        text-decoration: underline

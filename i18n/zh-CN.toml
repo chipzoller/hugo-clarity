@@ -1,0 +1,47 @@
+[read_more]
+other = "阅读更多"
+
+[copyright]
+other = "Copyright"
+
+[all_rights]
+other = "All Rights Reserved"
+
+[share_on]
+other = "分享到"
+
+[featured_posts]
+other = "精选文章"
+
+[recent_posts]
+other = "最新文章"
+
+[404_title]
+other = "页面不见了"
+
+[could_not_find]
+other = "页面不存在或已被删除"
+
+[go_back]
+other = "返回"
+
+[translations]
+other = "翻译"
+
+[categories]
+other = "分类"
+
+[tags]
+other = "标签"
+
+[series]
+other = "专栏"
+
+[all_categories]
+other = "所有分类"
+
+[all_tags]
+other = "所有标签"
+
+[all_series]
+other = "所有专栏"

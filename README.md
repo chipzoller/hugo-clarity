@@ -261,6 +261,8 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 
 ![Here is my alt text for this image.](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
 
+> NOTE: Alt text with double quotes will produce broken HTML per limitations with Markdown. It is recommended to omit any quotations from your alt text.
+
 #### Inline images
 
 To make a blog image inline, append `:inline` to its alt text. Typically, inline images will have no alt text associated with them.

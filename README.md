@@ -162,6 +162,7 @@ These options set global values that some pages or all pages in the site use by 
 | numberOfRecentPosts | integer | no |
 | numberOfFeaturedPosts | integer | no |
 | dateFormat | string | no |
+| enableMathNotation | boolean | yes |
 
 ### Page Parameters
 
@@ -185,6 +186,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
 | comment | boolean | no |
+| enableMathNotation | boolean | yes |
 
 ### Modify links menu
 

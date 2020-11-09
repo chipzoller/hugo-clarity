@@ -64,6 +64,8 @@ codeMaxLines = 7
 # disable showing line numbers by default. Switch to `true` if you'd rather have them on.
 codeLineNumbers = false 
 
+# enable math notation. Swith to `true` to enable mathjax in your site.
+enableMathNotation = false
 
 # directory(s) where your articles are located
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections

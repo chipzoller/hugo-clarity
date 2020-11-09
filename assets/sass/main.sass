@@ -1,6 +1,9 @@
 @import 'variables'
 @import 'override'
+// include static fonts only when they're not overriden
+{{- if ne .Site.Params.customFonts true }}
 @import 'fonts'
+{{- end }}
 @import 'base'
 @import 'components'
 @import 'utils'

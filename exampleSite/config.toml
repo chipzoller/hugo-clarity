@@ -56,13 +56,13 @@ ga_analytics = "XXXXXXXXXX"
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 
 # will be used on share >> twitter, facebook, linkedin
-fallBackOgImage = "images/thumbnail.png" 
+fallBackOgImage = "images/thumbnail.png"
 
 # sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable.
 codeMaxLines = 7
 
 # disable showing line numbers by default. Switch to `true` if you'd rather have them on.
-codeLineNumbers = false 
+codeLineNumbers = false
 
 # enable math notation. Swith to `true` to enable mathjax in your site.
 enableMathNotation = false
@@ -109,3 +109,4 @@ languageMenuName = "🌐"
 
 # Date format. Checkout https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference for details.
 # dateFormat = "2006-01-02" # Default to "Jan 2, 2006".
+# customFonts = false # toggle to true if you want to use custom fonts only.

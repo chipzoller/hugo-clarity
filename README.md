@@ -163,6 +163,7 @@ These options set global values that some pages or all pages in the site use by 
 | numberOfFeaturedPosts | integer | no |
 | dateFormat | string | no |
 | enableMathNotation | boolean | yes |
+| customFonts | boolean | no |
 
 ### Page Parameters
 
@@ -499,7 +500,7 @@ If you need to add some code(CSS import, HTML meta or similar) to the head secti
 layouts/partials/hooks/head-end.html
 ```
 
-Similar, if you want to add some code right before the body end, create your own version of the following file:
+Similar, if you want to add some code right before the body end (e.g fonts' links), create your own version of the following file:
 
 ```
 layouts/partials/hooks/body-end.html

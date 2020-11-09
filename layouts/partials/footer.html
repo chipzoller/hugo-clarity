@@ -1,3 +1,7 @@
+{{ if or .Params.enableMathNotation .Site.Params.enableMathNotation }}
+{{ partial "math.html" . }}
+{{ end }}
+
 <footer class="footer">
   <div class="footer_inner wrap pale">
     <img src='{{ absURL "icons/apple-touch-icon.png" }}' class="icon icon_2 transparent">

@@ -408,7 +408,15 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 To minimize HTTP requests per page, we would recommend loading CSS styles and JavaScript helpers in single bundles. That is to say, one CSS file and one JavaScript file. Using Hugo minify functions, these files will be minified to optimize the size.
 
-Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via [this custom SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass) and [custom JavaScript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via these files:
+
+1. [override SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
+    This file should only be used to override sass & css variables e.g theme colors
+2. [custom SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
+    This file should only be used to except override everything else except sass & css variables.
+3 .[custom JavaScript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+
+> __Pro Tip__: to ensure that your changes are git trackeable, create `assets/sass/override.sass`,`assets/sass/custom.sass` and `assets/js/custom.js` outside the theme directory. That is, at the root level of your site's directory.
 
 However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to the `static` directory.
 
@@ -419,8 +427,6 @@ customCSS = ["css/custom.css"] # Include custom CSS files
 customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
-
-> __Pro Tip__: You can change the theme colors via the [this variable's SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_variables.sass)
 
 ### Forcing light or dark mode
 

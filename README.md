@@ -410,11 +410,11 @@ To minimize HTTP requests per page, we would recommend loading CSS styles and Ja
 
 Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via these files:
 
-1. [override SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
+1. [`_override.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
     This file should only be used to override sass & css variables e.g theme colors
-2. [custom SASS file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
+2. [`_custom.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
     This file should only be used to except override everything else except sass & css variables.
-3 .[custom JavaScript file](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+3 .[`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
 > __Pro Tip__: to ensure that your changes are git trackeable, create `assets/sass/override.sass`,`assets/sass/custom.sass` and `assets/js/custom.js` outside the theme directory. That is, at the root level of your site's directory.
 

@@ -414,9 +414,25 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
     This file should only be used to override sass & css variables e.g theme colors
 2. [`_custom.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
     This file should only be used to except override everything else except sass & css variables.
-3 .[`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
+3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-> __Pro Tip__: to ensure that your changes are git trackeable, create `assets/sass/override.sass`,`assets/sass/custom.sass` and `assets/js/custom.js` outside the theme directory. That is, at the root level of your site's directory.
+> __Pro Tip__: to ensure that your changes are git trackeable, create these files outside the theme directory. That is, at the root level of your site's directory. see tree below
+
+```
+├── yourSite
+│   ├── archetypes
+│   │   └── post.md
+│   ├── assets
+│   │   ├── js
+│   │   │   └── custom.js
+│   │   └── sass
+│   │       ├── _custom.sass
+│   │       └── _override.sass
+├── config.toml
+│   ├── configTaxo.toml
+│   ├── content
+│   │   ├── _index.md
+```
 
 However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to the `static` directory.
 

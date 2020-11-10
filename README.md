@@ -414,10 +414,10 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
 1. [`_override.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_override.sass).
     This file should only be used to override sass & css variables e.g theme colors
 2. [`_custom.sass`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/sass/_custom.sass).
-    This file should only be used to except override everything else except sass & css variables.
+    This file should only be used to override everything else except sass & css variables.
 3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-> __Pro Tip__: to ensure that your changes are git trackeable, create these files outside the theme directory. That is, at the root level of your site's directory. see tree below
+> __Pro Tip__: Ensure that your changes are git trackeable by creating these  files outside the theme directory. That is, at the root level of your site's directory. see tree below
 
 ```
 ├── yourSite

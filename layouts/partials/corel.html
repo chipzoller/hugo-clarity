@@ -1,0 +1,24 @@
+<div id="coral_thread"></div>
+<script type="text/javascript">
+  var coral_url = {{ .Site.Params.corel }}
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://' + coral_url + '/assets/js/embed.js';
+      s.onload = function() {
+          Coral.createStreamEmbed({
+              id: "coral_thread",
+              autoRender: true,
+              rootURL: 'https://' + coral_url,
+              // Uncomment these lines and replace with the ID of the
+              // story's ID and URL from your CMS to provide the
+              // tightest integration. Refer to our documentation at
+              // https://docs.coralproject.net for all the configuration
+              // options.
+              // storyID: '${storyID}',
+              // storyURL: '${storyURL}',
+          });
+      };
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the comments powered by <a href="https://coralproject.net/">Coral</a>.</noscript> 

@@ -43,6 +43,11 @@ series = "series"
     tabWidth = 2
 
 [params]
+## Commento - comment engine
+#commento = "example.com"
+## Corel - commento engine
+#corel = "example.com"
+
 author = "Jane Doe"
 twitter = "@janedoe"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image

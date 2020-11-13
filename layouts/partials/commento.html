@@ -1,0 +1,10 @@
+<div id="commento"></div>
+<script defer>
+    var commento_url = {{ .Site.Params.commento }};
+    (function() {
+        var d = document, s = d.createElement('script');
+            s.src = 'https://' + commento_url + '/js/commento.js';
+            (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.</noscript>

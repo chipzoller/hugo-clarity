@@ -1,1 +1,9 @@
+{{ if (.Site.DisqusShortname) }}
 {{ template "_internal/disqus.html" . }}
+{{ end }}
+{{ if ($.Param "commento") }}
+{{ partial "commento.html" . }}
+{{ end }}
+{{ if ($.Param "corel") }}
+{{ partial "corel.html" . }}
+{{ end }}

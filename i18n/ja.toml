@@ -1,0 +1,47 @@
+[read_more]
+other = "続きを読む"
+
+[copyright]
+other = "Copyright"
+
+[all_rights]
+other = "All Rights Reserved"
+
+[share_on]
+other = "共有する"
+
+[featured_posts]
+other = "イチオシ記事"
+
+[recent_posts]
+other = "最近の記事"
+
+[404_title]
+other = "ありません"
+
+[could_not_find]
+other = "お探しのページが見つかりませんでした。"
+
+[go_back]
+other = "戻る"
+
+[translations]
+other = "翻訳"
+
+[categories]
+other = "カテゴリー"
+
+[tags]
+other = "タグ"
+
+[series]
+other = "シリーズ"
+
+[all_categories]
+other = "すべてのカテゴリー"
+
+[all_tags]
+other = "すべてのタグ"
+
+[all_series]
+other = "すべてのシリーズ"

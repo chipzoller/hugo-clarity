@@ -513,3 +513,31 @@ Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by s
 > ⚠️ `disqusShortname` should be placed in root level of configuration.
 
 You can also create a file named `layouts/partials/comments.html` for customizing the comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
+
+
+### Math notation
+
+Clarity uses [KaTeX](https://katex.org/) for math type setting if `enableMathNotation` is set to `true` in global or page parameters (the latter takes precedence).
+
+Also see [supported TeX commands in KaTeX](https://katex.org/docs/supported.html).
+
+If you want chemical typesetting provided by the [`mhchem`](https://mhchem.github.io/MathJax-mhchem/) extension, first copy `themes/clarity/layouts/partials/math.html` to `layouts/partials/math.html`:
+
+```bash
+mkdir -p layouts/partials && cp themes/clarity/layouts/partials/math.html layouts/partials/math.html
+```
+
+Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/tree/master/contrib/mhchem) suggested:
+
+```diff
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
++ <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.min.js" integrity="sha384-5gCAXJ0ZgozlShOzzT0OWArn7yCPGWVIvgo+BAd8NUKbCmulrJiQuCVR9cHlPHeG" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+```
+
+The added line should be _before_ `auto-render.min.js` and _after_ `katex.min.js`.

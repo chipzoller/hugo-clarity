@@ -113,6 +113,7 @@ git clone https://github.com/chipzoller/hugo-clarity.git clarity
 cd clarity/exampleSite/
 hugo mod init my-site
 ```
+
 Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
 
 Hurray you can now run
@@ -135,7 +136,7 @@ This section will mainly cover settings that are unique to this theme. If someth
 
 These options set global values that some pages or all pages in the site use by default.
 
-| Parameter | Value Type | Overidable on Page |
+| Parameter | Value Type | Overridable on Page |
 |:---- | ---- | ---- |
 | author | string | no |
 | twitter | string | no |
@@ -327,7 +328,7 @@ The thumbnail image will take precedence on opengraph share tags if the [shareIm
 
 #### Article featured image
 
-Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumnail is not specified, the featured image will be used as a fallback on opengraph share tags.
+Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumbnail is not specified, the featured image will be used as a fallback on opengraph share tags.
 
 ```yaml
 ...
@@ -417,7 +418,7 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
     This file should only be used to override everything else except sass & css variables.
 3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-> __Pro Tip__: Ensure that your changes are git trackeable by creating these  files outside the theme directory. That is, at the root level of your site's directory. see tree below
+> __Pro Tip__: Ensure that your changes are git trackable by creating these  files outside the theme directory. That is, at the root level of your site's directory. see tree below
 
 ```
 ├── yourSite
@@ -484,7 +485,7 @@ Things to consider in multilingual:
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
 **note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
-In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this onliner:
+In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this one-liner:
 
 ```
 sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
@@ -513,7 +514,6 @@ Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by s
 > ⚠️ `disqusShortname` should be placed in root level of configuration.
 
 You can also create a file named `layouts/partials/comments.html` for customizing the comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
-
 
 ### Math notation
 

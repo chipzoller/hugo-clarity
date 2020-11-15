@@ -43,6 +43,8 @@ function hasClasses(el) {
   const codeBlocks = elems('code');
   if(codeBlocks) {
     codeBlocks.forEach(function(codeBlock){
+          // Fix for orgmode inline code, leave 'verbatim' alone as well
+          containsClass(codeBlock, 'verbatim') ? pushClass(codeBlock, 'noClass') :false;
       hasClasses(codeBlock) ? false: pushClass(codeBlock, 'noClass');
     });
   }

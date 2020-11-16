@@ -38,6 +38,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Internationalization - I18N](#i18n)
   * [Hooks](#hooks)
   * [Comments](#comments)
+  * [Math notation](#math-notation)
 
 ## Features
 
@@ -521,13 +522,14 @@ Clarity uses [KaTeX](https://katex.org/) for math type setting if `enableMathNot
 
 Also see [supported TeX commands in KaTeX](https://katex.org/docs/supported.html).
 
-If you want chemical typesetting provided by the [`mhchem`](https://mhchem.github.io/MathJax-mhchem/) extension, first copy `themes/clarity/layouts/partials/math.html` to `layouts/partials/math.html`:
+If you want chemical typesetting provided by the [`mhchem`](https://mhchem.github.io/MathJax-mhchem/) extension, first copy `[site]/themes/clarity/layouts/partials/math.html` to `[site]/layouts/partials/math.html`:
 
 ```bash
+# cd /path/to/site
 mkdir -p layouts/partials && cp themes/clarity/layouts/partials/math.html layouts/partials/math.html
 ```
 
-Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/tree/master/contrib/mhchem) suggested:
+Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/tree/master/contrib/mhchem) suggested (without the `+` sign):
 
 ```diff
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
@@ -541,3 +543,16 @@ Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/t
 ```
 
 The added line should be _before_ `auto-render.min.js` and _after_ `katex.min.js`.
+
+#### If you want MathJax instead
+
+The new version of MathJax has [comparable performance](https://www.intmath.com/cg5/katex-mathjax-comparison.php?processor=MathJax3) to KaTeX and better support for TeX commands.
+
+If you prefer MathJax, create a blank `[site]/layouts/partials/math.html` and add the following two lines:
+
+```html
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+```
+
+This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one clarity provides and the site will load MathJax instead of KaTeX.

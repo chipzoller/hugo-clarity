@@ -1,0 +1,47 @@
+[read_more]
+other = "Lire la suite…"
+
+[copyright]
+other = "Copyright"
+
+[all_rights]
+other = "Tous droits réservés"
+
+[share_on]
+other = "Partager sur"
+
+[featured_posts]
+other = "Billets en vedette"
+
+[recent_posts]
+other = "Billets récents"
+
+[404_title]
+other = "Perdu"
+
+[could_not_find]
+other = "Nous ne trouvons pas la page que vous recherchez"
+
+[go_back]
+other = "Retour arrière"
+
+[translations]
+other = "Traductions"
+
+[categories]
+other = "Catégories"
+
+[tags]
+other = "Tags"
+
+[series]
+other = "Séries"
+
+[all_categories]
+other = "Toutes les catégories"
+
+[all_tags]
+other = "Tous les tags"
+
+[all_series]
+other = "Toutes les séries"

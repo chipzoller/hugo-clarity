@@ -27,7 +27,7 @@
       </li>
       {{- end }}
     </ul>
-    {{- $tagsLimit := $s.numberOfTagsShown }}
+    {{- $tagsLimit := (default 100 $s.numberOfTagsShown) }}
     {{- range $key, $value := .Site.Taxonomies }}
     {{- if gt $value 0 }}
     <div>

@@ -1,9 +1,9 @@
 # set `baseurl` to your root domain
 # if you set it to "/" share icons won't work properly on production
-baseurl = "https://example.com/"  # Include trailing slash
-title = "Clarity"
-author = "Jane Doe"
-copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
+baseurl = "https://www.lorrainelowe.tech/"  # Include trailing slash
+title = "Site"
+author = "Lorraine Lowe"
+copyright = "Copyright © 2008–2018, None; all rights reserved."
 # canonifyurls = true
 paginate = 10
 theme = "hugo-clarity"
@@ -43,8 +43,8 @@ series = "series"
     tabWidth = 2
 
 [params]
-author = "Jane Doe"
-twitter = "@janedoe"
+author = "Lorraine Lowe"
+twitter = "@amuselolo"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
 # description = "" # set your site's description here. will be use for home page content meta tags (seo). Alternatively set this description in your homepage content file i.e content/_index.md. Whatever is set in the latter will take precedence
@@ -89,8 +89,8 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 # please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way.
 
-enforceLightMode = false
-# enforceDarkMode = false
+# enforceLightMode = false
+enforceDarkMode = true
 
 # Text for the languages menu.
 languageMenuName = "🌐"

@@ -166,6 +166,7 @@ These options set global values that some pages or all pages in the site use by 
 | dateFormat | string | no |
 | enableMathNotation | boolean | yes |
 | customFonts | boolean | no |
+| since | boolean | N/A |
 
 ### Page Parameters
 

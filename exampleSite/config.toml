@@ -52,6 +52,9 @@ introDescription = "Technologist, perpetual student, teacher, continual incremen
 # Google analytics Id
 ga_analytics = "XXXXXXXXXX"
 
+# Baidu analytics Id
+# baidu_analytics = "XXXXXXXX"
+
 # limit the number of taxonomies links shown on the sidebar of each page by default.
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 

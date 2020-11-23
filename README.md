@@ -143,6 +143,7 @@ These options set global values that some pages or all pages in the site use by 
 | twitter | string | no |
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
+| baidu_analytics | string | no |
 | description | string | yes |
 | introDescription | string | no |
 | numberOfTagsShown | integer | no |
@@ -201,9 +202,11 @@ To edit your social media profile links, [edit this YAML file](https://github.co
 
 If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
 
-### Search engine
+### Web site analytics
 
 If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID.
+
+If using Baidu Analytics, configure the `baidu_analytics` global parameter in your site with your ID.
 
 ### Blog directory
 

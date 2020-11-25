@@ -45,3 +45,6 @@ other = "All Tags"
 
 [all_series]
 other = "All Series"
+
+[overview]
+other = "Overview"

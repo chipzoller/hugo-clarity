@@ -45,3 +45,6 @@ other = "所有标签"
 
 [all_series]
 other = "所有专栏"
+
+[overview]
+other = "文章目录"

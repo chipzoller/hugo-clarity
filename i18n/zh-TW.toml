@@ -45,3 +45,6 @@ other = "所有標籤"
 
 [all_series]
 other = "所有專欄"
+
+[overview]
+other = "文章目錄"

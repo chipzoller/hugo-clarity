@@ -45,3 +45,6 @@ other = "Tüm Etiketler"
 
 [all_series]
 other = "Tüm Seriler"
+
+[overview]
+other = "Overview"

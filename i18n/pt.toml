@@ -45,3 +45,6 @@ other = "Todas as Etiquetas"
 
 [all_series]
 other = "Todas as Séries"
+
+[overview]
+other = "Overview"

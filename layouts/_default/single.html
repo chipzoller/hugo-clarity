@@ -17,7 +17,7 @@
     <img src="{{ . }}" class="image_featured">
     {{ end }}
     {{ if .Params.toc }}
-    <h2>{{ i18n "overview" }}</h2>
+    <h2>{{ T "overview" }}</h2>
     {{ .TableOfContents }}
     {{ end }}
     {{- .Content }}

@@ -3,7 +3,7 @@
 {{- $title := "" }}
 {{- if and .Title (ne (trim (lower .Site.Title) "") (trim (lower .Title) "")) }}
   {{- if eq .Kind "taxonomy" }}
-    {{- $title = default .Title ( i18n (lower .Title) ) }}
+    {{- $title = default .Title ( T (lower .Title) ) }}
   {{- else }}
     {{- $title = .Title }}
   {{- end }}

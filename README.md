@@ -498,9 +498,9 @@ sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/m
 
 ### Hooks
 
-Clarity provides some hooks for adding code on page.
+Clarity provides some hooks for adding code on a page.
 
-If you need to add some code(CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
+If you need to add some code (CSS import, HTML meta or similar) to the head section on every page, add a partial to your project:
 
 ```
 layouts/partials/hooks/head-end.html
@@ -514,11 +514,11 @@ layouts/partials/hooks/body-end.html
 
 ### Comments
 
-Clarity supports Hugo built-in Disqus partial, you can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your configuration file.
+Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your configuration file.
 
-> ⚠️ `disqusShortname` should be placed in root level of configuration.
+> ⚠️ `disqusShortname` should be placed at the root level.
 
-You can also create a file named `layouts/partials/comments.html` for customizing the comments, checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
+You can also create a file named `layouts/partials/comments.html` for customizing the comments. Checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
 
 ### Math notation
 
@@ -559,4 +559,4 @@ If you prefer MathJax, create a blank `[site]/layouts/partials/math.html` and ad
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 ```
 
-This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one clarity provides and the site will load MathJax instead of KaTeX.
+This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one Clarity provides and the site will load MathJax instead of KaTeX.

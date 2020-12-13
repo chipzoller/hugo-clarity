@@ -168,6 +168,8 @@ These options set global values that some pages or all pages in the site use by 
 | enableMathNotation | boolean | yes |
 | customFonts | boolean | no |
 | since | boolean | N/A |
+| rss_summary | boolean | N/A |
+| rss_summary_read_more_link | boolean | N/A |
 
 ### Page Parameters
 
@@ -192,6 +194,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | figurePositionLabel | string | no |
 | comment | boolean | no |
 | enableMathNotation | boolean | yes |
+| showDate | boolean | N/A |
+| showShare | boolean | N/A |
 
 ### Modify links menu
 

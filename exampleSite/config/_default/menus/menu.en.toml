@@ -27,6 +27,8 @@
   url = "about/"
   weight = -107
 
+# social menu links
+
 [[social]]
   name = "github"
   type = "social"
@@ -44,3 +46,13 @@
   name = "rss"
   weight = 4
   url = "index.xml"
+
+# other supported social links
+# name = "youtube"
+# url = "https://www.youtube.com/#"
+# name = "facebook"
+# url = "https://facebook.com/#"
+# name = "instagram"
+# url = "https://instagram.com/#"
+# name = "stackoverflow"
+# url = "https://stackoverflow.com/#"

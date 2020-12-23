@@ -6,7 +6,7 @@ author = "Jane Doe"
 copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
 # canonifyurls = true
 paginate = 10
-theme = "hugo-clarity"
+theme = "clarity"
 
 disqusShortname = ""
 
@@ -94,6 +94,9 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 enforceLightMode = false
 # enforceDarkMode = false
+
+# customize footer icon. see issue https://github.com/chipzoller/hugo-clarity/issues/77
+# footerLogo = "icons/copy.svg"
 
 # Text for the languages menu.
 languageMenuName = "🌐"

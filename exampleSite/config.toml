@@ -6,7 +6,7 @@ author = "Jane Doe"
 copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
 # canonifyurls = true
 paginate = 10
-theme = "clarity"
+theme = "hugo-clarity"
 
 disqusShortname = ""
 

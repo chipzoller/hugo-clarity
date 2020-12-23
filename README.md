@@ -193,15 +193,17 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | comment | boolean | no |
 | enableMathNotation | boolean | yes |
 
-### Modify links menu
+### Modify Menus
 
-To add, remove, or reorganize top menu items, [edit the files here](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default/menus).
+#### Main Menu
+
+To add, remove, or reorganize top menu items, [edit the files here](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default/menus). Specifically look for items with `[[main]]`.
 
 If you prefer the more [traditional approach](https://gohugo.io/content-management/menus/#readout), delete `content\config` folder and enter a [main menu entry](https://gohugo.io/content-management/menus/#add-non-content-entries-to-a-menut) inside the `config.toml` file
 
-### Social media
+#### Social media
 
-To edit your social media profile links, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/social.yaml).
+To edit your social media profile links, edit the files referenced above. Specifically, look for items with `[[social]]`
 
 If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
 

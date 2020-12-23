@@ -24,8 +24,9 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 * [Configuration](#configuration)
   * [Global Parameters](#global-parameters)
   * [Page Parameters](#page-parameters)
-  * [Modify links](#modify-links-menu)
-  * [Social media](#social-media)
+  * [Menus](#modify-menus)
+    * [Main Menu](#main-menu)
+    * [Social media](#social-media)
   * [Search Engine](#search-engine)
   * [Blog directory](#blog-directory)
   * [Mobile menu positioning](#mobile-menu-positioning)
@@ -168,6 +169,7 @@ These options set global values that some pages or all pages in the site use by 
 | enableMathNotation | boolean | yes |
 | customFonts | boolean | no |
 | since | boolean | N/A |
+| footerLogo | string | N/A |
 
 ### Page Parameters
 

@@ -15,7 +15,15 @@
       <div class="excerpt_footer">
         {{- end }}
         <div>
-          <p class="pale">{{ truncate 320 .Summary }}</p>
+          <p class="pale">
+            {{ if .Params.summary }}
+              {{ .Params.summary }}
+            {{ else if .Params.abstract }}
+              {{ .Params.abstract }}
+            {{ else if .Summary }}
+              {{ truncate 320 .Summary }}
+            {{ end }}
+          </p>
           <a href="{{ .Permalink }}" class="excerpt_more button">{{ T "read_more" }}</a>
         </div>
       </div>

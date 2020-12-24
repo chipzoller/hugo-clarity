@@ -1,11 +1,13 @@
 {{ $s := .Site.Params }}
 <aside class="sidebar">
   <section class="sidebar_inner">
-    <h2>{{ $s.Author }}</h2>
-    <div>
-      {{ $s.IntroDescription }}
-    </div>
-    <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ T "read_more" }}</a>
+    {{ if $s.IntroDescription }}
+      <h2>{{ $s.Author }}</h2>
+      <div>
+        {{ $s.IntroDescription }}
+      </div>
+      <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ T "read_more" }}</a>
+    {{- end }}
     {{- $posts := where (where .Site.RegularPages "Permalink" "!=" .Permalink) "Type" "in" $s.mainSections }}
     {{- $featured := default 8 $s.numberOfFeaturedPosts }}
     {{- with first $featured (where $posts "Params.featured" true)}}

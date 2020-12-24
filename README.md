@@ -24,8 +24,9 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 * [Configuration](#configuration)
   * [Global Parameters](#global-parameters)
   * [Page Parameters](#page-parameters)
-  * [Modify links](#modify-links-menu)
-  * [Social media](#social-media)
+  * [Menus](#modify-menus)
+    * [Main Menu](#main-menu)
+    * [Social media](#social-media)
   * [Search Engine](#search-engine)
   * [Blog directory](#blog-directory)
   * [Mobile menu positioning](#mobile-menu-positioning)
@@ -170,6 +171,7 @@ These options set global values that some pages or all pages in the site use by 
 | since | boolean | N/A |
 | rss_summary | boolean | N/A |
 | rss_summary_read_more_link | boolean | N/A |
+| footerLogo | string | N/A |
 
 ### Page Parameters
 
@@ -197,13 +199,17 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | showDate | boolean | N/A |
 | showShare | boolean | N/A |
 
-### Modify links menu
+### Modify Menus
 
-To add, remove, or reorganize top menu items, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/menu.yaml). These menu items also display any categories (taxonomies) that might be configured for articles.
+#### Main Menu
 
-### Social media
+To add, remove, or reorganize top menu items, [edit the files here](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default/menus). Specifically look for items with `[[main]]`.
 
-To edit your social media profile links, [edit this YAML file](https://github.com/chipzoller/hugo-clarity/blob/master/exampleSite/data/social.yaml).
+If you prefer the more [traditional approach](https://gohugo.io/content-management/menus/#readout), delete `content\config` folder and enter a [main menu entry](https://gohugo.io/content-management/menus/#add-non-content-entries-to-a-menut) inside the `config.toml` file
+
+#### Social media
+
+To edit your social media profile links, edit the files referenced above. Specifically, look for items with `[[social]]`
 
 If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
 

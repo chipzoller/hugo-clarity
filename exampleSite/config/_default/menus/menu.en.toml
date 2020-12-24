@@ -26,3 +26,33 @@
   name = "About"
   url = "about/"
   weight = -107
+
+# social menu links
+
+[[social]]
+  name = "github"
+  type = "social"
+  weight = 1
+  url = "https://github.com/#"
+[[social]]
+  name = "twitter"
+  weight = 2
+  url = "https://twitter.com/#"
+[[social]]
+  name = "linkedin"
+  weight = 3
+  url = "https://www.linkedin.com/in/#"
+[[social]]
+  name = "rss"
+  weight = 4
+  url = "index.xml"
+
+# other supported social links
+# name = "youtube"
+# url = "https://www.youtube.com/#"
+# name = "facebook"
+# url = "https://facebook.com/#"
+# name = "instagram"
+# url = "https://instagram.com/#"
+# name = "stackoverflow"
+# url = "https://stackoverflow.com/#"

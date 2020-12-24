@@ -1,10 +1,11 @@
-{{- if or .Params.enableMathNotation .Site.Params.enableMathNotation }}
+{{- $s := .Site.Params }}
+{{- if or .Params.enableMathNotation $s.enableMathNotation }}
   {{ partial "math" . }}
 {{- end }}
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img src='{{ absURL "icons/apple-touch-icon.png" }}' class="icon icon_2 transparent">
-    <p>{{ T "copyright" }} &copy;&nbsp;{{- if .Site.Params.since }}{{ .Site.Params.since }}&nbsp;-&nbsp;{{- end }}<span class="year">{{ now.Format "2006"}}</span>&nbsp;{{ upper .Site.Title }}. {{ T "all_rights" }}</p>
+    <img src='{{ absURL (default "icons/apple-touch-icon.png" $s.footerLogo) }}' class="icon icon_2 transparent">
+    <p>{{ T "copyright" }}{{ with $s.since }} {{ . }}{{ end }}<span class="year"></span> {{ upper .Site.Title }}. {{ T "all_rights" }}</p>
     {{- partial "top" .}}
   </div>
 </footer>

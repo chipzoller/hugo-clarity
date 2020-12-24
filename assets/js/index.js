@@ -65,7 +65,7 @@ function fileClosure(){
     const date = new Date();
     const year = date.getFullYear();
     const yearEl = elem('.year');
-    yearEl ? yearEl.innerHTML = year : false;
+    yearEl ? yearEl.innerHTML = ` ${year}` : false;
   })();
   
   (function makeExternalLinks(){

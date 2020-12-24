@@ -9,7 +9,6 @@
 {{- $bg := (path.Join "images" $image | absLangURL) }}
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    {{- partial "i18nlist" . }}
     <h1 class="post_title">{{ .Title }}</h1>
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
@@ -24,6 +23,7 @@
     {{ if and ( ne .Site.Params.comment false ) ( ne .Params.comment false ) }}
       {{ partial "comments" . }}
     {{ end }}
+    {{- partial "i18nlist" . }}
   </article>
   {{- partial "sidebar" . }}
 </div>

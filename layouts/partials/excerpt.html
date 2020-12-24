@@ -21,7 +21,7 @@
             {{ else if .Params.abstract }}
               {{ .Params.abstract }}
             {{ else if .Summary }}
-              {{ .Summary }}
+              {{ truncate 320 .Summary }}
             {{ end }}
           </p>
           <a href="{{ .Permalink }}" class="excerpt_more button">{{ T "read_more" }}</a>

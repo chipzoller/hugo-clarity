@@ -168,7 +168,7 @@ These options set global values that some pages or all pages in the site use by 
 | dateFormat | string | no |
 | enableMathNotation | boolean | yes |
 | customFonts | boolean | no |
-| since | boolean | N/A |
+| since | integer | N/A |
 | rss_summary | boolean | N/A |
 | rss_summary_read_more_link | boolean | N/A |
 | footerLogo | string | N/A |

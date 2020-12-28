@@ -117,5 +117,6 @@ languageMenuName = "🌐"
 # dateFormat = "2006-01-02" # Default to "Jan 2, 2006".
 # customFonts = false # toggle to true if you want to use custom fonts only.
 
-# The year when ths website was created
+# The year when ths website was created, this value is used in the copyright
+# notice of the footer.
 # since = 2016

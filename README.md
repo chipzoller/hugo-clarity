@@ -314,6 +314,27 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 ![some alt text:left](someOtherImageUrl)
 ```
 
+#### Round borders for images
+
+To make the image borders round, append `::round` to its alt text. This is a
+pre-defined image class commonly used to display portrait images. Note that round
+is just another class and it can be mixed with other classes separated by space.
+
+#### Round borders for images example
+
+```markdown
+<!-- some image without alt text and round borders-->
+![::round](someImageUrl)
+
+<!-- some image with alt text and round borders-->
+
+![some alt text::round](someOtherImageUrl)
+
+<!-- some left floating image with round borders-->
+
+![:left::round](someOtherImageUrl)
+```
+
 #### Add classes to images
 
 To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.

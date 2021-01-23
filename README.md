@@ -221,7 +221,7 @@ If using Baidu Analytics, configure the `baidu_analytics` global parameter in yo
 
 ### Blog directory
 
-Edit the `config.toml` file and change the `mainSections` key. Values will be directories where the blogs reside.
+Edit `config.toml` and change the `mainSections` key. Values will be directories where the blogs reside.
 
 ```yaml
 [params]
@@ -579,7 +579,7 @@ Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/t
 
 The added line should be _before_ `auto-render.min.js` and _after_ `katex.min.js`.
 
-#### If you want MathJax instead
+#### MathJax
 
 The new version of MathJax has [comparable performance](https://www.intmath.com/cg5/katex-mathjax-comparison.php?processor=MathJax3) to KaTeX and better support for TeX commands.
 

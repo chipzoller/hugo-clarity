@@ -1,4 +1,4 @@
-{{ if ( ne .Params.showShare false ) }}
+{{ if and ( ne .Site.Params.showShare false ) ( ne .Params.showShare false ) }}
   {{- $s := T "share_on" }}
   <div class="post_share">
     {{ $s }}:

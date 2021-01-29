@@ -3,8 +3,8 @@
   <section class="sidebar_inner">
     {{ if $s.IntroDescription }}
       <h2>{{ $s.Author }}</h2>
-      <div>
-        {{ $s.IntroDescription }}
+      <div class="sidebar_description">
+        {{ $s.IntroDescription | markdownify }}
       </div>
       <a href='{{ absLangURL "about/" }}' class="button mt-1" role="button">{{ T "read_more" }}</a>
     {{- end }}

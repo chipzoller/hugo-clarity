@@ -58,7 +58,7 @@
     padding-bottom: 0.5rem
     z-index: 3
     & + a
-      @media screen and (min-width: 769px)
+      @media screen and (min-width: $mobile-menu-breakpoint)
         padding-top: 0
     &:not(:first-child)
       position: relative
@@ -74,7 +74,7 @@
     overflow: initial
     border-radius: 0.5rem
     padding-bottom: 0.5rem
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       color: var(--text)
     &::before, &::after
       content: ""
@@ -82,7 +82,7 @@
     &::before
       @extend %upcaret
       z-index: 1
-      @media screen and (min-width: 769px)
+      @media screen and (min-width: $mobile-menu-breakpoint)
         border-bottom: 0.5rem solid var(--choice-bg)
     &::after
       top: 0
@@ -92,7 +92,7 @@
       background: var(--translucent-light)
       border-radius: 0.5rem
       box-shadow: 0 1rem 3rem rgba(0,0,0,0.25)
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       background: var(--choice-bg)
       width: auto
       white-space: nowrap;
@@ -113,7 +113,7 @@
     img
       max-width: 15rem
       margin: 0
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       padding-left: 0
       // margin-left: -16rem
       // transform: translateX(50rem)
@@ -122,7 +122,7 @@
 
   &_center
     display: none
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       display: flex
       flex: 1
       align-items: center
@@ -131,7 +131,7 @@
         flex: initial
 
   &_hide
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       display: none
   &_close
     display: none
@@ -412,13 +412,13 @@
   &_thumbnail
     min-height: 10rem
     display: none
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       display: block 
       border-radius: 0.5rem
   &_footer
     &.partition
       display: grid
-      @media screen and (min-width: 769px) 
+      @media screen and (min-width: $mobile-menu-breakpoint) 
         grid-template-columns: 2fr 7fr
         grid-gap: 1rem
 .sidebar
@@ -523,7 +523,7 @@
     display: grid
     align-items: center
     margin: 0 0.5rem
-    @media screen and (min-width: 769px)
+    @media screen and (min-width: $mobile-menu-breakpoint)
       margin: 0 1.5rem
       grid-template-columns: 1fr
 

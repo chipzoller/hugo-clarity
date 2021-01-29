@@ -147,6 +147,7 @@ These options set global values that some pages or all pages in the site use by 
 | baidu_analytics | string | no |
 | description | string | yes |
 | introDescription | string | no |
+| introURL | string/false | no |
 | numberOfTagsShown | integer | no |
 | fallBackOgImage | file path (string) | no |
 | codeMaxLines | integer | yes |
@@ -162,6 +163,7 @@ These options set global values that some pages or all pages in the site use by 
 | enforceLightMode | boolean | N/A |
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
+| showShare | boolean | yes |
 | comment | boolean | no |
 | numberOfRecentPosts | integer | no |
 | numberOfFeaturedPosts | integer | no |

@@ -7,7 +7,7 @@
 {{- end }}
 {{- $image := $scratch.Get "image" }}
 {{- $bg := (path.Join "images" $image | absLangURL) }}
-<div class="grid-inverse wrap content">
+<div class="{{ if ne .Params.singleColumn true }}grid-inverse {{ end }}wrap content">
   <article class="post_content">
     <h1 class="post_title">{{ .Title }}</h1>
     {{- partial "post-meta" . }}
@@ -25,6 +25,8 @@
     {{ end }}
     {{- partial "i18nlist" . }}
   </article>
-  {{- partial "sidebar" . }}
+  {{- if ( ne .Params.sidebar false ) }}
+    {{- partial "sidebar" . }}
+  {{ end }}
 </div>
 {{- end }}

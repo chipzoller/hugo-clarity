@@ -200,6 +200,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | enableMathNotation | boolean | yes |
 | showDate | boolean | N/A |
 | showShare | boolean | N/A |
+| sidebar | boolean | N/A |
+| singleColumn | boolean | N/A |
 
 ### Modify Menus
 

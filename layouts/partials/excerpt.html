@@ -2,14 +2,14 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="{{ .Permalink }}">{{ .Title  }}</a>
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title  }}</a>
       </h3>
       {{ partial "post-meta" . }}
     </div>
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
       <div class="excerpt_thumbnail">
-        <img src='{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}'>
+        <img src='{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}' alt="{{ $.Title }}">
       </div>
       {{ else }}
       <div class="excerpt_footer">
@@ -24,7 +24,8 @@
               {{ truncate 320 .Summary }}
             {{ end }}
           </p>
-          <a href="{{ .Permalink }}" class="excerpt_more button">{{ T "read_more" }}</a>
+          {{- $r := T "read_more" }}
+          <a href="{{ .Permalink }}" title="{{ $r }}" class="excerpt_more button">{{ $r }}</a>
         </div>
       </div>
     </div>

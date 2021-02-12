@@ -7,7 +7,8 @@
         {{ $s.IntroDescription | markdownify }}
       </div>
       {{- if ( ne $s.introURL false ) }}
-      <a href='{{ absLangURL (default "about/" $s.introURL) }}' class="button mt-1" role="button">{{ T "read_more" }}</a>
+      {{- $r := T "read_more" }}
+      <a href='{{ absLangURL (default "about/" $s.introURL) }}' class="button mt-1" role="button" title='{{ $r }}'>{{ $r }}</a>
       {{- end }}
     {{- end }}
     {{- $posts := where (where .Site.RegularPages "Permalink" "!=" .Permalink) "Type" "in" $s.mainSections }}
@@ -17,7 +18,7 @@
     <ul>
       {{- range . }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
       </li>
       {{- end }}
     </ul>
@@ -27,7 +28,7 @@
       {{- $recent := default 8 $s.numberOfRecentPosts }}
       {{- range first $recent $posts }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
       </li>
       {{- end }}
     </ul>
@@ -40,7 +41,7 @@
         {{- $onPageTags := $.Page.Params.tags }}
         {{- $slicedTags := ($value.ByCount | first $tagsLimit) }}
         {{- range $slicedTags }}
-        <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="post_tag button button_translucent">
+        <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="post_tag button button_translucent" title="{{ .Name }}">
           {{ upper .Name }}
           <span class="button_tally">{{ .Count }}</span>
         </a>
@@ -53,7 +54,7 @@
           <div class="tags_list">
             {{- range $value.Alphabetical }}
             {{ $tagsInfo.Add "tagsInfo" (slice .Name .Count)}}
-            <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent" data-position={{ .Count }}>
+            <a href='{{ absLangURL $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class=" post_tag button button_translucent" data-position={{ .Count }} title="{{ .Name }}">
               {{- upper .Name -}}
               <span class="button_tally">{{ .Count }}</span>
             </a>

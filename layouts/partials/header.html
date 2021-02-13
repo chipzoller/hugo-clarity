@@ -3,20 +3,12 @@
 {{ $logo := $params.logo }}
 <header class="nav_header" >
   <nav class="nav">
-    <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
-      {{- with $logo }}
-      <img src="{{ absURL . }}" class="logo">
-      {{- else }}
-        {{ .Site.Title }}
-      {{- end }}
-      <div class="nav_close">
-        <div>
-          {{ partial "sprite" (dict "icon" "open-menu") }}
-          {{ partial "sprite" (dict "icon" "closeme") }}
-        </div>
-      </div>
-    </a>
-    <div class='nav_body nav_body_{{ .Site.Params.mobileNavigation }}'>
+    {{- if $centerLogo }}
+      {{- partial "logo" (dict "logo" $logo "class" "nav_hide") }}
+    {{- else }}
+      {{- partial "logo" (dict "logo" $logo) }}
+    {{- end }}
+    <div class='nav_body nav_body_{{ $params.mobileNavigation }}'>
       {{ $context := . }}
       {{ $menuData := .Site.Data.menu }}
       {{ with $menuData }}
@@ -26,7 +18,7 @@
       {{- end }}
       {{ if .Site.IsMultiLingual }}
       <div class="nav_parent">
-        <a href="#" class="nav_item">{{ .Site.Params.languageMenuName }}</a>
+        <a href="#" class="nav_item">{{ $params.languageMenuName }}</a>
         <div class="nav_sub">
           <span class="nav_child"></span>
           {{ range .Site.Home.AllTranslations }}
@@ -34,12 +26,9 @@
           {{ end }}
         </div>
       </div>
-      {{ end }}
-
-      {{- if eq $centerLogo true }}
-      <a href='{{ absLangURL "" }}' class="nav_brand nav_center nav_item">
-        <img src="{{ absURL $logo }}" class="logo">
-      </a>
+      {{- end }}
+      {{- if $centerLogo }}
+        {{- partial "logo" (dict "logo" $logo "class" "nav_center") }}
       {{- end }}
       {{- partial "follow" . }}
     </div>

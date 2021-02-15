@@ -9,11 +9,12 @@
 {{- $bg := (path.Join "images" $image | absLangURL) }}
 <div class="{{ if ne .Params.singleColumn true }}grid-inverse {{ end }}wrap content">
   <article class="post_content">
-    <h1 class="post_title">{{ .Title }}</h1>
+    {{- $t := .Title }}
+    <h1 class="post_title">{{ $t }}</h1>
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
     {{ with .Params.featureImage }}
-    <img src="{{ . }}" class="image_featured" alt="{{ .Title }}">
+    <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
     {{ end }}
     {{ if .Params.toc }}
     <h2>{{ T "overview" }}</h2>

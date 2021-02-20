@@ -1,32 +1,41 @@
 {{- define "main" }}
+{{- $s := .Site.Params }}
+{{- $p := .Params }}
 {{- $scratch := newScratch }}
-{{- if isset .Params "image" }}
-  {{- $scratch.Set "image" .Params.image }}
+{{- if isset $p "image" }}
+  {{- $scratch.Set "image" $p.image }}
 {{- else }}
-  {{ $scratch.Set "image" .Site.Params.fallBackOgImage }}
+  {{ $scratch.Set "image" $s.fallBackOgImage }}
 {{- end }}
 {{- $image := $scratch.Get "image" }}
-{{- $bg := (path.Join "images" $image | absLangURL) }}
-<div class="{{ if ne .Params.singleColumn true }}grid-inverse {{ end }}wrap content">
+{{- $bg := absLangURL (path.Join "images" $image) }}
+<div class="{{ if ne $p.singleColumn true }}grid-inverse {{ end }}wrap content">
   <article class="post_content">
     {{- $t := .Title }}
     <h1 class="post_title">{{ $t }}</h1>
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
-    {{ with .Params.featureImage }}
-    <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
+    {{ with $p.featureImage }}
+    <img src="{{ . }}" class="image_featured" alt="{{ .Title }}">
     {{ end }}
-    {{ if .Params.toc }}
+    {{ if $p.toc }}
     <h2>{{ T "overview" }}</h2>
     {{ .TableOfContents }}
     {{ end }}
     {{- .Content }}
-    {{ if and ( ne .Site.Params.comment false ) ( ne .Params.comment false ) }}
-      {{ partial "comments" . }}
-    {{ end }}
+    {{- $showComments := true }}
+    {{- if eq $s.comments false }}
+      {{- $showComments = false }}
+    {{- else if eq $p.comments false }}
+      {{- $showComments = false }}
+    {{- end }}
+    {{- if ne $showComments false }}
+      {{- partial "comments" . }}
+      {{ $showComments }}
+    {{- end }}
     {{- partial "i18nlist" . }}
   </article>
-  {{- if ( ne .Params.sidebar false ) }}
+  {{- if ( ne $p.sidebar false ) }}
     {{- partial "sidebar" . }}
   {{ end }}
 </div>

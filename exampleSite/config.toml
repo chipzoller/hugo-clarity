@@ -107,8 +107,8 @@ languageMenuName = "🌐"
 # Title separator, default to |.
 # titleSeparator = "|"
 
-# Enable or disable comment globally. Default to true.
-# comment = false
+# Enable or disable comments globally. Default to true.
+# comments = false
 
 # Maximum number of recent posts.
 # numberOfRecentPosts = 8

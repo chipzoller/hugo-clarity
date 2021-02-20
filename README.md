@@ -164,7 +164,7 @@ These options set global values that some pages or all pages in the site use by 
 | enforceDarkMode | boolean | N/A |
 | titleSeparator| string | no |
 | showShare | boolean | yes |
-| comment | boolean | no |
+| comments | boolean | yes |
 | numberOfRecentPosts | integer | no |
 | numberOfFeaturedPosts | integer | no |
 | dateFormat | string | no |
@@ -196,7 +196,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | codeLineNumbers | boolean | yes |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |
-| comment | boolean | no |
+| comments | boolean | yes |
 | enableMathNotation | boolean | yes |
 | showDate | boolean | N/A |
 | showShare | boolean | N/A |
@@ -549,11 +549,17 @@ layouts/partials/hooks/body-end.html
 
 ### Comments
 
-Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your configuration file.
+Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your [configuration file](https://github.com/chipzoller/hugo-clarity/blob/88f6cf4ac37c12990983b92d19842524555c23d3/exampleSite/config.toml#L11).
 
-> ⚠️ `disqusShortname` should be placed at the root level.
+You can also override [layouts/partials/comments.html](https://github.com/chipzoller/hugo-clarity/blob/master/layouts/partials/comments.html) to take advante of [disqus comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
 
-You can also create a file named `layouts/partials/comments.html` for customizing the comments. Checkout [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
+> Please leave `#disqusShortname = ""` commented out if you decide to use other comments tools
+
+You can disable them sitewide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled. 
+
+You can override these setting from each post individually. For example, you may want to disable/enable comments on specific posts. Use the same syntax used on the config.toml file.
+
+> please use `comments` and not `comment`
 
 ### Math notation
 

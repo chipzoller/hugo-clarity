@@ -16,7 +16,7 @@
     {{- partial "post-meta" . }}
     {{ partial "share" . }}
     {{ with $p.featureImage }}
-    <img src="{{ . }}" class="image_featured" alt="{{ .Title }}">
+    <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
     {{ end }}
     {{ if $p.toc }}
     <h2>{{ T "overview" }}</h2>

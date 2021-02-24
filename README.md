@@ -145,6 +145,7 @@ These options set global values that some pages or all pages in the site use by 
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |
 | baidu_analytics | string | no |
+| plausible_analytics | boolean | no |
 | description | string | yes |
 | introDescription | string | no |
 | introURL | string/false | no |
@@ -222,6 +223,16 @@ If you wish to globally use a [large Twitter summary card](https://developer.twi
 If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID.
 
 If using Baidu Analytics, configure the `baidu_analytics` global parameter in your site with your ID.
+
+If using Plausible Analytics, configure the `plausible_analytics` global parameters in your site with following.
+
+`enable` To enable plausible analytics change to `true`.
+
+`websiteDomain` Set domain name of your website, most cases same as your base url this is requried.
+
+`plausibleDomain`  Default is set to plausible.io, this parameter is only required if plausible is selfhosted.
+
+`scritpName`  Default is set to plausible, this parameter is only required if using a custome name for script.
 
 ### Blog directory
 

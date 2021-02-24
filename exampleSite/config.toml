@@ -123,3 +123,8 @@ languageMenuName = "🌐"
 # The year when ths website was created, this value is used in the copyright
 # notice of the footer.
 # since = 2016
+[params.plausible_analytics]
+enable = false # to enable plausible analytics set to true.
+websiteDomain = "example.com" # domain name of your website, most cases same as your base url
+# plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is selfhosted
+# scritpName = "plausible" # default is set to plausible, only required if using a custome name for script

@@ -8,7 +8,7 @@
   {{- if ne (strings.HasSuffix .class "center") true }}
   <div class="nav_close">
     <div>
-      {{- partial "sprite" (dict "icon" "open-menu") -}}
+      {{- partialCached "sprite" (dict "icon" "open-menu") -}}
       {{- partial "sprite" (dict "icon" "closeme") -}}
     </div>
   </div>

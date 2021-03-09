@@ -17,10 +17,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {{- if (ne hugo.Environment "development") }}
-  {{- partial "analytics" . }}
+  {{- partialCached "analytics" . }}
 {{- end }}
 {{- partial "opengraph" . }}
-{{- partial "favicon" . }}
+{{- partialCached "favicon" . }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

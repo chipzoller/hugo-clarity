@@ -67,14 +67,14 @@
     <main>
       {{- block "main" . }}{{ end }}
     </main>
-    {{- partial "icons" }}
-    {{- partial "footer" . }}
+    {{- partialCached "icons" . }}
+    {{- partialCached "footer" . }}
     <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
     {{- with $s.customJS }}
     {{- range . -}}
     <script type="text/javascript" src="{{ relURL . }}" ></script>
     {{- end }}
     {{- end }}
-    {{ partial "hooks/body-end.html" . }}
+    {{ partialCached "hooks/body-end.html" . }}
   </body>
 </html>

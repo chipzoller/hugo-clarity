@@ -1,12 +1,12 @@
 {{- $s := .Site.Params }}
 {{ $t := .Site.Title }}
 {{- if or .Params.enableMathNotation $s.enableMathNotation }}
-  {{ partial "math" . }}
+  {{ partialCached "math" . }}
 {{- end }}
 <footer class="footer">
   <div class="footer_inner wrap pale">
     <img src='{{ absURL (default "icons/apple-touch-icon.png" $s.footerLogo) }}' class="icon icon_2 transparent" alt="{{ $t }}">
     <p>{{ T "copyright" }}{{ with $s.since }}&nbsp;{{ . }}-{{ end }}&nbsp;<span class="year"></span>&nbsp;{{ upper $t }}. {{ T "all_rights" }}</p>
-    {{- partial "top" .}}
+    {{- partialCached "top" .}}
   </div>
 </footer>

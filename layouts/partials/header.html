@@ -4,9 +4,9 @@
 <header class="nav_header" >
   <nav class="nav">
     {{- if $centerLogo }}
-      {{- partial "logo" (dict "logo" $logo "class" "nav_hide") }}
+      {{- partialCached "logo" (dict "logo" $logo "class" "nav_hide") }}
     {{- else }}
-      {{- partial "logo" (dict "logo" $logo) }}
+      {{- partialCached "logo" (dict "logo" $logo) }}
     {{- end }}
     <div class='nav_body nav_body_{{ $params.mobileNavigation }}'>
       {{ $context := . }}
@@ -30,7 +30,7 @@
       {{- if $centerLogo }}
         {{- partial "logo" (dict "logo" $logo "class" "nav_center") }}
       {{- end }}
-      {{- partial "follow" . }}
+      {{- partialCached "follow" . }}
     </div>
   </nav>
 </header>

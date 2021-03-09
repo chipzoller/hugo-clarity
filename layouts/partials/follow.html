@@ -19,5 +19,5 @@
     {{ partial "sprite" (dict "icon" $label) }}
   </a>
   {{- end }}
-  {{- partial "mode" . }}
+  {{- partialCached "mode" . }}
 </div>

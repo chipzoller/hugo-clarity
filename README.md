@@ -542,6 +542,8 @@ In the exampleSite that's as easy as removing the extra translations from the `c
 sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
 ```
 
+To change the values of translatable text, such as `read_more` or `copyright`, edit the values in the language file you are using in the [`i18n`](i18n) folder.
+
 ### Hooks
 
 Clarity provides some hooks for adding code on a page.
@@ -566,7 +568,7 @@ You can also override [layouts/partials/comments.html](https://github.com/chipzo
 
 > Please leave `#disqusShortname = ""` commented out if you decide to use other comments tools
 
-You can disable them sitewide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled. 
+You can disable them sitewide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled.
 
 You can override these setting from each post individually. For example, you may want to disable/enable comments on specific posts. Use the same syntax used on the config.toml file.
 

@@ -106,14 +106,16 @@ hugo server --themesDir ../..
 
 ### Option 3 (The new, most fun & painless approach)
 
-This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain in your website.
+This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain your website.
 
-Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install).
+Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install) Note: Mac users: ```brew install go```.
 
 ```bash
 git clone https://github.com/chipzoller/hugo-clarity.git clarity
 cd clarity/exampleSite/
 hugo mod init my-site
+cd ..
+cp -a exampleSite/* .
 ```
 
 Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.

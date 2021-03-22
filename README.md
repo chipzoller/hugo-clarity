@@ -483,8 +483,16 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
 │   │   └── sass
 │   │       ├── _custom.sass
 │   │       └── _override.sass
-├── config.toml
-│   ├── configTaxo.toml
+│   ├── config
+│   │   └── _default
+│   │       ├── config.toml
+│   │       ├── configTaxo.toml
+│   │       ├── languages.toml
+│   │       ├── markup.toml
+│   │       ├── menus
+│   │       │   ├── menu.en.toml
+│   │       │   └── menu.pt.toml
+│   │       └── params.toml
 │   ├── content
 │   │   ├── _index.md
 ```
@@ -534,7 +542,7 @@ Things to consider in multilingual:
   Check for missing translations using `hugo server --i18n-warnings`
 * **taxonomy** names (tags, categories, etc...) are translated in [i18n](./i18n/) as well (translate the key)
 * **menus** are translated manually in the config files [config/_default/menus/menu.xx.toml](./exampleSite/config/_default/menus/)
-* **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config.toml). Please, do better and create a PR for that.
+* **menu's languages list** are semi-hardcoded. You may chose another text for the menu entry with [languageMenuName](./exampleSite/config/config.toml). Please, do better and create a PR for that.
 * **content** must be translated individually. Read the [official documentation](https://gohugo.io/content-management/multilingual/#translate-your-content) for information on how to do it.
 
 **note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
@@ -564,7 +572,7 @@ layouts/partials/hooks/body-end.html
 
 ### Comments
 
-Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your [configuration file](https://github.com/chipzoller/hugo-clarity/blob/88f6cf4ac37c12990983b92d19842524555c23d3/exampleSite/config.toml#L11).
+Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your [configuration file](https://github.com/chipzoller/hugo-clarity/blob/88f6cf4ac37c12990983b92d19842524555c23d3/exampleSite/config/config.toml#L11).
 
 You can also override [layouts/partials/comments.html](https://github.com/chipzoller/hugo-clarity/blob/master/layouts/partials/comments.html) to take advante of [disqus comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
 

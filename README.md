@@ -158,6 +158,7 @@ These options set global values that some pages or all pages in the site use by 
 | mainSections | array/string | no |
 | centerLogo | boolean | no |
 | logo | file path (string) | no |
+| iconsDir | dir path (string) | no |
 | mobileNavigation | string | no |
 | figurePositionShow | boolean | yes |
 | figurePositionLabel | string | no |

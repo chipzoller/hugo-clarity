@@ -240,11 +240,21 @@
   &_share
     display: inline-flex
   &_meta
-    display: inline-flex
-    flex-flow: row wrap
-    align-items: center
+    align-items: stretch
+    &, span 
+      display: inline-flex
+      flex-flow: row wrap
+    span
+      align-items: center
+      margin-bottom: 0.5rem
+      &:last-of-type
+        @media screen and (max-width: 667px)
+          margin-top: -0.5rem
+        
     .button
-      margin-bottom: 0
+      @media screen and (min-width: 667px)
+        margin: 0 0.5rem
+
   &_date
     margin-right: 0.5rem
     margin-left: 0.25rem
@@ -455,6 +465,10 @@
     background-color: $theme
     color: $light
     border-radius: 1rem
+  &_only
+    display: none !important
+  & &_only
+    display: initial !important
 
 .round
   border-radius: 50%

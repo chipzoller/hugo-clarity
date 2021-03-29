@@ -1,16 +1,22 @@
 <div class="post_meta">
   {{ if ( ne .Params.showDate false ) }}
-    {{ partial "sprite" (dict "icon" "calendar") }}
+    <span>{{ partial "sprite" (dict "icon" "calendar") }}</span>
     <span class="post_date">
       {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) -}}
     </span>
   {{- end }}
+  {{ if ne .Params.showReadTime false }}
+    <span class="post_time"> · {{ T "reading_time" . }}&nbsp;</span>
+  {{ end }}
   {{- with .Params.tags -}}
-    {{- range . }}
-      {{- $tag := urlize . }}
-      <a href='{{ absLangURL (printf "tags/%s" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
-        {{- . }}
-      </a>
-    {{- end }}
+     <span>
+       {{- range . }}
+         {{- $tag := urlize . }} · 
+         <a href='{{ absLangURL (printf "tags/%s" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
+           {{- . }}
+         </a>
+       {{- end }}
+     </span>
   {{- end }}
+  <span class="page_only"> · {{ partial "share" . }}</span>
 </div>

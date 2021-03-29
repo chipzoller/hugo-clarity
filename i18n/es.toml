@@ -48,3 +48,6 @@ other = "Todas las Series"
 
 [overview]
 other = "Contenido"
+
+[reading_time]
+other = "{{ .ReadingTime }} min read"

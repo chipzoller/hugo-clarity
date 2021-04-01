@@ -4,7 +4,7 @@
   {{ partialCached "math" . }}
 {{- end }}
 {{- $iconsDir := default "icons/" .Site.Params.iconsDir }}
-{{- $defaultFooterLogo := printf "%s%s" $iconsDir "apple-touch-icon.png "}}
+{{- $defaultFooterLogo := printf "%s%s" $iconsDir "apple-touch-icon.png"}}
 <footer class="footer">
   <div class="footer_inner wrap pale">
     <img src='{{ absURL (default $defaultFooterLogo $s.footerLogo) }}' class="icon icon_2 transparent" alt="{{ $t }}">

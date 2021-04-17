@@ -232,11 +232,11 @@ If using Plausible Analytics, configure the `plausible_analytics` global paramet
 
 `enable` To enable plausible analytics change to `true`.
 
-`websiteDomain` Set domain name of your website, most cases same as your base url this is requried.
+`websiteDomain` Set domain name of your website, most cases same as your base URL this is required.
 
-`plausibleDomain`  Default is set to plausible.io, this parameter is only required if plausible is selfhosted.
+`plausibleDomain`  Default is set to plausible.io, this parameter is only required if plausible is self-hosted.
 
-`scritpName`  Default is set to plausible, this parameter is only required if using a custome name for script.
+`scriptName`  Default is set to plausible, this parameter is only required if using a custom name for script.
 
 ### Blog directory
 
@@ -473,7 +473,7 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
     This file should only be used to override everything else except sass & css variables.
 3. [`custom.js`](https://github.com/chipzoller/hugo-clarity/blob/master/assets/js/custom.js).
 
-> __Pro Tip__: Ensure that your changes are git trackable by creating these  files outside the theme directory. That is, at the root level of your site's directory. see tree below
+> __Pro Tip__: Ensure that your changes are git trackable by creating these files outside the theme directory. That is, at the root level of your site's directory. See tree below.
 
 ```
 ├── yourSite
@@ -550,8 +550,8 @@ Things to consider in multilingual:
 **note:** if you do NOT want any translations (thus removing the translations menu entry), then you must not have any translations.
 In the exampleSite that's as easy as removing the extra translations from the `config/_default/...` or executing this one-liner:
 
-```
-sed '/^\[pt]$/,$d' -i config/_default/languages.toml   &&   rm config/_default/menus/menu.pt.toml
+```sh
+sed '/^\[pt]$/,$d' -i config/_default/languages.toml && rm config/_default/menus/menu.pt.toml
 ```
 
 To change the values of translatable text, such as `read_more` or `copyright`, edit the values in the language file you are using in the [`i18n`](i18n) directory. If you have no such directory, copy the one inside the theme to your root Hugo directory.
@@ -576,11 +576,11 @@ layouts/partials/hooks/body-end.html
 
 Clarity supports Hugo built-in Disqus partial. You can enable Disqus simply by setting [`disqusShortname`](https://gohugo.io/templates/internal/#configure-disqus) in your [configuration file](https://github.com/chipzoller/hugo-clarity/blob/88f6cf4ac37c12990983b92d19842524555c23d3/exampleSite/config/config.toml#L11).
 
-You can also override [layouts/partials/comments.html](https://github.com/chipzoller/hugo-clarity/blob/master/layouts/partials/comments.html) to take advante of [disqus comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
+You can also override [layouts/partials/comments.html](https://github.com/chipzoller/hugo-clarity/blob/master/layouts/partials/comments.html) to take advantage of [disqus comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives) for details.
 
 > Please leave `#disqusShortname = ""` commented out if you decide to use other comments tools
 
-You can disable them sitewide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled.
+You can disable them site-wide by setting `comments = false` under `[params]` from config.toml file and vice versa. Omitting that setting will default to comments will be enabled.
 
 You can override these setting from each post individually. For example, you may want to disable/enable comments on specific posts. Use the same syntax used on the config.toml file.
 

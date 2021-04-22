@@ -1,6 +1,6 @@
-{{- $showShare := eq (.Param "showshare") true }}
-{{- $showDate := eq (.Param "showdate") true }}
-{{- $showReadTime := eq (.Param "showreadtime") true }}
+{{- $showShare := ne (.Param "showshare") false }}
+{{- $showDate := ne (.Param "showdate") false }}
+{{- $showReadTime := ne (.Param "showreadtime") false }}
 {{- $showPostMeta := or ($showShare) ($showDate) ($showReadTime) (isset .Params "tags") }}
 {{- $scratch := newScratch }}
 {{- $scratch.Set "writeSeparator" false }}

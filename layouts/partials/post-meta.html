@@ -1,7 +1,7 @@
 {{- $showShare := eq (.Param "showshare") true }}
 {{- $showDate := eq (.Param "showdate") true }}
 {{- $showReadTime := eq (.Param "showreadtime") true }}
-{{- $showPostMeta := or ($showShare) ($showDate) ($showReadTime) (isset .Params "tags") }}
+{{- $showPostMeta := or ($showShare) ($showDate) ($showReadTime) }}
 {{- $scratch := newScratch }}
 {{- $scratch.Set "writeSeparator" false }}
 {{- if $showPostMeta }}

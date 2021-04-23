@@ -1,22 +1,39 @@
-<div class="post_meta">
-  {{ if ( ne .Params.showDate false ) }}
+{{- $showShare := ne (.Param "showshare") false }}
+{{- $showDate := ne (.Param "showdate") false }}
+{{- $showReadTime := ne (.Param "showreadtime") false }}
+{{- $showPostMeta := or ($showShare) ($showDate) ($showReadTime) (isset .Params "tags") }}
+{{- $scratch := newScratch }}
+{{- $scratch.Set "writeSeparator" false }}
+{{- if $showPostMeta }}
+  <div class="post_meta">
+{{- end }}
+  {{- if $showDate }}
     <span>{{ partial "sprite" (dict "icon" "calendar") }}</span>
     <span class="post_date">
       {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) -}}
     </span>
+    {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
-  {{ if ne .Params.showReadTime false }}
-    <span class="post_time"> · {{ T "reading_time" . }}&nbsp;</span>
-  {{ end }}
+  {{- if $showReadTime }}
+    <span class="post_time">{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
+    {{- $scratch.Set "writeSeparator" true }}
+  {{- end }}
   {{- with .Params.tags -}}
-     <span>
-       {{- range . }}
-         {{- $tag := urlize . }} · 
-         <a href='{{ absLangURL (printf "tags/%s" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
-           {{- . }}
-         </a>
-       {{- end }}
-     </span>
+    <span>
+      {{- if ($scratch.Get "writeSeparator") }}&nbsp;· {{ end }}
+      {{- range . }}
+        {{- $tag := urlize . -}}
+        <a href='{{ absLangURL (printf "tags/%s" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
+          {{- . }}
+        </a>
+      {{- end }}
+    </span>
+    {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
-  <span class="page_only"> · {{ partial "share" . }}</span>
-</div>
+  {{- if $showShare }}
+    <span class="page_only">{{ if ($scratch.Get "writeSeparator") }}&nbsp;·{{ end }}{{ partial "share" . }}</span>
+    {{- $scratch.Set "writeSeparator" true }}
+  {{- end }}
+{{- if $showPostMeta }}
+  </div>
+{{- end }}

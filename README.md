@@ -142,7 +142,7 @@ These options set global values that some pages or all pages in the site use by 
 
 | Parameter | Value Type | Overridable on Page |
 |:---- | ---- | ---- |
-| author | string | no |
+| author | map / string | no |
 | twitter | string | no |
 | largeTwitterCard | boolean | no |
 | ga_analytics | string | no |

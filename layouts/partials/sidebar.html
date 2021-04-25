@@ -3,13 +3,20 @@
   <section class="sidebar_inner">
     {{- if $s.IntroDescription }}
       {{- $author := $s.Author  }}
-      {{- if reflect.IsMap $author }}
+      {{- $showAuthorPhoto := false }}
+      {{- $fullAuthor := reflect.IsMap $author }}
+      {{- if $fullAuthor }}
+        {{-  if $author.photo }}
+          {{- $showAuthorPhoto = true }}
+        {{- end }}
+      {{- end }}
+      {{- if $showAuthorPhoto }}
         <div class="author_header">
           <img src="{{ absURL $author.photo }}" alt="{{ $author.name }} photo">
           <h2>{{  $author.name }}</h2>
         </div>
       {{- else }}
-        <h2>{{  $author }}</h2>
+        <h2>{{  if $fullAuthor }}{{ $author.name }}{{ else }}{{ $author }}{{ end }}</h2>
       {{- end }}
       <div class="author_bio">
         {{ markdownify $s.IntroDescription }}

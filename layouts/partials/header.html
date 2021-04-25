@@ -8,7 +8,7 @@
     {{- else }}
       {{- partialCached "logo" (dict "logo" $logo) }}
     {{- end }}
-    <div class='nav_body nav_body_{{ $params.mobileNavigation }}'>
+    <div class='nav_body nav_body_{{ default "left" $params.mobileNavigation }}'>
       {{ $context := . }}
       {{ $menuData := .Site.Data.menu }}
       {{ with $menuData }}

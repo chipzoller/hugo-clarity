@@ -1,10 +1,18 @@
 {{ $s := .Site.Params }}
 <aside class="sidebar">
   <section class="sidebar_inner">
-    {{ if $s.IntroDescription }}
-      <h2>{{ $s.Author }}</h2>
-      <div class="sidebar_description">
-        {{ $s.IntroDescription | markdownify }}
+    {{- if $s.IntroDescription }}
+      {{- $author := $s.Author  }}
+      {{- if reflect.IsMap $author }}
+        <div class="author_header">
+          <img src="{{ absURL $author.photo }}" alt="{{ $author.name }} photo">
+          <h2>{{  $author.name }}</h2>
+        </div>
+      {{- else }}
+        <h2>{{  $author }}</h2>
+      {{- end }}
+      <div class="author_bio">
+        {{ markdownify $s.IntroDescription }}
       </div>
       {{- if ( ne $s.introURL false ) }}
       {{- $r := T "read_more" }}

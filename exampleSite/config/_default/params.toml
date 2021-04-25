@@ -1,4 +1,3 @@
-author = "Jane Doe"
 twitter = "@janedoe"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
@@ -82,8 +81,14 @@ languageMenuName = "🌐"
 # tell hugo where you store your icons e.g favicons. This is useful if you're using an apache server and there are conflicts >> see issue https://github.com/chipzoller/hugo-clarity/issues/74. If this is applicable to you, be sure to copy the contents of https://github.com/chipzoller/hugo-clarity/tree/master/static/icons to your preferred icons directory 
 iconsDir = "icons/" # without a leading forward slash
 
+# website author
+[author]
+name = "Jane Doe"
+# photo = "images/about/ChipHeadshot.png" #include this if you would like to show the author photo on the sidebar
+
 [plausible_analytics]
 enable = false # to enable plausible analytics set to true.
 websiteDomain = "example.com" # domain name of your website, most cases same as your base url
 # plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is selfhosted
 # scritpName = "plausible" # default is set to plausible, only required if using a custome name for script
+

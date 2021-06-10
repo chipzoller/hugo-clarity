@@ -3,6 +3,7 @@
 {{- $link := .context.Permalink }}
 {{- $url := "" }}
 {{- $name := "" }}
+{{- $forwardSlash := "/" }}
 {{- $children := false }}
 {{- range $menu }}
   {{- if eq $menu $menuData }}
@@ -14,7 +15,7 @@
     {{- $name = .Name }}
     {{- $url = absLangURL .URL }}
   {{- end }}
-  <div class="nav_parent{{ if (and (not .Children) (eq $url $link)) }} nav_active{{ end}}">
+  <div class="nav_parent{{ if (and (not .Children) (eq (trim $url $forwardSlash) (trim $link $forwardSlash))) }} nav_active{{ end}}">
     <a href="{{ $url }}" class="nav_item" title="{{ $name }}">{{ $name }} {{ with $children }}<img src='{{ absURL "icons/caret-icon.svg" }}' alt="icon" class="nav_icon">{{ end }}</a>
     {{- with $children }}
     <div class="nav_sub">

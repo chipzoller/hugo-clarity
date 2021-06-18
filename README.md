@@ -148,6 +148,7 @@ These options set global values that some pages or all pages in the site use by 
 | ga_analytics | string | no |
 | baidu_analytics | string | no |
 | plausible_analytics | boolean | no |
+| matomo_analytics | boolean | no |
 | description | string | yes |
 | introDescription | string | no |
 | introURL | string/false | no |
@@ -228,7 +229,7 @@ If using Google Analytics, configure the `ga_analytics` global parameter in your
 
 If using Baidu Analytics, configure the `baidu_analytics` global parameter in your site with your ID.
 
-If using Plausible Analytics, configure the `plausible_analytics` global parameters in your site with following.
+If using Plausible Analytics, configure the `plausible_analytics` global parameters in your site with the following.
 
 `enable` To enable plausible analytics change to `true`.
 
@@ -237,6 +238,17 @@ If using Plausible Analytics, configure the `plausible_analytics` global paramet
 `plausibleDomain`  Default is set to plausible.io, this parameter is only required if plausible is self-hosted.
 
 `scriptName`  Default is set to plausible, this parameter is only required if using a custom name for script.
+
+If using Matomo Analytics, configure the `matomo_analytics` global parameters in your site with the following.
+
+`enable` To enable matomo analytics change to `true`.
+
+`websiteDomain` Set the domain name of your website, in most cases same as your base URL this is required.
+
+`matomoDomain`   Default is set to plausible.io, this parameter is only required if matomo is self-hosted.
+
+`matomoSiteID`  Default is set to 1, change this to the siteid being tracked
+
 
 ### Blog directory
 

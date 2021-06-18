@@ -245,7 +245,7 @@ If using Matomo Analytics, configure the `matomo_analytics` global parameters in
 
 `websiteDomain` Set the domain name of your website, in most cases same as your base URL this is required.
 
-`matomoDomain`   Default is set to plausible.io, this parameter is only required if matomo is self-hosted.
+`matomoDomain`   Set to Matomo domain
 
 `matomoSiteID`  Default is set to 1, change this to the siteid being tracked
 

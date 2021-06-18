@@ -95,5 +95,5 @@ websiteDomain = "example.com" # domain name of your website, most cases same as 
 [matomo_analytics]
 enable = false # To enable matomo analytics change to `true`.
 websiteDomain = "example.com" # Set the domain name of your website, in most cases same as your base URL this is required.
-matomoDomain = "matomo.example.com" # Default is set to plausible.io, this parameter is only required if matomo is self-hosted.
+matomoDomain = "matomo.example.com" # Set to Matomo domain
 matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracked

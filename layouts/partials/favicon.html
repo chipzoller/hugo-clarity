@@ -1,6 +1,7 @@
-<link rel="apple-touch-icon" sizes="180x180" href='{{ absURL "icons/apple-touch-icon.png" }}'>
-<link rel="icon" type="image/png" sizes="32x32" href='{{ absURL "icons/favicon-32x32.png" }}'>
-<link rel="manifest" href='{{ absURL "icons/site.webmanifest" }}'>
-<link rel="mask-icon" href='{{ absURL "safari-pinned-tab.svg" }}' color="#002538">
-<meta name="msapplication-TileColor" content="#002538">
-<meta name="theme-color" content="#002538">
+{{- $iconsDir := default "icons/" .Site.Params.iconsDir }}
+{{- $appleTouch := absURL (printf "%s%s" $iconsDir "apple-touch-icon.png") }}
+{{- $favicon := absURL (printf "%s%s" $iconsDir "favicon-32x32.png" ) }}
+{{- $manifest := absURL (printf "%s%s" $iconsDir "site.webmanifest" ) }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouch }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon }}">
+<link rel="manifest" href="{{ $manifest }}">

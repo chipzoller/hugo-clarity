@@ -240,11 +240,21 @@
   &_share
     display: inline-flex
   &_meta
-    display: inline-flex
-    flex-flow: row wrap
-    align-items: center
+    align-items: stretch
+    &, span 
+      display: inline-flex
+      flex-flow: row wrap
+    span
+      align-items: center
+      margin-bottom: 0.5rem
+      &:last-of-type
+        @media screen and (max-width: 667px)
+          margin-top: -0.5rem
+        
     .button
-      margin-bottom: 0
+      @media screen and (min-width: 667px)
+        margin: 0 0.5rem
+
   &_date
     margin-right: 0.5rem
     margin-left: 0.25rem
@@ -434,7 +444,13 @@
       position: absolute
       left: -2rem
         // display: none
-  &_description
+
+.author
+  &_header
+    display: grid
+    grid-template-columns: 3rem 1fr
+    grid-gap: 1rem
+  &_bio
     a
       color: $theme
 
@@ -455,6 +471,10 @@
     background-color: $theme
     color: $light
     border-radius: 1rem
+  &_only
+    display: none !important
+  & &_only
+    display: initial !important
 
 .round
   border-radius: 50%
@@ -586,3 +606,21 @@
     display: block
     margin-left: auto !important
     margin-right: auto !important
+
+.video
+  overflow: hidden
+  padding-bottom: 56.25%
+  position: relative
+  height: 0
+  margin: 1.5rem 0
+  border-radius: 0.6rem
+  background-color: var(--bg)
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.17)
+  iframe
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    border: none
+    position: absolute
+    transform: scale(1.02)

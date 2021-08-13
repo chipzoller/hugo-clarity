@@ -48,3 +48,6 @@ other = "所有專欄"
 
 [overview]
 other = "文章目錄"
+
+[reading_time]
+other = "{{ .ReadingTime }} min read"

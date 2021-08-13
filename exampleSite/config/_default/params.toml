@@ -1,49 +1,3 @@
-# set `baseurl` to your root domain
-# if you set it to "/" share icons won't work properly on production
-baseurl = "https://example.com/"  # Include trailing slash
-title = "Clarity"
-author = "Jane Doe"
-copyright = "Copyright © 2008–2018, Steve Francia and the Hugo Authors; all rights reserved."
-# canonifyurls = true
-paginate = 10
-theme = "hugo-clarity"
-
-disqusShortname = ""
-
-DefaultContentLanguage = "en"
-# [languages]
-# config/_default/languages.toml
-
-# [menus]
-# config/_default/menus/menu.xx.toml
-
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
-
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      hardWraps = false
-      unsafe = true # change to false to disable inclusion of rawHTML and math functions
-      xhtml = false
-    [markup.goldmark.extensions]
-      typographer = false
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = true
-    hl_Lines = "--"
-    lineNoStart = 1
-    lineNos = true # always set to true # else line numbers won't show at all! even when you toggle them on in the UI
-    lineNumbersInTable = false # toggling this on (i.e to true) or deleting this line will break the code blocks functionality. Will
-    noClasses = false
-    # style = "monokai"
-    tabWidth = 2
-
-[params]
-author = "Jane Doe"
 twitter = "@janedoe"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
@@ -123,8 +77,23 @@ languageMenuName = "🌐"
 # The year when ths website was created, this value is used in the copyright
 # notice of the footer.
 # since = 2016
-[params.plausible_analytics]
+
+# tell hugo where you store your icons e.g favicons. This is useful if you're using an apache server and there are conflicts >> see issue https://github.com/chipzoller/hugo-clarity/issues/74. If this is applicable to you, be sure to copy the contents of https://github.com/chipzoller/hugo-clarity/tree/master/static/icons to your preferred icons directory 
+iconsDir = "icons/" # without a leading forward slash
+
+# website author
+[author]
+name = "Jane Doe"
+# photo = "images/jane-doe.png" #include this if you would like to show the author photo on the sidebar
+
+[plausible_analytics]
 enable = false # to enable plausible analytics set to true.
 websiteDomain = "example.com" # domain name of your website, most cases same as your base url
 # plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is selfhosted
 # scritpName = "plausible" # default is set to plausible, only required if using a custome name for script
+
+[matomo_analytics]
+enable = false # To enable matomo analytics change to `true`.
+websiteDomain = "example.com" # Set the domain name of your website, in most cases same as your base URL this is required.
+matomoDomain = "matomo.example.com" # Set to Matomo domain
+matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracked

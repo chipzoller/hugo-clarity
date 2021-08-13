@@ -23,7 +23,7 @@ Hugo ships with several [Built-in Shortcodes](https://gohugo.io/content-manageme
 
 ## YouTube Privacy Enhanced Shortcode
 
-{{< youtube ZJthWmvUzzc >}}
+{{< youtube izYiDDt6d8s >}}
 
 <br>
 

@@ -34,6 +34,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Images](#images)
   * [Code](#code)
   * [Table of contents](#table-of-contents-1)
+  * [Notices](#notices)
   * [Custom CSS and JS](#custom-css-and-js)
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
@@ -520,6 +521,19 @@ customCSS = ["css/custom.css"] # Include custom CSS files
 customJS = ["js/custom.js"] # Include custom JS files
 ...
 ```
+
+### Notices
+This theme includes functionality to display some "hightlight blocks" - called "notices" using a shortcode.
+
+For example, see the shortcode markup below will render as a notice:
+
+```
+{{% notice note "Note Title" */%}}
+This will be the content of the note.
+{{% /notice %}}
+```
+
+For more examples see the "Notices" page in the `exampleSite`.
 
 ### Forcing light or dark mode
 

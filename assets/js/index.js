@@ -81,7 +81,7 @@ function fileClosure(){
           blank = '_blank';
           noopener = 'noopener';
           attr1 = elemAttribute(link, target);
-          attr2 = elemAttribute(link, noopener);
+          attr2 = elemAttribute(link, rel);
           
           attr1 ? false : elemAttribute(link, target, blank);
           attr2 ? false : elemAttribute(link, rel, noopener);

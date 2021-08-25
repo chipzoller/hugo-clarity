@@ -11,21 +11,59 @@
         <figcaption>{{ .Text | safeHTML }}</figcaption>
       {{- end }}
 
-    {{/* Otherwise, we add modern image formats, if they exist. */}}
+    {{/* Otherwise, we add modern image formats (AVIF, WebP), if they exist. */}}
     {{/* This does not create these images, it only checks if they're present. */}}
     {{- else -}}
 
-      {{ range $ext := (slice "avif" "webp" "jxl") }}
-      {{ $dotext := print "." $ext }}
-      {{ $path := replace .Destination ".png" $dotext }}
-      {{ $path = replace $path ".jpg" $dotext }}
-      {{ $path = replace $path ".jpeg" $dotext }}
-      {{ $path = replace $path ".gif" $dotext }}
-      {{ $path = imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
+      {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
+      {{ $isJPG = eq (path.Ext .Destination) ".jpeg" }}
+      {{ $isPNG := eq (path.Ext .Destination) ".png" }}
+      {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
 
-      {{ if fileExists $path }}
-        <source srcset="{{ $path | safeURL }}" type="image/{{ $ext }}">
-      {{ end }}
+      {{/* Original is JPEG */}}
+      {{ if ($isJPG) -}}
+        {{ $avifPath:= replaceRE "(jpg|jpeg)$i" ".avif" .Destination }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath) }}
+
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+
+        {{ $webpPath:= replaceRE "(jpg|jpeg)$i" ".webp" .Destination }}
+        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
+
+        {{ if (fileExists $webpPathStatic) -}}
+          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
+        {{- end }}
+      {{- end }}
+
+      {{/* Original is PNG */}}
+      {{ if ($isPNG) -}}
+        {{ $avifPath:= replace .Destination ".png" ".avif" }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
+
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+
+        {{ $webpPath:= replace .Destination ".png" ".webp" }}
+        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
+
+        {{ if (fileExists $webpPathStatic) -}}
+          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
+        {{- end }}
+      {{- end }}
+
+      {{/* Original is GIF */}}
+      {{ if ($isGIF) -}}
+        {{ $avifPath:= replace .Destination ".gif" ".avif" }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
+
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+        {{/* (WebP is not offered, as a converted GIF is usually larger in file size.) */}}
+      {{- end }}
 
       {{/* Original image, for fallback (IE). */}}
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}

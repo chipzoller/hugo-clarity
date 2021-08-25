@@ -2,7 +2,7 @@
 <figure>
   <picture>
     {{- if strings.HasPrefix $src "http" -}}
-      <img class="img--figure img--external" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
       {{ if (.Text) -}}
         <figcaption>{{ .Text | safeHTML }}</figcaption>
       {{- end }}
@@ -44,7 +44,7 @@
 
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir)  .Destination) }}
 
-      <img class="img--figure img--internal" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
       {{ if (.Text) -}}
         <figcaption>{{ .Text | safeHTML }}</figcaption>
       {{- end }}

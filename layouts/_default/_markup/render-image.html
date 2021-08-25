@@ -1,53 +1,78 @@
 {{- $src := ( .Destination | safeURL ) -}}
 <figure>
   <picture>
+
+    {{/* If the image is external, we provide a basic <img> tag. */}}
     {{- if strings.HasPrefix $src "http" -}}
       <img class="image_figure image_external" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+
+      {{/* Provide caption based on Markdown text, if it exists. */}}
       {{ if (.Text) -}}
         <figcaption>{{ .Text | safeHTML }}</figcaption>
       {{- end }}
+
+    {{/* Otherwise, we add modern image formats (AVIF, WebP), if they exist. */}}
+    {{/* This does not create these images, it only checks if they're present. */}}
     {{- else -}}
-      {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
+
+      {{ $isJPG := eq ((path.Ext .Destination) ".jpg" || (path.Ext .Destination) ".jpeg") }}
       {{ $isPNG := eq (path.Ext .Destination) ".png" }}
+      {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
 
+      {{/* Original is JPEG */}}
       {{ if ($isJPG) -}}
-      {{ $avifPath:= replace .Destination ".jpg" ".avif" }}
-      {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath) }}
+        {{ $avifPath:= replace (path.Ext .Destination) ".avif" }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath) }}
 
-      {{ if (fileExists $avifPathStatic) -}}
-      <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+
+        {{ $webpPath:= replace (path.Ext .Destination) ".webp" }}
+        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
+
+        {{ if (fileExists $webpPathStatic) -}}
+          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
+        {{- end }}
       {{- end }}
 
-      {{ $webpPath:= replace .Destination ".jpg" ".webp" }}
-      {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
-
-      {{ if (fileExists $webpPathStatic) -}}
-      <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-      {{- end }}
-      {{- end }}
-
+      {{/* Original is PNG */}}
       {{ if ($isPNG) -}}
-      {{ $avifPath:= replace .Destination ".png" ".avif" }}
-      {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath )}}
+        {{ $avifPath:= replace .Destination ".png" ".avif" }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath )}}
 
-      {{ if (fileExists $avifPathStatic) -}}
-      <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+
+        {{ $webpPath:= replace .Destination ".png" ".webp" }}
+        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
+
+        {{ if (fileExists $webpPathStatic) -}}
+          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
+        {{- end }}
       {{- end }}
 
-      {{ $webpPath:= replace .Destination ".png" ".webp" }}
-      {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
+      {{/* Original is GIF */}}
+      {{ if ($isGIF) -}}
+        {{ $avifPath:= replace .Destination ".gif" ".avif" }}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath )}}
 
-      {{ if (fileExists $webpPathStatic) -}}
-      <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-      {{- end }}
+        {{ if (fileExists $avifPathStatic) -}}
+          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
+        {{- end }}
+        {{/* (WebP is not offered, as a converted GIF is usually larger in file size.) */}}
       {{- end }}
 
+      {{/* Original image, for fallback (IE). */}}
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir)  .Destination) }}
-
       <img class="image_figure image_external" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+
+      {{/* Provide caption based on Markdown text, if it exists. */}}
       {{ if (.Text) -}}
         <figcaption>{{ .Text | safeHTML }}</figcaption>
       {{- end }}
+
     {{- end -}}
   </picture>
 </figure>

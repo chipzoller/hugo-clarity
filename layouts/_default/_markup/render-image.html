@@ -21,6 +21,7 @@
       {{ $path = replace $path ".jpg" $dotext }}
       {{ $path = replace $path ".jpeg" $dotext }}
       {{ $path = replace $path ".gif" $dotext }}
+      {{ $path = imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
 
       {{ if fileExists $path }}
         <source srcset="{{ $path | safeURL }}" type="image/{{ $ext }}">

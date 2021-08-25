@@ -1,12 +1,13 @@
 {{- $src := ( .Destination | safeURL ) -}}
-{{- $relpath := ( add "/content/" .Page.File.Dir ) -}}
+{{- $relpath := ( add "/" .Page.File.Dir ) -}}
+{{- $fullpath := ( add $relpath $src ) -}}
 <figure>
   <picture>
 
     {{/* If the image is external, we provide a basic <img> tag. */}}
     {{- if strings.HasPrefix $src "http" -}}
 
-      <img class="image_figure image_external" loading="lazy" src="{{ .Destination }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" loading="lazy" src="{{ $fullpath }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
     {{/* Otherwise, we add modern image formats, if they exist. */}}
     {{/* This does not create these images, it only checks if they're present. */}}
@@ -26,7 +27,7 @@
 
       {{/* Original image, for fallback (IE). */}}
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
-      <img class="image_figure image_internal" src="{{ .Destination }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_internal" src="{{ $fullpath }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
     {{- end -}}
 

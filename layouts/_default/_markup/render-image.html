@@ -12,7 +12,7 @@
         <figcaption>{{ .Title | safeHTML }}</figcaption>
       {{- end }}
 
-    {{/* Otherwise, we add modern image formats (AVIF, WebP), if they exist. */}}
+    {{/* Otherwise, we add modern image formats, if they exist. */}}
     {{/* This does not create these images, it only checks if they're present. */}}
     {{- else -}}
 
@@ -23,7 +23,6 @@
         {{ $path = replace $path ".jpg" $dotext }}
         {{ $path = replace $path ".jpeg" $dotext }}
         {{ $path = replace $path ".gif" $dotext }}
-        {{ $path }}
         {{ if fileExists $path }}
           <source srcset="{{ $path | safeURL }}" type="image/{{ $ext }}">
         {{ end }}

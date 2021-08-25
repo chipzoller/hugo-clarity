@@ -15,39 +15,26 @@
     {{/* This does not create these images, it only checks if they're present. */}}
     {{- else -}}
 
-      {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
-      {{ $isJPG := eq (path.Ext .Destination) ".jpeg" }}
+      {{/* Determine original file type */}}
+      {{ if (path.Ext .Destination) eq ".jpg" || ".jpeg" -}}
+        {{ $isJPG := (path.Ext .Destination) }}
+        <h1>{{ .isJPG }}</h1>
+      {{- end }}
+
       {{ $isPNG := eq (path.Ext .Destination) ".png" }}
       {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
-
-      {{/* Original is JPEG */}}
-      {{ if ($isJPG) -}}
-        {{ $avifPath:= replace (path.Ext .Destination) ".avif" }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath) }}
-
-        {{ if (fileExists $avifPathStatic) -}}
-          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-        {{- end }}
-
-        {{ $webpPath:= replace (path.Ext .Destination) ".webp" }}
-        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
-
-        {{ if (fileExists $webpPathStatic) -}}
-          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-        {{- end }}
-      {{- end }}
 
       {{/* Original is PNG */}}
       {{ if ($isPNG) -}}
         {{ $avifPath:= replace .Destination ".png" ".avif" }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath )}}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
 
         {{ if (fileExists $avifPathStatic) -}}
           <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
         {{- end }}
 
         {{ $webpPath:= replace .Destination ".png" ".webp" }}
-        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir)  $webpPath )}}
+        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
 
         {{ if (fileExists $webpPathStatic) -}}
           <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
@@ -57,7 +44,7 @@
       {{/* Original is GIF */}}
       {{ if ($isGIF) -}}
         {{ $avifPath:= replace .Destination ".gif" ".avif" }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir)  $avifPath )}}
+        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
 
         {{ if (fileExists $avifPathStatic) -}}
           <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
@@ -66,7 +53,7 @@
       {{- end }}
 
       {{/* Original image, for fallback (IE). */}}
-      {{ $img := imageConfig (add (add "/content/" .Page.File.Dir)  .Destination) }}
+      {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
       <img class="image_figure image_external" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
       {{/* Provide caption based on Markdown text, if it exists. */}}

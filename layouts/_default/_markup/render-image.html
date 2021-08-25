@@ -16,12 +16,12 @@
     {{- else -}}
 
       {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
-      {{ $isJPG := eq (path.Ext .Destination) ".jpeg" }}
+      {{ $isJPEG := eq (path.Ext .Destination) ".jpeg" }}
       {{ $isPNG := eq (path.Ext .Destination) ".png" }}
       {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
 
       {{/* Original is JPEG */}}
-      {{ if ($isJPG) -}}
+      {{ if or ($isJPG) ($isJPEG) -}}
         {{ $avifPath:= replaceRE "(.jpg|.jpeg)" ".avif" .Destination }}
         {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath) }}
 

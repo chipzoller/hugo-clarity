@@ -1,11 +1,11 @@
 {{- $src := ( .Destination | safeURL ) -}}
-{{- $fullpath := ( .Page.File.Dir ) -}}
+{{- $relpath := ( add "/" .Page.File.Dir ) -}}
 <figure>
   <picture>
 
     {{/* If the image is external, we provide a basic <img> tag. */}}
     {{- if strings.HasPrefix $src "http" -}}
-      <img class="image_figure image_external" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" loading="lazy" src="{{ $src }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
       {{/* Provide caption based on image title, if it exists. */}}
       {{ if (.Title) -}}
@@ -18,11 +18,11 @@
 
       {{ range $ext := (slice "avif" "webp" "jxl") }}
         {{ $dotext := print "." $ext }}
-        {{ $path := replace $src ".png" $dotext }}
+        {{ $path := add $relpath $src }}
+        {{ $path = replace $path ".png" $dotext }}
         {{ $path = replace $path ".jpg" $dotext }}
         {{ $path = replace $path ".jpeg" $dotext }}
         {{ $path = replace $path ".gif" $dotext }}
-        {{ $path = add (add "/" $fullpath) $src }}
         {{ $path }}
         {{ if fileExists $path }}
           <source srcset="{{ $path | safeURL }}" type="image/{{ $ext }}">
@@ -31,7 +31,7 @@
 
       {{/* Original image, for fallback (IE). */}}
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
-      <img class="image_figure image_external" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" src="{{ $src }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
       {{/* Provide caption based on image title, if it exists. */}}
       {{ if (.Title) -}}

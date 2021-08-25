@@ -1,5 +1,5 @@
 {{- $src := ( .Destination | safeURL ) -}}
-{{- $relpath := ( add "/" .Page.File.Dir ) -}}
+{{- $relpath := ( add "/content/" .Page.File.Dir ) -}}
 <figure>
   <picture>
 
@@ -25,7 +25,7 @@
       {{ end }}
 
       {{/* Original image, for fallback (IE). */}}
-      {{ $img := imageConfig (add (add "/" .Page.File.Dir) .Destination) }}
+      {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
       <img class="image_figure image_internal" src="{{ .Destination }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
     {{- end -}}

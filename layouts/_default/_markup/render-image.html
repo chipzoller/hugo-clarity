@@ -22,14 +22,14 @@
 
       {{/* Original is JPEG */}}
       {{ if ($isJPG) -}}
-        {{ $avifPath:= replaceRE "(.jpg|.jpeg)$i" ".avif" .Destination }}
+        {{ $avifPath:= replaceRE "(.jpg|.jpeg)" ".avif" .Destination }}
         {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath) }}
 
         {{ if (fileExists $avifPathStatic) -}}
           <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
         {{- end }}
 
-        {{ $webpPath:= replaceRE "(.jpg|.jpeg)$i" ".webp" .Destination }}
+        {{ $webpPath:= replaceRE "(.jpg|.jpeg)" ".webp" .Destination }}
         {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
 
         {{ if (fileExists $webpPathStatic) -}}

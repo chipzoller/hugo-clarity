@@ -6,9 +6,9 @@
     {{- if strings.HasPrefix $src "http" -}}
       <img class="image_figure image_external" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
-      {{/* Provide caption based on Markdown text, if it exists. */}}
-      {{ if (.Text) -}}
-        <figcaption>{{ .Text | safeHTML }}</figcaption>
+      {{/* Provide caption based on image title, if it exists. */}}
+      {{ if (.Title) -}}
+        <figcaption>{{ .Title | safeHTML }}</figcaption>
       {{- end }}
 
     {{/* Otherwise, we add modern image formats (AVIF, WebP), if they exist. */}}
@@ -69,9 +69,9 @@
       {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
       <img class="image_figure image_external" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
 
-      {{/* Provide caption based on Markdown text, if it exists. */}}
-      {{ if (.Text) -}}
-        <figcaption>{{ .Text | safeHTML }}</figcaption>
+      {{/* Provide caption based on image title, if it exists. */}}
+      {{ if (.Title) -}}
+        <figcaption>{{ .Title | safeHTML }}</figcaption>
       {{- end }}
 
     {{- end -}}

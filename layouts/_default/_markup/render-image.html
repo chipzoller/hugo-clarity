@@ -22,7 +22,7 @@
         {{ $path = replace $path ".jpg" $dotext }}
         {{ $path = replace $path ".jpeg" $dotext }}
         {{ $path = replace $path ".gif" $dotext }}
-        {{ $path = imageConfig (add (add "/content/" $fullpath) $src) }}
+        {{ $path = add (add "/content/" $fullpath) $src }}
         {{ $path }}
         {{ if fileExists $path }}
           <source srcset="{{ $path | safeURL }}" type="image/{{ $ext }}">

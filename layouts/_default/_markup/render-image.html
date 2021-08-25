@@ -15,7 +15,8 @@
     {{/* This does not create these images, it only checks if they're present. */}}
     {{- else -}}
 
-      {{ $isJPG := eq ((path.Ext .Destination) ".jpg" || (path.Ext .Destination) ".jpeg") }}
+      {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
+      {{ $isJPG := eq (path.Ext .Destination) ".jpeg" }}
       {{ $isPNG := eq (path.Ext .Destination) ".png" }}
       {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
 

@@ -16,7 +16,7 @@
     {{- else -}}
 
       {{/* Determine original file type */}}
-      {{ if (path.Ext .Destination) eq ".jpg" || ".jpeg" -}}
+      {{ if (path.Ext .Destination) eq ".jpg" or ".jpeg" -}}
         {{ $isJPG := (path.Ext .Destination) }}
         <h1>{{ .isJPG }}</h1>
       {{- end }}

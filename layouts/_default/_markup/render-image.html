@@ -17,7 +17,7 @@
 
       {{ range $ext := (slice "avif" "webp" "jxl") }}
         {{ $dotext := print "." $ext }}
-        {{ $path := replace .Destination ".png" $dotext }}
+        {{ $path := replace $src ".png" $dotext }}
         {{ $path = replace $path ".jpg" $dotext }}
         {{ $path = replace $path ".jpeg" $dotext }}
         {{ $path = replace $path ".gif" $dotext }}

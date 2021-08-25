@@ -259,18 +259,10 @@ function fileClosure(){
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
         
-        let desc = document.createElement('p');
-        desc.classList.add('img_alt');
-        let imageAlt = alt;
-        
         const thisImgPos = image.dataset.pos;
-        // modify image caption is necessary
+        // modify image caption if necessary
         imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
         desc.textContent = imageAlt;
-        if(!image.matches(".image_featured")) {
-          // add a caption below image only if the image isn't a featured image
-          image.insertAdjacentHTML('afterend', desc.outerHTML);
-        }
       }
       
       if(isInline) {

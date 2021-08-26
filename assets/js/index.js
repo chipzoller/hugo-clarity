@@ -285,10 +285,10 @@ function fileClosure(){
         let actionableRatio = actualWidth / parentWidth;
 
         if (actionableRatio > 1) {
-          pushClass(image, "image-scalable");
-          image.dataset.scale = actionableRatio;
-          let figure = createEl('figure');
-          wrapEl(image, figure)
+          // pushClass(image, "image-scalable");
+          // image.dataset.scale = actionableRatio;
+          // let figure = createEl('figure');
+          // wrapEl(image, figure)
         }
       });
     }

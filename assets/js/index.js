@@ -258,7 +258,7 @@ function fileClosure(){
       const isInline = alt.includes(":inline");
       alt = alt.replace(":inline", "");
       if(isInline) {
-        modifyClass(image, 'inline');
+        modifyClass(figure, 'inline');
       }
 
       // Figure numbering

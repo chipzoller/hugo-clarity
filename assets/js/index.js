@@ -231,6 +231,7 @@ function fileClosure(){
     
     images.forEach((image) => {
       let alt = image.alt;
+      let caption = image.title;
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
       
@@ -248,30 +249,23 @@ function fileClosure(){
           alt = alt.replace(modifier, "");
         }
       });
-      
-      const isInline = alt.includes(":inline");
-      alt = alt.replace(":inline", "");
-      
-      // wait for position to load and a caption if the image is not online and has an alt attribute
-      if (alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {
+
+      const isInline = alt.includes("inline");
+      alt = alt.replace("inline", "");
+
+      // If an image is not inline and has a caption, increment the image position.
+      if (caption > 0 && !containsClass(caption && !isInline)) {
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
-        
-        let desc = document.createElement('p');
-        desc.classList.add('img_alt');
-        let imageAlt = alt;
-
         const thisImgPos = image.dataset.pos;
-        // modify image caption is necessary
-        imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
-        desc.textContent = imageAlt;
-        if(!image.matches(".image_featured")) {
-          // add a caption below image only if the image isn't a featured image
-          image.insertAdjacentHTML('afterend', desc.outerHTML);
-        }
+
+        // Prepend image position to caption.
+        caption = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${caption}` : caption;
+        let figcaption = elemAttribute('img', '[data-pos=' + image.dataset.pos + ']').closest('figcaption');
+        figcaption.innerHTML = caption;
       }
-      
+
       if(isInline) {
         modifyClass(image, 'inline');
       }

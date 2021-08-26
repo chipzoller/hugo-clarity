@@ -231,7 +231,6 @@ function fileClosure(){
     
     images.forEach((image) => {
       let alt = image.alt;
-      image.loading = "lazy";
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
       
@@ -250,8 +249,8 @@ function fileClosure(){
         }
       });
       
-      const isInline = alt.includes(inline);
-      alt = alt.replace(inline, "");
+      const isInline = alt.includes(":inline");
+      alt = alt.replace(":inline", "");
       
       // wait for position to load and a caption if the image is not online and has an alt attribute
       if (alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {

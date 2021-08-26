@@ -263,6 +263,9 @@
   &_date
     margin-right: 0.5rem
     margin-left: 0.25rem
+  &_featured
+    display: block
+    margin: 1rem auto
   &_content
     a
       color: $theme
@@ -428,12 +431,12 @@
     min-height: 10rem
     display: none
     @media screen and (min-width: $mobile-menu-breakpoint)
-      display: block 
+      display: block
       border-radius: 0.5rem
   &_footer
     &.partition
       display: grid
-      @media screen and (min-width: $mobile-menu-breakpoint) 
+      @media screen and (min-width: $mobile-menu-breakpoint)
         grid-template-columns: 2fr 7fr
         grid-gap: 1rem
 .sidebar
@@ -492,7 +495,7 @@
   &_left
     float: left
     margin-right: 1rem
-    + p 
+    + p
       padding-top: 0
   &_right
     float: right
@@ -542,8 +545,8 @@ figcaption
     &:hover svg
       opacity: 1
 
-.color 
-  &_mode 
+.color
+  &_mode
     // width: 3rem
     height: 1.5rem
     display: grid
@@ -606,9 +609,7 @@ figcaption
     cursor: pointer
     transition: transform 0.3s var(--ease)
   &_featured
-    display: block
-    margin-left: auto !important
-    margin-right: auto !important
+    margin: 0
 
 .video
   overflow: hidden
@@ -635,9 +636,9 @@ figcaption
   margin: 2rem 0
   padding-bottom: .1px
   padding-left: 1rem
-  padding-right: 1rem 
+  padding-right: 1rem
   .label
-    color: #fff    
+    color: #fff
     margin-top: -1.75rem
     font-weight: bold
     &::first-child::before

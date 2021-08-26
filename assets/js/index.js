@@ -235,10 +235,8 @@ function fileClosure(){
       const figure = image.parentNode.parentNode;
       const figcaption = image.nextElementSibling;
 
-      // Image alignment (floating)
-      const modifiers = [':left', ':right'];
+      // Image classes, including ::round
       const altArr = alt.split('::').map(x => x.trim())
-
       if (altArr.length > 1) {
         altArr[1].split(' ').filter(Boolean).forEach(cls =>{
           pushClass(image, cls);
@@ -246,6 +244,8 @@ function fileClosure(){
         })
       }
 
+      // Image alignment (floating)
+      const modifiers = [':left', ':right'];
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);
         if(canModify) {

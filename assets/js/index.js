@@ -250,8 +250,8 @@ function fileClosure(){
         }
       });
 
-      const isInline = alt.includes("inline");
-      alt = alt.replace("inline", "");
+      const isInline = alt.includes(":inline");
+      alt = alt.replace(":inline", "");
 
       if(isInline) {
         modifyClass(image, 'inline');

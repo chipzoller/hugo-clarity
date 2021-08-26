@@ -14,11 +14,7 @@
     {{- $t := .Title }}
     <h1 class="post_title">{{ $t }}</h1>
     {{- partial "post-meta" . }}
-    {{ with $p.featureImage }}
-    <div class="post_featured">
-      <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
-    </div>
-    {{ end }}
+    {{- partial "image-featured" . }}
     {{ if $p.toc }}
     <div class="post_toc">
       <h2>{{ T "overview" }}</h2>

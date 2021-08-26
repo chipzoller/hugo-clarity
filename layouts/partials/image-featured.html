@@ -1,0 +1,7 @@
+{{- $p := .Params }}
+{{- $t := .Title }}
+{{ with $p.featureImage }}
+  <div class="post_featured">
+    <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
+  </div>
+{{ end }}

@@ -285,10 +285,8 @@ function fileClosure(){
         let actionableRatio = actualWidth / parentWidth;
 
         if (actionableRatio > 1) {
-          // pushClass(image, "image-scalable");
-          // image.dataset.scale = actionableRatio;
-          // let figure = createEl('figure');
-          // wrapEl(image, figure)
+          pushClass(image.parentNode.parentNode, "image-scalable");
+          image.parentNode.parentNode.dataset.scale = actionableRatio;
         }
       });
     }
@@ -300,22 +298,20 @@ function fileClosure(){
     images ? populateAlt(images) : false;
     largeImages(post, images);
   })();
-  
+
   doc.addEventListener('click', function(event) {
     let target = event.target;
-    isClickableImage = target.matches('.image-scalable');
-    
-    let isFigure = target.matches('figure');
-    
-    if(isFigure) {
+    isClickableImage = target.parentNode.parentNode.matches('.image-scalable');
+
+    if(isClickableImage) {
       let hasClickableImage = containsClass(target.children[0], 'image-scalable');
       if(hasClickableImage) {
         modifyClass(target, 'image-scale');
       }
     }
-    
+
     if(isClickableImage) {
-      let figure = target.parentNode;
+      let figure = target.parentNode.parentNode;
       modifyClass(figure, 'image-scale');
     }
   });

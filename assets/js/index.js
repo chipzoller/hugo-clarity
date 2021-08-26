@@ -231,17 +231,17 @@ function fileClosure(){
     
     images.forEach((image) => {
       let alt = image.alt;
-      let caption = image.title;
+      let title = image.title;
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
-      
+
       if (altArr.length > 1) {
         altArr[1].split(' ').filter(Boolean).forEach(cls =>{
           pushClass(image, cls);
           alt = altArr[0]
         })
       }
-      
+
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);
         if(canModify) {
@@ -253,24 +253,26 @@ function fileClosure(){
       const isInline = alt.includes("inline");
       alt = alt.replace("inline", "");
 
+      if(isInline) {
+        modifyClass(image, 'inline');
+      }
+
       // If an image is not inline and has a caption, increment the image position.
-      if (caption > 0 && !containsClass(caption && !isInline)) {
+      if (title.length > 0 && !containsClass(image, 'alt' && !isInline)) {
+        let caption = title;
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
         const thisImgPos = image.dataset.pos;
 
         // Prepend image position to caption.
+        let figcaption = image.nextElementSibling
         caption = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${caption}` : caption;
-        let figcaption = elemAttribute('img', 'data-pos').closest('figcaption');
         figcaption.innerHTML = caption;
       }
 
-      if(isInline) {
-        modifyClass(image, 'inline');
-      }
     });
-    
+
     hljs.initHighlightingOnLoad();
   }
   

@@ -232,6 +232,10 @@ function fileClosure(){
     images.forEach((image) => {
       let alt = image.alt;
       let title = image.title;
+      const figure = image.parentNode.parentNode;
+      const figcaption = image.nextElementSibling;
+
+      // Image alignment (floating)
       const modifiers = [':left', ':right'];
       const altArr = alt.split('::').map(x => x.trim())
 
@@ -245,28 +249,25 @@ function fileClosure(){
       modifiers.forEach(function(modifier){
         const canModify = alt.includes(modifier);
         if(canModify) {
-          pushClass(image, `float_${modifier.replace(":", "")}`);
+          pushClass(figure, `float_${modifier.replace(":", "")}`);
           alt = alt.replace(modifier, "");
         }
       });
 
+      // Inline images
       const isInline = alt.includes(":inline");
       alt = alt.replace(":inline", "");
-
       if(isInline) {
         modifyClass(image, 'inline');
       }
 
-      // If an image is not inline and has a caption, increment the image position.
+      // Figure numbering
       if (title.length > 0 && !containsClass(image, 'alt' && !isInline)) {
         let caption = title;
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
         const thisImgPos = image.dataset.pos;
-
-        // Prepend image position to caption.
-        let figcaption = image.nextElementSibling
         caption = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${caption}` : caption;
         figcaption.innerHTML = caption;
       }

@@ -15,13 +15,19 @@
     <h1 class="post_title">{{ $t }}</h1>
     {{- partial "post-meta" . }}
     {{ with $p.featureImage }}
-    <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
+    <div class="post_featured">
+      <img src="{{ . }}" class="image_featured" alt="{{ $t }}">
+    </div>
     {{ end }}
     {{ if $p.toc }}
-    <h2>{{ T "overview" }}</h2>
-    {{ .TableOfContents }}
+    <div class="post_toc">
+      <h2>{{ T "overview" }}</h2>
+      {{ .TableOfContents }}
+    </div>
     {{ end }}
-    {{- .Content }}
+    <div class="post_body">
+      {{- .Content }}
+    </div>
     {{- $showComments := true }}
     {{- if eq $s.comments false }}
       {{- $showComments = false }}

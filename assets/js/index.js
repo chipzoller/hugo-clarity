@@ -262,7 +262,7 @@ function fileClosure(){
 
         // Prepend image position to caption.
         caption = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${caption}` : caption;
-        let figcaption = elemAttribute('img', '[data-pos=' + image.dataset.pos + ']').closest('figcaption');
+        let figcaption = elemAttribute('img', 'data-pos').closest('figcaption');
         figcaption.innerHTML = caption;
       }
 

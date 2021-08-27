@@ -8,7 +8,7 @@
     </div>
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
-      {{- $file := . }}
+      {{- $file := . | safeURL }}
       {{- $fileWeb := (add $.Page.RelPermalink .) -}}
       {{- $fileDisk := (add "/content/" (add $.Page.File.Dir .)) }}
       {{- $img := imageConfig $fileDisk -}}

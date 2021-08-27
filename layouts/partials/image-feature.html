@@ -1,81 +1,49 @@
 {{- $p := .Params }}
 {{- $t := .Title }}
-{{- $src := ( . | safeURL ) -}}
-{{- $relpath := ( add "/" .Page.File.Dir ) -}}
 {{ with $p.featureImage }}
-{{- $fullpath := ( add $relpath . ) -}}
+  {{- $file := . | safeURL }}{{/* filename of image */}}
+  {{- $fileWeb := (add $.Page.RelPermalink .) -}}{{/* full path to image, relative to the web root */}}
+  {{- $fileDisk := (add "/content/" (add $.Page.File.Dir .)) }}{{/* full path to image, relative to the file root */}}
+  {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
+  {{- $alt := $p.featureImageAlt | default $t -}}{{/* alt text */}}
+  {{- $cap := $p.featureImageCap | safeHTML -}}{{/* caption */}}
   <div class="post_featured">
 
     <figure>
       <picture>
 
-        {{/* If the image is external, we provide a basic <img> tag. */}}
-        {{- if strings.HasPrefix . "http" -}}
+        {{/* Image is external. */}}
+        {{- if strings.HasPrefix $file "http" -}}
 
-          <img class="image_featured image_external" src="{{ . }}" alt="{{ $p.featureImageAlt | default $t }}" />
+          <img class="image_featured image_external" src="{{ $file }}" alt="{{ $alt }}" />
 
-        {{/* Otherwise, we add modern image formats, if they exist. */}}
-        {{/* This does not create these images, it only checks if they're present. */}}
+        {{/* Image is internal. */}}
         {{- else -}}
 
-          {{ $isJPG := eq (path.Ext .) ".jpg" }}
-          {{ $isJPEG := eq (path.Ext .) ".jpeg" }}
-          {{ $isPNG := eq (path.Ext .) ".png" }}
-          {{ $isGIF := eq (path.Ext .) ".gif" }}
+        {{ range $ext := (slice "avif" "webp" "jxl") }}
+          {{ $dotext := print "." $ext }}
+          {{ $diskPath := $fileDisk }}
+          {{ $webPath := $fileWeb }}
+          {{ $diskPath = replace $diskPath ".png" $dotext }}
+          {{ $diskPath = replace $diskPath ".jpg" $dotext }}
+          {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
+          {{ $diskPath = replace $diskPath ".gif" $dotext }}
+          {{ $webPath = replace $webPath ".png" $dotext }}
+          {{ $webPath = replace $webPath ".jpg" $dotext }}
+          {{ $webPath = replace $webPath ".jpeg" $dotext }}
+          {{ $webPath = replace $webPath ".gif" $dotext }}
+          {{ if fileExists $diskPath }}
+            <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+          {{ end }}
+        {{ end }}
 
-          {{/* Original is JPEG */}}
-          {{ if or ($isJPG) ($isJPEG) -}}
-            {{ $avifPath:= replaceRE "(.jpg|.jpeg)" ".avif" . }}
-            {{ $avifPathStatic:= replaceRE "(.jpg|.jpeg)" ".avif" $fullpath }}
-
-            {{ if (fileExists $avifPathStatic) -}}
-              <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-            {{- end }}
-
-            {{ $webpPath:= replaceRE "(.jpg|.jpeg)" ".webp" . }}
-            {{ $webpPathStatic:= replaceRE "(.jpg|.jpeg)" ".webp" $fullpath }}
-
-            {{ if (fileExists $webpPathStatic) -}}
-              <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-            {{- end }}
-          {{- end }}
-
-          {{/* Original is PNG */}}
-          {{ if ($isPNG) -}}
-            {{ $avifPath:= replace . ".png" ".avif" }}
-            {{ $avifPathStatic:= replace $fullpath ".png" ".avif" }}
-
-            {{ if (fileExists $avifPathStatic) -}}
-              <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-            {{- end }}
-
-            {{ $webpPath:= replace . ".png" ".webp" }}
-            {{ $webpPathStatic:= replace $fullpath ".png" ".webp" }}
-
-            {{ if (fileExists $webpPathStatic) -}}
-              <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-            {{- end }}
-          {{- end }}
-
-          {{/* Original is GIF */}}
-          {{ if ($isGIF) -}}
-            {{ $avifPath:= replace . ".gif" ".avif" }}
-            {{ $avifPathStatic:= replace $fullpath ".gif" ".avif" }}
-
-            {{ if (fileExists $avifPathStatic) -}}
-              <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-            {{- end }}
-            {{/* (WebP is not offered, as a converted GIF is usually larger in file size.) */}}
-          {{- end }}
-
-          {{/* Original image, for fallback (IE). */}}
-          <img class="image_featured image_internal" src="{{ . }}" alt="{{ $p.featureImageAlt | default $t }}" />
+        <img class="image_featured image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" width="{{ $img.Width }}" height="{{ $img.Height }}" />
 
         {{- end -}}
 
         {{/* Provide caption, if it is set. */}}
-        {{ with $p.featureImageCap -}}
-          <figcaption>{{ $p.featureImageCap | safeHTML }}</figcaption>
+        {{ with $cap -}}
+          <figcaption>{{ $cap }}</figcaption>
         {{- end }}
 
       </picture>

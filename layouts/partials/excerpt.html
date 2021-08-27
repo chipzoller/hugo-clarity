@@ -9,9 +9,10 @@
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
       {{- $file := . }}
-      {{- $fileRel := ( add $.Page.RelPermalink . ) -}}
-      {{- $img := imageConfig (add "/content/" (add $.Page.File.Dir .)) -}}
-      {{ partial "image-thumbnail" (dict "file" $file "fileRel" $fileRel "img" $img "alt" $.Title) }}
+      {{- $fileWeb := (add $.Page.RelPermalink .) -}}
+      {{- $fileDisk := (add "/content/" (add $.Page.File.Dir .)) }}
+      {{- $img := imageConfig $fileDisk -}}
+      {{ partial "image-thumbnail" (dict "file" $file "fileWeb" $fileWeb "fileDisk" $fileDisk "img" $img "alt" $.Title) }}
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}

@@ -1,7 +1,9 @@
 {{/*
   .file: filename of image
-  .fileRel: relative path to file, from site root
+  .fileWeb: full path to image, relative to the web root
+  .fileDisk: full path to image, relative to the file root
   .img: image element (passed through imageConfig)
+  .alt: Alt text
   */}}
 <div class="excerpt_thumbnail">
   <picture>
@@ -14,7 +16,24 @@
     {{/* Image is internal. */}}
     {{- else -}}
 
-      <img class="image_thumbnail image_internal" src="{{ .fileRel }}" alt="{{ .alt }}" loading="lazy" decoding="async" width="{{ .img.Width }}" height="{{ .img.Height }}" />
+      {{ range $ext := (slice "avif" "webp" "jxl") }}
+        {{ $dotext := print "." $ext }}
+        {{ $diskPath := $.fileDisk }}
+        {{ $webPath := $.fileWeb }}
+        {{ $diskPath = replace $diskPath ".png" $dotext }}
+        {{ $diskPath = replace $diskPath ".jpg" $dotext }}
+        {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
+        {{ $diskPath = replace $diskPath ".gif" $dotext }}
+        {{ $webPath = replace $webPath ".png" $dotext }}
+        {{ $webPath = replace $webPath ".jpg" $dotext }}
+        {{ $webPath = replace $webPath ".jpeg" $dotext }}
+        {{ $webPath = replace $webPath ".gif" $dotext }}
+        {{ if fileExists $diskPath }}
+          <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+        {{ end }}
+      {{ end }}
+
+      <img class="image_thumbnail image_internal" src="{{ .fileWeb }}" alt="{{ .alt }}" loading="lazy" decoding="async" width="{{ .img.Width }}" height="{{ .img.Height }}" />
 
     {{- end -}}
 

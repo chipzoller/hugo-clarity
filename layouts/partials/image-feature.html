@@ -1,14 +1,34 @@
 {{- $p := .Params }}
 {{- $t := .Title }}
+
 {{ with $p.featureImage }}
-  {{- $file := . | safeURL }}{{/* filename of image */}}
-  {{- $fileWeb := (add $.Page.RelPermalink $file) -}}{{/* full path to image, relative to the web root */}}
-  {{- $fileDisk := (add "/content/" (add $.Page.File.Dir $file)) }}{{/* full path to image, relative to the file root */}}
-  {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
   {{- $alt := $p.featureImageAlt | default $t -}}{{/* alt text */}}
   {{- $cap := $p.featureImageCap | safeHTML -}}{{/* caption */}}
-  <div class="post_featured">
 
+  {{- $file := . | safeURL }}{{/* filename of image */}}
+
+  {{/* Check if page bundles are set. */}}
+  {{- $bundle := $.Site.Params.usePageBundles }}
+  {{ if eq $.Params.usePageBundles false }}
+    {{- $bundle = false }}
+  {{ end }}
+  {{ if eq $.Params.usePageBundles true }}
+    {{- $bundle = true }}
+  {{ end }}
+
+  {{- $fileWeb := "" -}}{{/* full path to image, relative to the web root */}}
+  {{- $fileDisk := "" -}}{{/* full path to image, relative to the file root */}}
+  {{ if eq $bundle true }}
+    {{- $fileWeb = (add $.Page.RelPermalink $file) -}}
+    {{- $fileDisk = (add "/content/" (add $.Page.File.Dir $file)) }}
+  {{ else }}
+    {{- $fileWeb = absURL . -}}
+    {{- $fileDisk = (add "/static/" $file) }}
+  {{ end }}
+
+  {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
+
+  <div class="post_featured">
     <figure>
       <picture>
 

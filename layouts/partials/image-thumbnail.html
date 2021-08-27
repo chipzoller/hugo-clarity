@@ -1,0 +1,17 @@
+<div class="excerpt_thumbnail">
+  <picture>
+
+    {{/* Image is external. */}}
+    {{- if strings.HasPrefix .src "http" -}}
+
+      <img class="image_thumbnail image_external" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" decoding="async" />
+
+    {{/* Image is internal. */}}
+    {{- else -}}
+
+      <img class="image_thumbnail image_internal" src="{{ .relsrc }}" alt="{{ .alt }}" loading="lazy" decoding="async" />
+
+    {{- end -}}
+
+  </picture>
+</div>

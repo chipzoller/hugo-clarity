@@ -8,9 +8,9 @@
     </div>
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
-      <div class="excerpt_thumbnail">
-        <img src='{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}' alt="{{ $.Title }}">
-      </div>
+      {{- $file := ( . | safeURL ) -}}
+      {{- $relpath := ( add $.Page.RelPermalink $file ) -}}
+      {{ partial "image-thumbnail" (dict "src" $file "relsrc" $relpath "alt" $.Title) }}
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}

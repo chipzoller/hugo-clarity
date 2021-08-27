@@ -4,7 +4,7 @@
     {{/* Image is external. */}}
     {{- if strings.HasPrefix .src "http" -}}
 
-      <img class="image_thumbnail image_external" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" decoding="async" />
+      <img class="image_thumbnail image_external" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
 
     {{/* Image is internal. */}}
     {{- else -}}

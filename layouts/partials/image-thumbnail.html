@@ -1,15 +1,20 @@
+{{/*
+  .file: filename of image
+  .fileRel: relative path to file, from site root
+  .img: image element (passed through imageConfig)
+  */}}
 <div class="excerpt_thumbnail">
   <picture>
 
     {{/* Image is external. */}}
-    {{- if strings.HasPrefix .src "http" -}}
+    {{- if strings.HasPrefix .file "http" -}}
 
-      <img class="image_thumbnail image_external" src="{{ .src }}" alt="{{ .alt }}" loading="lazy" />
+      <img class="image_thumbnail image_external" src="{{ .file }}" alt="{{ .alt }}" loading="lazy" />
 
     {{/* Image is internal. */}}
     {{- else -}}
 
-      <img class="image_thumbnail image_internal" src="{{ .relsrc }}" alt="{{ .alt }}" loading="lazy" decoding="async" />
+      <img class="image_thumbnail image_internal" src="{{ .fileRel }}" alt="{{ .alt }}" loading="lazy" decoding="async" width="{{ .img.Width }}" height="{{ .img.Height }}" />
 
     {{- end -}}
 

@@ -8,9 +8,10 @@
     </div>
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
-      {{- $file := ( . | safeURL ) -}}
-      {{- $relpath := ( add $.Page.RelPermalink $file ) -}}
-      {{ partial "image-thumbnail" (dict "src" $file "relsrc" $relpath "alt" $.Title) }}
+      {{- $file := . }}
+      {{- $fileRel := ( add $.Page.RelPermalink . ) -}}
+      {{- $img := imageConfig (add "/content/" (add $.Page.File.Dir .)) -}}
+      {{ partial "image-thumbnail" (dict "file" $file "fileRel" $fileRel "img" $img "alt" $.Title) }}
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}

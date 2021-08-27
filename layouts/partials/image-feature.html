@@ -2,8 +2,8 @@
 {{- $t := .Title }}
 {{ with $p.featureImage }}
   {{- $file := . | safeURL }}{{/* filename of image */}}
-  {{- $fileWeb := (add $.Page.RelPermalink .) -}}{{/* full path to image, relative to the web root */}}
-  {{- $fileDisk := (add "/content/" (add $.Page.File.Dir .)) }}{{/* full path to image, relative to the file root */}}
+  {{- $fileWeb := (add $.Page.RelPermalink $file) -}}{{/* full path to image, relative to the web root */}}
+  {{- $fileDisk := (add "/content/" (add $.Page.File.Dir $file)) }}{{/* full path to image, relative to the file root */}}
   {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
   {{- $alt := $p.featureImageAlt | default $t -}}{{/* alt text */}}
   {{- $cap := $p.featureImageCap | safeHTML -}}{{/* caption */}}

@@ -1,77 +1,44 @@
-{{- $src := ( .Destination | safeURL ) -}}
-{{- $relpath := ( add "/" .Page.File.Dir ) -}}
-{{- $fullpath := ( add $relpath $src ) -}}
+{{- $file := .Destination | safeURL }}{{/* filename of image */}}
+{{- $fileWeb := (add .Page.RelPermalink $file) -}}{{/* full path to image, relative to the web root */}}
+{{- $fileDisk := (add "/content/" (add .Page.File.Dir $file)) }}{{/* full path to image, relative to the file root */}}
+{{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
+{{- $alt := .Text -}}{{/* alt text */}}
+{{- $cap := .Title -}}{{/* caption */}}
 <figure>
   <picture>
 
-    {{/* If the image is external, we provide a basic <img> tag. */}}
-    {{- if strings.HasPrefix $src "http" -}}
+    {{/* Image is external. */}}
+    {{- if strings.HasPrefix $file "http" -}}
 
-      <img class="image_figure image_external" loading="lazy" src="{{ $fullpath }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+      <img class="image_figure image_external" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
 
-    {{/* Otherwise, we add modern image formats, if they exist. */}}
-    {{/* This does not create these images, it only checks if they're present. */}}
+    {{/* Image is internal. */}}
     {{- else -}}
 
-      {{ $isJPG := eq (path.Ext .Destination) ".jpg" }}
-      {{ $isJPEG := eq (path.Ext .Destination) ".jpeg" }}
-      {{ $isPNG := eq (path.Ext .Destination) ".png" }}
-      {{ $isGIF := eq (path.Ext .Destination) ".gif" }}
+    {{ range $ext := (slice "avif" "webp" "jxl") }}
+      {{ $dotext := print "." $ext }}
+      {{ $diskPath := $fileDisk }}
+      {{ $webPath := $fileWeb }}
+      {{ $diskPath = replace $diskPath ".png" $dotext }}
+      {{ $diskPath = replace $diskPath ".jpg" $dotext }}
+      {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
+      {{ $diskPath = replace $diskPath ".gif" $dotext }}
+      {{ $webPath = replace $webPath ".png" $dotext }}
+      {{ $webPath = replace $webPath ".jpg" $dotext }}
+      {{ $webPath = replace $webPath ".jpeg" $dotext }}
+      {{ $webPath = replace $webPath ".gif" $dotext }}
+      {{ if fileExists $diskPath }}
+        <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+      {{ end }}
+    {{ end }}
 
-      {{/* Original is JPEG */}}
-      {{ if or ($isJPG) ($isJPEG) -}}
-        {{ $avifPath:= replaceRE "(.jpg|.jpeg)" ".avif" .Destination }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath) }}
-
-        {{ if (fileExists $avifPathStatic) -}}
-          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-        {{- end }}
-
-        {{ $webpPath:= replaceRE "(.jpg|.jpeg)" ".webp" .Destination }}
-        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
-
-        {{ if (fileExists $webpPathStatic) -}}
-          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-        {{- end }}
-      {{- end }}
-
-      {{/* Original is PNG */}}
-      {{ if ($isPNG) -}}
-        {{ $avifPath:= replace .Destination ".png" ".avif" }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
-
-        {{ if (fileExists $avifPathStatic) -}}
-          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-        {{- end }}
-
-        {{ $webpPath:= replace .Destination ".png" ".webp" }}
-        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
-
-        {{ if (fileExists $webpPathStatic) -}}
-          <source srcset="{{ $webpPath | safeURL }}" type="image/webp">
-        {{- end }}
-      {{- end }}
-
-      {{/* Original is GIF */}}
-      {{ if ($isGIF) -}}
-        {{ $avifPath:= replace .Destination ".gif" ".avif" }}
-        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
-
-        {{ if (fileExists $avifPathStatic) -}}
-          <source srcset="{{ $avifPath | safeURL }}" type="image/avif">
-        {{- end }}
-        {{/* (WebP is not offered, as a converted GIF is usually larger in file size.) */}}
-      {{- end }}
-
-      {{/* Original image, for fallback (IE). */}}
-      {{ $img := imageConfig (add (add "/content/" .Page.File.Dir) .Destination) }}
-      <img class="image_figure image_internal" src="{{ $fullpath }}" alt="{{ .Text }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with .Title}} title="{{ . }}" {{ end }} />
+    <img class="image_figure image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with $cap }} title="{{ $cap }}" {{ end }} />
 
     {{- end -}}
 
-    {{/* Provide caption based on image title, if it exists. */}}
-    {{ if (.Title) -}}
-      <figcaption>{{ .Title | safeHTML }}</figcaption>
+    {{/* Provide caption based on image title, if it is set. */}}
+    {{ if ($cap) -}}
+      <figcaption>{{ $cap | safeHTML }}</figcaption>
     {{- end }}
 
   </picture>

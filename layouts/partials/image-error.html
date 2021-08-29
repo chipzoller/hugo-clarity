@@ -9,5 +9,5 @@
     </style>
     <p>Web path: <a href="{{ .fileWeb }}" title="Open this web path in a new tab" target="_blank" class="warning-link">{{ .fileWeb }}</a></p>
     <p>Disk path: {{ .fileDisk }}</p>
-    <p>Using <a href="https://gohugo.io/content-management/page-bundles/" title="Information about Hugo Page Bundles" target="_blank" class="warning-link">Page Bundles</a>: {{ .bundle }}</p>
+    <p>Using <a href="https://gohugo.io/content-management/page-bundles/" title="Information about Hugo Page Bundles" target="_blank" class="warning-link">Page Bundles</a>: {{ if eq .bundle true }}true{{ else }}false{{ end }}</p>
 </div>

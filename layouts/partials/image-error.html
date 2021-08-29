@@ -1,0 +1,13 @@
+<div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>Web path: <a href="{{ .fileWeb }}" title="Open this web path in a new tab" target="_blank" class="warning-link">{{ .fileWeb }}</a></p>
+    <p>Disk path: {{ .fileDisk }}</p>
+    <p>Using <a href="https://gohugo.io/content-management/page-bundles/" title="Information about Hugo Page Bundles" target="_blank" class="warning-link">Page Bundles</a>: {{ .bundle }}</p>
+</div>

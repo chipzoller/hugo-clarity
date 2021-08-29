@@ -34,6 +34,9 @@
         {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
 
         {{- partial "image-thumbnail" (dict "file" $file "fileWeb" $fileWeb "fileDisk" $fileDisk "img" $img "alt" $.Title) }}
+
+      {{- else }}
+        {{ partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }}
       {{- end }}
       {{ else }}
       <div class="excerpt_footer">
@@ -53,4 +56,5 @@
         </div>
       </div>
     </div>
-  </li>
+  </div>
+</li>

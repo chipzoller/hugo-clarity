@@ -72,5 +72,7 @@
       </figure>
 
     </div>
+  {{ else }}
+    {{ partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }}
   {{ end }}
 {{ end }}

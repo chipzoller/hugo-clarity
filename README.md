@@ -326,9 +326,9 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 
 #### Organizing page resources
 
-By default, Hugo Clarity assumes that page resources -- images and other assets -- are stored in the `static` folder. Alternatively, you can opt-in to using [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true`. Using this method, you keep a post's assets in the same directory as the post itself.
+By default, Hugo Clarity assumes that page resources -- images and other assets -- are stored in the `static` folder. Alternatively, you can opt-in to using [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
 
-If you have an existing site that is not using Page Bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level as well. If it is not set in the page front matter, it will default to the site's configuration.
+If you have an existing site that is not using Page Bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level as well in the front matter. If it is not set in the post, it will default to the site's parameter.
 
 #### Support for modern image formats
 

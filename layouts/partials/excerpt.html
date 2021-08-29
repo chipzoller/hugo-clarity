@@ -30,9 +30,11 @@
         {{- $fileDisk = (add "/static/" $file) }}
       {{ end }}
 
-      {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
+      {{- if fileExists $fileDisk }}
+        {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
 
-      {{ partial "image-thumbnail" (dict "file" $file "fileWeb" $fileWeb "fileDisk" $fileDisk "img" $img "alt" $.Title) }}
+        {{- partial "image-thumbnail" (dict "file" $file "fileWeb" $fileWeb "fileDisk" $fileDisk "img" $img "alt" $.Title) }}
+      {{- end }}
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}

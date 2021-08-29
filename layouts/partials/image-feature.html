@@ -26,48 +26,51 @@
     {{- $fileDisk = (add "/static/" $file) }}
   {{ end }}
 
-  {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
+  {{ if fileExists $fileDisk }}
 
-  <div class="post_featured">
-    <figure>
-      <picture>
+    {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
 
-        {{/* Image is external. */}}
-        {{- if strings.HasPrefix $file "http" -}}
+    <div class="post_featured">
+      <figure>
+        <picture>
 
-          <img class="image_featured image_external" src="{{ $file }}" alt="{{ $alt }}" />
+          {{/* Image is external. */}}
+          {{- if strings.HasPrefix $file "http" -}}
 
-        {{/* Image is internal. */}}
-        {{- else -}}
+            <img class="image_featured image_external" src="{{ $file }}" alt="{{ $alt }}" />
 
-        {{ range $ext := (slice "avif" "webp" "jxl") }}
-          {{ $dotext := print "." $ext }}
-          {{ $diskPath := $fileDisk }}
-          {{ $webPath := $fileWeb }}
-          {{ $diskPath = replace $diskPath ".png" $dotext }}
-          {{ $diskPath = replace $diskPath ".jpg" $dotext }}
-          {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
-          {{ $diskPath = replace $diskPath ".gif" $dotext }}
-          {{ $webPath = replace $webPath ".png" $dotext }}
-          {{ $webPath = replace $webPath ".jpg" $dotext }}
-          {{ $webPath = replace $webPath ".jpeg" $dotext }}
-          {{ $webPath = replace $webPath ".gif" $dotext }}
-          {{ if fileExists $diskPath }}
-            <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+          {{/* Image is internal. */}}
+          {{- else -}}
+
+          {{ range $ext := (slice "avif" "webp" "jxl") }}
+            {{ $dotext := print "." $ext }}
+            {{ $diskPath := $fileDisk }}
+            {{ $webPath := $fileWeb }}
+            {{ $diskPath = replace $diskPath ".png" $dotext }}
+            {{ $diskPath = replace $diskPath ".jpg" $dotext }}
+            {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
+            {{ $diskPath = replace $diskPath ".gif" $dotext }}
+            {{ $webPath = replace $webPath ".png" $dotext }}
+            {{ $webPath = replace $webPath ".jpg" $dotext }}
+            {{ $webPath = replace $webPath ".jpeg" $dotext }}
+            {{ $webPath = replace $webPath ".gif" $dotext }}
+            {{ if fileExists $diskPath }}
+              <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+            {{ end }}
           {{ end }}
-        {{ end }}
 
-        <img class="image_featured image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" width="{{ $img.Width }}" height="{{ $img.Height }}" />
+          <img class="image_featured image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" width="{{ $img.Width }}" height="{{ $img.Height }}" />
 
-        {{- end -}}
+          {{- end -}}
 
-        {{/* Provide caption, if it is set. */}}
-        {{ with $cap -}}
-          <figcaption>{{ $cap }}</figcaption>
-        {{- end }}
+          {{/* Provide caption, if it is set. */}}
+          {{ with $cap -}}
+            <figcaption>{{ $cap }}</figcaption>
+          {{- end }}
 
-      </picture>
-    </figure>
+        </picture>
+      </figure>
 
-  </div>
+    </div>
+  {{ end }}
 {{ end }}

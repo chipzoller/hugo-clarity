@@ -51,3 +51,21 @@ other = "Overview"
 
 [reading_time]
 other = "{{ .ReadingTime }} min read"
+
+[img_web_path]
+other = "Web path"
+
+[img_web_path_desc]
+other = "Open this web path in a new tab"
+
+[img_disk_path]
+other = "Disk path"
+
+[img_pb]
+other = "Page Bundles"
+
+[img_pb_using]
+other = "Using"
+
+[img_pb_desc]
+other = "Information about Hugo Page Bundles"

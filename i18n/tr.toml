@@ -51,3 +51,22 @@ other = "Overview"
 
 [reading_time]
 other = "{{ .ReadingTime }} min read"
+
+[img_web_path]
+other = "Web sitesi bağlantısı"
+
+[img_web_path_desc]
+other = "Bu web sitesi bağlantısını yeni bir sekmede aç"
+
+[img_disk_path]
+other = "Dosyaya bağlantı"
+
+[img_pb]
+other = "Page Bundles"
+
+[img_pb_using]
+other = "Kullanma"
+
+[img_pb_desc]
+other = "Hakkında bilgi Hugo Page Bundles"
+

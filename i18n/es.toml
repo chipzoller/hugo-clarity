@@ -51,3 +51,22 @@ other = "Contenido"
 
 [reading_time]
 other = "{{ .ReadingTime }} min read"
+
+[img_web_path]
+other = "Enlace de página web"
+
+[img_web_path_desc]
+other = "Abra el enlace de este sitio web en una pestaña nueva"
+
+[img_disk_path]
+other = "Enlace al archivo"
+
+[img_pb]
+other = "Page Bundles"
+
+[img_pb_using]
+other = "Usando"
+
+[img_pb_desc]
+other = "Información sobre Hugo Page Bundles"
+

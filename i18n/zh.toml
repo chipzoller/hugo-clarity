@@ -51,3 +51,6 @@ other = "文章目录"
 
 [reading_time]
 other = "{{ .ReadingTime }} min read"
+
+[series_posts]
+other = "Posts in this series"

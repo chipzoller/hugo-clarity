@@ -180,6 +180,8 @@ These options set global values that some pages or all pages in the site use by 
 | rss_summary | boolean | N/A |
 | rss_summary_read_more_link | boolean | N/A |
 | footerLogo | string | N/A |
+| showRelatedInArticle | boolean | yes |
+| showRelatedInSidebar | boolean | no |
 
 ### Page Parameters
 
@@ -209,6 +211,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | showReadTime | boolean | N/A |
 | sidebar | boolean | N/A |
 | singleColumn | boolean | N/A |
+| showRelatedInArticle | boolean | yes |
 
 ### Modify Menus
 
@@ -652,3 +655,11 @@ If you prefer MathJax, create a blank `[site]/layouts/partials/math.html` and ad
 ```
 
 This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one Clarity provides and the site will load MathJax instead of KaTeX.
+
+### Related Content
+
+Related content within a `series` taxonomy can be shown at the end of a piece of content, or optionally on the sidebar above the Related Content section.
+
+The site configuration option `showRelatedInArticle` controls if this option is enabled. The same configuration option can be used in a posts frontmatter to disable the feature (but the site configuration overrides the per-page option).
+
+Likewise, the site configuration option `showRelatedInSidebar` controls if related content is shown on the sidebar. There is no corresponding option within a post to disable this.

@@ -78,8 +78,13 @@ languageMenuName = "🌐"
 # notice of the footer.
 # since = 2016
 
-# tell hugo where you store your icons e.g favicons. This is useful if you're using an apache server and there are conflicts >> see issue https://github.com/chipzoller/hugo-clarity/issues/74. If this is applicable to you, be sure to copy the contents of https://github.com/chipzoller/hugo-clarity/tree/master/static/icons to your preferred icons directory 
+# tell hugo where you store your icons e.g favicons. This is useful if you're using an apache server and there are conflicts >> see issue https://github.com/chipzoller/hugo-clarity/issues/74. If this is applicable to you, be sure to copy the contents of https://github.com/chipzoller/hugo-clarity/tree/master/static/icons to your preferred icons directory
 iconsDir = "icons/" # without a leading forward slash
+
+# Show related content at the end of an article based on the 'series' taxonomy. Can be set in post front matter.
+# showRelatedInArticle = false
+# showRelatedInSidebar = false
+
 
 # website author
 [author]

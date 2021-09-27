@@ -52,3 +52,5 @@ other = "Inhalt"
 [reading_time]
 other = "{{ .ReadingTime }} min lesen"
 
+[series_posts]
+other = "Beiträge in dieser Serie"

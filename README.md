@@ -336,7 +336,7 @@ If you reference an image such as `sample.jpg` in your post, Hugo Clarity will c
 
 This process works for images with the file extensions `jpg`, `jpeg`, `png`, and `gif`.
 
-Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/rootwork.org/blob/main/scripts/image_optimize.sh).
+Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/bash-scripts/blob/main/images/modimg.sh).
 
 #### Image figure captions
 

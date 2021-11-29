@@ -1,10 +1,12 @@
 {{ with .Translations }}
-<h3>{{ T "translations" }}:</h3>
-<ul>
-  {{ range . }}
-    <li>
-      <a href="{{ .Permalink }}">{{ printf "%#v" .Language.LanguageName }} |</a>
-    </li>
-  {{ end }}
-</ul> 
+<div class="post_i18n">
+  <h3>{{ T "translations" }}:</h3>
+  <ul>
+    {{ range . }}
+      <li>
+        <a href="{{ .Permalink }}">{{ printf "%#v" .Language.LanguageName }} |</a>
+      </li>
+    {{ end }}
+  </ul>
+</div>
 {{ end }}

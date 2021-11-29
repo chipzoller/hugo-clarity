@@ -6,14 +6,14 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Preview on Desktop
 
-| Light Mode | Dark Mode |
-|---| --- |
+| Light Mode                                                                                                        | Dark Mode                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | ![Clarity Hugo Theme desktop light](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot.png) | ![Clarity Hugo Theme desktop dark](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-darkmode.png) |
 
 ## Preview on Mobile
 
-| Light Mode | Dark Mode |
-|---| --- |
+| Light Mode                                                                                                              | Dark Mode                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | ![Clarity Hugo Theme mobile light](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](https://github.com/chipzoller/hugo-clarity/blob/master/images/screenshot-mobile-darkmode.png) |
 
 ## Table of Contents
@@ -32,6 +32,16 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Mobile menu positioning](#mobile-menu-positioning)
   * [Tags and taxonomies](#tags-and-taxonomies)
   * [Images](#images)
+    * [Organizing page resources](#organizing-page-resources)
+    * [Modern image formats](#support-for-modern-image-formats)
+    * [Figure captions](#image-figure-captions)
+    * [Inline images](#inline-images)
+    * [Floating images](#float-images-to-the-left)
+    * [Round borders](#round-borders-for-images)
+    * [Adding CSS classes](#add-classes-to-images)
+    * [Article thumbnail image](#article-thumbnail-image)
+    * [Article featured image](#article-featured-image)
+    * [Article share image](#share-image)
   * [Code](#code)
   * [Table of contents](#table-of-contents-1)
   * [Notices](#notices)
@@ -45,25 +55,42 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 ## Features
 
 * Blog with tagging and category options
+
 * Deeplinks
+
+* Choice of whether to use [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/)
+
 * Native Image Lazy Loading
+
 * Customizable (see config)
+
 * Dark Mode (with UI controls for user preference setting)
+
 * Toggleable table of contents
-* Flexible image configuration
+
+* Flexible image configuration, and support for modern formats like WebP
+
 * Logo alignment
+
 * Mobile support with configurable menu alignment
+
 * Syntax Highlighting
+
 * Rich code block functions including:
-    1. Copy to clipboard
-    2. Toggle line wrap (dynamic)
-    3. Toggle line numbers
-    4. Language label
-    5. Toggle block expansion/contraction (dynamic)
 
-    To put it all in context, here is a preview showing all functionality.
+  1. Copy to clipboard
 
-    ![code block functions](https://github.com/chipzoller/hugo-clarity/blob/master/images/syntax-block.gif)
+  2. Toggle line wrap (dynamic)
+
+  3. Toggle line numbers
+
+  4. Language label
+
+  5. Toggle block expansion/contraction (dynamic)
+
+     To put it all in context, here is a preview showing all functionality.
+
+     ![code block functions](https://github.com/chipzoller/hugo-clarity/blob/master/images/syntax-block.gif)
 
 ## Prerequisites
 
@@ -141,77 +168,78 @@ This section will mainly cover settings that are unique to this theme. If someth
 
 These options set global values that some pages or all pages in the site use by default.
 
-| Parameter | Value Type | Overridable on Page |
-|:---- | ---- | ---- |
-| author | map / string | no |
-| twitter | string | no |
-| largeTwitterCard | boolean | no |
-| ga_analytics | string | no |
-| baidu_analytics | string | no |
-| plausible_analytics | boolean | no |
-| matomo_analytics | boolean | no |
-| description | string | yes |
-| introDescription | string | no |
-| introURL | string/false | no |
-| numberOfTagsShown | integer | no |
-| fallBackOgImage | file path (string) | no |
-| codeMaxLines | integer | yes |
-| codeLineNumbers | boolean | yes |
-| mainSections | array/string | no |
-| centerLogo | boolean | no |
-| logo | file path (string) | no |
-| iconsDir | dir path (string) | no |
-| mobileNavigation | string | no |
-| figurePositionShow | boolean | yes |
-| figurePositionLabel | string | no |
-| customCSS | array of file path (string) | no |
-| customJS | array of file path (string) | no |
-| enforceLightMode | boolean | N/A |
-| enforceDarkMode | boolean | N/A |
-| titleSeparator| string | no |
-| showShare | boolean | yes |
-| comments | boolean | yes |
-| numberOfRecentPosts | integer | no |
-| numberOfFeaturedPosts | integer | no |
-| dateFormat | string | no |
-| enableMathNotation | boolean | yes |
-| customFonts | boolean | no |
-| since | integer | N/A |
-| rss_summary | boolean | N/A |
-| rss_summary_read_more_link | boolean | N/A |
-| footerLogo | string | N/A |
-| showRelatedInArticle | boolean | yes |
-| showRelatedInSidebar | boolean | no |
+| Parameter                  | Value Type                  | Overridable on Page |
+|:-------------------------- | --------------------------- | ------------------- |
+| author                     | map / string                | no                  |
+| twitter                    | string                      | no                  |
+| largeTwitterCard           | boolean                     | no                  |
+| ga_analytics               | string                      | no                  |
+| baidu_analytics            | string                      | no                  |
+| plausible_analytics        | boolean                     | no                  |
+| matomo_analytics           | boolean                     | no                  |
+| description                | string                      | yes                 |
+| introDescription           | string                      | no                  |
+| introURL                   | string/false                | no                  |
+| numberOfTagsShown          | integer                     | no                  |
+| usePageBundles             | boolean                     | yes                 |
+| fallBackOgImage            | file path (string)          | no                  |
+| codeMaxLines               | integer                     | yes                 |
+| codeLineNumbers            | boolean                     | yes                 |
+| mainSections               | array/string                | no                  |
+| centerLogo                 | boolean                     | no                  |
+| logo                       | file path (string)          | no                  |
+| iconsDir                   | dir path (string)           | no                  |
+| mobileNavigation           | string                      | no                  |
+| figurePositionShow         | boolean                     | yes                 |
+| figurePositionLabel        | string                      | no                  |
+| customCSS                  | array of file path (string) | no                  |
+| customJS                   | array of file path (string) | no                  |
+| enforceLightMode           | boolean                     | N/A                 |
+| enforceDarkMode            | boolean                     | N/A                 |
+| titleSeparator             | string                      | no                  |
+| showShare                  | boolean                     | yes                 |
+| comments                   | boolean                     | yes                 |
+| numberOfRecentPosts        | integer                     | no                  |
+| numberOfFeaturedPosts      | integer                     | no                  |
+| dateFormat                 | string                      | no                  |
+| enableMathNotation         | boolean                     | yes                 |
+| customFonts                | boolean                     | no                  |
+| since                      | integer                     | N/A                 |
+| rss_summary                | boolean                     | N/A                 |
+| rss_summary_read_more_link | boolean                     | N/A                 |
+| footerLogo                 | string                      | N/A                 |
 
 ### Page Parameters
 
 These options can be set from a page [frontmatter](https://gohugo.io/content-management/front-matter#readout) or via [archetypes](https://gohugo.io/content-management/archetypes/#readout).
 
-| Parameter | Value Type | Overrides Global |
-|:---- | ---- | ---- |
-| title | string | N/A |
-| date | date | N/A |
-| description | string | N/A |
-| draft | boolean | N/A |
-| featured | boolean | N/A |
-| tags | array/string | N/A |
-| categories | array/string | N/A |
-| toc | boolean | N/A |
-| thumbnail | file path (string) | N/A |
-| featureImage | file path (string) | N/A |
-| shareImage | file path (string) | N/A |
-| codeMaxLines | integer | yes |
-| codeLineNumbers | boolean | yes |
-| figurePositionShow | boolean | yes |
-| figurePositionLabel | string | no |
-| comments | boolean | yes |
-| enableMathNotation | boolean | yes |
-| showDate | boolean | N/A |
-| showShare | boolean | N/A |
-| showReadTime | boolean | N/A |
-| sidebar | boolean | N/A |
-| singleColumn | boolean | N/A |
-| showRelatedInArticle | boolean | yes |
+| Parameter           | Value Type         | Overrides Global |
+|:------------------- | ------------------ | ---------------- |
+| title               | string             | N/A              |
+| date                | date               | N/A              |
+| description         | string             | N/A              |
+| draft               | boolean            | N/A              |
+| featured            | boolean            | N/A              |
+| tags                | array/string       | N/A              |
+| categories          | array/string       | N/A              |
+| toc                 | boolean            | N/A              |
+| usePageBundles      | boolean            | yes              |
+| featureImage        | file path (string) | N/A              |
+| featureImageAlt     | string             | N/A              |
+| featureImageCap     | string             | N/A              |
+| thumbnail           | file path (string) | N/A              |
+| shareImage          | file path (string) | N/A              |
+| codeMaxLines        | integer            | yes              |
+| codeLineNumbers     | boolean            | yes              |
+| figurePositionShow  | boolean            | yes              |
+| figurePositionLabel | string             | no               |
+| comments            | boolean            | yes              |
+| enableMathNotation  | boolean            | yes              |
+| showDate            | boolean            | N/A              |
+| showShare           | boolean            | N/A              |
+| showReadTime        | boolean            | N/A              |
+| sidebar             | boolean            | N/A              |
+| singleColumn        | boolean            | N/A              |
 
 ### Modify Menus
 
@@ -252,7 +280,6 @@ If using Matomo Analytics, configure the `matomo_analytics` global parameters in
 `matomoDomain`   Set to Matomo domain
 
 `matomoSiteID`  Default is set to 1, change this to the siteid being tracked
-
 
 ### Blog directory
 
@@ -297,11 +324,25 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 
 ### Images
 
+#### Organizing page resources
+
+By default, Hugo Clarity assumes that page resources -- images and other assets -- are stored in the `static` folder. Alternatively, you can opt-in to using [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
+
+If you have an existing site that is not using Page Bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level as well in the front matter. If it is not set in the post, it will default to the site's parameter.
+
+#### Support for modern image formats
+
+If you reference an image such as `sample.jpg` in your post, Hugo Clarity will check to see if the same image (based on filename) exists in the modern formats of [WebP](https://en.wikipedia.org/wiki/WebP), [AVIF](https://en.wikipedia.org/wiki/AV1#AV1_Image_File_Format_(AVIF)) or [JXL](https://en.wikipedia.org/wiki/JPEG_XL). If it does, these will be presented to browsers as alternative options. Browsers that can support these formats will load them, while browsers that do not will fall-back to the default image.
+
+This process works for images with the file extensions `jpg`, `jpeg`, `png`, and `gif`.
+
+Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/bash-scripts/blob/main/images/modimg.sh).
+
 #### Image figure captions
 
-You have the option of adding captions to images in blog posts and automatically prepending a desired string such as "Figure N" to the alt text. This is controlled via two global settings.
+You have the option of adding captions to images in blog posts and automatically prepending a desired string such as "Figure N" to the caption text. This is controlled via two global settings.
 
-`figurePositionLabel` is a string which will be prepended to any alt text of an article image. By default, this is set to "Figure." And `figurePositionShow` controls, globally, whether to show this label. It does not affect whether to show the image alt text, only the prefix figure caption. For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+`figurePositionLabel` is a string which will be prepended to any caption text of an article image. By default, this is set to "Figure." And `figurePositionShow` controls, globally, whether to show this label. It does not affect whether to show the image's alt or title text, only the prefix figure caption. For more granular control, `figurePositionShow` can be overridden at the article level if desired.
 
 The number will be automatically calculated and assigned after the `figurePositionLabel` text starting from the top of the article and counting down. Featured images will be excluded from this figuration.
 
@@ -310,26 +351,26 @@ The number will be automatically calculated and assigned after the `figurePositi
 In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
 
 ```markdown
-![Antrea Kubernetes nodes prepared](./images/image-figure.png)
+![A schematic for using Antrea with Kubernetes](./images/image-figure.png "Antrea Kubernetes nodes prepared")
 ```
 
-![Here is my alt text for this image.](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
+![Figure captioning example](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
 
 > NOTE: Alt text with double quotes will produce broken HTML per limitations with Markdown. It is recommended to omit any quotations from your alt text.
 
 #### Inline images
 
-To make a blog image inline, append `:inline` to its alt text. Typically, inline images will have no alt text associated with them.
+To make a blog image inline, append `:inline` to its alt text.
 
 #### Inline images example
 
 ```markdown
-<!-- some image without alt text -->
+<!-- an inline image without alt text -->
 ![:inline](someImageUrl)
 
-<!-- some image with alt text -->
+<!-- an inline image with alt text -->
 
-![some alt text:inline](someOtherImageUrl)
+![text describing the image:inline](someOtherImageUrl)
 ```
 
 ![Inline image example](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-inline.png)
@@ -341,12 +382,27 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 #### Float images left example
 
 ```markdown
-<!-- some image without alt text -->
+<!-- a left-floated image without alt text -->
 ![:left](someImageUrl)
 
-<!-- some image with alt text -->
+<!-- a left-floated image with alt text -->
 
-![some alt text:left](someOtherImageUrl)
+![text describing the image:left](someOtherImageUrl)
+```
+
+#### Float images to the right
+
+To align a blog image to the right, append `:right` to its alt text. Article text will then flow to the left of the image.
+
+#### Float images right example
+
+```markdown
+<!-- a right-floated image without alt text -->
+![:right](someImageUrl)
+
+<!-- a right-floated image with alt text -->
+
+![text describing the image:right](someOtherImageUrl)
 ```
 
 #### Round borders for images
@@ -358,36 +414,36 @@ is just another class and it can be mixed with other classes separated by space.
 #### Round borders for images example
 
 ```markdown
-<!-- some image without alt text and round borders-->
+<!-- an image without alt text and round borders-->
 ![::round](someImageUrl)
 
-<!-- some image with alt text and round borders-->
+<!-- an image with alt text and round borders-->
 
-![some alt text::round](someOtherImageUrl)
+![text describing the image::round](someOtherImageUrl)
 
-<!-- some left floating image with round borders-->
+<!-- a left-floating image without alt text and with round borders-->
 
 ![:left::round](someOtherImageUrl)
 ```
 
 #### Add classes to images
 
-To add a class image to the left, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
+To add a CSS class to an image, append `::<classname>` to its alt text. You can also add multiple classes to an image separated by space. `::<classname1> <classname2>`.
 
-#### Image class example
+#### Image classes example
 
 ```markdown
-<!-- some image without alt text -->
+<!-- an image without alt text -->
 ![::img-medium](someImageUrl)
 
-<!-- some image with alt text -->
+<!-- an image with alt text -->
 
-![some alt text::img-large img-shadow](someOtherImageUrl)
+![text describing the image::img-large img-shadow](someOtherImageUrl)
 ```
 
 #### Article thumbnail image
 
-Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They will be specified using a frontmatter variable as follows:
+Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They are specified using a frontmatter variable as follows:
 
 ```yaml
 ...
@@ -395,7 +451,9 @@ thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
 ...
 ```
 
-The thumbnail image will take precedence on opengraph share tags if the [shareImage](#share-image) parameter is not specified.
+The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
+The thumbnail image will take precedence over opengraph share tags if the [shareImage](#share-image) parameter is not specified.
 
 #### Article featured image
 
@@ -407,15 +465,28 @@ featureImage: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
-#### Share Image
+The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
+Two other frontmatter settings allow you to set alt text for the featured image and an optional caption.
+
+```yaml
+...
+featureImageAlt: 'Text describing the featured image' # Alternative text for featured image.
+featureImageCap: 'A caption appearing below the image.' # Caption (optional).
+...
+```
+
+#### Share image
 
 Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in the front matter.
 
 ```yaml
 ...
-shareImage = "images/theImageToBeUsedOnShare.png"
+shareImage: "images/theImageToBeUsedOnShare.png"
 ...
 ```
+
+The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
 
 Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. When sharing a link to the home page address of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
 
@@ -526,6 +597,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 ```
 
 ### Notices
+
 This theme includes functionality to display some "hightlight blocks" - called "notices" using a shortcode.
 
 For example, see the shortcode markup below will render as a notice:

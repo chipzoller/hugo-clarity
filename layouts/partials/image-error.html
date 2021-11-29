@@ -1,0 +1,13 @@
+<div class="notices warning image-warning">
+  <div class="label">Image not found</div>
+    <style>
+      a.warning-link {
+        color: inherit !important;
+        font-weight: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important; }
+    </style>
+    <p>{{ T "img_web_path" }}: <a href='{{ .fileWeb }}' title='{{ T "img_web_path_desc" }}' target='_blank' class='warning-link'>{{ .fileWeb }}</a></p>
+    <p>{{ T "img_disk_path" }}: {{ .fileDisk }}</p>
+    <p>{{ T "img_pb_using" }} <a href='https://gohugo.io/content-management/page-bundles/' title='{{ T "img_pb_desc" }}' target='_blank' class='warning-link'>{{ T "img_pb" }}</a>: {{ if eq .bundle true }}true{{ else }}false{{ end }}</p>
+</div>

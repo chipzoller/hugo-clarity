@@ -51,3 +51,22 @@ other = "文章目录"
 
 [reading_time]
 other = "{{ .ReadingTime }} min read"
+
+[img_web_path]
+other = "网站链接"
+
+[img_web_path_desc]
+other = "在新选项卡中打开此网站链接"
+
+[img_disk_path]
+other = "链接到文件"
+
+[img_pb]
+other = "Page Bundles"
+
+[img_pb_using]
+other = "使用"
+
+[img_pb_desc]
+other = "相关信息 Hugo Page Bundles"
+

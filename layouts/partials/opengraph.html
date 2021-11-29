@@ -1,3 +1,4 @@
+{{- $relpath := .Page.RelPermalink -}}
 {{- $summary := truncate 160 .Summary }}
 {{- $s := .Site.Params }}
 {{- $p := .Params }}
@@ -20,13 +21,16 @@
 {{- end }}
 {{- $image := absURL $s.fallBackOgImage }}
 {{- with $p.featureImage }}
-  {{- $image = absURL .  }}
+  {{- $fullpath := ( add $relpath . ) -}}
+  {{- $image = absURL $fullpath  }}
 {{- end }}
 {{- with $p.thumbnail }}
-  {{- $image = absURL .  }}
+  {{- $fullpath := ( add $relpath . ) -}}
+  {{- $image = absURL $fullpath  }}
 {{- end }}
 {{- with $p.shareImage }}
-  {{- $image = absURL .  }}
+  {{- $fullpath := ( add $relpath . ) -}}
+  {{- $image = absURL $fullpath  }}
 {{- end }}
 <meta property="og:locale" content="{{ .Lang }}" />
 {{ range .Translations }}

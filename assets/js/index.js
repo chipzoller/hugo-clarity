@@ -227,7 +227,7 @@ function fileClosure(){
   }
 
   function populateAlt(images) {
-    let imagePosition = 0;
+    let imagePosition = -1;
 
     images.forEach((image) => {
       let alt = image.alt;
@@ -260,12 +260,13 @@ function fileClosure(){
       }
 
       // Figure numbering
-      if (image.alt.length > 0 && !containsClass(image, 'alt' && !isInline)) {
+      if (image.alt.trim().length > 0 && !containsClass(image, 'alt' && !isInline)) {
+        console.log(image);
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
 
-        let desc = document.createElement('p');
+        let desc = document.createElement('figcaption');
         desc.classList.add('img_alt');
         let imageAlt = alt;
 
@@ -295,7 +296,7 @@ function fileClosure(){
             pushClass(image.parentNode.parentNode, "image-scalable");
             image.parentNode.parentNode.dataset.scale = actionableRatio;
           }
-        }, 500)
+        }, 100)
       });
     }
   }

@@ -261,7 +261,6 @@ function fileClosure(){
 
       // Figure numbering
       if (image.alt.trim().length > 0 && !containsClass(image, 'alt' && !isInline)) {
-        console.log(image);
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();

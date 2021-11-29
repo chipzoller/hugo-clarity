@@ -1,0 +1,41 @@
+{{/*
+  .file: filename of image
+  .fileWeb: full path to image, relative to the web root
+  .fileDisk: full path to image, relative to the file root
+  .img: image element (passed through imageConfig)
+  .alt: alt text
+  */}}
+<div class="excerpt_thumbnail">
+  <picture>
+
+    {{/* Image is external. */}}
+    {{- if strings.HasPrefix .file "http" -}}
+
+      <img class="image_thumbnail image_external" src="{{ .file }}" alt="{{ .alt }}" loading="lazy" />
+
+    {{/* Image is internal. */}}
+    {{- else -}}
+
+      {{ range $ext := (slice "avif" "webp" "jxl") }}
+        {{ $dotext := print "." $ext }}
+        {{ $diskPath := $.fileDisk }}
+        {{ $webPath := $.fileWeb }}
+        {{ $diskPath = replace $diskPath ".png" $dotext }}
+        {{ $diskPath = replace $diskPath ".jpg" $dotext }}
+        {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
+        {{ $diskPath = replace $diskPath ".gif" $dotext }}
+        {{ $webPath = replace $webPath ".png" $dotext }}
+        {{ $webPath = replace $webPath ".jpg" $dotext }}
+        {{ $webPath = replace $webPath ".jpeg" $dotext }}
+        {{ $webPath = replace $webPath ".gif" $dotext }}
+        {{ if fileExists $diskPath }}
+          <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
+        {{ end }}
+      {{ end }}
+
+      <img class="image_thumbnail image_internal" src="{{ .fileWeb }}" alt="{{ .alt }}" loading="lazy" decoding="async" width="{{ .img.Width }}" height="{{ .img.Height }}" />
+
+    {{- end -}}
+
+  </picture>
+</div>

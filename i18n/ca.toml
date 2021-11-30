@@ -51,3 +51,6 @@ other = "Resum"
 
 [reading_time]
 other = "{{ .ReadingTime }} min lectura"
+
+[series_posts]
+other = "Publicacions d'aquesta sèrie"

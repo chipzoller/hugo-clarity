@@ -70,4 +70,5 @@ other = "Mit"
 [img_pb_desc]
 other = "Informationen zu Hugo Page Bundles"
 
-
+[series_posts]
+other = "Beiträge in dieser Serie"

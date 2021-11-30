@@ -207,39 +207,42 @@ These options set global values that some pages or all pages in the site use by 
 | since                      | integer                     | N/A                 |
 | rss_summary                | boolean                     | N/A                 |
 | rss_summary_read_more_link | boolean                     | N/A                 |
+| showRelatedInArticle       | boolean                     | yes                 |
+| showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
 
 ### Page Parameters
 
 These options can be set from a page [frontmatter](https://gohugo.io/content-management/front-matter#readout) or via [archetypes](https://gohugo.io/content-management/archetypes/#readout).
 
-| Parameter           | Value Type         | Overrides Global |
-|:------------------- | ------------------ | ---------------- |
-| title               | string             | N/A              |
-| date                | date               | N/A              |
-| description         | string             | N/A              |
-| draft               | boolean            | N/A              |
-| featured            | boolean            | N/A              |
-| tags                | array/string       | N/A              |
-| categories          | array/string       | N/A              |
-| toc                 | boolean            | N/A              |
-| usePageBundles      | boolean            | yes              |
-| featureImage        | file path (string) | N/A              |
-| featureImageAlt     | string             | N/A              |
-| featureImageCap     | string             | N/A              |
-| thumbnail           | file path (string) | N/A              |
-| shareImage          | file path (string) | N/A              |
-| codeMaxLines        | integer            | yes              |
-| codeLineNumbers     | boolean            | yes              |
-| figurePositionShow  | boolean            | yes              |
-| figurePositionLabel | string             | no               |
-| comments            | boolean            | yes              |
-| enableMathNotation  | boolean            | yes              |
-| showDate            | boolean            | N/A              |
-| showShare           | boolean            | N/A              |
-| showReadTime        | boolean            | N/A              |
-| sidebar             | boolean            | N/A              |
-| singleColumn        | boolean            | N/A              |
+| Parameter            | Value Type         | Overrides Global |
+|:-------------------- | ------------------ | ---------------- |
+| title                | string             | N/A              |
+| date                 | date               | N/A              |
+| description          | string             | N/A              |
+| draft                | boolean            | N/A              |
+| featured             | boolean            | N/A              |
+| tags                 | array/string       | N/A              |
+| categories           | array/string       | N/A              |
+| toc                  | boolean            | N/A              |
+| usePageBundles       | boolean            | yes              |
+| featureImage         | file path (string) | N/A              |
+| featureImageAlt      | string             | N/A              |
+| featureImageCap      | string             | N/A              |
+| thumbnail            | file path (string) | N/A              |
+| shareImage           | file path (string) | N/A              |
+| codeMaxLines         | integer            | yes              |
+| codeLineNumbers      | boolean            | yes              |
+| figurePositionShow   | boolean            | yes              |
+| figurePositionLabel  | string             | no               |
+| comments             | boolean            | yes              |
+| enableMathNotation   | boolean            | yes              |
+| showDate             | boolean            | N/A              |
+| showShare            | boolean            | N/A              |
+| showReadTime         | boolean            | N/A              |
+| sidebar              | boolean            | N/A              |
+| singleColumn         | boolean            | N/A              |
+| showRelatedInArticle | boolean            | N/A              |
 
 ### Modify Menus
 

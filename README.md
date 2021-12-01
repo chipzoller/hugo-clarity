@@ -14,7 +14,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 | Light Mode                                                                                                              | Dark Mode                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| ![Clarity Hugo Theme mobile light](hhttps://raw.githubusercontent.com/chipzoller/hugo-clarity/master/images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/images/screenshot-mobile-darkmode.png) |
+| ![Clarity Hugo Theme mobile light](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/images/screenshot-mobile.png) | ![Clarity Hugo Theme mobile dark](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/images/screenshot-mobile-darkmode.png) |
 
 ## Table of Contents
 

@@ -259,7 +259,7 @@ function fileClosure(){
       }
 
       // Figure numbering
-      let captionText = image.title.trim().length ? image.title.trim() : image.alt.trim();
+      let captionText = image.title.trim().length ? image.title.trim() : alt;
 
       if (captionText.length && !containsClass(image, 'alt' && !isInline)) {
         imagePosition += 1;

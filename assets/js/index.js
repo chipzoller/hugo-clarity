@@ -1,4 +1,3 @@
-const pageHasLoaded = 'DOMContentLoaded';
 (function toggleColorModes(){
   const light = 'lit';
   const dark = 'dim';
@@ -227,7 +226,7 @@ function fileClosure(){
   }
 
   function populateAlt(images) {
-    let imagePosition = -1;
+    let imagePosition = containsClass(images[0], featuredImageClass) ? -1 : 0;
 
     images.forEach((image) => {
       let alt = image.alt;
@@ -275,7 +274,7 @@ function fileClosure(){
         captionText = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${captionText}` : captionText;
         desc.textContent = captionText;
 
-        if(!image.matches(".image_featured")) {
+        if(!image.matches(`.${featuredImageClass}`)) {
           // add a caption below image only if the image isn't a featured image
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         }
@@ -294,7 +293,7 @@ function fileClosure(){
           let actionableRatio = actualWidth / parentWidth;
 
           if (actionableRatio > 1) {
-            pushClass(image.parentNode.parentNode, "image-scalable");
+            pushClass(image.parentNode.parentNode, imageScalableClass);
             image.parentNode.parentNode.dataset.scale = actionableRatio;
           }
         }, 100)
@@ -311,18 +310,18 @@ function fileClosure(){
 
   doc.addEventListener('click', function(event) {
     let target = event.target;
-    isClickableImage = target.matches('.image-scalable') || target.closest('.image-scalable') ;
+    isClickableImage = target.matches(`.${imageScalableClass}`) || target.closest(`.${imageScalableClass}`) ;
 
     if(isClickableImage) {
-      let hasClickableImage = containsClass(target.children[0], 'image-scalable');
+      let hasClickableImage = containsClass(target.children[0], imageScalableClass);
       if(hasClickableImage) {
-        modifyClass(target, 'image-scale');
+        modifyClass(target, scaleImageClass);
       }
     }
 
     if(isClickableImage) {
       let figure = target.closest('figure');
-      modifyClass(figure, 'image-scale');
+      modifyClass(figure, scaleImageClass);
     }
   });
 

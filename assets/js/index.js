@@ -260,19 +260,21 @@ function fileClosure(){
       }
 
       // Figure numbering
-      if (image.alt.trim().length > 0 && !containsClass(image, 'alt' && !isInline)) {
+      let captionText = image.title.trim().length ? image.title.trim() : image.alt.trim();
+
+      if (captionText.length && !containsClass(image, 'alt' && !isInline)) {
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
 
         let desc = document.createElement('figcaption');
         desc.classList.add('img_alt');
-        let imageAlt = alt;
 
         const thisImgPos = image.dataset.pos;
         // modify image caption is necessary
-        imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
-        desc.textContent = imageAlt;
+        captionText = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${captionText}` : captionText;
+        desc.textContent = captionText;
+
         if(!image.matches(".image_featured")) {
           // add a caption below image only if the image isn't a featured image
           image.insertAdjacentHTML('afterend', desc.outerHTML);

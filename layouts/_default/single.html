@@ -24,6 +24,17 @@
     <div class="post_body">
       {{- .Content }}
     </div>
+
+    {{- $showRelatedInArticle := true }}
+    {{- if eq $s.showRelatedInArticle false }}
+      {{- $showRelatedInArticle = false }}
+    {{- else if eq $p.showRelatedInArticle false }}
+      {{- $showRelatedInArticle = false }}
+    {{- end }}
+    {{- if ne $showRelatedInArticle false }}
+      {{- partial "related" . }}
+    {{- end }}
+
     {{- $showComments := true }}
     {{- if eq $s.comments false }}
       {{- $showComments = false }}
@@ -34,6 +45,7 @@
       {{- partial "comments" . }}
     {{- end }}
     {{- partial "i18nlist" . }}
+
   </article>
   {{- if ( ne $p.sidebar false ) }}
     {{- partial "sidebar" . }}

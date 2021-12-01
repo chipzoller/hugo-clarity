@@ -70,3 +70,5 @@ other = "使用"
 [img_pb_desc]
 other = "相關信息 Hugo Page Bundles"
 
+[series_posts]
+other = "Posts in this series"

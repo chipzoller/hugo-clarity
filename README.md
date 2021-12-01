@@ -77,20 +77,20 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 * Syntax Highlighting
 
 * Rich code block functions including:
-  
+
   1. Copy to clipboard
-  
+
   2. Toggle line wrap (dynamic)
-  
+
   3. Toggle line numbers
-  
+
   4. Language label
-  
+
   5. Toggle block expansion/contraction (dynamic)
-     
+
      To put it all in context, here is a preview showing all functionality.
-     
-     ![code block functions](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/images/syntax-block.gif)
+
+     ![code block functions](https://github.com/chipzoller/hugo-clarity/blob/master/images/syntax-block.gif)
 
 ## Prerequisites
 
@@ -207,39 +207,42 @@ These options set global values that some pages or all pages in the site use by 
 | since                      | integer                     | N/A                 |
 | rss_summary                | boolean                     | N/A                 |
 | rss_summary_read_more_link | boolean                     | N/A                 |
+| showRelatedInArticle       | boolean                     | yes                 |
+| showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
 
 ### Page Parameters
 
 These options can be set from a page [frontmatter](https://gohugo.io/content-management/front-matter#readout) or via [archetypes](https://gohugo.io/content-management/archetypes/#readout).
 
-| Parameter           | Value Type         | Overrides Global |
-|:------------------- | ------------------ | ---------------- |
-| title               | string             | N/A              |
-| date                | date               | N/A              |
-| description         | string             | N/A              |
-| draft               | boolean            | N/A              |
-| featured            | boolean            | N/A              |
-| tags                | array/string       | N/A              |
-| categories          | array/string       | N/A              |
-| toc                 | boolean            | N/A              |
-| usePageBundles      | boolean            | yes              |
-| featureImage        | file path (string) | N/A              |
-| featureImageAlt     | string             | N/A              |
-| featureImageCap     | string             | N/A              |
-| thumbnail           | file path (string) | N/A              |
-| shareImage          | file path (string) | N/A              |
-| codeMaxLines        | integer            | yes              |
-| codeLineNumbers     | boolean            | yes              |
-| figurePositionShow  | boolean            | yes              |
-| figurePositionLabel | string             | no               |
-| comments            | boolean            | yes              |
-| enableMathNotation  | boolean            | yes              |
-| showDate            | boolean            | N/A              |
-| showShare           | boolean            | N/A              |
-| showReadTime        | boolean            | N/A              |
-| sidebar             | boolean            | N/A              |
-| singleColumn        | boolean            | N/A              |
+| Parameter            | Value Type         | Overrides Global |
+|:-------------------- | ------------------ | ---------------- |
+| title                | string             | N/A              |
+| date                 | date               | N/A              |
+| description          | string             | N/A              |
+| draft                | boolean            | N/A              |
+| featured             | boolean            | N/A              |
+| tags                 | array/string       | N/A              |
+| categories           | array/string       | N/A              |
+| toc                  | boolean            | N/A              |
+| usePageBundles       | boolean            | yes              |
+| featureImage         | file path (string) | N/A              |
+| featureImageAlt      | string             | N/A              |
+| featureImageCap      | string             | N/A              |
+| thumbnail            | file path (string) | N/A              |
+| shareImage           | file path (string) | N/A              |
+| codeMaxLines         | integer            | yes              |
+| codeLineNumbers      | boolean            | yes              |
+| figurePositionShow   | boolean            | yes              |
+| figurePositionLabel  | string             | no               |
+| comments             | boolean            | yes              |
+| enableMathNotation   | boolean            | yes              |
+| showDate             | boolean            | N/A              |
+| showShare            | boolean            | N/A              |
+| showReadTime         | boolean            | N/A              |
+| sidebar              | boolean            | N/A              |
+| singleColumn         | boolean            | N/A              |
+| showRelatedInArticle | boolean            | N/A              |
 
 ### Modify Menus
 
@@ -727,3 +730,11 @@ If you prefer MathJax, create a blank `[site]/layouts/partials/math.html` and ad
 ```
 
 This file will [take precedence over](https://gohugobrasil.netlify.app/themes/customizing/) the one Clarity provides and the site will load MathJax instead of KaTeX.
+
+### Related Content
+
+Related content within a `series` taxonomy can be shown at the end of a piece of content, or optionally on the sidebar above the Related Content section.
+
+The site configuration option `showRelatedInArticle` controls if this option is enabled. The same configuration option can be used in a posts frontmatter to disable the feature (but the site configuration overrides the per-page option).
+
+Likewise, the site configuration option `showRelatedInSidebar` controls if related content is shown on the sidebar. There is no corresponding option within a post to disable this.

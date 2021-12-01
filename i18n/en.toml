@@ -69,3 +69,6 @@ other = "Using"
 
 [img_pb_desc]
 other = "Information about Hugo Page Bundles"
+
+[series_posts]
+other = "Posts in this series"

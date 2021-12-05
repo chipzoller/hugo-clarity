@@ -220,6 +220,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | title                | string             | N/A              |
 | date                 | date               | N/A              |
 | description          | string             | N/A              |
+| abstract             | string             | N/A              |
+| summary              | string             | N/A              |
 | draft                | boolean            | N/A              |
 | featured             | boolean            | N/A              |
 | tags                 | array/string       | N/A              |

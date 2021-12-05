@@ -178,7 +178,7 @@ These options set global values that some pages or all pages in the site use by 
 | plausible_analytics        | boolean                     | no                  |
 | matomo_analytics           | boolean                     | no                  |
 | description                | string                      | yes                 |
-| introDescription           | string                      | no                  |
+| introDescription           | string                      | yes                 |
 | introURL                   | string/false                | no                  |
 | numberOfTagsShown          | integer                     | no                  |
 | usePageBundles             | boolean                     | yes                 |
@@ -220,6 +220,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | title                | string             | N/A              |
 | date                 | date               | N/A              |
 | description          | string             | N/A              |
+| introDescription     | string             | yes              |
 | abstract             | string             | N/A              |
 | summary              | string             | N/A              |
 | draft                | boolean            | N/A              |

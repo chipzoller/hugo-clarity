@@ -1,7 +1,11 @@
-{{ $s := .Site.Params }}
+{{ $s := site.Params }}
 <aside class="sidebar">
   <section class="sidebar_inner">
-    {{- if $s.IntroDescription }}
+    {{- $introDescription := $s.introDescription }}
+    {{- with .Params.introDescription }}
+      {{- $introDescription = . }}
+    {{- end }}
+    {{- if $introDescription }}
       {{- $author := $s.Author  }}
       {{- $showAuthorPhoto := false }}
       {{- $fullAuthor := reflect.IsMap $author }}
@@ -19,7 +23,7 @@
         <h2>{{  if $fullAuthor }}{{ $author.name }}{{ else }}{{ $author }}{{ end }}</h2>
       {{- end }}
       <div class="author_bio">
-        {{ markdownify $s.IntroDescription }}
+        {{ markdownify $introDescription }}
       </div>
       {{- if ( ne $s.introURL false ) }}
       {{- $r := T "read_more" }}

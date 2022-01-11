@@ -23,7 +23,7 @@ other = "Perdu"
 other = "Nous ne trouvons pas la page que vous recherchez"
 
 [go_back]
-other = "Retour arrière"
+other = "Revenir en arrière…"
 
 [translations]
 other = "Traductions"
@@ -47,10 +47,10 @@ other = "Tous les tags"
 other = "Toutes les séries"
 
 [overview]
-other = "Overview"
+other = "Sommaire"
 
 [reading_time]
-other = "{{ .ReadingTime }} min read"
+other = "{{ .ReadingTime }} mins de lecture"
 
 [img_web_path]
 other = "Lien de site Web"

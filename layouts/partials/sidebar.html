@@ -3,7 +3,7 @@
   <section class="sidebar_inner">
     {{- $introDescription := $s.introDescription }}
     {{- with .Params.introDescription }}
-      {{- $introDescription = . }}
+      {{- $introDescription = $s.introDescription }}
     {{- end }}
     {{- if $introDescription }}
       {{- $author := $s.Author  }}

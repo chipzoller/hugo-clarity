@@ -1,4 +1,9 @@
 <div class="post_comments">
-  {{ template "_internal/disqus.html" . }}
+  {{ if .Site.DisqusShortname }}
+    {{ template "_internal/disqus.html" . }}
+  {{ end }}
+  {{ if .Site.Params.utterances }}
+    {{ template "partials/utterances.html" . }}
+  {{ end }}
   <!-- add custom comments markup here -->
 </div>

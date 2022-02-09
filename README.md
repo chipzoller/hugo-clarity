@@ -546,6 +546,14 @@ If `codeMaxLines` is specified both in `config.toml` and in the article frontmat
 
 If `codeMaxLines` is not specified anywhere, an internal default value of `100` will be assumed.
 
+#### Line Highlighting
+
+It is possible to highlight specific lines in a code block by applying `{hl_lines=[7]}` after the fence and language. For example, the below snippet will highlight lines 7 and 8 in the code block to which it is applied.
+
+```
+```yaml {hl_lines=[7,8]}
+```
+
 ### Table of contents
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.

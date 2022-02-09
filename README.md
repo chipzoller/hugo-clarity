@@ -693,6 +693,20 @@ You can override these setting from each post individually. For example, you may
 
 > please use `comments` and not `comment`
 
+#### Utterances Commenting Support
+
+ If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
+
+ * Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances). 
+ * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
+ * Set `comments = true` in the `/config/_default/params.toml` file.
+ * Configure the utterances parameters in the `/config/_default/params.toml` file.
+
+ Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
+ 
+
+
+
 ### Math notation
 
 Clarity uses [KaTeX](https://katex.org/) for math type setting if `enableMathNotation` is set to `true` in global or page parameters (the latter takes precedence).

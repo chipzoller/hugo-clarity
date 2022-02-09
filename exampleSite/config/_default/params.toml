@@ -70,6 +70,12 @@ languageMenuName = "🌐"
 # Enable or disable comments globally. Default to true.
 # comments = false
 
+# Enable or disable Utterances (https://github.com/utterance/utterances) Github Issue-Based Commenting
+# utterances = true  #Run the utterances script in the single.html layout to load https://utteranc.es comments
+# utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
+# utterancesTheme = "github-light" # Default: github-dark
+# utterancesIssueTerm = "pathname" # Default: pathname
+
 # Maximum number of recent posts.
 # numberOfRecentPosts = 8
 

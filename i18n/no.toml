@@ -1,0 +1,74 @@
+[read_more]
+other = "Les mer"
+
+[copyright]
+other = "Opphavsrett"
+
+[all_rights]
+other = "Alle rettigheter forbeholdt"
+
+[share_on]
+other = "Del på"
+
+[featured_posts]
+other = "Utvalgte innlegg"
+
+[recent_posts]
+other = "Nye innlegg"
+
+[404_title]
+other = "Tapt"
+
+[could_not_find]
+other = "Vi kunne ikke finne det du ser etter"
+
+[go_back]
+other = "Gå Tilbake"
+
+[translations]
+other = "Oversettelser"
+
+[categories]
+other = "Kategori"
+
+[tags]
+other = "Stikkord"
+
+[series]
+other = "Serier"
+
+[all_categories]
+other = "Alle Kategorier"
+
+[all_tags]
+other = "Alle stikkord"
+
+[all_series]
+other = "Alle Serier"
+
+[overview]
+other = "Oversikt"
+
+[reading_time]
+other = "{{ .ReadingTime }} min lesing"
+
+[img_web_path]
+other = "nettbane"
+
+[img_web_path_desc]
+other = "Åpne denne nettbanen i en ny fane"
+
+[img_disk_path]
+other = "Disk path"
+
+[img_pb]
+other = "Diskbane"
+
+[img_pb_using]
+other = "Bruker"
+
+[img_pb_desc]
+other = "Informasjon om Hugo Sidepakker"
+
+[series_posts]
+other = "Flere innlegg i denne serien"

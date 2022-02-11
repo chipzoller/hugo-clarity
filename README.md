@@ -46,6 +46,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Table of contents](#table-of-contents-1)
   * [Notices](#notices)
   * [Custom CSS and JS](#custom-css-and-js)
+  * [Custom Site Disclaimer](#site-disclaimer)
   * [Forcing light or dark mode](#forcing-light-or-dark-mode)
   * [Internationalization - I18N](#i18n)
   * [Hooks](#hooks)
@@ -67,6 +68,8 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 * Dark Mode (with UI controls for user preference setting)
 
 * Toggleable table of contents
+
+* Configurable Site Disclaimer (i.e. "my views are not my employer's")
 
 * Flexible image configuration, and support for modern formats like WebP
 
@@ -623,6 +626,20 @@ This will be the content of the note.
 ```
 
 For more examples see the "Notices" page in the `exampleSite`.
+
+### Site Disclaimer
+
+ The theme includes the ability to put a Disclaimer on your website (e.g. "My views are my own and not my employer's").  Currently, the disclaimer displays in the sidebar under the author information.   You can enable and customize it as follows:
+
+ * Uncomment the `sidebardisclaimer` parameter in `config/_default/params.toml`.
+ * Uncomment and edit the `disclaimerText` parameter in `config/_default/params.toml`.
+ * Add and modify an override for the `div.sidebardisclaimer` selector in `assets/saas/_custom.sass`.
+
+ ```CSS
+div.sidebardisclaimer{padding: 0px 10px 15px 10px;margin: 20px 5px 20px 5px;border: 1px solid #eee;border-left-width: 10px;border-right-width: 10px;border-radius: 5px 5px 5px 5px;border-left-color: orange;border-right-color: orange;border-top-color:orange;border-bottom-color:orange}
+ ```
+
+ > The code for the sidebar disclaimer text is in `layouts/partials/sidebar.html`.  The default color scheme displays in both light and dark mode.   Additionally, the styling has been placed into `_custom.sass` so that it's easily editable with beginner's understanding of CSS properties and easier to find.
 
 ### Forcing light or dark mode
 

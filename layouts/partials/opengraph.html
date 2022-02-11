@@ -49,6 +49,10 @@
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />
 <meta property="og:image" content="{{ $image }}" />
+{{- with $p.keywords }}
+  {{- $keywords := delimit . "," }}
+  <meta name="keywords" content="{{ $keywords }}">
+{{- end }}
 {{- if eq .Section $s.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}

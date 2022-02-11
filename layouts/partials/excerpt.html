@@ -41,16 +41,19 @@
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}
-        <div>
-          <p class="pale">
-            {{ if .Params.summary }}
-              {{ .Params.summary }}
-            {{ else if .Params.abstract }}
-              {{ .Params.abstract }}
-            {{ else if .Summary }}
-              {{ truncate 320 .Summary }}
-            {{ end }}
-          </p>
+        <div class="pale">
+          {{- $summary := truncate 320 .Summary }}
+          {{- if .Params.summary }}
+            {{- $summary = .Params.summary }}
+          {{- else if .Params.abstract }}
+            {{ $summary = .Params.abstract }}
+          {{- end }}
+          {{ if not ( strings.Contains $summary "<p>" ) }}
+            <p>{{ $summary }}</p>
+          {{ else }}
+            {{ $summary }}
+          {{ end }}
+          <br>
           {{- $r := T "read_more" }}
           <a href="{{ .Permalink }}" title="{{ $r }}" class="excerpt_more button">{{ $r }}</a>
         </div>

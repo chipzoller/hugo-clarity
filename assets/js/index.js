@@ -267,7 +267,7 @@ function fileClosure(){
         const showImagePosition = showingImagePosition();
 
         let desc = document.createElement('figcaption');
-        desc.classList.add('img_alt');
+        desc.classList.add(imageAltClass);
 
         const thisImgPos = image.dataset.pos;
         // modify image caption is necessary
@@ -276,6 +276,10 @@ function fileClosure(){
 
         if(!image.matches(`.${featuredImageClass}`)) {
           // add a caption below image only if the image isn't a featured image
+          if(image.nextElementSibling) {
+            // check if a caption exist already and remove it
+            image.nextElementSibling.remove();
+          }
           image.insertAdjacentHTML('afterend', desc.outerHTML);
         }
       }

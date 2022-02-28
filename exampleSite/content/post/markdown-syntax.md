@@ -40,6 +40,22 @@ Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptio
 
 Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
+## Images
+
+Images can be local or remote, and can have alt text and a caption.
+
+An example of a local image with alt text. Because no title is provided, the image uses the alt text as its caption:
+
+![Jane Doe](images/jane-doe.png)
+
+An example of a remote image. The alt text is the same (for screen readers and in cases when the image doesn't load) but because a separate title is provided, the title is used for the caption:
+
+![Jane Doe](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/static/images/jane-doe.png "This is Jane Doe")
+
+If an image doesn't load, Hugo Clarity will provide an error message with some information to help you diagnose the issue:
+
+![A broken image](images/does-not-exist.jpg)
+
 ## Blockquotes
 
 The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.

@@ -59,7 +59,7 @@ An example of a remote image. The alt text is the same (for screen readers and i
 
 If an image doesn't load, Hugo Clarity will provide an error message with some information to help you diagnose the issue:
 
-![A broken image](images/does-not-exist.jpg)
+![Screenshot of a broken image error message](images/broken-image-error-msg.png "An example of an error message for a broken image")
 
 ## Blockquotes
 

@@ -3,15 +3,6 @@
 
 {{- $file := .Destination | safeURL }}{{/* filename of image */}}
 
-{{/* Check if page bundles are set. */}}
-{{- $bundle := .Page.Site.Params.usePageBundles }}
-{{ if eq .Page.Params.usePageBundles false }}
-  {{- $bundle = false }}
-{{ end }}
-{{ if eq .Page.Params.usePageBundles true }}
-  {{- $bundle = true }}
-{{ end }}
-
 <figure>
   <picture>
 
@@ -23,14 +14,53 @@
     {{/* Image is internal. */}}
     {{- else -}}
 
+      {{ $scratch := newScratch }}
+
+      {{/* Provide list of config file location options */}}
+      {{ $scratch.SetInMap "configFileLocations" "1" "config.toml" }}
+      {{ $scratch.SetInMap "configFileLocations" "2" "config/_default/config.toml" }}
+      {{ $scratch.SetInMap "configFileLocations" "3" "config.yaml" }}
+      {{ $scratch.SetInMap "configFileLocations" "4" "config/_default/config.yaml" }}
+      {{ $scratch.SetInMap "configFileLocations" "5" "config.json" }}
+      {{ $scratch.SetInMap "configFileLocations" "6" "config/_default/config.json" }}
+
+      {{/* For the first location that exists, set it as the config file location */}}
+      {{ range $scratch.GetSortedMapValues "configFileLocations" }}
+        {{ if fileExists . }}
+          {{ $scratch.Set "configFile" . }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Retrieve the contentDir and staticDir settings from the config, and provide default values */}}
+      {{ $scratch.Set "configFileMap" (os.ReadFile ($scratch.Get "configFile") | transform.Unmarshal) }}
+      {{ if isset ($scratch.Get "configFileMap") "contentDir" }}
+        {{ $scratch.Set "contentDir" (index ($scratch.Get "configFileMap") "contentDir") }}
+      {{ else }}
+        {{ $scratch.Set "contentDir" "content" }}
+      {{ end }}
+      {{ if isset ($scratch.Get "configFileMap") "staticDir" }}
+        {{ $scratch.Set "staticDir" (index ($scratch.Get "configFileMap") "staticDir") }}
+      {{ else }}
+        {{ $scratch.Set "staticDir" "static" }}
+      {{ end }}
+
+      {{/* Check if page bundles are set. */}}
+      {{- $bundle := .Page.Site.Params.usePageBundles }}
+      {{ if eq .Page.Params.usePageBundles false }}
+        {{- $bundle = false }}
+      {{ end }}
+      {{ if eq .Page.Params.usePageBundles true }}
+        {{- $bundle = true }}
+      {{ end }}
+
       {{- $fileWeb := "" -}}{{/* full path to image, relative to the web root */}}
       {{- $fileDisk := "" -}}{{/* full path to image, relative to the file root */}}
       {{ if eq $bundle true }}
-        {{- $fileWeb = (add $.Page.RelPermalink $file) -}}
-        {{- $fileDisk = (add "/content/" (add $.Page.File.Dir $file)) }}
+        {{- $fileWeb = (path.Join $.Page.RelPermalink $file) -}}
+        {{- $fileDisk = (path.Join ($scratch.Get "contentDir") (path.Join $.Page.File.Dir $file)) }}
       {{ else }}
         {{- $fileWeb = absURL .Destination -}}
-        {{- $fileDisk = (add "/static/" $file) }}
+        {{- $fileDisk = (path.Join ($scratch.Get "staticDir") $file) }}
       {{ end }}
 
       {{ if fileExists $fileDisk }}
@@ -69,3 +99,4 @@
 
   </picture>
 </figure>
+

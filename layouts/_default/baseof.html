@@ -73,6 +73,7 @@
     {{- partialCached "icons" . }}
     {{- partialCached "footer" . }}
     <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- partialCached "search/scripts" . }}
     {{- with $s.customJS }}
     {{- range . -}}
     <script type="text/javascript" src="{{ relURL . }}" ></script>

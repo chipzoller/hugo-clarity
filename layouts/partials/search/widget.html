@@ -1,5 +1,5 @@
 {{- $params := site.Params }}
-{{- if default site.Params.enableSearch true }}
+{{- if site.Params.enableSearch }}
   {{- $placeholder :=  T "search_field_placeholder" }}
   {{- $section := $.Page.Section }}
   {{- $simple := true }}

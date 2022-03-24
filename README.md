@@ -52,6 +52,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Hooks](#hooks)
   * [Comments](#comments)
   * [Math notation](#math-notation)
+  * [Search](#search)
 
 ## Features
 
@@ -213,6 +214,7 @@ These options set global values that some pages or all pages in the site use by 
 | showRelatedInArticle       | boolean                     | yes                 |
 | showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
+| enableSearch               | boolean                     | N/A                 |
 
 ### Page Parameters
 
@@ -781,3 +783,34 @@ Related content within a `series` taxonomy can be shown at the end of a piece of
 The site configuration option `showRelatedInArticle` controls if this option is enabled. The same configuration option can be used in a posts frontmatter to disable the feature (but the site configuration overrides the per-page option).
 
 Likewise, the site configuration option `showRelatedInSidebar` controls if related content is shown on the sidebar. There is no corresponding option within a post to disable this.
+
+### Search
+
+Ensure you have these settings inside your configuration files
+
+```toml
+# config/_default/config.toml
+[outputs]
+   home = ["HTML", "RSS","JSON"]
+```
+
+```toml
+# config/_default/params.toml
+enableSearch = true
+```
+
+Compose implements `fuse.js` to enable search functionality. At the time of this writing, search on these theme takes either of this forms:
+
+1. __Passive search__
+
+    This occurs only when the user loads the search page i.e `/search/`. They can directly navigate to that url. Alternatively, the user can type you search query on the search field and click enter. They will be redirected to the search page which will contain matched results if any.
+
+    Currently, this only works on the default language. Support for multilingual passive search coming soon.
+
+2. __Live search__
+
+    This behaviour will be obvious as the user types a search query on the search field. All `valid search queries`, will yield a list of `quick links` or a simple `no matches found`. Else, the user will be prompted to continue typing.
+
+    live search works even for multilingual sites.
+
+    For chinese-like languages, it may or may not work.

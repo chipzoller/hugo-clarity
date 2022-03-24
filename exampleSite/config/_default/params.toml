@@ -1,3 +1,7 @@
+# enable search
+enableSearch = true
+
+# socials
 twitter = "@janedoe"
 largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."

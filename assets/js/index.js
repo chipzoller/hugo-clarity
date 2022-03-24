@@ -104,8 +104,8 @@ function fileClosure(){
 
   headingNodes.forEach(function(node){
     link = createEl('a');
-    loadSvg('link', link);
     link.className = 'link icon';
+    link.style.backgroundImage = `url(${parentURL}${iconsPath}link.svg)`;
     id = node.getAttribute('id');
     if(id) {
       link.href = `${current}#${id}`;

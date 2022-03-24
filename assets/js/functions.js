@@ -133,16 +133,6 @@ function copyToClipboard(str) {
 }
 
 const iconsPath = '{{ default "icons/" .Site.Params.iconsDir }}';
-function loadSvg(file, parent, path = iconsPath) {
-  const link = `${parentURL}${path}${file}.svg`;
-  fetch(link)
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    parent.innerHTML = data;
-  });
-}
 
 function getMobileOperatingSystem() {
   let userAgent = navigator.userAgent || navigator.vendor || window.opera;

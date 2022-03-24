@@ -52,24 +52,6 @@ other = "Oversikt"
 [reading_time]
 other = "{{ .ReadingTime }} min lesing"
 
-[img_web_path]
-other = "nettbane"
-
-[img_web_path_desc]
-other = "Åpne denne nettbanen i en ny fane"
-
-[img_disk_path]
-other = "Disk path"
-
-[img_pb]
-other = "Diskbane"
-
-[img_pb_using]
-other = "Bruker"
-
-[img_pb_desc]
-other = "Informasjon om Hugo Sidepakker"
-
 [series_posts]
 other = "Flere innlegg i denne serien"
 

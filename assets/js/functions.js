@@ -241,6 +241,28 @@ function emptyEl(el) {
   el.removeChild(el.firstChild);
 }
 
+function matchTarget(element, selector) {
+  if(isObj(element)) {
+    let matches = false;
+    const isExactMatch = element.matches(selector);
+    const exactTarget = element.closest(selector);
+    matches = isExactMatch ? isExactMatch : exactTarget;
+    return  {
+      exact: isExactMatch, // is exact target
+      valid: matches,
+      actual: exactTarget
+    };
+  }
+}
+
+function goBack(target) {
+  const matchCriteria = matchTarget(target, `.${goBackClass}`);
+
+  if(matchCriteria.valid) {
+    history.back();
+  }
+}
+
 (function() {
   const bodyElement = elem('body');
   const platform = navigator.platform.toLowerCase();

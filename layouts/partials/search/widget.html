@@ -1,4 +1,5 @@
-{{- if default .Site.Params.enableSearch true }}
+{{- $params := site.Params }}
+{{- if default site.Params.enableSearch true }}
   {{- $placeholder :=  T "search_field_placeholder" }}
   {{- $section := $.Page.Section }}
   {{- $simple := true }}
@@ -8,7 +9,7 @@
     {{- $simple = false }}
   {{ end }}
   <div class="search">
-    <input type="search" class="search_field form_field" placeholder='{{ $placeholder }}' id="find" autocomplete="off" data-scope="{{ $section }}">
+    <input type="search" class="search_field form_field" placeholder='{{ $placeholder }}' id="find" autocomplete="off" data-scope='{{ delimit $params.mainSections "" }}'>
     <label for="find" class="search_label">
       {{- partial "sprite" (dict "icon" "search") }}
     </label>

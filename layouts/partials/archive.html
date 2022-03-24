@@ -4,7 +4,6 @@
 {{ end }}
 <div class="grid-inverse wrap content">
   <div>
-    {{ partialCached "search/widget" . }}
     <ul class="posts" id="posts">
       {{- range (.Paginate $pages).Pages }}
         {{ partial "excerpt" . }}

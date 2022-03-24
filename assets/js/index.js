@@ -327,6 +327,8 @@ function fileClosure(){
       let figure = target.closest('figure');
       modifyClass(figure, scaleImageClass);
     }
+
+    goBack(target);
   });
 
   const tables = elems('table');

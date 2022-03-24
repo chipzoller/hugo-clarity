@@ -168,6 +168,17 @@
   font-size: 0.9rem
   align-items: center
   user-select: none
+  &_back
+    color: $light
+    outline: none
+    border: none
+    appearance: none
+    background-color: $theme
+    font-size: 1rem
+    cursor: pointer
+    padding: 0.5rem 1rem
+    margin-bottom: 1.33rem
+    border-radius: 1.5rem
   &:hover, &:focus
     background-color: darken($theme, 20%)
     color: $light
@@ -692,6 +703,7 @@ figcaption
     border: 1px solid var(--border)
     border-radius: 8px
     font-size: 1rem
+    box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.1)
     &:hover, &:focus
       // background: var(--search-bg)
   &_field:focus + &_label
@@ -711,8 +723,8 @@ figcaption
   &_result
     padding: 0.5rem 1rem
     &:not(.passive):hover
-      background-color: var(--theme-color-thin)
-      color: var(--theme-color)
+      background-color: var(--code-bg)
+      color: $light
     &.passive
       display: grid
     &s
@@ -720,7 +732,7 @@ figcaption
       background-color: var(--choice-bg)
       color: var(--text)
       border-radius: var(--radius)
-      box-shadow: 0 1rem 4rem rgba(0,0,0,0.17)
+      box-shadow: 0 1rem 4rem rgba(0,0,0,0.17) !important
       position: absolute
       top: 125%
       display: grid
@@ -729,10 +741,11 @@ figcaption
       &:empty
         display: none
   &_title
-    padding: 0.5rem 1rem
-    background-color: var(--bg)
+    padding: 0.25rem 1rem !important
+    background-color: $theme
     color: var(--light)
     margin: 0
+    font-size: 1.25rem
     &:empty
       display: none
   &_submit

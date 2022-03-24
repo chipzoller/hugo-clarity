@@ -72,3 +72,19 @@ other = "Informação sobre Hugo Page Bundles"
 
 [series_posts]
 other = "Postagens nesta série"
+
+# search
+[quick_links]
+  other = "Resultados"
+[no_matches]
+  other = "Nenhum resultado encontrado"
+[search_field_placeholder]
+  other = "Pesquisar a base de conhecimento"
+[blog_search_field_placeholder]
+  other = "Pesquisar..."
+[search_results_label]
+  other = "Resultados da pesquisa"
+[short_search_query]
+  other = "A consulta é muito curta"
+[type_to_search]
+  other = "Digite para pesquisar"

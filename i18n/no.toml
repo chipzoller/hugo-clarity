@@ -72,3 +72,19 @@ other = "Informasjon om Hugo Sidepakker"
 
 [series_posts]
 other = "Flere innlegg i denne serien"
+
+# search
+[quick_links]
+  other = "Resultater"
+[no_matches]
+  other = "Ingen resultater funnet"
+[search_field_placeholder]
+  other = "Søk i kunnskapsbasen"
+[blog_search_field_placeholder]
+  other = "Søk..."
+[search_results_label]
+  other = "Søkeresultater"
+[short_search_query]
+  other = "Søket er for kort"
+[type_to_search]
+  other = "Skriv for å søke"

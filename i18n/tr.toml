@@ -72,3 +72,19 @@ other = "Hakkında bilgi Hugo Page Bundles"
 
 [series_posts]
 other = "Posts in this series"
+
+# search
+[quick_links]
+  other = "Sonuçlar"
+[no_matches]
+  other = "Sonuç bulunamadı"
+[search_field_placeholder]
+  other = "Bilgi tabanında ara"
+[blog_search_field_placeholder]
+  other = "Ara..."
+[search_results_label]
+  other = "Arama Sonuçları"
+[short_search_query]
+  other = "Sorgu çok kısa"
+[type_to_search]
+  other = "Aramak için yazın"

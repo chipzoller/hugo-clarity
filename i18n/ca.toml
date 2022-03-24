@@ -54,3 +54,19 @@ other = "{{ .ReadingTime }} min lectura"
 
 [series_posts]
 other = "Publicacions d'aquesta sèrie"
+
+# search
+[quick_links]
+  other = "Resultats"
+[no_matches]
+  other = "No s'han trobat resultats"
+[search_field_placeholder]
+  other = "Cerca la base de coneixements"
+[blog_search_field_placeholder]
+  other = "Cerca..."
+[search_results_label]
+  other = "Resultats de la cerca"
+[short_search_query]
+  other = "La consulta és massa curta"
+[type_to_search]
+  other = "Escriu per cercar"

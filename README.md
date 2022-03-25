@@ -799,18 +799,18 @@ Ensure you have these settings inside your configuration files
 enableSearch = true
 ```
 
-Compose implements `fuse.js` to enable search functionality. At the time of this writing, search on these theme takes either of this forms:
+Compose implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
 
 1. __Passive search__
 
-    This occurs only when the user loads the search page i.e `/search/`. They can directly navigate to that url. Alternatively, the user can type you search query on the search field and click enter. They will be redirected to the search page which will contain matched results if any.
+    This occurs only when the user loads the search page i.e `/search/`. They can directly navigate to that url. Alternatively, the user can type the search query on the search field and hit enter. They will be redirected to the search page which will contain matched results if any.
 
-    Currently, this only works on the default language. Support for multilingual passive search coming soon.
+    Currently, this only works on the default language. Support for multilingual passive search is coming soon.
 
 2. __Live search__
 
-    This behaviour will be obvious as the user types a search query on the search field. All `valid search queries`, will yield a list of `quick links` or a simple `no matches found`. Else, the user will be prompted to continue typing.
+    This behaviour will be obvious as the user types a search query on the search field. All valid search queries will yield a list of quick links or a simple "no matches found". Else, the user will be prompted to continue typing.
 
-    live search works even for multilingual sites.
+    Live search works even for multilingual sites.
 
-    For chinese-like languages, it may or may not work.
+    For Chinese-like languages, it may or may not work.

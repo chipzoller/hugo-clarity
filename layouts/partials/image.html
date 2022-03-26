@@ -5,6 +5,13 @@
 {{- $scratch := newScratch -}}
 {{- $scratch.Set "classes" "image_figure" -}}
 
+{{/* Add classes for image type */}}
+{{- $typeClass := "" -}}
+{{- with .type -}}
+  {{- $typeClass = printf "%s" . | printf "%s%s" " image_" | printf "%s" -}}
+{{- end -}}
+{{- $scratch.Add "classes" $typeClass -}}
+
 {{/* Determine if page bundles are set. */}}
 {{- $bundle := .Page.Site.Params.usePageBundles -}}
 {{- if eq .Page.Params.usePageBundles false -}}

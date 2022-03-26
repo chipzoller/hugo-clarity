@@ -14,7 +14,7 @@
   {{- $bundle = true -}}
 {{- end -}}
 
-{{/* Determine source of image and get attributes */}}
+{{/* Determine source of image and get attributes. */}}
 {{- $image := $file -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
@@ -29,6 +29,19 @@
 <figure>
   <picture>
 
+    {{/* Generate alternate image format tags. */}}
+    {{- with $image -}}
+      {{ $name := replace $image (path.Ext $image) "" }}
+      {{ $ext := slice "avif" "webp" "jxl" }}
+      {{- range $ext -}}
+        {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
+        {{- if fileExists $path -}}
+          <source srcset="{{ $path }}" type="image/{{ . }}">
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{/* Render image and attributes. */}}
     <img
       loading="lazy"
       decoding="async"

@@ -21,8 +21,16 @@
   {{- $image = resources.GetRemote $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $image = resources.Get $file }}
+  {{ $image = resources.Get (path.Clean $file) }}
+  {{ $file = (path.Clean $file) }}
 {{- end -}}
+{{/*
+  If Hugo has been able to access the image, it's now loaded at $image, and we
+  have access to additional attributes.
+
+  If Hugo hasn't been able to access the image, it's still loaded at $file, with
+  only its path available.
+*/}}
 
 <figure>
   <picture>
@@ -43,7 +51,7 @@
     <img
       loading="lazy"
       decoding="async"
-      alt="{{ $alt }}"
+      alt="{{ htmlEscape $alt }}"
       {{ with $image }}
         class="{{ $scratch.Get "classes" }} image_processed"
         width="{{ .Width }}"
@@ -54,7 +62,7 @@
         src="{{ $file }}"
       {{ end }}
       {{ with $cap }}
-        title="{{ $cap }}"
+        title="{{ htmlEscape $cap }}"
       {{ end }}
     />
 

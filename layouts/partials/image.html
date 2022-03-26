@@ -1,45 +1,56 @@
-{{- $file := .file | safeURL -}}{{/* filename of image */}}
-{{- $fileWeb := absURL $file -}}{{/* full path to image, relative to the web root */}}
+{{- $file := .file -}}{{/* filename of image */}}
 {{- $alt := .Text -}}{{/* alt text */}}
 {{- $cap := .Title -}}{{/* caption */}}
+
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "classes" "image_figure" -}}
+
+{{/* Determine if page bundles are set. */}}
+{{- $bundle := .Page.Site.Params.usePageBundles -}}
+{{- if eq .Page.Params.usePageBundles false -}}
+  {{- $bundle = false -}}
+{{- end -}}
+{{- if eq .Page.Params.usePageBundles true -}}
+  {{- $bundle = true -}}
+{{- end -}}
+
+{{/* Determine source of image and get attributes */}}
+{{- $image := $file -}}
+{{- if strings.HasPrefix $file "http" -}}
+  {{- $scratch.Add "classes" " image_external" -}}
+  {{- $scratch.Set "fileLoc" "external" -}}
+  {{- $image = resources.GetRemote $file -}}
+{{- else -}}
+  {{- $scratch.Add "classes" " image_internal" -}}
+  {{- $scratch.Set "fileLoc" "internal" -}}
+  {{ $image = resources.Get $file }}
+{{- end -}}
 
 <figure>
   <picture>
 
-    {{/* Image is external */}}
-    {{- if strings.HasPrefix $file "http" -}}
-      <img class="image_figure image_external" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
-
-    {{/* Image is local */}}
-    {{- else -}}
-
-      {{- $img := imageConfig $file -}}{{/* image element (passed through imageConfig) */}}
-
-      {{ range $ext := (slice "avif" "webp" "jxl") }}
-        {{ $dotext := print "." $ext }}
-        {{ $diskPath := $file }}
-        {{ $webPath := $fileWeb }}
-        {{ $diskPath = replace $diskPath ".png" $dotext }}
-        {{ $diskPath = replace $diskPath ".jpg" $dotext }}
-        {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
-        {{ $diskPath = replace $diskPath ".gif" $dotext }}
-        {{ $webPath = replace $webPath ".png" $dotext }}
-        {{ $webPath = replace $webPath ".jpg" $dotext }}
-        {{ $webPath = replace $webPath ".jpeg" $dotext }}
-        {{ $webPath = replace $webPath ".gif" $dotext }}
-        {{ if fileExists $diskPath }}
-          <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
-        {{ end }}
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="{{ $alt }}"
+      {{ with $image }}
+        class="{{ $scratch.Get "classes" }} image_processed"
+        width="{{ .Width }}"
+        height="{{ .Height }}"
+        src="{{ .RelPermalink }}"
+      {{ else }}
+        class="{{ $scratch.Get "classes" }} image_unprocessed"
+        src="{{ $file }}"
       {{ end }}
-
-      <img class="image_figure image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with $cap }} title="{{ $cap }}" {{ end }} />
-
-    {{- end -}}
+      {{ with $cap }}
+        title="{{ $cap }}"
+      {{ end }}
+    />
 
     {{/* Provide caption based on image title, if it is set. */}}
-    {{ if ($cap) -}}
+    {{- with $cap -}}
       <figcaption>{{ $cap | safeHTML }}</figcaption>
-    {{- end }}
+    {{- end -}}
 
   </picture>
 </figure>

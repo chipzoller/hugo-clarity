@@ -18,11 +18,9 @@
 {{- $image := $file -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
-  {{- $scratch.Set "fileLoc" "external" -}}
   {{- $image = resources.GetRemote $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{- $scratch.Set "fileLoc" "internal" -}}
   {{ $image = resources.Get $file }}
 {{- end -}}
 

@@ -58,6 +58,8 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 * Blog with tagging and category options
 
+* Search
+
 * Deeplinks
 
 * Choice of whether to use [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/)
@@ -786,12 +788,12 @@ Likewise, the site configuration option `showRelatedInSidebar` controls if relat
 
 ### Search
 
-Ensure you have these settings inside your configuration files
+Search is currently a BETA feature. Ensure you have these settings inside your configuration files:
 
 ```toml
 # config/_default/config.toml
 [outputs]
-   home = ["HTML", "RSS","JSON"]
+  home = ["HTML", "RSS","JSON"]
 ```
 
 ```toml
@@ -799,7 +801,7 @@ Ensure you have these settings inside your configuration files
 enableSearch = true
 ```
 
-Compose implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
+[Compose](https://github.com/onweru/compose), from which this feature is derived, implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
 
 1. __Passive search__
 
@@ -809,7 +811,7 @@ Compose implements `fuse.js` to enable search functionality. At the time of this
 
 2. __Live search__
 
-    This behaviour will be obvious as the user types a search query on the search field. All valid search queries will yield a list of quick links or a simple "no matches found". Else, the user will be prompted to continue typing.
+    This behavior will be obvious as the user types a search query on the search field. All valid search queries will yield a list of quick links or a simple "no matches found". Else, the user will be prompted to continue typing.
 
     Live search works even for multilingual sites.
 

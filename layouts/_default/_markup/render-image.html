@@ -18,6 +18,8 @@
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
+  {{- $file = path.Join "images" $image -}}
+  {{- $image = $image.Content | resources.FromString $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
   {{ $file = (path.Clean $file) }}

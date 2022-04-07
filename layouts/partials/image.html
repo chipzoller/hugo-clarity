@@ -1,5 +1,8 @@
 {{- $file := .file -}}
-{{- $alt := .Text -}}
+{{- $alt := .alt -}}
+{{- if not $alt -}}
+  {{- $alt = .Text -}}
+{{- end -}}
 {{- $cap := .Title -}}
 {{- $scratch := newScratch -}}
 {{- $scratch.Set "classes" "image_figure" -}}

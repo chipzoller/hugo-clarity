@@ -51,6 +51,7 @@
 
 {{- $fileWeb = absURL $file -}}
 {{ if eq $bundle true }}
+  {{- $fileWeb = (path.Join $.Page.RelPermalink $file) -}}
   {{- $fileDisk = (path.Join ($scratch.Get "contentDir") (path.Join $.Page.File.Dir $file)) }}
 {{ else }}
   {{- $fileDisk = (path.Join ($scratch.Get "staticDir") $file) }}

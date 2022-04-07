@@ -15,14 +15,20 @@
 {{- end -}}
 
 {{/* Determine source of image and get attributes. */}}
-{{- $image := $file -}}
+{{- $image := "" -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $image = resources.Get (path.Clean $file) }}
   {{ $file = (path.Clean $file) }}
+  {{- if eq $bundle true -}}
+    {{ $image = .Page.Resources.GetMatch $file }}
+    {{- if and (not $image) .Page.File -}}
+      {{ $file = path.Join .Page.File.Dir $file }}
+      {{ $image = resources.Get $file }}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 {{/*
   If Hugo has been able to access the image, it's now loaded at $image, and we
@@ -36,11 +42,14 @@
   <picture>
 
     {{/* Generate alternate image format tags. */}}
-    {{- with $image -}}
-      {{ $name := replace $image (path.Ext $image) "" }}
+    {{- with $file -}}
+      {{ $name := replace $file (path.Ext $file) "" }}
       {{ $ext := slice "avif" "webp" "jxl" }}
       {{- range $ext -}}
         {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
+        {{- if eq $bundle true -}}
+          {{ $path = path.Join "/" $.Page.File.Dir $path }}
+        {{- end -}}
         {{- if fileExists $path -}}
           <source srcset="{{ $path }}" type="image/{{ . }}">
         {{- end -}}

@@ -1,4 +1,4 @@
-{{- $file := .file -}}{{/* filename of image */}}
+{{- $file := .file -}}{{/* base filename of image */}}
 {{- $alt := .Text -}}{{/* alt text */}}
 {{- $cap := .Title -}}{{/* caption */}}
 
@@ -22,15 +22,18 @@
 {{- end -}}
 
 {{/* Determine source of image and get attributes. */}}
-{{- $image := $file -}}
+{{- $image := "" -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $image = resources.Get (path.Clean $file) }}
   {{ $file = (path.Clean $file) }}
+  {{- if eq $bundle true -}}
+    {{ $image = .Resources.GetMatch $file }}
+  {{- end -}}
 {{- end -}}
+
 {{/*
   If Hugo has been able to access the image, it's now loaded at $image, and we
   have access to additional attributes.
@@ -43,8 +46,8 @@
   <picture>
 
     {{/* Generate alternate image format tags. */}}
-    {{- with $image -}}
-      {{ $name := replace $image (path.Ext $image) "" }}
+    {{- with $file -}}
+      {{ $name := replace $image (path.Ext $file) "" }}
       {{ $ext := slice "avif" "webp" "jxl" }}
       {{- range $ext -}}
         {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
@@ -63,7 +66,7 @@
         class="{{ $scratch.Get "classes" }} image_processed"
         width="{{ .Width }}"
         height="{{ .Height }}"
-        src="{{ .RelPermalink }}"
+        src="{{ .RelPermalink | absURL }}"
       {{ else }}
         class="{{ $scratch.Get "classes" }} image_unprocessed"
         src="{{ $file }}"

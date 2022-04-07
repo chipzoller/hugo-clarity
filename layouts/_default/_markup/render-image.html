@@ -1,7 +1,6 @@
-{{- $file := .Destination -}}{{/* filename of image */}}
-{{- $alt := .Text -}}{{/* alt text */}}
-{{- $cap := .Title -}}{{/* caption */}}
-
+{{- $file := .Destination -}}
+{{- $alt := .Text -}}
+{{- $cap := .Title -}}
 {{- $scratch := newScratch -}}
 {{- $scratch.Set "classes" "image_figure" -}}
 
@@ -30,55 +29,14 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{/*
-  If Hugo has been able to access the image, it's now loaded at $image, and we
-  have access to additional attributes.
 
-  If Hugo hasn't been able to access the image, it's still loaded at $file, with
-  only its path available.
-*/}}
-
-<figure>
-  <picture>
-
-    {{/* Generate alternate image format tags. */}}
-    {{- with $file -}}
-      {{ $name := replace $file (path.Ext $file) "" }}
-      {{ $ext := slice "avif" "webp" "jxl" }}
-      {{- range $ext -}}
-        {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
-        {{- if eq $bundle true -}}
-          {{ $path = path.Join "/" $.Page.File.Dir $path }}
-        {{- end -}}
-        {{- if fileExists $path -}}
-          <source srcset="{{ $path }}" type="image/{{ . }}">
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-
-    {{/* Render image and attributes. */}}
-    <img
-      loading="lazy"
-      decoding="async"
-      alt="{{ htmlEscape $alt }}"
-      {{ with $image }}
-        class="{{ $scratch.Get "classes" }} image_processed"
-        width="{{ .Width }}"
-        height="{{ .Height }}"
-        src="{{ .RelPermalink }}"
-      {{ else }}
-        class="{{ $scratch.Get "classes" }} image_unprocessed"
-        src="{{ $file }}"
-      {{ end }}
-      {{ with $cap }}
-        title="{{ htmlEscape $cap }}"
-      {{ end }}
-    />
-
-    {{/* Provide caption based on image title, if it is set. */}}
-    {{- with $cap -}}
-      <figcaption>{{ $cap | safeHTML }}</figcaption>
-    {{- end -}}
-
-  </picture>
-</figure>
+{{- partial "figure" (
+  dict
+    "file" $file
+    "image" $image
+    "dir" $.Page.File.Dir
+    "alt" $alt
+    "cap" $cap
+    "classes" ($scratch.Get "classes")
+    "bundle" $bundle
+) -}}

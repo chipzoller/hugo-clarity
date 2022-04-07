@@ -338,11 +338,23 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 
 ### Images
 
+A number of CSS classes are automatically added to images based on their source or type to aid you in any tweaks to the theme. These include:
+
+- `image_figure` when the image appears inside a `<figure>` element
+- `image_internal` when the image is local, within the site
+- `image_external` when the image is loaded from a URL
+- `image_processed` when the image has been passed through [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) (requires the image to be using page bundles or in the `assets` directory)
+- `image_unprocessed` when the image has not been passed through Hugo Pipes
+- `image_thumbnail` when the image is in a list of content excerpts
+- `image_featured` when the image is a banner or hero image at the top of a post
+
+Most images in Hugo Clarity are loaded [lazy](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes) and [asynchronously](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) to improve site speed. Images that are not loaded in this manner include the site's logo.
+
 #### Organizing page resources
 
 By default, Hugo Clarity assumes that page resources -- images and other related files -- are stored in the `static` or `assets` directories. Alternatively, you can opt-in to using [Hugo page bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
 
-If you have an existing site that is not using page bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level in the front matter. If it is not set in the post, it will default to the site's parameter. Take a look at `exampleSite/content/post/bundle` for an example of overriding this setting on an individual post and more information.
+If you have an existing site that is not using page bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level in the front matter. If it is not set in the post, it will default to the site's parameter. Take a look at [`exampleSite/content/post/bundle/index.md`](exampleSite/content/post/bundle/index.md) for more information and an example of overriding this setting on an individual post.
 
 #### Support for modern image formats
 

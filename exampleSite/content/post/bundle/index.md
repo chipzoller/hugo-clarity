@@ -52,7 +52,6 @@ content
 ```
 
 <blockquote>
-
 In the above example `content` directory, there are four leaf
 bundles:
 

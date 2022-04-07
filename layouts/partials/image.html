@@ -27,7 +27,7 @@
   {{- $image = resources.GetRemote $file -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $file = (path.Clean $file) }}
+  {{ $file = (path.Join "/" $file) }}
   {{- if eq $bundle true -}}
     {{ $image = .Resources.GetMatch $file }}
   {{- end -}}

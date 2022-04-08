@@ -55,7 +55,7 @@
     />
 
     {{/* Provide caption based on image title, if it is set. */}}
-    {{- with $cap -}}
+    {{- if not (eq $cap " ") -}}
       <figcaption>{{ $cap | safeHTML }}</figcaption>
     {{- end -}}
 

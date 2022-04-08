@@ -55,7 +55,9 @@
 {{- with $p.keywords }}
   {{- $keywords = delimit . "," }}
 {{- end }}
-<meta name="keywords" content="{{ $keywords }}" />
+{{- with $keywords }}
+  <meta name="keywords" content="{{ $keywords }}" />
+{{- end }}
 {{- if eq .Section $s.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}

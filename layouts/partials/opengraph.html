@@ -49,8 +49,9 @@
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />
 <meta property="og:image" content="{{ $image }}" />
+{{- $keywords := "" }}
 {{- with $s.keywords }}
-  {{- $keywords := delimit $s.keywords "," }}
+  {{- $keywords = delimit $s.keywords "," }}
 {{- end }}
 {{- with $p.keywords }}
   {{- $keywords = delimit . "," }}

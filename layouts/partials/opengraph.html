@@ -41,7 +41,7 @@
 {{- else }}
 <meta property="og:type" content="article">
 {{- end }}
-<meta name="description" content="{{ $summary }}">
+<meta name="description" content="{{ $summary }}" />
 <meta name="twitter:card" content="{{ if $s.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
 <meta name="twitter:creator" content="{{ $s.twitter }}">
 <meta name="twitter:title" content="{{ .Title }}" />
@@ -49,10 +49,11 @@
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />
 <meta property="og:image" content="{{ $image }}" />
+{{- $keywords := delimit $s.keywords "," }}
 {{- with $p.keywords }}
-  {{- $keywords := delimit . "," }}
-  <meta name="keywords" content="{{ $keywords }}">
+  {{- $keywords = delimit . "," }}
 {{- end }}
+<meta name="keywords" content="{{ $keywords }}" />
 {{- if eq .Section $s.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}

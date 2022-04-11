@@ -9,7 +9,7 @@
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
       <div class="excerpt_thumbnail">
-        {{- partial "image" (dict "file" . "alt" $.Title "type" "thumbnail") }}
+        {{- partial "image" (dict "file" . "alt" $.Title "type" "thumbnail" "Page" $.Page ) }}
       </div>
       {{ else }}
       <div class="excerpt_footer">

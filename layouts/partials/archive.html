@@ -3,13 +3,15 @@
   {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ end }}
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-    {{- range (.Paginate $pages).Pages }}
-      {{ partial "excerpt" . }}
-    {{- end }}
-    <li>
-      {{- template "_internal/pagination.html" . }}
-    </li>
-  </ul>
+  <div>
+    <ul class="posts" id="posts">
+      {{- range (.Paginate $pages).Pages }}
+        {{ partial "excerpt" . }}
+      {{- end }}
+      <li>
+        {{- template "_internal/pagination.html" . }}
+      </li>
+    </ul>
+  </div>
   {{- partial "sidebar" . }}
 </div>

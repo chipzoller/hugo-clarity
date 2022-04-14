@@ -133,16 +133,6 @@ function copyToClipboard(str) {
 }
 
 const iconsPath = '{{ default "icons/" .Site.Params.iconsDir }}';
-function loadSvg(file, parent, path = iconsPath) {
-  const link = `${parentURL}${path}${file}.svg`;
-  fetch(link)
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    parent.innerHTML = data;
-  });
-}
 
 function getMobileOperatingSystem() {
   let userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -192,6 +182,86 @@ function parseBoolean(string) {
       return undefined;
   }
 };
+
+function wrapText(text, context, wrapper = 'mark') {
+  let open = `<${wrapper}>`;
+  let close = `</${wrapper}>`;
+  let escapedOpen = `%3C${wrapper}%3E`;
+  let escapedClose = `%3C/${wrapper}%3E`;
+  function wrap(context) {
+    let c = context.innerHTML;
+    let pattern = new RegExp(text, "gi");
+    let matches = text.length ? c.match(pattern) : null;
+
+    if(matches) {
+      matches.forEach(function(matchStr){
+        c = c.replaceAll(matchStr, `${open}${matchStr}${close}`);
+        context.innerHTML = c;
+      });
+
+      const images = elems('img', context);
+
+      if(images) {
+        images.forEach(image => {
+          image.src = image.src.replaceAll(open, '').replaceAll(close, '').replaceAll(escapedOpen, '').replaceAll(escapedClose, '');
+        });
+      }
+    }
+  }
+
+  const contents = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "code", "td"];
+
+  contents.forEach(function(c){
+    const cs = elems(c, context);
+    if(cs.length) {
+      cs.forEach(function(cx, index){
+        if(cx.children.length >= 1) {
+          Array.from(cx.children).forEach(function(child){
+            wrap(child);
+          })
+          wrap(cx);
+        } else {
+          wrap(cx);
+        }
+        // sanitize urls and ids
+      });
+    }
+  });
+
+  const hyperLinks = elems('a');
+  if(hyperLinks) {
+    hyperLinks.forEach(function(link){
+      link.href = link.href.replaceAll(encodeURI(open), "").replaceAll(encodeURI(close), "");
+    });
+  }
+}
+
+function emptyEl(el) {
+  while(el.firstChild)
+  el.removeChild(el.firstChild);
+}
+
+function matchTarget(element, selector) {
+  if(isObj(element)) {
+    let matches = false;
+    const isExactMatch = element.matches(selector);
+    const exactTarget = element.closest(selector);
+    matches = isExactMatch ? isExactMatch : exactTarget;
+    return  {
+      exact: isExactMatch, // is exact target
+      valid: matches,
+      actual: exactTarget
+    };
+  }
+}
+
+function goBack(target) {
+  const matchCriteria = matchTarget(target, `.${goBackClass}`);
+
+  if(matchCriteria.valid) {
+    history.back();
+  }
+}
 
 (function() {
   const bodyElement = elem('body');

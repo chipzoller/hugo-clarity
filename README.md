@@ -53,10 +53,13 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Comments](#comments)
   * [Math notation](#math-notation)
   * [Open Street Map](#map)
+  * [Search](#search)
 
 ## Features
 
 * Blog with tagging and category options
+
+* Search
 
 * Deeplinks
 
@@ -182,6 +185,7 @@ These options set global values that some pages or all pages in the site use by 
 | plausible_analytics        | boolean                     | no                  |
 | matomo_analytics           | boolean                     | no                  |
 | description                | string                      | yes                 |
+| keywords                   | array of strings            | yes                 |
 | introDescription           | string                      | yes                 |
 | introURL                   | string/false                | no                  |
 | numberOfTagsShown          | integer                     | no                  |
@@ -214,6 +218,7 @@ These options set global values that some pages or all pages in the site use by 
 | showRelatedInArticle       | boolean                     | yes                 |
 | showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
+| enableSearch               | boolean                     | N/A                 |
 
 ### Page Parameters
 
@@ -224,6 +229,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | title                | string             | N/A              |
 | date                 | date               | N/A              |
 | description          | string             | N/A              |
+| keywords             | array of strings   | yes              |
 | introDescription     | string             | yes              |
 | abstract             | string             | N/A              |
 | summary              | string             | N/A              |
@@ -250,7 +256,6 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | sidebar              | boolean            | N/A              |
 | singleColumn         | boolean            | N/A              |
 | showRelatedInArticle | boolean            | N/A              |
-| keywords             | array of strings   | N/A              |
 
 ### Modify Menus
 
@@ -809,3 +814,34 @@ Available parameter are:
 - `datalayersControl` (default `true`)
 - `onLoadPanel` (default `none`)
 - `captionBar` (default `false`)
+
+### Search
+
+Search is currently a BETA feature. Ensure you have these settings inside your configuration files:
+
+```toml
+# config/_default/config.toml
+[outputs]
+  home = ["HTML", "RSS","JSON"]
+```
+
+```toml
+# config/_default/params.toml
+enableSearch = true
+```
+
+[Compose](https://github.com/onweru/compose), from which this feature is derived, implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
+
+1. __Passive search__
+
+    This occurs only when the user loads the search page i.e `/search/`. They can directly navigate to that url. Alternatively, the user can type the search query on the search field and hit enter. They will be redirected to the search page which will contain matched results if any.
+
+    Currently, this only works on the default language. Support for multilingual passive search is coming soon.
+
+2. __Live search__
+
+    This behavior will be obvious as the user types a search query on the search field. All valid search queries will yield a list of quick links or a simple "no matches found". Else, the user will be prompted to continue typing.
+
+    Live search works even for multilingual sites.
+
+    For Chinese-like languages, it may or may not work.

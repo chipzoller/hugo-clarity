@@ -1,15 +1,26 @@
-{{- $file := .Destination | safeURL }}{{/* filename of image */}}
+{{- $file := .file | safeURL }}{{/* filename of image */}}
 {{- $fileWeb := "" -}}{{/* full path to image, relative to the web root */}}
 {{- $fileDisk := "" -}}{{/* full path to image, relative to the file root */}}
 {{- $alt := .Text -}}{{/* alt text */}}
 {{- $cap := .Title -}}{{/* caption */}}
 {{- $scratch := newScratch -}}
 
+{{/* Set CSS classes */}}
+{{- $scratch.Set "classes" "image_figure" -}}
+{{- if eq .type "thumbnail" -}}
+  {{- $scratch.Add "classes" " image_thumbnail" -}}
+{{- end -}}
+{{- if eq .type "featured" -}}
+  {{- $scratch.Add "classes" " image_featured" -}}
+{{- end -}}
+
 {{/* Determine if image is local */}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Set "fileLoc" "external" -}}
+  {{- $scratch.Add "classes" " image_external" -}}
 {{- else -}}
   {{- $scratch.Set "fileLoc" "internal" -}}
+  {{- $scratch.Add "classes" " image_internal" -}}
 {{- end -}}
 
 {{/* Provide list of config file location options */}}
@@ -49,11 +60,11 @@
   {{- $bundle = true }}
 {{ end }}
 
-{{- $fileWeb = absURL $file -}}
 {{ if eq $bundle true }}
   {{- $fileWeb = (path.Join $.Page.RelPermalink $file) -}}
   {{- $fileDisk = (path.Join ($scratch.Get "contentDir") (path.Join $.Page.File.Dir $file)) }}
 {{ else }}
+  {{- $fileWeb = absURL $file -}}
   {{- $fileDisk = (path.Join ($scratch.Get "staticDir") $file) }}
 {{ end }}
 
@@ -69,7 +80,7 @@
     <picture>
 
       {{- if eq ($scratch.Get "fileLoc") "external" -}}
-        <img class="image_figure image_external" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
+        <img class="{{ $scratch.Get "classes" }}" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
       {{- else -}}
 
         {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
@@ -91,7 +102,7 @@
           {{ end }}
         {{ end }}
 
-        <img class="image_figure image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with $cap }} title="{{ $cap }}" {{ end }} />
+        <img class="{{ $scratch.Get "classes" }}" src="{{ $fileWeb }}" alt="{{ $alt }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with $cap }} title="{{ $cap }}" {{ end }} />
 
       {{- end -}}
 

@@ -14,7 +14,7 @@
     {{- $highlight := resources.Get $highlightPath | resources.ExecuteAsTemplate $highlightPath . }}
 
     {{- $variablesScriptPath := "js/variables.js" }}
-    {{- $variables := resources.Get $variablesScriptPath | resources.ExecuteAsTemplate $variablesScriptPath . }}
+    {{- $variables := resources.Get $variablesScriptPath | resources.ExecuteAsTemplate (printf "%s/js/variables.js" .Lang) . }}
 
     {{- $functionsScriptPath := "js/functions.js" }}
     {{- $functions := resources.Get $functionsScriptPath | resources.ExecuteAsTemplate $functionsScriptPath . }}
@@ -31,7 +31,8 @@
     {{- $mainScriptPath := "js/index.js" }}
     {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
 
-    {{- $bundle := slice $highlight $variables $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+    {{- $bundlePath := (printf "%s/js/bundle.js" .Lang ) }}
+    {{- $bundle := slice $highlight $variables $functions $code $main $custom | resources.Concat $bundlePath | resources.Fingerprint "sha512" -}}
 
     <!-- preload assets declaration -->
     <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
@@ -73,6 +74,7 @@
     {{- partialCached "icons" . }}
     {{- partialCached "footer" . }}
     <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- partial "search/scripts" . }}
     {{- with $s.customJS }}
     {{- range . -}}
     <script type="text/javascript" src="{{ relURL . }}" ></script>

@@ -168,6 +168,17 @@
   font-size: 0.9rem
   align-items: center
   user-select: none
+  &_back
+    color: $light
+    outline: none
+    border: none
+    appearance: none
+    background-color: $theme
+    font-size: 1rem
+    cursor: pointer
+    padding: 0.5rem 1rem
+    margin-bottom: 1.33rem
+    border-radius: 1.5rem
   &:hover, &:focus
     background-color: darken($theme, 20%)
     color: $light
@@ -268,7 +279,7 @@
     display: block
     margin: 1rem auto
   &_content
-    a
+    a:not(.button)
       color: $theme
     ul, ol
       list-style: initial
@@ -397,6 +408,11 @@
 .link
   opacity: 0
   position: relative
+  &_owner
+    .icon
+      background-size: 100%
+      background-repeat: no-repeat
+      background-position: center right
   &_yank
     opacity: 1
     &ed
@@ -666,3 +682,83 @@ figcaption
     background: var(--notice-tip-background)
   .highlight_wrap
     background: var(--notice-code-bg) !important
+
+
+// search
+
+.search
+  flex: 1
+  display: flex
+  justify-content: flex-end
+  position: relative
+  max-width: 25rem
+  margin: 0.5rem 0 0
+  --border: transparent
+  &_field
+    padding: 0.5rem 1rem
+    width: 100%
+    outline: none
+    color: var(--text)
+    background: var(--post-bg)
+    border: 1px solid var(--border)
+    border-radius: 8px
+    font-size: 1rem
+    box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.1)
+    &:hover, &:focus
+      // background: var(--search-bg)
+  &_field:focus + &_label
+    opacity: 0
+  &_label
+    position: absolute
+    z-index: 9
+    opacity: 0.67
+    right: 0.67rem
+    top: 0.25rem
+    width: 1rem
+    height: 1rem
+    svg
+      width: 100%
+      height: 100%
+      fill: #7C849B
+  &_result
+    padding: 0.5rem 1rem
+    &:not(.passive):hover
+      background-color: var(--code-bg)
+      color: $light
+    &.passive
+      display: grid
+    &s
+      width: 100%
+      background-color: var(--choice-bg)
+      color: var(--text)
+      border-radius: var(--radius)
+      box-shadow: 0 1rem 4rem rgba(0,0,0,0.17) !important
+      position: absolute
+      top: 125%
+      display: grid
+      overflow: hidden
+      z-index: 3
+      &:empty
+        display: none
+  &_title
+    padding: 0.25rem 1rem !important
+    background-color: $theme
+    color: var(--light)
+    margin: 0
+    font-size: 1.25rem
+    &:empty
+      display: none
+  &_submit
+    position: absolute
+    --margin: 3px
+    right: var(--margin)
+    top: var(--margin)
+    bottom: var(--margin)
+    z-index: 9
+    cursor: pointer
+    border-radius: calc(var(--radius) / 2)
+
+#results
+  .search
+    &_title, &_result
+      padding: 0.5rem 0

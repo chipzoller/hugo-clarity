@@ -1,6 +1,6 @@
 const codeActionButtons = [
   {
-    icon: 'copy', 
+    icon: 'copy',
     id: 'copy',
     title: 'Copy Code',
     show: true
@@ -9,7 +9,7 @@ const codeActionButtons = [
     icon: 'order',
     id: 'lines',
     title: 'Toggle Line Numbers',
-    show: true 
+    show: true
   },
   {
     icon: 'carly',
@@ -21,7 +21,7 @@ const codeActionButtons = [
     icon: 'expand',
     id: 'expand',
     title: 'Toggle code block expand',
-    show: false 
+    show: false
   }
 ];
 
@@ -139,7 +139,7 @@ function actionPanel() {
     btn.className = `icon panel_icon panel_${button.id}`;
     button.show ? false : pushClass(btn, panelHide);
     // load icon inside button
-    loadSvg(button.icon, btn);
+    btn.style.backgroundImage = `url(${parentURL}${iconsPath}${button.icon}.svg)`;
     // append button on panel
     panel.appendChild(btn);
   });
@@ -201,7 +201,7 @@ function disableCodeLineNumbers(block){
     const wrapIcon = elem(`.${wrapId}`, panel);
     codeBlockFits(block) ? false : deleteClass(wrapIcon, panelHide);
 
-    // append buttons 
+    // append buttons
     highlightWrapper.appendChild(panel);
   });
 

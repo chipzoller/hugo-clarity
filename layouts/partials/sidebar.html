@@ -1,6 +1,8 @@
 {{ $s := site.Params }}
 <aside class="sidebar">
   <section class="sidebar_inner">
+    <br>
+    {{ partialCached "search/widget" . }}
     {{- $introDescription := $s.introDescription }}
     {{- with .Params.introDescription }}
       {{- $introDescription = . }}

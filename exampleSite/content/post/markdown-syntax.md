@@ -54,6 +54,12 @@ The following image is loaded from a remote URL. The alt text is the same (for s
 
 ![Jane Doe](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/static/images/jane-doe.png "This is Jane Doe")
 
+### Image with alt text and no caption
+
+Alt text is always recommended for SEO, accessibility and in cases when images don't load. However, you don't necessarily always want an image to have a caption. In that case, use a title with one space:
+
+![A building](/images/building.png " ")
+
 ## Blockquotes
 
 The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.

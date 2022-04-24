@@ -1,0 +1,63 @@
+{{/*
+  If Hugo has been able to access the image, it's loaded at .image, and we have
+  access to additional attributes.
+
+  If Hugo hasn't been able to access the image, it's loaded at .file, with only
+  its path available.
+
+  We set the Hugo variables to strings to allow for logical operations and
+  replacements.
+*/}}
+
+{{- $file := .file -}}
+{{- $image := .image -}}
+{{- $dir := .dir -}}
+{{- $alt := .alt -}}
+{{- $cap := .cap -}}
+{{- $classes := .classes -}}
+{{- $bundle := .bundle -}}
+
+<figure>
+  <picture>
+
+    {{/* Generate alternate image format tags. */}}
+    {{- with $file -}}
+      {{ $name := replace $file (path.Ext $file) "" }}
+      {{ $ext := slice "avif" "webp" "jxl" }}
+      {{- range $ext -}}
+        {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
+        {{- if eq $bundle true -}}
+          {{ $path = path.Join "/" $dir $path }}
+        {{- end -}}
+        {{- if fileExists $path -}}
+          <source srcset="{{ $path }}" type="image/{{ . }}">
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{/* Render image and attributes. */}}
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="{{ htmlEscape $alt }}"
+      {{ with $image }}
+        class="{{ $classes }} image_processed"
+        width="{{ .Width }}"
+        height="{{ .Height }}"
+        src="{{ .RelPermalink }}"
+      {{ else }}
+        class="{{ $classes }} image_unprocessed"
+        src="{{ $file }}"
+      {{ end }}
+      {{ with $cap }}
+        title="{{ htmlEscape $cap }}"
+      {{ end }}
+    />
+
+    {{/* Provide caption based on image title, if it is set. */}}
+    {{- with $cap -}}
+      <figcaption>{{ $cap | safeHTML }}</figcaption>
+    {{- end -}}
+
+  </picture>
+</figure>

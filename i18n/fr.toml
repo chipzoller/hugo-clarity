@@ -52,24 +52,6 @@ other = "Sommaire"
 [reading_time]
 other = "{{ .ReadingTime }} mins de lecture"
 
-[img_web_path]
-other = "Lien de site Web"
-
-[img_web_path_desc]
-other = "Ouvrir ce lien de site Web dans un nouvel onglet"
-
-[img_disk_path]
-other = "Lien vers le fichier"
-
-[img_pb]
-other = "Page Bundles"
-
-[img_pb_using]
-other = "Utiliser"
-
-[img_pb_desc]
-other = "Des informations sur Hugo Page Bundles"
-
 [series_posts]
 other = "Articles dans cette série"
 

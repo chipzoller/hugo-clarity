@@ -339,19 +339,29 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 
 ### Images
 
+A number of CSS classes are automatically added to images based on their source or type to aid you in any tweaks to the theme. These include:
+
+- `image_figure` when the image appears inside a `<figure>` element
+- `image_internal` when the image is local, within the site
+- `image_external` when the image is loaded from a URL
+- `image_processed` when the image has been passed through [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) (requires the image to be using page bundles or in the `assets` directory)
+- `image_unprocessed` when the image has not been passed through Hugo Pipes
+- `image_thumbnail` when the image is in a list of content excerpts
+- `image_featured` when the image is a banner or hero image at the top of a post
+
+Most images in Hugo Clarity are loaded [lazy](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes) and [asynchronously](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) to improve site speed. Images that are not loaded in this manner include the site's logo.
+
 #### Organizing page resources
 
-By default, Hugo Clarity assumes that page resources -- images and other assets -- are stored in the `static` folder. Alternatively, you can opt-in to using [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
+By default, Hugo Clarity assumes that page resources -- images and other related files -- are stored in the `static` or `assets` directories. Alternatively, you can opt-in to using [Hugo page bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
 
-If you have an existing site that is not using Page Bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level as well in the front matter. If it is not set in the post, it will default to the site's parameter.
+If you have an existing site that is not using page bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level in the front matter. If it is not set in the post, it will default to the site's parameter. Take a look at [`exampleSite/content/post/bundle/index.md`](exampleSite/content/post/bundle/index.md) for more information and an example of overriding this setting on an individual post.
 
 #### Support for modern image formats
 
-If you reference an image such as `sample.jpg` in your post, Hugo Clarity will check to see if the same image (based on filename) exists in the modern formats of [WebP](https://en.wikipedia.org/wiki/WebP), [AVIF](https://en.wikipedia.org/wiki/AV1#AV1_Image_File_Format_(AVIF)) or [JXL](https://en.wikipedia.org/wiki/JPEG_XL). If it does, these will be presented to browsers as alternative options. Browsers that can support these formats will load them, while browsers that do not will fall-back to the default image.
+If you are using page bundles (see above) and reference `sample.jpg` in your post, Hugo Clarity will check to see if the same image (based on filename) exists in the modern formats of [WebP](https://en.wikipedia.org/wiki/WebP), [AVIF](https://en.wikipedia.org/wiki/AVIF) or [JXL](https://en.wikipedia.org/wiki/JPEG_XL). If it does, these will be presented to browsers as alternative options. Browsers that [support these formats and the `<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture#the_type_attribute) will load them, while browsers that do not will fall-back to the default image.
 
-This process works for images with the file extensions `jpg`, `jpeg`, `png`, and `gif`.
-
-Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/bash-scripts/blob/main/images/modimg.sh).
+Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/rootwork.org/blob/main/scripts/image_optimize.sh).
 
 #### Image figure captions
 
@@ -458,7 +468,7 @@ To add a CSS class to an image, append `::<classname>` to its alt text. You can 
 
 #### Article thumbnail image
 
-Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They are specified using a frontmatter variable as follows:
+Blog articles can specify a thumbnail image which will be displayed on the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They are specified using a frontmatter variable as follows:
 
 ```yaml
 ...

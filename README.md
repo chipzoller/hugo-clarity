@@ -573,6 +573,12 @@ It is possible to highlight specific lines in a code block by applying `{hl_line
 ```yaml {hl_lines=[7,8]}
 ```
 
+Ranges are also supported by quoting the range inside the braces.
+
+```
+```yaml {hl_lines=["7-18"]}
+```
+
 ### Table of contents
 
 Each article can optionally have a table of contents (TOC) generated for it based on top-level links. By configuring the `toc` parameter in the article frontmatter and setting it to `true`, a TOC will be generated only for that article. The TOC will then render under the featured image.

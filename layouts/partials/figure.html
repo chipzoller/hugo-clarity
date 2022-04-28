@@ -17,9 +17,8 @@
 {{- $classes := .classes -}}
 {{- $bundle := .bundle -}}
 
-{{- $path := .file -}}
 {{- if eq $bundle true -}}
-  {{ $path = path.Join "/" $dir $path }}
+  {{ $file = path.Join "/" $dir $file }}
 {{- end -}}
 
 <figure>
@@ -49,7 +48,7 @@
         src="{{ .RelPermalink }}"
       {{ else }}
         class="{{ $classes }} image_unprocessed"
-        src="{{ $path }}"
+        src="{{ $file }}"
       {{ end }}
       {{ with $cap }}
         title="{{ htmlEscape $cap }}"

@@ -17,6 +17,11 @@
 {{- $classes := .classes -}}
 {{- $bundle := .bundle -}}
 
+{{- $path := .file -}}
+{{- if eq $bundle true -}}
+  {{ $path = path.Join "/" $dir $path }}
+{{- end -}}
+
 <figure>
   <picture>
 
@@ -26,9 +31,6 @@
       {{ $ext := slice "avif" "webp" "jxl" }}
       {{- range $ext -}}
         {{ $path := printf "%s" . | printf "%s%s" "." | printf "%s%s" $name | printf "%s" }}
-        {{- if eq $bundle true -}}
-          {{ $path = path.Join "/" $dir $path }}
-        {{- end -}}
         {{- if fileExists $path -}}
           <source srcset="{{ $path }}" type="image/{{ . }}">
         {{- end -}}
@@ -47,7 +49,7 @@
         src="{{ .RelPermalink }}"
       {{ else }}
         class="{{ $classes }} image_unprocessed"
-        src="{{ $file }}"
+        src="{{ $path }}"
       {{ end }}
       {{ with $cap }}
         title="{{ htmlEscape $cap }}"

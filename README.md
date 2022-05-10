@@ -344,10 +344,11 @@ A number of CSS classes are automatically added to images based on their source 
 - `image_figure` when the image appears inside a `<figure>` element
 - `image_internal` when the image is local, within the site
 - `image_external` when the image is loaded from a URL
-- `image_processed` when the image has been passed through [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) (requires the image to be using page bundles or in the `assets` directory)
+- `image_processed` when the image has been passed through [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) (requires the image to be using page bundles or be in the `assets` directory)
 - `image_unprocessed` when the image has not been passed through Hugo Pipes
 - `image_thumbnail` when the image is in a list of content excerpts
 - `image_featured` when the image is a banner or hero image at the top of a post
+- `image_svg` when the image is an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) (and thus [cannot be run through Hugo Pipes](https://github.com/gohugoio/hugo/issues/3700))
 
 Most images in Hugo Clarity are loaded [lazy](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes) and [asynchronously](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) to improve site speed. Images that are not loaded in this manner include the site's logo.
 

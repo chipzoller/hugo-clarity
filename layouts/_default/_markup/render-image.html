@@ -26,7 +26,7 @@
   {{- if eq $bundle true -}}
     {{ $image = .Page.Resources.GetMatch $file }}
     {{- if and (not $image) .Page.File -}}
-      {{ $file = path.Join .Page.File.Dir $file }}
+      {{ $file = path.Join .Page.RelPermalink $file }}
       {{ $image = resources.Get $file }}
     {{- end -}}
   {{- end -}}
@@ -36,7 +36,7 @@
   dict
     "file" $file
     "image" $image
-    "dir" $.Page.File.Dir
+    "dir" $.Page.RelPermalink
     "alt" $alt
     "cap" $cap
     "classes" ($scratch.Get "classes")

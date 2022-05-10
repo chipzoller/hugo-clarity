@@ -18,7 +18,7 @@
 {{- $bundle := .bundle -}}
 
 {{- if eq $bundle true -}}
-  {{ $file = path.Join "/" $dir $file }}
+  {{ $file = path.Join $dir $file }}
 {{- end -}}
 
 <figure>

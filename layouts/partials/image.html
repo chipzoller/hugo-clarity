@@ -41,7 +41,7 @@
   {{- end -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $file = (path.Join "/" $file) }}
+  {{ $file = (path.Clean $file) }}
   {{- if eq $bundle true -}}
     {{ $image = .Resources.GetMatch $file }}
   {{- end -}}

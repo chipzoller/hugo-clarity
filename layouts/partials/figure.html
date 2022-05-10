@@ -19,6 +19,11 @@
 
 {{- if eq $bundle true -}}
   {{ $file = path.Join $dir $file }}
+  {{ if in $classes "image_svg" }}
+    {{ if strings.HasPrefix .file "http" }}
+      {{ $file = .file }}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 <figure>

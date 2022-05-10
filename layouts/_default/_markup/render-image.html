@@ -26,6 +26,8 @@
       {{- $file = path.Join "images" $image -}}
       {{- $image = $image.Content | resources.FromString $file -}}
     {{- end -}}
+  {{- else -}}
+    {{- $image = "" -}}
   {{- end -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}

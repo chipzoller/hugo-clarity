@@ -16,7 +16,7 @@
     {{- partial "post-meta" . }}
     {{- with .Params.featureImage -}}
       <div class="post_featured">
-        {{- partial "image" (dict "file" . "type" "featured" "Page" $.Page) }}
+        {{- partial "image" (dict "file" . "alt" $p.featureImageAlt "type" "featured" "Page" $.Page) }}
       </div>
     {{- end -}}
     {{ if $p.toc }}

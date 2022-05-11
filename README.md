@@ -386,7 +386,7 @@ Examples of this can also be found in the "Markdown Syntax Guide" post in the ex
 
 #### Adding figure positions to image captions
 
-You have the option of prepending a desired string such as "Figure N" to the caption text. This affects only inline images, not featured images.
+You have the option of prepending a desired string such as "Figure N" to the caption text of images within an article's content.
 
 Two global settings control this feature:
 

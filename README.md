@@ -413,9 +413,11 @@ To make an image inline, append `:inline` to its alt text.
 
 ```markdown
 <!-- an inline image without alt text -->
+
 ![:inline](someImageUrl)
 
 <!-- an inline image with alt text -->
+
 ![text describing the image:inline](someOtherImageUrl)
 ```
 
@@ -429,9 +431,11 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 
 ```markdown
 <!-- a left-floated image without alt text -->
+
 ![:left](someImageUrl)
 
 <!-- a left-floated image with alt text -->
+
 ![text describing the image:left](someOtherImageUrl)
 ```
 
@@ -443,9 +447,11 @@ To align a blog image to the right, append `:right` to its alt text. Article tex
 
 ```markdown
 <!-- a right-floated image without alt text -->
+
 ![:right](someImageUrl)
 
 <!-- a right-floated image with alt text -->
+
 ![text describing the image:right](someOtherImageUrl)
 ```
 
@@ -459,12 +465,15 @@ is just another class and it can be mixed with other classes separated by space.
 
 ```markdown
 <!-- an image without alt text and round borders-->
+
 ![::round](someImageUrl)
 
 <!-- an image with alt text and round borders-->
+
 ![text describing the image::round](someOtherImageUrl)
 
 <!-- a left-floating image without alt text and with round borders-->
+
 ![:left::round](someOtherImageUrl)
 ```
 
@@ -476,6 +485,7 @@ To add a CSS class to an image, append `::<classname>` to its alt text. You can 
 
 ```markdown
 <!-- an image without alt text -->
+
 ![::img-medium](someImageUrl)
 
 <!-- an image with alt text -->

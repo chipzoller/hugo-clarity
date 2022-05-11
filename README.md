@@ -34,14 +34,16 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Images](#images)
     * [Organizing page resources](#organizing-page-resources)
     * [Modern image formats](#support-for-modern-image-formats)
-    * [Figure captions](#image-figure-captions)
+    * [Image captions](#image-captions)
+    * [Adding figure positions to image captions](#adding-figure-positions-to-image-captions)
     * [Inline images](#inline-images)
     * [Floating images](#float-images-to-the-left)
     * [Round borders](#round-borders-for-images)
     * [Adding CSS classes](#add-classes-to-images)
-    * [Article thumbnail image](#article-thumbnail-image)
-    * [Article featured image](#article-featured-image)
-    * [Article share image](#share-image)
+    * [Featured image](#featured-image)
+    * [Thumbnail image](#thumbnail-image)
+    * [Share image](#share-image)
+    * [Logo alignment](#logo-alignment)
   * [Code](#code)
   * [Table of contents](#table-of-contents-1)
   * [Notices](#notices)
@@ -64,15 +66,17 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 * Choice of whether to use [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/)
 
-* Native Image Lazy Loading
+* Native image lazy-loading
 
 * Customizable (see config)
 
-* Dark Mode (with UI controls for user preference setting)
+* Dark mode (with UI controls for user preference setting)
 
 * Toggleable table of contents
 
-* Configurable Site Disclaimer (i.e. "my views are not my employer's")
+* Toggleable automatic figure numbering
+
+* Configurable site disclaimer (i.e. "my views are not my employer's")
 
 * Flexible image configuration, and support for modern formats like WebP
 
@@ -80,7 +84,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 * Mobile support with configurable menu alignment
 
-* Syntax Highlighting
+* Syntax highlighting
 
 * Rich code block functions including:
 
@@ -352,6 +356,8 @@ A number of CSS classes are automatically added to images based on their source 
 
 Most images in Hugo Clarity are loaded [lazy](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes) and [asynchronously](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) to improve site speed. Images that are not loaded in this manner include the site's logo.
 
+Images, whether used within Markdown content or using parameters like `featureImage` or `thumbnail`, can be local or remote images. Remote images (starting with `http...`) will automatically be downloaded, stored and optimized by Hugo Clarity, so that the finished site will only serve local images.
+
 #### Organizing page resources
 
 By default, Hugo Clarity assumes that page resources -- images and other related files -- are stored in the `static` or `assets` directories. Alternatively, you can opt-in to using [Hugo page bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
@@ -364,17 +370,34 @@ If you are using page bundles (see above) and reference `sample.jpg` in your pos
 
 Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/rootwork.org/blob/main/scripts/image_optimize.sh).
 
-#### Image figure captions
+#### Image captions
 
-You have the option of adding captions to images in blog posts and automatically prepending a desired string such as "Figure N" to the caption text. This is controlled via two global settings.
+Image captions are automatically generated. If an image has title text, the caption will be created from it; if an image has no title text, the alt text will be used. To display an image with alt text but no caption, use title text of a single space (`" "`).
 
-`figurePositionLabel` is a string which will be prepended to any caption text of an article image. By default, this is set to "Figure." And `figurePositionShow` controls, globally, whether to show this label. It does not affect whether to show the image's alt or title text, only the prefix figure caption. For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+Examples of captions:
 
-The number will be automatically calculated and assigned after the `figurePositionLabel` text starting from the top of the article and counting down. Featured images will be excluded from this figuration.
+- `![Jane Doe](/images/jane-doe.png)` will display the local `jane-doe.png` image with a caption of "Jane Doe".
+- `![Jane Doe](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/static/images/jane-doe.png "This is Jane Doe")` will display the remote image `jane-doe.png` with a caption of "This is Jane Doe".
+- `![A building](/images/building.png " ")` will display the local image `building.png` with no caption.
 
-#### Image figure captions example
+Examples of this can also be found in the "Markdown Syntax Guide" post in the example site content.
 
-In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
+> NOTE: Due to limitations in Markdown, single and double quotes should not be used within alt or title text.
+
+#### Adding figure positions to image captions
+
+You have the option of prepending a desired string such as "Figure N" to the caption text. This affects only inline images, not featured images.
+
+Two global settings control this feature:
+
+- `figurePositionLabel` is a string which will be prepended to any caption text of an article image; by default this is set to "Figure".
+- `figurePositionShow` controls, globally, whether to show this label. (It does not affect the visibility of image captions in general, only the prepended figure position text.) For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+
+Figure numbers will be automatically inserted after the `figurePositionLabel` text, starting from the top of the article and increasing as you move down.
+
+#### Example of image with figure positions added
+
+Assume that `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
 
 ```markdown
 ![A schematic for using Antrea with Kubernetes](./images/image-figure.png "Antrea Kubernetes nodes prepared")
@@ -382,11 +405,9 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 
 ![Figure captioning example](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
 
-> NOTE: Alt text with double quotes will produce broken HTML per limitations with Markdown. It is recommended to omit any quotations from your alt text.
-
 #### Inline images
 
-To make a blog image inline, append `:inline` to its alt text.
+To make an image inline, append `:inline` to its alt text.
 
 #### Inline images example
 
@@ -395,7 +416,6 @@ To make a blog image inline, append `:inline` to its alt text.
 ![:inline](someImageUrl)
 
 <!-- an inline image with alt text -->
-
 ![text describing the image:inline](someOtherImageUrl)
 ```
 
@@ -412,7 +432,6 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 ![:left](someImageUrl)
 
 <!-- a left-floated image with alt text -->
-
 ![text describing the image:left](someOtherImageUrl)
 ```
 
@@ -427,7 +446,6 @@ To align a blog image to the right, append `:right` to its alt text. Article tex
 ![:right](someImageUrl)
 
 <!-- a right-floated image with alt text -->
-
 ![text describing the image:right](someOtherImageUrl)
 ```
 
@@ -444,11 +462,9 @@ is just another class and it can be mixed with other classes separated by space.
 ![::round](someImageUrl)
 
 <!-- an image with alt text and round borders-->
-
 ![text describing the image::round](someOtherImageUrl)
 
 <!-- a left-floating image without alt text and with round borders-->
-
 ![:left::round](someOtherImageUrl)
 ```
 
@@ -467,23 +483,9 @@ To add a CSS class to an image, append `::<classname>` to its alt text. You can 
 ![text describing the image::img-large img-shadow](someOtherImageUrl)
 ```
 
-#### Article thumbnail image
+#### Featured image
 
-Blog articles can specify a thumbnail image which will be displayed on the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They are specified using a frontmatter variable as follows:
-
-```yaml
-...
-thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
-...
-```
-
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
-
-The thumbnail image will take precedence over opengraph share tags if the [shareImage](#share-image) parameter is not specified.
-
-#### Article featured image
-
-Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumbnail is not specified, the featured image will be used as a fallback on opengraph share tags.
+Each article can specify an image that appears at the top of the content.
 
 ```yaml
 ...
@@ -491,7 +493,7 @@ featureImage: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+The path for the featured image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
 
 Two other frontmatter settings allow you to set alt text for the featured image and an optional caption.
 
@@ -502,9 +504,25 @@ featureImageCap: 'A caption appearing below the image.' # Caption (optional).
 ...
 ```
 
+Unless specified using `featureImageCap`, a caption will not be generated for the featured image.
+
+#### Thumbnail image
+
+Each article can specify a thumbnail image which will be displayed on the left of the article's card on the home page and in lists of articles.
+
+```yaml
+...
+thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
+...
+```
+
+Thumbnails look best when square (height:width ratio of 1:1) and at least 150x150 pixels.
+
+The path for the thumbnail image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
 #### Share image
 
-Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in the front matter.
+Each article can specify a share image which will used when the article is shared on social media.
 
 ```yaml
 ...
@@ -512,11 +530,13 @@ shareImage: "images/theImageToBeUsedOnShare.png"
 ...
 ```
 
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+If a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. That is, if no thumbnail is specified, the featured image will be used; if neither is specified, the fallback image will be used.
 
-Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. When sharing a link to the home page address of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
+When sharing a link to the home page of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
 
-#### Align logo
+The path for the share image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
+#### Logo alignment
 
 You can left align or center your site's logo.
 

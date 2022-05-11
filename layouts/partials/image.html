@@ -51,7 +51,8 @@
   dict
     "file" $file
     "image" $image
-    "dir" $.Page.RelPermalink
+    "diskPath" $.Page.File.Dir
+    "webPath" $.Page.RelPermalink
     "alt" $alt
     "cap" $cap
     "classes" ($scratch.Get "classes")

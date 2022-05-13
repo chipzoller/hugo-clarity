@@ -103,7 +103,7 @@ function restrainCodeBlockHeight(lines) {
 const blocks = codeBlocks();
 
 function collapseCodeBlock(block) {
-  const lines = elems('.ln', block);
+  const lines = elems(lineClass, block);
   const codeLines = lines.length;
   if (codeLines > maxLines) {
     const expandDot = createEl()
@@ -158,12 +158,12 @@ function toggleLineNumbers(elems) {
 function toggleLineWrap(elem) {
   modifyClass(elem, 'pre_wrap');
   // retain max number of code lines on line wrap
-  const lines = elems('.ln', elem);
+  const lines = elems(lineClass, elem);
   restrainCodeBlockHeight(lines);
 }
 
 function copyCode(codeElement) {
-  lineNumbers = elems('.ln', codeElement);
+  lineNumbers = elems(lineClass, codeElement);
   // remove line numbers before copying
   if(lineNumbers.length) {
     lineNumbers.forEach(function(line){
@@ -177,7 +177,7 @@ function copyCode(codeElement) {
 }
 
 function disableCodeLineNumbers(block){
-  const lines = elems('.ln', block)
+  const lines = elems(lineClass, block)
   toggleLineNumbers(lines);
 }
 
@@ -233,7 +233,7 @@ function disableCodeLineNumbers(block){
       event.preventDefault();
       showActive(target, 'icon');
       const codeElement = target.closest(`.${highlightWrapId}`).firstElementChild.firstElementChild;
-      let lineNumbers = elems('.ln', codeElement);
+      let lineNumbers = elems(lineClass, codeElement);
 
       isWrapIcon ? toggleLineWrap(codeElement) : false;
 

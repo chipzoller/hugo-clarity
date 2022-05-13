@@ -4,21 +4,6 @@
 <html lang="{{ .Lang }}" data-figures="{{ $p.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ if .IsHome }} class="home"{{ end }}{{ with $s.enforceLightMode }} data-mode="lit"{{ end }}{{ with $s.enforceDarkMode }} data-mode="dim"{{ end }}>
   <head>
     {{- partial "head" . }}
-
-    {{ $styles := partialCached "func/getStylesBundle" . }}
-    {{ $bundle := partialCached "func/getJavascriptBundle" . }}
-    <!-- preload assets declaration -->
-    <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
-    <link rel="preload" href="{{ $bundle.Permalink }}" as="script" integrity=
-    "{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
-
-    <!-- styles file -->
-    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
-    {{- with $s.customCSS }}
-    {{- range . -}}
-	  <link rel="stylesheet" href="{{ relURL . }}">
-    {{- end }}
-    {{- end }}
     {{ partial "hooks/head-end.html" . }}
   </head>
   {{- $maxCodeLines := 100 }}

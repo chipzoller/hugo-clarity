@@ -1,4 +1,4 @@
-{{- $s := .Site.Params }}
+{{- $s := site.Params }}
 {{- $p := .Params }}
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" data-figures="{{ $p.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ if .IsHome }} class="home"{{ end }}{{ with $s.enforceLightMode }} data-mode="lit"{{ end }}{{ with $s.enforceDarkMode }} data-mode="dim"{{ end }}>
@@ -6,25 +6,8 @@
     {{- partial "head" . }}
     {{ partial "hooks/head-end.html" . }}
   </head>
-  {{- $maxCodeLines := 100 }}
-  {{- with $s.codeMaxLines }}
-    {{- $maxCodeLines = . }}
-  {{- end }}
-  {{- with $p.codeMaxLines }}
-    {{- $maxCodeLines = . }}
-  {{- end }}
-  {{- $codeLineNumbers := false }}
-  {{ with $s.codeLineNumbers }}
-    {{- $codeLineNumbers = . }}
-  {{ end }}
-  {{ with $p.codeLineNumbers }}
-    {{- $codeLineNumbers = . }}
-    {{ else }}
-    {{ if eq $p.codeLineNumbers false }}
-      {{- $codeLineNumbers = false }}
-    {{ end }}
-  {{ end }}
-  <body data-code="{{ $maxCodeLines }}" data-lines="{{ $codeLineNumbers }}" id="documentTop">
+  {{ $codeBlockConfig := partial "func/getCodeBlockSettings" (dict "params" .Params) }}
+  <body data-code="{{ $codeBlockConfig.max }}" data-lines="{{ $codeBlockConfig.lines }}" id="documentTop">
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}

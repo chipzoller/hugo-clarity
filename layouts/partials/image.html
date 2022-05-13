@@ -3,7 +3,7 @@
 {{- if not $alt -}}
   {{- $alt = .Text -}}
 {{- end -}}
-{{- $cap := .Title -}}
+{{- $cap := .cap -}}
 {{- $scratch := newScratch -}}
 {{- $scratch.Set "classes" "image_figure" -}}
 
@@ -28,11 +28,20 @@
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
-  {{- $file = path.Join "images" $image -}}
-  {{- $image = $image.Content | resources.FromString $file -}}
+  {{- if eq $image.MediaType.MainType "image" -}}
+    {{- if eq $image.MediaType.SubType "svg" -}}
+      {{- $image = "" -}}
+      {{- $scratch.Add "classes" " image_svg" -}}
+    {{- else -}}
+      {{- $file = path.Join "images" $image -}}
+      {{- $image = $image.Content | resources.FromString $file -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $image = "" -}}
+  {{- end -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $file = (path.Join "/" $file) }}
+  {{ $file = (path.Clean $file) }}
   {{- if eq $bundle true -}}
     {{ $image = .Resources.GetMatch $file }}
   {{- end -}}
@@ -42,7 +51,8 @@
   dict
     "file" $file
     "image" $image
-    "dir" $.Page.File.Dir
+    "diskPath" $.Page.File.Dir
+    "webPath" $.Page.RelPermalink
     "alt" $alt
     "cap" $cap
     "classes" ($scratch.Get "classes")

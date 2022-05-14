@@ -1,27 +1,21 @@
 {{- $s := site.Params }}
 {{- $p := .Params }}
-{{ $codeBlockConfig := partial "func/getCodeBlockSettings" . }}
+{{- $codeBlockConfig := partial "func/getCodeBlockSettings" . }}
 <!DOCTYPE html>
 <html lang="{{ .Lang }}" data-figures="{{ $p.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ if .IsHome }} class="home"{{ end }}{{ with $s.enforceLightMode }} data-mode="lit"{{ end }}{{ with $s.enforceDarkMode }} data-mode="dim"{{ end }}>
   <head>
     {{- partial "head" . }}
-    {{ partial "hooks/head-end.html" . }}
+    {{- partial "hooks/head-end" . }}
   </head>
   <body data-code="{{ $codeBlockConfig.max }}" data-lines="{{ $codeBlockConfig.lines }}" id="documentTop">
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}
     </main>
+
     {{- partialCached "icons" . }}
     {{- partialCached "footer" . }}
-    {{ $bundle := partialCached "func/getJavascriptBundle" . }}
-    <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- partial "search/scripts" . }}
-    {{- with $s.customJS }}
-    {{- range . -}}
-    <script type="text/javascript" src="{{ relURL . }}" ></script>
-    {{- end }}
-    {{- end }}
-    {{ partialCached "hooks/body-end.html" . }}
+    {{- partialCached "scripts" . }}
+    {{- partialCached "hooks/body-end" . }}
   </body>
 </html>

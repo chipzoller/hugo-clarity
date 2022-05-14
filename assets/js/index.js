@@ -226,7 +226,7 @@ function fileClosure(){
   }
 
   function populateAlt(images) {
-    let imagePosition = containsClass(images[0], featuredImageClass) ? -1 : 0;
+    let imagePosition = 0;
 
     images.forEach((image) => {
       let alt = image.alt;

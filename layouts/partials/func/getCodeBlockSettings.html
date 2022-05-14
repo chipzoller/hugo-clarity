@@ -1,5 +1,5 @@
-{{- $s := site.Params }}
-{{- $p := .params }}
+{{ $s := site.Params }}
+{{ $p := .Params }}
 {{ $maxCodeLines := 100 }}
 {{ with $s.codeMaxLines }}
   {{ $maxCodeLines = . }}

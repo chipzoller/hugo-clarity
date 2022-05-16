@@ -2,7 +2,7 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title  }}</a>
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title | markdownify  }}</a>
       </h3>
       {{ partial "post-meta" . }}
     </div>

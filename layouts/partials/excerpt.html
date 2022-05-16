@@ -22,9 +22,9 @@
             {{ $summary = .Params.abstract }}
           {{- end }}
           {{ if not ( strings.Contains $summary "<p>" ) }}
-            <p>{{ $summary }}</p>
+            <p>{{ $summary | markdownify }}</p>
           {{ else }}
-            {{ $summary }}
+            {{ $summary | markdownify }}
           {{ end }}
           <br>
           {{- $r := T "read_more" }}

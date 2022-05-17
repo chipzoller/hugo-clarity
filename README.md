@@ -158,9 +158,11 @@ If you do already have a site and don't want to risk overwriting anything, we su
 hugo server
 ```
 
-If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released. To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...`. [Read more about updating Hugo modules.](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released.
 
-> There [is more you could do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
+To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...`. [Read more about updating Hugo modules.](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+
+> There is [more you can do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
 
 ### Option 3: Git submodules
 
@@ -172,11 +174,13 @@ We assume you've already run `hugo new site <sitename>`, are in the `<sitename>`
 ```bash
 git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
 ```
+
 2. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
 ```bash
 cp -a themes/hugo-clarity/exampleSite/* . && rm -f config.toml
 ```
 If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
+
 3. You can now run:
 ```bash
 hugo server

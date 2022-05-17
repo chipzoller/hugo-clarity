@@ -138,17 +138,21 @@ This option arguably requires the least effort to run and maintain your website 
 
 We assume you've already run `hugo new site <sitename>` and are in the `<sitename>` directory.
 
-1. Ensure you have the `go` binary [installed on your machine](https://golang.org/doc/install) Note: Mac users: ```brew install go```.
-2. Run the following command, substituting `<sitename>` with your site's name:
+1. Ensure you have the `go` binary [installed on your machine](https://golang.org/doc/install). (Mac users: ```brew install go```.)
+
+2. Run the following command:
 ```bash
 hugo mod init <sitename>
 ```
+
 3. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
 ```bash
 wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
 ```
 If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
+
 4. Open `<sitename>/config/_default/config.toml` and change `theme = "hugo-clarity"` to `theme = ["github.com/chipzoller/hugo-clarity"]`
+
 5. You can now run:
 ```bash
 hugo server

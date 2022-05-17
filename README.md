@@ -160,7 +160,7 @@ hugo server
 
 If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released.
 
-To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...`. [Read more about updating Hugo modules.](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...` -- [read more about updating Hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules).
 
 > There is [more you can do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
 
@@ -186,7 +186,9 @@ If you do already have a site and don't want to risk overwriting anything, we su
 hugo server
 ```
 
-While this is less setup than option 2 initially, it comes with important caveats. First, to pull in new versions of the theme, you'll need to run `git submodule update --remote --merge` _and commit those changes to your git repo_. Second, if you clone your repo to another machine, have multiple people working on your site, or have a continuous-integration or deployment script (like Netlify), after cloning you'll need to also remember to run `git submodule update --init --recursive` to get the theme files. See [an overview of using git submodules for Hugo themes](https://www.andrewhoog.com/post/git-submodule-for-hugo-themes/) and [troubleshooting git submodules in Hugo themes](https://study.impl.dev/hacking/git-submodule-hugo-theme/) for details.
+While this is less setup than option 2 initially, it comes with important caveats. First, to pull in new versions of the theme, you'll need to run `git submodule update --remote --merge` _and commit those changes to your git repo_. Second, if you clone your repo to another machine, have multiple people working on your site, or have a continuous-integration or deployment script (like Netlify), after cloning you'll need to also remember to run `git submodule update --init --recursive` to get the theme files.
+
+See [an overview of using git submodules for Hugo themes](https://www.andrewhoog.com/post/git-submodule-for-hugo-themes/) and [troubleshooting git submodules in Hugo themes](https://study.impl.dev/hacking/git-submodule-hugo-theme/) for details.
 
 ## Configuration
 

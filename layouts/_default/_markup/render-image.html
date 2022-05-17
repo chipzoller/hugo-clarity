@@ -18,7 +18,7 @@
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
-  {{- with $image.MediaType }}
+  {{- with $image }}
     {{- if eq $image.MediaType.MainType "image" -}}
       {{- if eq $image.MediaType.SubType "svg" -}}
         {{- $image = "" -}}

@@ -104,11 +104,13 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Prerequisites
 
-Firstly, __ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
+Firstly, __ensure you have installed the [extended version of Hugo 0.91.0 or above](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/) for more information. Note that software repositories may be several versions behind and may not include the extended version.
 
 ## Getting up and running
 
-Read the [prerequisites](#prerequisites) above and verify you're using the extended version of Hugo. There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
+Read the [prerequisites](#prerequisites) above and verify you're using the __extended version of Hugo 0.91.0 or newer__.
+
+There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
 
 ### Option 1 (recommended)
 

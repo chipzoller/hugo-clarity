@@ -18,16 +18,18 @@
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
-  {{- if eq $image.MediaType.MainType "image" -}}
-    {{- if eq $image.MediaType.SubType "svg" -}}
-      {{- $image = "" -}}
-      {{- $scratch.Add "classes" " image_svg" -}}
+  {{- with $image }}
+    {{- if eq $image.MediaType.MainType "image" -}}
+      {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $image = "" -}}
+        {{- $scratch.Add "classes" " image_svg" -}}
+      {{- else -}}
+        {{- $file = path.Join "images" $image -}}
+        {{- $image = $image.Content | resources.FromString $file -}}
+      {{- end -}}
     {{- else -}}
-      {{- $file = path.Join "images" $image -}}
-      {{- $image = $image.Content | resources.FromString $file -}}
+      {{- $image = "" -}}
     {{- end -}}
-  {{- else -}}
-    {{- $image = "" -}}
   {{- end -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}

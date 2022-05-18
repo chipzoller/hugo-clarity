@@ -104,35 +104,25 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Prerequisites
 
-Firstly, __ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
+Firstly, __ensure you have installed the [extended version of Hugo 0.91.0 or above](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/) for more information. Note that software repositories may be several versions behind and may not include the extended version.
 
 ## Getting up and running
 
-Read the [prerequisites](#prerequisites) above and verify you're using the extended version of Hugo. There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
+Read the [prerequisites](#prerequisites) above and verify you're using the __extended version of Hugo 0.91.0 or newer__.
 
-### Option 1 (recommended)
+There are several ways to use this theme:
 
-Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
+### Option 1a: Development in the browser
 
-```bash
-hugo new site yourSiteName
-cd yourSiteName
-git init
-git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-cp -a themes/hugo-clarity/exampleSite/* .
-```
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chipzoller/hugo-clarity)
 
-Then run
+For trying out the theme, quick experimentation, and to contribute Pull Requests, Gitpod is the easiest option. Use the button above and it will spin up a prebuilt environment with a site ready to go.
 
-```bash
-hugo server
-```
+If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://www.gitpod.io/docs/browser-extension).
 
-Hurray!
+### Option 1b: Development on your machine
 
-### Option 2 (Great for testing quickly)
-
-You can run your site directly from the `exampleSite`. To do so, use the following commands:
+If you prefer not to use Gitpod, you can also test, develop and contribute PRs locally from your computer.
 
 ```bash
 git clone https://github.com/chipzoller/hugo-clarity
@@ -140,37 +130,69 @@ cd hugo-clarity/exampleSite/
 hugo server --themesDir ../..
 ```
 
-> Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
+> Note that while this is a good way to work on Hugo Clarity, isn't a good way to work on your own site, since it uses the content from `exampleSite`, and wouldn't be aware of any overrides your site might apply to the theme.
 
-### Option 3 (The new, most fun & painless approach)
+### Option 2: Hugo modules
 
-This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain your website.
+This option arguably requires the least effort to run and maintain your website with the Hugo Clarity theme.
 
-Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install) Note: Mac users: ```brew install go```.
+We assume you've already run `hugo new site <sitename>` and are in the `<sitename>` directory.
 
+1. Ensure you have the `go` binary [installed on your machine](https://golang.org/doc/install). (Mac users: ```brew install go```.)
+
+2. Run the following command:
 ```bash
-git clone https://github.com/chipzoller/hugo-clarity.git clarity
-cd clarity/exampleSite/
-hugo mod init my-site
-cd ..
-cp -a exampleSite/* .
+hugo mod init <sitename>
 ```
 
-Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
+3. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
+```bash
+wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
+```
+If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
 
-Hurray you can now run
+4. Open `<sitename>/config/_default/config.toml` and change `theme = "hugo-clarity"` to `theme = ["github.com/chipzoller/hugo-clarity"]`
 
-```yaml
+5. You can now run:
+```bash
 hugo server
 ```
 
-To pull in theme updates, run `hugo mod get -u ./...` from the theme folder. If unsure, [learn how to update hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released.
 
-> There [is more you could do with hugo modules](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758), but this will suffice for our use case here.
+To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...` -- [read more about updating Hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules).
+
+> There is [more you can do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
+
+### Option 3: Git submodules
+
+For those not ready to use Hugo modules, you can use the "old way" using git alone.
+
+We assume you've already run `hugo new site <sitename>`, are in the `<sitename>` directory, and have a working git repo (`git init`).
+
+1. Run:
+```bash
+git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+```
+
+2. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
+```bash
+cp -a themes/hugo-clarity/exampleSite/* . && rm -f config.toml
+```
+If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
+
+3. You can now run:
+```bash
+hugo server
+```
+
+While this is less setup than option 2 initially, it comes with important caveats. First, to pull in new versions of the theme, you'll need to run `git submodule update --remote --merge` _and commit those changes to your git repo_. Second, if you clone your repo to another machine, have multiple people working on your site, or have a continuous-integration or deployment script (like Netlify), after cloning you'll need to also remember to run `git submodule update --init --recursive` to get the theme files.
+
+See [an overview of using git submodules for Hugo themes](https://www.andrewhoog.com/post/git-submodule-for-hugo-themes/) and [troubleshooting git submodules in Hugo themes](https://study.impl.dev/hacking/git-submodule-hugo-theme/) for details.
 
 ## Configuration
 
-If set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
+Hugo Clarity uses a config folder rather than a single file. If you're used to having a `config.toml` file in your main folder, now you'll find that located in `config/_default/config.toml`, along with other settings files.
 
 This section will mainly cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 

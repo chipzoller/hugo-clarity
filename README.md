@@ -869,9 +869,7 @@ __Search Scope__
 
 - Searching within a section will yield results from that section.
 
-    For example, if you have 2 `mainSections` 1/ vegetables 2/ fruits, searching in the fruits section will only produce results for that section.
+    For example, if you have 3 sections in your content i.e `blog`, `docs` & `examples`, searching in the `docs` section will only produce results for that section.
 - Searching outside a section will search the entire site.
 
-     For example, with the above `mainSections` setup, searching from the homepage will produce results from both sections and other pages of the site.
-
-     Future implementations may include a github-like feature i.e `search all site`. This PR will leave that to a future PR
+     For example, with the above setup, searching from the homepage will produce results from the entire site.

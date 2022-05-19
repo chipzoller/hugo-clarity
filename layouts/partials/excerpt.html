@@ -2,7 +2,7 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title  }}</a>
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title | markdownify  }}</a>
       </h3>
       {{ partial "post-meta" . }}
     </div>
@@ -22,9 +22,9 @@
             {{ $summary = .Params.abstract }}
           {{- end }}
           {{ if not ( strings.Contains $summary "<p>" ) }}
-            <p>{{ $summary }}</p>
+            <p>{{ $summary | markdownify }}</p>
           {{ else }}
-            {{ $summary }}
+            {{ $summary | markdownify }}
           {{ end }}
           <br>
           {{- $r := T "read_more" }}

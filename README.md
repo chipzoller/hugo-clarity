@@ -886,3 +886,12 @@ enableSearch = true
     Live search works even for multilingual sites.
 
     For Chinese-like languages, it may or may not work.
+
+__Search Scope__
+
+- Searching within a section will yield results from that section.
+
+    For example, if you have 3 sections in your content i.e `blog`, `docs` & `examples`, searching in the `docs` section will only produce results for that section.
+- Searching outside a section will search the entire site.
+
+     For example, with the above setup, searching from the homepage will produce results from the entire site.

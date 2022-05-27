@@ -271,6 +271,12 @@
     .button
       @media screen and (min-width: 667px)
         margin: 0 0.5rem
+    &_divider::before
+      padding-right: 0.45em;
+      padding-left: 0.45em;
+      font-size: 15px;
+      content: '\00B7';
+
 
   &_date
     margin-right: 0.5rem
@@ -682,7 +688,6 @@ figcaption
     background: var(--notice-tip-background)
   .highlight_wrap
     background: var(--notice-code-bg) !important
-
 
 // search
 

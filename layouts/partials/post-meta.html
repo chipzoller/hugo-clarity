@@ -14,12 +14,12 @@
       {{- $scratch.Set "writeSeparator" true }}
     {{- end }}
     {{- if $showReadTime }}
-      <span class="post_time">{{ if ($scratch.Get "writeSeparator") }}·{{ end }}{{ T "reading_time" . }}</span>
+      <span class="post_time {{ if ($scratch.Get "writeSeparator") }}post_meta_divider{{ end }}">{{ T "reading_time" . }}</span>
       {{- $scratch.Set "writeSeparator" true }}
     {{- end }}
     {{- with .Params.tags -}}
-      <span>
-        {{- if ($scratch.Get "writeSeparator") }}&nbsp;·{{ end }}
+      <span
+        {{- if ($scratch.Get "writeSeparator") }} class="post_meta_divider"{{ end }}>
         {{- range . }}
           {{- $tag := urlize . -}}
           <a href="{{ absLangURL (printf "tags/%s" $tag) }}/" title="{{ . }}" class="post_tag button button_translucent">
@@ -30,7 +30,7 @@
       {{- $scratch.Set "writeSeparator" true }}
     {{- end }}
     {{- if $showShare }}
-      <span class="page_only">{{ if ($scratch.Get "writeSeparator") }}&nbsp;·{{ end }}{{ partial "share" . }}</span>
+      <span class="page_only {{ if ($scratch.Get "writeSeparator") -}}post_meta_divider{{ end }}">{{- partial "share" . -}}</span>
       {{- $scratch.Set "writeSeparator" true }}
     {{- end }}
   </div>

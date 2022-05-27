@@ -1,6 +1,6 @@
 {{- $s := T "share_on" }}
 <span class="post_share">
-  {{ $s }}:
+  {{- $s -}}:
   <a
     href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}&tw_p=tweetbutton"
     class="twitter"

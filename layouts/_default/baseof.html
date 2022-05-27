@@ -21,11 +21,7 @@
     {{- partial "head" . }}
     {{- partial "hooks/head-end" . }}
   </head>
-  <body
-    data-code="{{ $codeBlockConfig.max }}"
-    data-lines="{{ $codeBlockConfig.lines }}"
-    id="documentTop"
-  >
+  <body data-code="{{ $codeBlockConfig.max }}" data-lines="{{ $codeBlockConfig.lines }}" id="documentTop">
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}

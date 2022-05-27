@@ -1,0 +1,11 @@
+{
+  printWidth: 160,
+  overrides: [
+    {
+      files: ["*.html"],
+      options: {
+        parser: "go-template",
+      },
+    },
+  ],
+}

@@ -1,5 +1,4 @@
-{{/*
-  If Hugo has been able to access the image, it's loaded at .image, and we have
+{{/* If Hugo has been able to access the image, it's loaded at .image, and we have
   access to additional attributes.
 
   If Hugo hasn't been able to access the image, it's loaded at .file, with only
@@ -28,9 +27,9 @@
   {{- end -}}
 {{- end -}}
 
+
 <figure>
   <picture>
-
     {{/* Generate alternate image format tags. */}}
     {{- with $file -}}
       {{ $name := replace $file (path.Ext $file) "" }}
@@ -40,7 +39,7 @@
         {{ $itemDisk := path.Join $diskPath $item }}
         {{ $itemWeb := path.Join $webPath $item }}
         {{- if fileExists $itemDisk -}}
-          <source srcset="{{ $itemWeb }}" type="image/{{ . }}">
+          <source srcset="{{ $itemWeb }}" type="image/{{ . }}" />
         {{- end -}}
       {{- end -}}
     {{- end -}}
@@ -51,13 +50,9 @@
       decoding="async"
       alt="{{ htmlEscape $alt }}"
       {{ with $image }}
-        class="{{ $classes }} image_processed"
-        width="{{ .Width }}"
-        height="{{ .Height }}"
-        src="{{ .RelPermalink }}"
+        class="{{ $classes }} image_processed" width="{{ .Width }}" height="{{ .Height }}" src="{{ .RelPermalink }}"
       {{ else }}
-        class="{{ $classes }} image_unprocessed"
-        src="{{ $fileWeb }}"
+        class="{{ $classes }} image_unprocessed" src="{{ $fileWeb }}"
       {{ end }}
       {{ with $cap }}
         title="{{ htmlEscape $cap }}"

@@ -8,5 +8,6 @@
 
   {{- $bundle2 := slice $fuse $search | resources.Concat "js/search.js" | resources.Minify | resources.Fingerprint "sha512" }}
 
+
   <script src="{{ $bundle2.Permalink }}"></script>
 {{ end }}

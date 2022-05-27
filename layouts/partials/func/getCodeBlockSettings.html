@@ -14,7 +14,7 @@
 {{ end }}
 {{ with $p.codeLineNumbers }}
   {{ $codeLineNumbers = . }}
-  {{ else }}
+{{ else }}
   {{ if eq $p.codeLineNumbers false }}
     {{ $codeLineNumbers = false }}
   {{ end }}

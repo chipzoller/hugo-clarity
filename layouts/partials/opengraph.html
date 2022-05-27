@@ -22,28 +22,28 @@
 {{- $image := absURL $s.fallBackOgImage }}
 {{- with $p.featureImage }}
   {{- $fullpath := ( add $relpath . ) -}}
-  {{- $image = absURL $fullpath  }}
+  {{- $image = absURL $fullpath }}
 {{- end }}
 {{- with $p.thumbnail }}
   {{- $fullpath := ( add $relpath . ) -}}
-  {{- $image = absURL $fullpath  }}
+  {{- $image = absURL $fullpath }}
 {{- end }}
 {{- with $p.shareImage }}
   {{- $fullpath := ( add $relpath . ) -}}
-  {{- $image = absURL $fullpath  }}
+  {{- $image = absURL $fullpath }}
 {{- end }}
 <meta property="og:locale" content="{{ .Lang }}" />
 {{ range .Translations }}
-<meta property="og:locale:alternate" content="{{ .Lang }}" />
+  <meta property="og:locale:alternate" content="{{ .Lang }}" />
 {{ end }}
 {{- if .IsHome }}
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website" />
 {{- else }}
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article" />
 {{- end }}
 <meta name="description" content="{{ $summary }}" />
 <meta name="twitter:card" content="{{ if $s.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
-<meta name="twitter:creator" content="{{ $s.twitter }}">
+<meta name="twitter:creator" content="{{ $s.twitter }}" />
 <meta name="twitter:title" content="{{ .Title }}" />
 <meta property="og:url" content="{{ $permalink }}" />
 <meta property="og:title" content="{{ $title }}" />

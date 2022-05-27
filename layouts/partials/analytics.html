@@ -1,5 +1,5 @@
 {{- with .Site.Params.ga_analytics }}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -13,21 +13,23 @@
   (function() {
     var hm = document.createElement("script");
     hm.src = "https://hm.baidu.com/hm.js?{{ . }}";
-    var s = document.getElementsByTagName("script")[0]; 
+    var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
 </script>
 {{- end }}
 
 {{- if (site.Params.plausible_analytics.enable) }}
-<script async defer data-domain="{{ site.Params.plausible_analytics.websiteDomain }}" 
-src='https://{{ default "plausible.io" site.Params.plausible_analytics.plausibleDomain }}/js/{{ default "plausible" site.Params.plausible_analytics.scritpName }}.js'>
-</script>
+  <script
+    async
+    defer
+    data-domain="{{ site.Params.plausible_analytics.websiteDomain }}"
+    src="https://{{ default "plausible.io" site.Params.plausible_analytics.plausibleDomain }}/js/{{ default "plausible" site.Params.plausible_analytics.scritpName }}.js"
+  ></script>
 {{- end }}
 
-
 {{- if (site.Params.matomo_analytics.enable) }}
-<!-- Matomo -->
+  <!-- Matomo -->
 <script type="text/javascript">
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -45,6 +47,13 @@ src='https://{{ default "plausible.io" site.Params.plausible_analytics.plausible
     g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><p><img src="//{{ site.Params.matomo_analytics.matomoDomain }}/matomo.php?idsite={{ default 1 site.Params.matomo_analytics.matomoSiteID }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
+  <noscript
+    ><p>
+      <img
+        src="//{{ site.Params.matomo_analytics.matomoDomain }}/matomo.php?idsite={{ default 1 site.Params.matomo_analytics.matomoSiteID }}&amp;rec=1"
+        style="border:0;"
+        alt=""
+      /></p
+  ></noscript>
+  <!-- End Matomo Code -->
 {{- end }}

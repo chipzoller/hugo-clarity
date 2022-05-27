@@ -9,14 +9,14 @@
     {{- $simple = false }}
   {{ end }}
   <div class="search">
-    <input type="search" class="search_field form_field" placeholder='{{ $placeholder }}' id="find" autocomplete="off" data-scope='{{ .Section }}'>
+    <input type="search" class="search_field form_field" placeholder="{{ $placeholder }}" id="find" autocomplete="off" data-scope="{{ .Section }}" />
     <label for="find" class="search_label">
       {{- partial "sprite" (dict "icon" "search") }}
     </label>
     {{ if $simple }}
     {{ end }}
     {{- if ne .Params.searchPage true }}
-    <div class="search_results results"></div>
+      <div class="search_results results"></div>
     {{- end }}
   </div>
 {{- end }}

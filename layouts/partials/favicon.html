@@ -1,7 +1,71 @@
-{{- $iconsDir := default "icons/" .Site.Params.iconsDir }}
-{{- $appleTouch := absURL (printf "%s%s" $iconsDir "apple-touch-icon.png") }}
-{{- $favicon := absURL (printf "%s%s" $iconsDir "favicon-32x32.png" ) }}
-{{- $manifest := absURL (printf "%s%s" $iconsDir "site.webmanifest" ) }}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouch }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ $favicon }}">
-<link rel="manifest" href="{{ $manifest }}">
+{{ $iconsDir := default "icons" .Site.Params.iconsDir }}
+{{ $iconsLocalDir :=
+  (path.Join "static" $iconsDir)
+}}
+{{ $absIconURL := $iconsDir | absURL }}
+{{ $appleTouch := "apple-touch-icon.png" }}
+{{ $favicon := "favicon.ico" }}
+{{ $favicon32 := "favicon-32x32.png" }}
+{{ $favicon16 := "favicon-16x16.png" }}
+{{ $safariMaskIcon := "safari-pinned-tab.svg" }}
+{{ $safariMaskIconColor := default
+  "#5bbad5" .Site.Params.safariMaskIconColor
+}}
+{{ $browserconfig :=
+  "browserconfig.xml"
+}}
+{{ $manifest := "site.webmanifest" }}
+{{ $msTileColor :=
+  default "#da532c" .Site.Params.msTileColor
+}}
+{{ $ThemeColor := default
+  "#ffffff" .Site.Params.ThemeColor
+}}
+{{ if fileExists $iconsLocalDir }}
+  {{ if
+    fileExists (path.Join $iconsLocalDir $appleTouch)
+  }}
+    {{ $url := printf "%s%s"
+      $absIconURL $appleTouch
+    }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $url }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $favicon32) }}
+    {{ $url :=
+      printf "%s%s" $absIconURL $favicon32
+    }}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $url }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $favicon16) }}
+    {{ $url :=
+      printf "%s%s" $absIconURL $favicon16
+    }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $url }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $manifest) }}
+    {{ $url :=
+      printf "%s%s" $absIconURL $manifest
+    }}
+    <link rel="manifest" href="{{ $url }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $safariMaskIcon) }}
+    {{ $url
+      := printf "%s%s" $absIconURL $safariMaskIcon
+    }}
+    <link rel="mask-icon" href="{{ $url }}" color="{{ $safariMaskIconColor }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $favicon) }}
+    {{ $url :=
+      printf "%s%s" $absIconURL $favicon
+    }}
+    <link rel="shortcut icon" href="{{ $url }}" />
+  {{ end }}
+  {{ if fileExists (path.Join $iconsLocalDir $browserconfig) }}
+    {{ $url
+      := printf "%s%s" $absIconURL $browserconfig
+    }}
+    <meta name="msapplication-config" content="{{ $url }}" />
+  {{ end }}
+  <meta name="theme-color" content="{{ $ThemeColor }}" />
+  <meta name="msapplication-TileColor" content="{{ $msTileColor }}" />
+{{ end }}

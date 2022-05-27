@@ -163,7 +163,7 @@ function toggleLineWrap(elem) {
 }
 
 function copyCode(codeElement) {
-  lineNumbers = elems(lineClass, codeElement);
+  lineNumbers = elems('.ln', codeElement);
   // remove line numbers before copying
   if(lineNumbers.length) {
     lineNumbers.forEach(function(line){

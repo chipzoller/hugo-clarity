@@ -398,9 +398,9 @@ Image captions are automatically generated. If an image has title text, the capt
 
 Examples of captions:
 
-- `![Jane Doe](/images/jane-doe.png)` will display the local `jane-doe.png` image with a caption of "Jane Doe".
+- `![Jane Doe](../images/jane-doe.png)` will display the local `jane-doe.png` image with a caption of "Jane Doe".
 - `![Jane Doe](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/static/images/jane-doe.png "This is Jane Doe")` will display the remote image `jane-doe.png` with a caption of "This is Jane Doe".
-- `![A building](/images/building.png " ")` will display the local image `building.png` with no caption.
+- `![A building](../images/building.png " ")` will display the local image `building.png` with no caption.
 
 Examples of this can also be found in the "Markdown Syntax Guide" post in the example site content.
 

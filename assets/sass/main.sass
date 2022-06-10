@@ -1,3 +1,7 @@
+$baseURL: '{{ .Site.BaseURL }}'
+$fontsPath: '{{ printf "../%s" (default "fonts/" .Site.Params.fontsDir) }}'
+$imagesPath: '{{ printf "../%s" (default "images/" .Site.Params.imagesDir) }}'
+$iconsPath: '{{ printf "../%s" (default "icons/" .Site.Params.iconsDir) }}'
 @import 'variables'
 @import 'override'
 // include static fonts only when they're not overriden

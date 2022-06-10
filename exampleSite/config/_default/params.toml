@@ -26,8 +26,33 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 # Details on page bundles: https://gohugo.io/content-management/page-bundles/#leaf-bundles
 usePageBundles = false
 
-# will be used on share >> twitter, facebook, linkedin
+# Path variables
+#
+# By default, each of these directories are children of the `static` directory.
+#
+# In some Apache server installs, these directory names could conflict and you
+# may want to change them. See:
+# https://github.com/chipzoller/hugo-clarity/issues/74
+#
+# If you change the names of these directories, be sure to copy the contents of
+# the originals to get the files included with Hugo Clarity.
+#
+# Images:
+imagesDir = "images/" # without a leading forward slash
+# Icons:
+iconsDir = "icons/" # without a leading forward slash
+# Fonts:
+fontsDir = "fonts/" # without a leading forward slash
+
+# Social media sharing image: Will be used on Twitter, Facebook, LinkedIn, etc.
+# when a given page has no other image present.
 fallBackOgImage = "images/thumbnail.png"
+
+# Logo image
+logo = "logos/logo.png"
+
+# center logo on navbar
+centerLogo = false # Set to "true" for centering or "false" for left aligned.
 
 # sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable.
 codeMaxLines = 7
@@ -40,11 +65,6 @@ enableMathNotation = false
 
 # directory(s) where your articles are located
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
-
-# center logo on navbar
-centerLogo = false # Set to "true" for centering or "false" for left aligned.
-
-logo = "logos/logo.png"
 
 # Label Non inline images on an article body
 figurePositionShow = false # toggle on or off globally
@@ -98,9 +118,6 @@ languageMenuName = "🌐"
 # The year when ths website was created, this value is used in the copyright
 # notice of the footer.
 # since = 2016
-
-# tell hugo where you store your icons e.g favicons. This is useful if you're using an apache server and there are conflicts >> see issue https://github.com/chipzoller/hugo-clarity/issues/74. If this is applicable to you, be sure to copy the contents of https://github.com/chipzoller/hugo-clarity/tree/master/static/icons to your preferred icons directory
-iconsDir = "icons/" # without a leading forward slash
 
 # Show related content at the end of an article based on the 'series' taxonomy. Can be set in post front matter.
 # showRelatedInArticle = false

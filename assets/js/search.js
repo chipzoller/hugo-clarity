@@ -124,7 +124,7 @@ function initializeSearch(index) {
           const searchTerm = searchField.value.trim().toLowerCase();
           if(searchTerm.length)  {
             const scopeParameter = searchScope ? `&scope=${searchScope}` : '';
-            window.location.href = new URL(`search/?query=${searchTerm}${ scopeParameter }`, rootURL).href;
+            window.location.href = new URL(`search/?query=${searchTerm}${ scopeParameter }`, baseURL).href;
           }
         });
       }
@@ -211,7 +211,7 @@ function initializeSearch(index) {
 window.addEventListener('load', function() {
   const pageLanguage = document.documentElement.lang;
   const searchIndex = `${ pageLanguage === 'en' ? '': pageLanguage}/index.json`;
-  fetch(new URL(searchIndex, rootURL).href)
+  fetch(new URL(searchIndex, baseURL).href)
   .then(response => response.json())
   .then(function(data) {
     data = data.length ? data : [];

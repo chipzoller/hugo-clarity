@@ -139,7 +139,7 @@ function actionPanel() {
     btn.className = `icon panel_icon panel_${button.id}`;
     button.show ? false : pushClass(btn, panelHide);
     // load icon inside button
-    btn.style.backgroundImage = `url(${parentURL}${iconsPath}${button.icon}.svg)`;
+    btn.style.backgroundImage = `url(${baseURL}${iconsPath}${button.icon}.svg)`;
     // append button on panel
     panel.appendChild(btn);
   });

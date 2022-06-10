@@ -105,7 +105,6 @@ function fileClosure(){
   headingNodes.forEach(function(node){
     link = createEl('a');
     link.className = 'link icon';
-    link.style.backgroundImage = `url(${baseURL}${iconsPath}link.svg)`;
     id = node.getAttribute('id');
     if(id) {
       link.href = `${current}#${id}`;

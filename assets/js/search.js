@@ -195,7 +195,7 @@ function initializeSearch(index) {
   searchPageElement ? false : liveSearch();
   passiveSearch();
 
-  wrapText(findQuery(), main);
+  wrapText(findQuery(), main, 'mark', 'search-term');
 
   onEscape(clearSearchResults);
 

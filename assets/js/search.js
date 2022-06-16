@@ -195,7 +195,7 @@ function initializeSearch(index) {
   searchPageElement ? false : liveSearch();
   passiveSearch();
 
-  highlightSearch(findQuery(), main, 'mark', 'search-term');
+  highlightSearch(findQuery(), '.post_body', 'mark', 'search-term');
 
   onEscape(clearSearchResults);
 
@@ -208,7 +208,8 @@ function initializeSearch(index) {
   });
 }
 
-function highlightSearch(search, container, wrapper = 'mark', cssClass = '') {
+function highlightSearch(search, context, wrapper = 'mark', cssClass = '') {
+  let container = document.querySelector(context);
   let reg = new RegExp("(" + search + ")", "gi");
 
   function highlightSearchInNode(parentNode, search) {

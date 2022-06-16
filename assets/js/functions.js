@@ -192,7 +192,6 @@ function wrapText(text, context, wrapper = 'mark') {
   let close = `</${wrapper}>`;
   let escapedOpen = `%3C${wrapper}%3E`;
   let escapedClose = `%3C/${wrapper}%3E`;
-
   function wrap(context) {
     let c = context.innerHTML;
     let pattern = new RegExp(text, "gi");

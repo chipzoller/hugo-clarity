@@ -195,7 +195,7 @@ function initializeSearch(index) {
   searchPageElement ? false : liveSearch();
   passiveSearch();
 
-  highlightSearch(findQuery(), '.post_body', 'mark', 'search-term');
+  highlightSearchTerms(findQuery(), '.post_body', 'mark', 'search-term');
 
   onEscape(clearSearchResults);
 
@@ -208,14 +208,14 @@ function initializeSearch(index) {
   });
 }
 
-function highlightSearch(search, context, wrapper = 'mark', cssClass = '') {
-  let container = document.querySelector(context);
+function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') {
+  let container = elem(context);
   let reg = new RegExp("(" + search + ")", "gi");
 
-  function highlightSearchInNode(parentNode, search) {
+  function searchInNode(parentNode, search) {
     forEach(parentNode, function (node) {
       if (node.nodeType === 1) {
-        highlightSearchInNode(node, search);
+        searchInNode(node, search);
       } else if (
         node.nodeType === 3 &&
         reg.test(node.nodeValue)
@@ -229,7 +229,7 @@ function highlightSearch(search, context, wrapper = 'mark', cssClass = '') {
     });
   };
 
-  highlightSearchInNode(container, search);
+  searchInNode(container, search);
 }
 
 window.addEventListener('load', function() {

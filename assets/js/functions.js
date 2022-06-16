@@ -183,16 +183,15 @@ function parseBoolean(string) {
   }
 };
 
-function wrapText(text, context, wrapper = 'mark', cssClass = '') {
+function forEach(node, callback) {
+  Array.prototype.forEach.call(node.childNodes, callback);
+}
+
+function wrapText(text, context, wrapper = 'mark') {
   let open = `<${wrapper}>`;
   let close = `</${wrapper}>`;
   let escapedOpen = `%3C${wrapper}%3E`;
   let escapedClose = `%3C/${wrapper}%3E`;
-
-  if(cssClass) {
-    open = `<${wrapper} class="${cssClass}">`;
-    escapedOpen = `%3C${wrapper} class%3D%22${cssClass}%22%3E`;
-  }
 
   function wrap(context) {
     let c = context.innerHTML;

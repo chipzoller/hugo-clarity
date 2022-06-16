@@ -195,7 +195,7 @@ function initializeSearch(index) {
   searchPageElement ? false : liveSearch();
   passiveSearch();
 
-  wrapText(findQuery(), main, 'mark', 'search-term');
+  highlightSearch(findQuery(), main, 'mark', 'search-term');
 
   onEscape(clearSearchResults);
 
@@ -206,6 +206,29 @@ function initializeSearch(index) {
       clearSearchResults();
     }
   });
+}
+
+function highlightSearch(search, container, wrapper = 'mark', cssClass = '') {
+  let reg = new RegExp("(" + search + ")", "gi");
+
+  function highlightSearchInNode(parentNode, search) {
+    forEach(parentNode, function (node) {
+      if (node.nodeType === 1) {
+        highlightSearchInNode(node, search);
+      } else if (
+        node.nodeType === 3 &&
+        reg.test(node.nodeValue)
+      ) {
+        let string = node.nodeValue.replace(reg, `<${wrapper} class="${cssClass}">$1</${wrapper}>`);
+        let span = document.createElement("span");
+        span.dataset.searched = "true";
+        span.innerHTML = string;
+        parentNode.replaceChild(span, node);
+      }
+    });
+  };
+
+  highlightSearchInNode(container, search);
 }
 
 window.addEventListener('load', function() {

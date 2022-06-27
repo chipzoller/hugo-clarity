@@ -871,6 +871,8 @@ Search is currently a BETA feature. Ensure you have these settings inside your c
 enableSearch = true
 ```
 
+Next add the [search.md file from the exampleSite](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/content/search.md) and add it to your content folder. This is not necessary if you recently created a site based on the example site and already have the file.
+
 [Compose](https://github.com/onweru/compose), from which this feature is derived, implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
 
 1. __Passive search__

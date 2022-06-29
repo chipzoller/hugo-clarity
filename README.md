@@ -859,11 +859,11 @@ Likewise, the site configuration option `showRelatedInSidebar` controls if relat
 
 ### Map
 
-## Creating and including a map
+#### Creating and including a map
 
 First create a map for free on https://umap.openstreetmap.fr/en/. Then include this map by using the `openstreetmap` shortcode, e.g. `{{<openstreetmap mapName="demo-map_1" >}}`
 
-## Options
+#### Options
 
 The only required parameter is `mapName`. All other parameters are completely optional.
 

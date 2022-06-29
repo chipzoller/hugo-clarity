@@ -1,85 +1,39 @@
-{{- $s := .Site.Params }}
+{{- $s := site.Params }}
 {{- $p := .Params }}
+{{- $codeBlockConfig := partial "func/getCodeBlockSettings" . }}
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" data-figures="{{ $p.figurePositionShow }}"{{ if .IsPage }} class="page"{{ end }}{{ if .IsHome }} class="home"{{ end }}{{ with $s.enforceLightMode }} data-mode="lit"{{ end }}{{ with $s.enforceDarkMode }} data-mode="dim"{{ end }}>
+<html
+  lang="{{ .Lang }}"
+  data-figures="{{ $p.figurePositionShow }}"
+  {{ if .IsPage }}
+    class="page"
+  {{ else if .IsHome }}
+    class="home"
+  {{ end }}
+  {{ with $s.enforceLightMode }}
+    data-mode="lit"
+  {{ end }}
+  {{ with $s.enforceDarkMode }}
+    data-mode="dim"
+  {{ end -}}
+>
   <head>
     {{- partial "head" . }}
-    <!-- styles definition-->
-    {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
-    {{ $mainSassFile :=  "sass/main.sass" }}
-    {{- $styles := resources.Get $mainSassFile | resources.ExecuteAsTemplate $mainSassFile . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
-
-    <!-- scripts definition -->
-    {{- $highlightPath := "js/highlight.js" }}
-    {{- $highlight := resources.Get $highlightPath | resources.ExecuteAsTemplate $highlightPath . }}
-
-    {{- $variablesScriptPath := "js/variables.js" }}
-    {{- $variables := resources.Get $variablesScriptPath | resources.ExecuteAsTemplate (printf "%s/js/variables.js" .Lang) . }}
-
-    {{- $functionsScriptPath := "js/functions.js" }}
-    {{- $functions := resources.Get $functionsScriptPath | resources.ExecuteAsTemplate $functionsScriptPath . }}
-
-    {{- $codeScriptPath := "js/code.js" }}
-    {{- $code := resources.Get $codeScriptPath | resources.ExecuteAsTemplate $codeScriptPath . }}
-
-    {{- $customScriptPath := "js/custom.js" }}
-    {{ if (fileExists "../../assets/js/custom.js") }}
-      {{ $customScriptPath := "../../assets/js/custom.js" }}
-    {{ end }}
-    {{- $custom := resources.Get $customScriptPath | resources.ExecuteAsTemplate $customScriptPath . }}
-
-    {{- $mainScriptPath := "js/index.js" }}
-    {{- $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
-
-    {{- $bundlePath := (printf "%s/js/bundle.js" .Lang ) }}
-    {{- $bundle := slice $highlight $variables $functions $code $main $custom | resources.Concat $bundlePath | resources.Fingerprint "sha512" -}}
-
-    <!-- preload assets declaration -->
-    <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
-    <link rel="preload" href="{{ $bundle.Permalink }}" as="script" integrity=
-    "{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
-
-    <!-- styles file -->
-    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
-    {{- with $s.customCSS }}
-    {{- range . -}}
-	  <link rel="stylesheet" href="{{ relURL . }}">
-    {{- end }}
-    {{- end }}
-    {{ partial "hooks/head-end.html" . }}
+    {{- partial "hooks/head-end" . }}
   </head>
-  {{- $maxCodeLines := 100 }}
-  {{- with $s.codeMaxLines }}
-    {{- $maxCodeLines = . }}
-  {{- end }}
-  {{- with $p.codeMaxLines }}
-    {{- $maxCodeLines = . }}
-  {{- end }}
-  {{- $codeLineNumbers := false }}
-  {{ with $s.codeLineNumbers }}
-    {{- $codeLineNumbers = . }}
-  {{ end }}
-  {{ with $p.codeLineNumbers }}
-    {{- $codeLineNumbers = . }}
-    {{ else }}
-    {{ if eq $p.codeLineNumbers false }}
-      {{- $codeLineNumbers = false }}
-    {{ end }}
-  {{ end }}
-  <body data-code="{{ $maxCodeLines }}" data-lines="{{ $codeLineNumbers }}" id="documentTop">
+  <body
+    data-code="{{ $codeBlockConfig.max }}"
+    data-lines="{{ $codeBlockConfig.lines }}"
+    id="documentTop"
+  >
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}
     </main>
+
     {{- partialCached "icons" . }}
     {{- partialCached "footer" . }}
-    <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
-    {{- partial "search/scripts" . }}
-    {{- with $s.customJS }}
-    {{- range . -}}
-    <script type="text/javascript" src="{{ relURL . }}" ></script>
-    {{- end }}
-    {{- end }}
-    {{ partialCached "hooks/body-end.html" . }}
+    {{- partialCached "scripts" . }}
+    {{- partialCached "hooks/body-end" . }}
   </body>
 </html>

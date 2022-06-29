@@ -1,7 +1,16 @@
-{{- $relpath := .Page.RelPermalink -}}
 {{- $summary := truncate 160 .Summary }}
 {{- $s := .Site.Params }}
 {{- $p := .Params }}
+
+{{- $relpath := "" -}}
+{{- if or $s.usePageBundles $p.usePageBundles }}
+  {{- $relpath = .Page.RelPermalink -}}
+{{- end }}
+
+{{ if eq $p.usePageBundles false }}
+  {{- $relpath = "" }}
+{{ end }}
+
 {{- with $p.description }}
   {{- $summary = truncate 160 . }}
 {{- end }}
@@ -45,6 +54,7 @@
 <meta name="twitter:card" content="{{ if $s.largeTwitterCard }}summary_large_image{{ else }}summary{{ end }}" />
 <meta name="twitter:creator" content="{{ $s.twitter }}">
 <meta name="twitter:title" content="{{ .Title }}" />
+<meta name="twitter:image" content="{{ $image }}"/>
 <meta property="og:url" content="{{ $permalink }}" />
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />

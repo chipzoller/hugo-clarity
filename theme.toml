@@ -6,10 +6,11 @@ homepage = "https://github.com/chipzoller/hugo-clarity"
 demosite = "https://neonmirrors.net/"
 tags = ["blog", "technical", "simple", "dark", "syntax highlighting"]
 features = ["blog", "technical", "simple", "dark", "syntax highlighting"]
-min_version = "0.63.0"
+min_version = "0.91.0"
 
 # If the theme has multiple authors
 authors = [
   {name = "Chip Zoller", homepage = "https://neonmirrors.net"},
   {name = "Dan Weru", homepage = "https://github.com/onweru"},
+  {name = "Ivan Boothe", homepage = "https://rootwork.org"},
 ]

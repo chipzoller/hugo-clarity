@@ -226,7 +226,7 @@ function fileClosure(){
   }
 
   function populateAlt(images) {
-    let imagePosition = containsClass(images[0], featuredImageClass) ? -1 : 0;
+    let imagePosition = 0;
 
     images.forEach((image) => {
       let alt = image.alt;
@@ -258,30 +258,48 @@ function fileClosure(){
         modifyClass(figure, 'inline');
       }
 
-      // Figure numbering
-      let captionText = image.title.trim().length ? image.title.trim() : alt;
+      // Image captions
+      let addCaption = true
+      let captionText = ''
 
-      if (captionText.length && !containsClass(image, 'alt' && !isInline)) {
-        imagePosition += 1;
-        image.dataset.pos = imagePosition;
-        const showImagePosition = showingImagePosition();
+      if(image.title.trim().length) {
+        captionText = image.title.trim()
+      } else {
+        if(image.title === " ") {
+          addCaption = false
+        } else {
+          captionText = alt
+        }
+      }
 
+      // Don't add a caption for featured images, inline images, or empty text
+      if(
+        image.matches(`.${featuredImageClass}`) ||
+        containsClass(image, 'alt' && !isInline) ||
+        !captionText.length
+      ) {
+        addCaption = false
+      }
+
+      if (addCaption) {
         let desc = document.createElement('figcaption');
         desc.classList.add(imageAltClass);
 
+        // Add figure numbering
+        imagePosition += 1;
+        image.dataset.pos = imagePosition;
+        const showImagePosition = showingImagePosition();
         const thisImgPos = image.dataset.pos;
-        // modify image caption is necessary
         captionText = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${captionText}` : captionText;
         desc.textContent = captionText;
 
-        if(!image.matches(`.${featuredImageClass}`)) {
-          // add a caption below image only if the image isn't a featured image
-          if(image.nextElementSibling) {
-            // check if a caption exist already and remove it
-            image.nextElementSibling.remove();
-          }
-          image.insertAdjacentHTML('afterend', desc.outerHTML);
+        // If a caption exists, remove it
+        if(image.nextElementSibling) {
+          image.nextElementSibling.remove();
         }
+
+        // Insert caption
+        image.insertAdjacentHTML('afterend', desc.outerHTML);
       }
     });
 

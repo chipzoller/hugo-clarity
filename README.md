@@ -798,7 +798,7 @@ First create a map for free on https://umap.openstreetmap.fr/en/. Then include t
 
 The only required parameter is `mapName`. All other parameters are completely optional.
 
-Available parameter are:
+Available parameters are:
 - `coordX` (default `auto`)
 - `coordY` (default `auto`)
 - `scale`  (default `auto`)

@@ -50,7 +50,7 @@ function initializeSearch(index) {
         results = results.slice(0,12);
       }
       resultsFragment.appendChild(resultsTitle);
-      console.log(results);
+
       results.forEach(function(result){
         let item = createEl('a');
         item.href = `${result.link}?query=${query}`;
@@ -85,7 +85,7 @@ function initializeSearch(index) {
     showResults.appendChild(resultsFragment);
   }
 
-  function search(searchTerm, scope = 'post', passive = false) {
+  function search(searchTerm, scope = null, passive = false) {
     if(searchTerm.length) {
       let rawResults = index.search(searchTerm);
       rawResults = rawResults.map(function(result){
@@ -93,9 +93,13 @@ function initializeSearch(index) {
         const resultItem = result.item;
         resultItem.score = (parseFloat(score) * 50).toFixed(0);
         return resultItem ;
-      }).filter(resultItem => {
-        return resultItem.section == scope;
-      });
+      })
+
+      if(scope) {
+        rawResults = rawResults.filter(resultItem => {
+          return resultItem.section == scope;
+        });
+      }
 
       passive ? searchResults(rawResults, searchTerm, true) : searchResults(rawResults, searchTerm);
 
@@ -119,7 +123,8 @@ function initializeSearch(index) {
         searchField.addEventListener('search', function(){
           const searchTerm = searchField.value.trim().toLowerCase();
           if(searchTerm.length)  {
-            window.location.href = new URL(`search/?query=${searchTerm}&scope=${searchScope}`, rootURL).href;
+            const scopeParameter = searchScope ? `&scope=${searchScope}` : '';
+            window.location.href = new URL(`search/?query=${searchTerm}${ scopeParameter }`, rootURL).href;
           }
         });
       }
@@ -142,7 +147,7 @@ function initializeSearch(index) {
       // search actively after search page has loaded
       const searchField = elem(searchFieldClass);
 
-      searchScope ? search(searchTerm, searchScope, true) : false;
+      search(searchTerm, searchScope, true);
 
       if(searchField) {
         searchField.addEventListener('input', function() {

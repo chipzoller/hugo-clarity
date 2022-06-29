@@ -1,108 +1,56 @@
-{{- $file := .Destination | safeURL }}{{/* filename of image */}}
-{{- $fileWeb := "" -}}{{/* full path to image, relative to the web root */}}
-{{- $fileDisk := "" -}}{{/* full path to image, relative to the file root */}}
-{{- $alt := .Text -}}{{/* alt text */}}
-{{- $cap := .Title -}}{{/* caption */}}
+{{- $file := .Destination -}}
+{{- $alt := .Text -}}
+{{- $cap := .Title -}}
 {{- $scratch := newScratch -}}
+{{- $scratch.Set "classes" "image_figure" -}}
 
-{{/* Determine if image is local */}}
-{{- if strings.HasPrefix $file "http" -}}
-  {{- $scratch.Set "fileLoc" "external" -}}
-{{- else -}}
-  {{- $scratch.Set "fileLoc" "internal" -}}
+{{/* Determine if page bundles are set. */}}
+{{- $bundle := .Page.Site.Params.usePageBundles -}}
+{{- if eq .Page.Params.usePageBundles false -}}
+  {{- $bundle = false -}}
+{{- end -}}
+{{- if eq .Page.Params.usePageBundles true -}}
+  {{- $bundle = true -}}
 {{- end -}}
 
-{{/* Provide list of config file location options */}}
-{{ $scratch.SetInMap "configFileLocations" "1" "config.toml" }}
-{{ $scratch.SetInMap "configFileLocations" "2" "config/_default/config.toml" }}
-{{ $scratch.SetInMap "configFileLocations" "3" "config.yaml" }}
-{{ $scratch.SetInMap "configFileLocations" "4" "config/_default/config.yaml" }}
-{{ $scratch.SetInMap "configFileLocations" "5" "config.json" }}
-{{ $scratch.SetInMap "configFileLocations" "6" "config/_default/config.json" }}
-
-{{/* For the first location that exists, set it as the config file location */}}
-{{ range $scratch.GetSortedMapValues "configFileLocations" }}
-  {{ if fileExists . }}
-    {{ $scratch.Set "configFile" . }}
-  {{ end }}
-{{ end }}
-
-{{/* Retrieve the contentDir and staticDir settings from the config, and provide default values */}}
-{{ $scratch.Set "configFileMap" (os.ReadFile ($scratch.Get "configFile") | transform.Unmarshal) }}
-{{ if isset ($scratch.Get "configFileMap") "contentDir" }}
-  {{ $scratch.Set "contentDir" (index ($scratch.Get "configFileMap") "contentDir") }}
-{{ else }}
-  {{ $scratch.Set "contentDir" "content" }}
-{{ end }}
-{{ if isset ($scratch.Get "configFileMap") "staticDir" }}
-  {{ $scratch.Set "staticDir" (index ($scratch.Get "configFileMap") "staticDir") }}
-{{ else }}
-  {{ $scratch.Set "staticDir" "static" }}
-{{ end }}
-
-{{/* Check if page bundles are set. */}}
-{{- $bundle := .Page.Site.Params.usePageBundles }}
-{{ if eq .Page.Params.usePageBundles false }}
-  {{- $bundle = false }}
-{{ end }}
-{{ if eq .Page.Params.usePageBundles true }}
-  {{- $bundle = true }}
-{{ end }}
-
-{{- $fileWeb = absURL $file -}}
-{{ if eq $bundle true }}
-  {{- $fileWeb = (path.Join $.Page.RelPermalink $file) -}}
-  {{- $fileDisk = (path.Join ($scratch.Get "contentDir") (path.Join $.Page.File.Dir $file)) }}
-{{ else }}
-  {{- $fileDisk = (path.Join ($scratch.Get "staticDir") $file) }}
-{{ end }}
-
-{{/* If image is external, or if image is internal and exists */}}
-{{- if or (
-  (eq ($scratch.Get "fileLoc") "external"))
-  (and
-    (eq ($scratch.Get "fileLoc") "internal")
-    (fileExists $fileDisk)
-  )
--}}
-  <figure>
-    <picture>
-
-      {{- if eq ($scratch.Get "fileLoc") "external" -}}
-        <img class="image_figure image_external" loading="lazy" src="{{ $file }}" alt="{{ $alt }}" {{ with $cap}} title="{{ $cap }}" {{ end }} />
+{{/* Determine source of image and get attributes. */}}
+{{- $image := "" -}}
+{{- if strings.HasPrefix $file "http" -}}
+  {{- $scratch.Add "classes" " image_external" -}}
+  {{- $image = resources.GetRemote $file -}}
+  {{- with $image }}
+    {{- if eq $image.MediaType.MainType "image" -}}
+      {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $image = "" -}}
+        {{- $scratch.Add "classes" " image_svg" -}}
       {{- else -}}
-
-        {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
-
-        {{ range $ext := (slice "avif" "webp" "jxl") }}
-          {{ $dotext := print "." $ext }}
-          {{ $diskPath := $fileDisk }}
-          {{ $webPath := $fileWeb }}
-          {{ $diskPath = replace $diskPath ".png" $dotext }}
-          {{ $diskPath = replace $diskPath ".jpg" $dotext }}
-          {{ $diskPath = replace $diskPath ".jpeg" $dotext }}
-          {{ $diskPath = replace $diskPath ".gif" $dotext }}
-          {{ $webPath = replace $webPath ".png" $dotext }}
-          {{ $webPath = replace $webPath ".jpg" $dotext }}
-          {{ $webPath = replace $webPath ".jpeg" $dotext }}
-          {{ $webPath = replace $webPath ".gif" $dotext }}
-          {{ if fileExists $diskPath }}
-            <source srcset="{{ $webPath | safeURL }}" type="image/{{ $ext }}">
-          {{ end }}
-        {{ end }}
-
-        <img class="image_figure image_internal" src="{{ $fileWeb }}" alt="{{ $alt }}" loading="lazy" decoding="async" width="{{ $img.Width }}" height="{{ $img.Height }}" {{ with $cap }} title="{{ $cap }}" {{ end }} />
-
+        {{- $file = path.Join "images" $image -}}
+        {{- $image = $image.Content | resources.FromString $file -}}
       {{- end -}}
+    {{- else -}}
+      {{- $image = "" -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $scratch.Add "classes" " image_internal" -}}
+  {{ $file = (path.Clean $file) }}
+  {{- if eq $bundle true -}}
+    {{ $image = .Page.Resources.GetMatch $file }}
+    {{- if and (not $image) .Page.File -}}
+      {{ $file = path.Join .Page.RelPermalink $file }}
+      {{ $image = resources.Get $file }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
-      {{/* Provide caption based on image title, if it is set. */}}
-      {{ if ($cap) -}}
-        <figcaption>{{ $cap | safeHTML }}</figcaption>
-      {{- end }}
-
-    </picture>
-  </figure>
-{{/* Image is internal but does not exist, so render error. */}}
-{{- else }}
-  {{- partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }}
-{{- end }}
+{{- partial "figure" (
+  dict
+    "file" $file
+    "image" $image
+    "diskPath" $.Page.File.Dir
+    "webPath" $.Page.RelPermalink
+    "alt" $alt
+    "cap" $cap
+    "classes" ($scratch.Get "classes")
+    "bundle" $bundle
+) -}}

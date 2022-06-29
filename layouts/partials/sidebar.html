@@ -2,7 +2,7 @@
 <aside class="sidebar">
   <section class="sidebar_inner">
     <br>
-    {{ partialCached "search/widget" . }}
+    {{ partial "search/widget" . }}
     {{- $introDescription := $s.introDescription }}
     {{- with .Params.introDescription }}
       {{- $introDescription = . }}
@@ -50,7 +50,7 @@
       <ul>
         {{ range $related }}
         <li>
-          <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
+          <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
         </li>
         {{ end }}
       </ul>
@@ -63,7 +63,7 @@
     <ul>
       {{- range . }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>
       {{- end }}
     </ul>
@@ -73,7 +73,7 @@
       {{- $recent := default 8 $s.numberOfRecentPosts }}
       {{- range first $recent $posts }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>
       {{- end }}
     </ul>

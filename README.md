@@ -34,14 +34,16 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Images](#images)
     * [Organizing page resources](#organizing-page-resources)
     * [Modern image formats](#support-for-modern-image-formats)
-    * [Figure captions](#image-figure-captions)
+    * [Image captions](#image-captions)
+    * [Adding figure positions to image captions](#adding-figure-positions-to-image-captions)
     * [Inline images](#inline-images)
     * [Floating images](#float-images-to-the-left)
     * [Round borders](#round-borders-for-images)
     * [Adding CSS classes](#add-classes-to-images)
-    * [Article thumbnail image](#article-thumbnail-image)
-    * [Article featured image](#article-featured-image)
-    * [Article share image](#share-image)
+    * [Featured image](#featured-image)
+    * [Thumbnail image](#thumbnail-image)
+    * [Share image](#share-image)
+    * [Logo alignment](#logo-alignment)
   * [Code](#code)
   * [Table of contents](#table-of-contents-1)
   * [Notices](#notices)
@@ -65,15 +67,17 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 * Choice of whether to use [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/)
 
-* Native Image Lazy Loading
+* Native image lazy-loading
 
 * Customizable (see config)
 
-* Dark Mode (with UI controls for user preference setting)
+* Dark mode (with UI controls for user preference setting)
 
 * Toggleable table of contents
 
-* Configurable Site Disclaimer (i.e. "my views are not my employer's")
+* Toggleable automatic figure numbering
+
+* Configurable site disclaimer (i.e. "my views are not my employer's")
 
 * Flexible image configuration, and support for modern formats like WebP
 
@@ -81,7 +85,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 * Mobile support with configurable menu alignment
 
-* Syntax Highlighting
+* Syntax highlighting
 
 * Rich code block functions including:
 
@@ -101,35 +105,25 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
 
 ## Prerequisites
 
-Firstly, __ensure you have installed the [extended version of Hugo](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/).
+Firstly, __ensure you have installed the [extended version of Hugo 0.91.0 or above](https://github.com/gohugoio/hugo/releases)__. See installation steps from [Hugo's official docs](https://gohugo.io/getting-started/installing/) for more information. Note that software repositories may be several versions behind and may not include the extended version.
 
 ## Getting up and running
 
-Read the [prerequisites](#prerequisites) above and verify you're using the extended version of Hugo. There are at least two ways of quickly getting started with Hugo and the VMware Clarity theme:
+Read the [prerequisites](#prerequisites) above and verify you're using the __extended version of Hugo 0.91.0 or newer__.
 
-### Option 1 (recommended)
+There are several ways to use this theme:
 
-Generate a new Hugo site and add this theme as a Git submodule inside your themes folder:
+### Option 1a: Development in the browser
 
-```bash
-hugo new site yourSiteName
-cd yourSiteName
-git init
-git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
-cp -a themes/hugo-clarity/exampleSite/* .
-```
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/chipzoller/hugo-clarity)
 
-Then run
+For trying out the theme, quick experimentation, and to contribute Pull Requests, Gitpod is the easiest option. Use the button above and it will spin up a prebuilt environment with a site ready to go.
 
-```bash
-hugo server
-```
+If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://www.gitpod.io/docs/browser-extension).
 
-Hurray!
+### Option 1b: Development on your machine
 
-### Option 2 (Great for testing quickly)
-
-You can run your site directly from the `exampleSite`. To do so, use the following commands:
+If you prefer not to use Gitpod, you can also test, develop and contribute PRs locally from your computer.
 
 ```bash
 git clone https://github.com/chipzoller/hugo-clarity
@@ -137,37 +131,69 @@ cd hugo-clarity/exampleSite/
 hugo server --themesDir ../..
 ```
 
-> Although, option 2 is great for quick testing, it is somewhat problematic when you want to update your theme. You would need to be careful not to overwrite your changes.
+> Note that while this is a good way to work on Hugo Clarity, isn't a good way to work on your own site, since it uses the content from `exampleSite`, and wouldn't be aware of any overrides your site might apply to the theme.
 
-### Option 3 (The new, most fun & painless approach)
+### Option 2: Hugo modules
 
-This option enables you to load this theme as a hugo module. It arguably requires the least effort to run and maintain your website.
+This option arguably requires the least effort to run and maintain your website with the Hugo Clarity theme.
 
-Ensure you have `go` binary [installed on your machine](https://golang.org/doc/install) Note: Mac users: ```brew install go```.
+We assume you've already run `hugo new site <sitename>` and are in the `<sitename>` directory.
 
+1. Ensure you have the `go` binary [installed on your machine](https://golang.org/doc/install). (Mac users: ```brew install go```.)
+
+2. Run the following command:
 ```bash
-git clone https://github.com/chipzoller/hugo-clarity.git clarity
-cd clarity/exampleSite/
-hugo mod init my-site
-cd ..
-cp -a exampleSite/* .
+hugo mod init <sitename>
 ```
 
-Open config.toml file in your code editor, replace `theme = "hugo-clarity"` with `theme = ["github.com/chipzoller/hugo-clarity"]` or just `theme = "github.com/chipzoller/hugo-clarity"`.
+3. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
+```bash
+wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
+```
+If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
 
-Hurray you can now run
+4. Open `<sitename>/config/_default/config.toml` and change `theme = "hugo-clarity"` to `theme = ["github.com/chipzoller/hugo-clarity"]`
 
-```yaml
+5. You can now run:
+```bash
 hugo server
 ```
 
-To pull in theme updates, run `hugo mod get -u ./...` from the theme folder. If unsure, [learn how to update hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
+If that seems like a lot of setup, it's meant to reduce the pain of pulling in new versions of Hugo Clarity when they are released.
 
-> There [is more you could do with hugo modules](https://discourse.gohugo.io/t/hugo-modules-for-dummies/20758), but this will suffice for our use case here.
+To pull in theme updates, run `hugo mod get -u github.com/chipzoller/hugo-clarity`. You can also update all your Hugo modules with `hugo mod get -u ./...` -- [read more about updating Hugo modules](https://gohugo.io/hugo-modules/use-modules/#update-modules).
+
+> There is [more you can do with hugo modules](https://github.com/rootwork/hugo-module-site), but this will suffice for our use case here.
+
+### Option 3: Git submodules
+
+For those not ready to use Hugo modules, you can use the "old way" using git alone.
+
+We assume you've already run `hugo new site <sitename>`, are in the `<sitename>` directory, and have a working git repo (`git init`).
+
+1. Run:
+```bash
+git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+```
+
+2. Hugo Clarity comes with [`exampleSite` files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite) prefilled with helpful configuration and sample posts. If you're starting a new Hugo site and don't have any content yet, it's easiest to grab the whole thing:
+```bash
+cp -a themes/hugo-clarity/exampleSite/* . && rm -f config.toml
+```
+If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
+
+3. You can now run:
+```bash
+hugo server
+```
+
+While this is less setup than option 2 initially, it comes with important caveats. First, to pull in new versions of the theme, you'll need to run `git submodule update --remote --merge` _and commit those changes to your git repo_. Second, if you clone your repo to another machine, have multiple people working on your site, or have a continuous-integration or deployment script (like Netlify), after cloning you'll need to also remember to run `git submodule update --init --recursive` to get the theme files.
+
+See [an overview of using git submodules for Hugo themes](https://www.andrewhoog.com/post/git-submodule-for-hugo-themes/) and [troubleshooting git submodules in Hugo themes](https://study.impl.dev/hacking/git-submodule-hugo-theme/) for details.
 
 ## Configuration
 
-If set, jump over to the `config.toml` file and start [configuring](#configuration) your site.
+Hugo Clarity uses a config folder rather than a single file. If you're used to having a `config.toml` file in your main folder, now you'll find that located in `config/_default/config.toml`, along with other settings files.
 
 This section will mainly cover settings that are unique to this theme. If something is not covered here (or elsewhere in this file), there's a good chance it is covered in [this Hugo docs page](https://gohugo.io/getting-started/configuration/#configuration-file).
 
@@ -340,31 +366,61 @@ numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g 
 
 ### Images
 
+A number of CSS classes are automatically added to images based on their source or type to aid you in any tweaks to the theme. These include:
+
+- `image_figure` when the image appears inside a `<figure>` element
+- `image_internal` when the image is local, within the site
+- `image_external` when the image is loaded from a URL
+- `image_processed` when the image has been passed through [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) (requires the image to be using page bundles or be in the `assets` directory)
+- `image_unprocessed` when the image has not been passed through Hugo Pipes
+- `image_thumbnail` when the image is in a list of content excerpts
+- `image_featured` when the image is a banner or hero image at the top of a post
+- `image_svg` when the image is an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) (and thus [cannot be run through Hugo Pipes](https://github.com/gohugoio/hugo/issues/3700))
+
+Most images in Hugo Clarity are loaded [lazy](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading#images_and_iframes) and [asynchronously](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) to improve site speed. Images that are not loaded in this manner include the site's logo.
+
+Images, whether used within Markdown content or using parameters like `featureImage` or `thumbnail`, can be local or remote images. Remote images (starting with `http...`) will automatically be downloaded, stored and optimized by Hugo Clarity, so that the finished site will only serve local images.
+
 #### Organizing page resources
 
-By default, Hugo Clarity assumes that page resources -- images and other assets -- are stored in the `static` folder. Alternatively, you can opt-in to using [Hugo Page Bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
+By default, Hugo Clarity assumes that page resources -- images and other related files -- are stored in the `static` or `assets` directories. Alternatively, you can opt-in to using [Hugo page bundles](https://gohugo.io/content-management/page-bundles/) by setting the `usePageBundles` option to `true` in your site parameters. Using this method, you keep a post's assets in the same directory as the post itself.
 
-If you have an existing site that is not using Page Bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level as well in the front matter. If it is not set in the post, it will default to the site's parameter.
+If you have an existing site that is not using page bundles but would like to start with new posts, `usePageBundles` can be overridden at the post level in the front matter. If it is not set in the post, it will default to the site's parameter. Take a look at [`exampleSite/content/post/bundle/index.md`](exampleSite/content/post/bundle/index.md) for more information and an example of overriding this setting on an individual post.
 
 #### Support for modern image formats
 
-If you reference an image such as `sample.jpg` in your post, Hugo Clarity will check to see if the same image (based on filename) exists in the modern formats of [WebP](https://en.wikipedia.org/wiki/WebP), [AVIF](https://en.wikipedia.org/wiki/AV1#AV1_Image_File_Format_(AVIF)) or [JXL](https://en.wikipedia.org/wiki/JPEG_XL). If it does, these will be presented to browsers as alternative options. Browsers that can support these formats will load them, while browsers that do not will fall-back to the default image.
+If you are using page bundles (see above) and reference `sample.jpg` in your post, Hugo Clarity will check to see if the same image (based on filename) exists in the modern formats of [WebP](https://en.wikipedia.org/wiki/WebP), [AVIF](https://en.wikipedia.org/wiki/AVIF) or [JXL](https://en.wikipedia.org/wiki/JPEG_XL). If it does, these will be presented to browsers as alternative options. Browsers that [support these formats and the `<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture#the_type_attribute) will load them, while browsers that do not will fall-back to the default image.
 
-This process works for images with the file extensions `jpg`, `jpeg`, `png`, and `gif`.
+Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/rootwork.org/blob/main/scripts/image_optimize.sh).
 
-Note that this does not *create* the other versions of the image for you, it simply checks to see if they exist. You may want to automate this process in your site build; [here is one example](https://github.com/rootwork/bash-scripts/blob/main/images/modimg.sh).
+#### Image captions
 
-#### Image figure captions
+Image captions are automatically generated. If an image has title text, the caption will be created from it; if an image has no title text, the alt text will be used. To display an image with alt text but no caption, use title text of a single space (`" "`).
 
-You have the option of adding captions to images in blog posts and automatically prepending a desired string such as "Figure N" to the caption text. This is controlled via two global settings.
+Examples of captions:
 
-`figurePositionLabel` is a string which will be prepended to any caption text of an article image. By default, this is set to "Figure." And `figurePositionShow` controls, globally, whether to show this label. It does not affect whether to show the image's alt or title text, only the prefix figure caption. For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+- `![Jane Doe](/images/jane-doe.png)` will display the local `jane-doe.png` image with a caption of "Jane Doe".
+- `![Jane Doe](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/static/images/jane-doe.png "This is Jane Doe")` will display the remote image `jane-doe.png` with a caption of "This is Jane Doe".
+- `![A building](/images/building.png " ")` will display the local image `building.png` with no caption.
 
-The number will be automatically calculated and assigned after the `figurePositionLabel` text starting from the top of the article and counting down. Featured images will be excluded from this figuration.
+Examples of this can also be found in the "Markdown Syntax Guide" post in the example site content.
 
-#### Image figure captions example
+> NOTE: Due to limitations in Markdown, single and double quotes should not be used within alt or title text.
 
-In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
+#### Adding figure positions to image captions
+
+You have the option of prepending a desired string such as "Figure N" to the caption text of images within an article's content.
+
+Two global settings control this feature:
+
+- `figurePositionLabel` is a string which will be prepended to any caption text of an article image; by default this is set to "Figure".
+- `figurePositionShow` controls, globally, whether to show this label. (It does not affect the visibility of image captions in general, only the prepended figure position text.) For more granular control, `figurePositionShow` can be overridden at the article level if desired.
+
+Figure numbers will be automatically inserted after the `figurePositionLabel` text, starting from the top of the article and increasing as you move down.
+
+#### Example of image with figure positions added
+
+Assume that `figurePositionLabel` is set to "Figure" in `config.toml` and this is the first image in a given article.
 
 ```markdown
 ![A schematic for using Antrea with Kubernetes](./images/image-figure.png "Antrea Kubernetes nodes prepared")
@@ -372,16 +428,15 @@ In this example, `figurePositionLabel` is set to "Figure" in `config.toml` and t
 
 ![Figure captioning example](https://github.com/chipzoller/hugo-clarity/blob/master/images/image-figure.png)
 
-> NOTE: Alt text with double quotes will produce broken HTML per limitations with Markdown. It is recommended to omit any quotations from your alt text.
-
 #### Inline images
 
-To make a blog image inline, append `:inline` to its alt text.
+To make an image inline, append `:inline` to its alt text.
 
 #### Inline images example
 
 ```markdown
 <!-- an inline image without alt text -->
+
 ![:inline](someImageUrl)
 
 <!-- an inline image with alt text -->
@@ -399,6 +454,7 @@ To align a blog image to the left, append `:left` to its alt text. Article text 
 
 ```markdown
 <!-- a left-floated image without alt text -->
+
 ![:left](someImageUrl)
 
 <!-- a left-floated image with alt text -->
@@ -414,6 +470,7 @@ To align a blog image to the right, append `:right` to its alt text. Article tex
 
 ```markdown
 <!-- a right-floated image without alt text -->
+
 ![:right](someImageUrl)
 
 <!-- a right-floated image with alt text -->
@@ -431,6 +488,7 @@ is just another class and it can be mixed with other classes separated by space.
 
 ```markdown
 <!-- an image without alt text and round borders-->
+
 ![::round](someImageUrl)
 
 <!-- an image with alt text and round borders-->
@@ -450,6 +508,7 @@ To add a CSS class to an image, append `::<classname>` to its alt text. You can 
 
 ```markdown
 <!-- an image without alt text -->
+
 ![::img-medium](someImageUrl)
 
 <!-- an image with alt text -->
@@ -457,23 +516,9 @@ To add a CSS class to an image, append `::<classname>` to its alt text. You can 
 ![text describing the image::img-large img-shadow](someOtherImageUrl)
 ```
 
-#### Article thumbnail image
+#### Featured image
 
-Blog articles can specify a thumbnail image which will be displayed to the left of the card on the home page. Thumbnails should be square (height:width ratio of `1:1`) and a suggested dimension of 150 x 150 pixels. They are specified using a frontmatter variable as follows:
-
-```yaml
-...
-thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
-...
-```
-
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
-
-The thumbnail image will take precedence over opengraph share tags if the [shareImage](#share-image) parameter is not specified.
-
-#### Article featured image
-
-Each article can specify an image that appears at the top of the content. When sharing the blog article on social media, if a thumbnail is not specified, the featured image will be used as a fallback on opengraph share tags.
+Each article can specify an image that appears at the top of the content.
 
 ```yaml
 ...
@@ -481,7 +526,7 @@ featureImage: "images/2020-04/capv-overview/featured.jpg"
 ...
 ```
 
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+The path for the featured image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
 
 Two other frontmatter settings allow you to set alt text for the featured image and an optional caption.
 
@@ -492,9 +537,25 @@ featureImageCap: 'A caption appearing below the image.' # Caption (optional).
 ...
 ```
 
+Unless specified using `featureImageCap`, a caption will not be generated for the featured image.
+
+#### Thumbnail image
+
+Each article can specify a thumbnail image which will be displayed on the left of the article's card on the home page and in lists of articles.
+
+```yaml
+...
+thumbnail: "images/2020-04/capv-overview/thumbnail.jpg"
+...
+```
+
+Thumbnails look best when square (height:width ratio of 1:1) and at least 150x150 pixels.
+
+The path for the thumbnail image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
 #### Share image
 
-Sometimes, you want to explicitly set the image that will be used in the preview when you share an article on social media. You can do so in the front matter.
+Each article can specify a share image which will used when the article is shared on social media.
 
 ```yaml
 ...
@@ -502,11 +563,13 @@ shareImage: "images/theImageToBeUsedOnShare.png"
 ...
 ```
 
-The path is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+If a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. That is, if no thumbnail is specified, the featured image will be used; if neither is specified, the fallback image will be used.
 
-Note that if a share image is not specified, the order of precedence that will be used to determine which image applies is `thumbnail` => `featureImage` => `fallbackOgImage`. When sharing a link to the home page address of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
+When sharing a link to the home page of the site (as opposed to a specific article), the `fallbackOgImage` will be used.
 
-#### Align logo
+The path for the share image is relative to the `static` directory if not using [Page Bundles](#organizing-page-resources), and relative to the post's own directory if using them.
+
+#### Logo alignment
 
 You can left align or center your site's logo.
 
@@ -562,6 +625,12 @@ It is possible to highlight specific lines in a code block by applying `{hl_line
 
 ```
 ```yaml {hl_lines=[7,8]}
+```
+
+Ranges are also supported by quoting the range inside the braces.
+
+```
+```yaml {hl_lines=["7-18"]}
 ```
 
 ### Table of contents
@@ -830,6 +899,8 @@ Search is currently a BETA feature. Ensure you have these settings inside your c
 enableSearch = true
 ```
 
+Next add the [search.md file from the exampleSite](https://raw.githubusercontent.com/chipzoller/hugo-clarity/master/exampleSite/content/search.md) and add it to your content folder. This is not necessary if you recently created a site based on the example site and already have the file.
+
 [Compose](https://github.com/onweru/compose), from which this feature is derived, implements `fuse.js` to enable search functionality. At the time of this writing, search on this theme takes either of the following forms:
 
 1. __Passive search__
@@ -845,3 +916,12 @@ enableSearch = true
     Live search works even for multilingual sites.
 
     For Chinese-like languages, it may or may not work.
+
+__Search Scope__
+
+- Searching within a section will yield results from that section.
+
+    For example, if you have 3 sections in your content i.e `blog`, `docs` & `examples`, searching in the `docs` section will only produce results for that section.
+- Searching outside a section will search the entire site.
+
+     For example, with the above setup, searching from the homepage will produce results from the entire site.

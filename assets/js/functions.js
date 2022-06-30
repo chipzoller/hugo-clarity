@@ -182,6 +182,10 @@ function parseBoolean(string) {
   }
 };
 
+function forEach(node, callback) {
+  Array.prototype.forEach.call(node.childNodes, callback);
+}
+
 function wrapText(text, context, wrapper = 'mark') {
   let open = `<${wrapper}>`;
   let close = `</${wrapper}>`;

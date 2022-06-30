@@ -195,7 +195,7 @@ function initializeSearch(index) {
   searchPageElement ? false : liveSearch();
   passiveSearch();
 
-  wrapText(findQuery(), main);
+  highlightSearchTerms(findQuery(), '.post_body', 'mark', 'search-term');
 
   onEscape(clearSearchResults);
 
@@ -206,6 +206,30 @@ function initializeSearch(index) {
       clearSearchResults();
     }
   });
+}
+
+function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') {
+  let container = elem(context);
+  let reg = new RegExp("(" + search + ")", "gi");
+
+  function searchInNode(parentNode, search) {
+    forEach(parentNode, function (node) {
+      if (node.nodeType === 1) {
+        searchInNode(node, search);
+      } else if (
+        node.nodeType === 3 &&
+        reg.test(node.nodeValue)
+      ) {
+        let string = node.nodeValue.replace(reg, `<${wrapper} class="${cssClass}">$1</${wrapper}>`);
+        let span = document.createElement("span");
+        span.dataset.searched = "true";
+        span.innerHTML = string;
+        parentNode.replaceChild(span, node);
+      }
+    });
+  };
+
+  searchInNode(container, search);
 }
 
 window.addEventListener('load', function() {

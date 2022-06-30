@@ -54,6 +54,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Hooks](#hooks)
   * [Comments](#comments)
   * [Math notation](#math-notation)
+  * [Open Street Map](#map)
   * [Search](#search)
 
 ## Features
@@ -855,6 +856,33 @@ Related content within a `series` taxonomy can be shown at the end of a piece of
 The site configuration option `showRelatedInArticle` controls if this option is enabled. The same configuration option can be used in a posts frontmatter to disable the feature (but the site configuration overrides the per-page option).
 
 Likewise, the site configuration option `showRelatedInSidebar` controls if related content is shown on the sidebar. There is no corresponding option within a post to disable this.
+
+### Map
+
+#### Creating and including a map
+
+First create a map for free on https://umap.openstreetmap.fr/en/. Then include this map by using the `openstreetmap` shortcode, e.g. `{{<openstreetmap mapName="demo-map_1" >}}`
+
+#### Options
+
+The only required parameter is `mapName`. All other parameters are completely optional.
+
+Available parameters are:
+- `coordX` (default `auto`)
+- `coordY` (default `auto`)
+- `scale`  (default `auto`)
+- `scaleControl` (default `true`)
+- `miniMap` (default `false`)
+- `scrollWheelZoom` (default `true`)
+- `zoomControl` (default `true`)
+- `allowEdit` (default `false`)
+- `moreControl` (default `true`)
+- `searchControl` (default `true`)
+- `tilelayersControl` (default `null`)
+- `embedControl` (default `null`)
+- `datalayersControl` (default `true`)
+- `onLoadPanel` (default `none`)
+- `captionBar` (default `false`)
 
 ### Search
 

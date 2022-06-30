@@ -61,7 +61,7 @@ public void SayHello()
 If you're using VS Code for your editing, copy the `.vscode\clarity.code-snippets` file into a `.vscode` root folder on your repo.  This will enable you to type
 `note` then `<tab>` then choose with up/down arrows which flavor notice you want, then `<tab>` again to provide a title, then `<tab>` to add your content!
 
-![](/images/Note-Snippet.gif)
+![](../images/Note-Snippet.gif)
 
 To use the snippet, you need to first **enable quickSuggestions for Markdown** (one time only):
 

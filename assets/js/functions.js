@@ -2,7 +2,6 @@
 const doc = document.documentElement;
 const inline = ":inline";
 // variables read from your hugo configuration
-const parentURL = window.location.protocol + "//" + window.location.host + "/";
 let showImagePosition = "{{ .Site.Params.figurePositionShow }}";
 
 const showImagePositionLabel = '{{ .Site.Params.figurePositionLabel }}';

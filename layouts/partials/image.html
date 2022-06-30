@@ -1,4 +1,5 @@
 {{- $file := .file -}}
+{{- $imagesDir := .Page.Site.Params.imagesDir -}}
 {{- $alt := .alt -}}
 {{- if not $alt -}}
   {{- $alt = .Text -}}
@@ -34,7 +35,7 @@
         {{- $image = "" -}}
         {{- $scratch.Add "classes" " image_svg" -}}
       {{- else -}}
-        {{- $file = path.Join "images" $image -}}
+        {{- $file = path.Join $imagesDir $image -}}
         {{- $image = $image.Content | resources.FromString $file -}}
       {{- end -}}
     {{- else -}}

@@ -73,7 +73,7 @@ function fileClosure(){
       Array.from(links).forEach(function(link){
         let target, rel, blank, noopener, attr1, attr2, url, isExternal;
         url = elemAttribute(link, 'href');
-        isExternal = (url && typeof url == 'string' && url.startsWith('http')) && !url.startsWith(parentURL) ? true : false;
+        isExternal = (url && typeof url == 'string' && url.startsWith('http')) && !url.startsWith(baseURL) ? true : false;
         if(isExternal) {
           target = 'target';
           rel = 'rel';
@@ -105,7 +105,6 @@ function fileClosure(){
   headingNodes.forEach(function(node){
     link = createEl('a');
     link.className = 'link icon';
-    link.style.backgroundImage = `url(${parentURL}${iconsPath}link.svg)`;
     id = node.getAttribute('id');
     if(id) {
       link.href = `${current}#${id}`;

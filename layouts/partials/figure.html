@@ -60,7 +60,7 @@
         src="{{ $fileWeb }}"
       {{ end }}
       {{ with $cap }}
-        title="{{ htmlEscape $cap }}"
+        title="{{ safeHTML $cap }}"
       {{ end }}
     />
 

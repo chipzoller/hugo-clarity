@@ -70,3 +70,13 @@ other = "Postagens nesta série"
   other = "A consulta é muito curta"
 [type_to_search]
   other = "Digite para pesquisar"
+  
+# code actions
+[copy_code]
+other = "Copiar Código"
+[toggle_line_numbers]
+other = "Alternar Número em Linhas"
+[toggle_line_wrap]
+other = "Alternar Quebra de Linha"
+[block_expand]
+other = "Alternar expansão do bloco de código"

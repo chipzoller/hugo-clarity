@@ -10,6 +10,9 @@ other = "Todos los Derechos Reservados"
 [share_on]
 other = "Compartir en"
 
+[copy_link]
+other = "Copiar Link"
+
 [featured_posts]
 other = "Posts destacados"
 

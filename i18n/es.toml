@@ -70,3 +70,13 @@ other = "Publicaciones en esta serie"
   other = "La consulta es demasiado corta"
 [type_to_search]
   other = "Escriba para buscar"
+  
+# code actions
+[copy_code]
+other = "Copiar Código"
+[toggle_line_numbers]
+other = "Alternar Número en Líneas"
+[toggle_line_wrap]
+other = "Alternar Salto de Línea"
+[block_expand]
+other = "Alternar la expansión del bloque de código"

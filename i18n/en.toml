@@ -70,3 +70,13 @@ other = "Posts in this series"
   other = "Query is too short"
 [type_to_search]
   other = "Type to search"
+
+# code actions
+[copy_code]
+other = "Copy Code"
+[toggle_line_numbers]
+other = "Toggle Line Numbers"
+[toggle_line_wrap]
+other = "Toggle Line Wrap"
+[block_expand]
+other = "Toggle code block expand"

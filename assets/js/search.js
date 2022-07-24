@@ -116,7 +116,6 @@ function initializeSearch(index) {
       searchField.addEventListener('input', function() {
         const searchTerm = searchField.value.trim().toLowerCase();
         search(searchTerm, searchScope);
-        // console.log(searchTerm);
       });
 
       if(!searchPageElement) {
@@ -233,8 +232,9 @@ function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') 
 }
 
 window.addEventListener('load', function() {
-  const pageLanguage = document.documentElement.lang;
-  const searchIndex = `${ pageLanguage === 'en' ? '': pageLanguage}/index.json`;
+  const pageLanguage = elem('body').dataset.lang;
+  const searchIndexLangSlug = pageLanguage === 'en' ? '': `${pageLanguage}/`;
+  const searchIndex = `${searchIndexLangSlug}index.json`;
   fetch(new URL(baseURL + searchIndex).href)
   .then(response => response.json())
   .then(function(data) {

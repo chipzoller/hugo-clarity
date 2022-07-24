@@ -116,7 +116,6 @@ function initializeSearch(index) {
       searchField.addEventListener('input', function() {
         const searchTerm = searchField.value.trim().toLowerCase();
         search(searchTerm, searchScope);
-        // console.log(searchTerm);
       });
 
       if(!searchPageElement) {
@@ -236,9 +235,6 @@ window.addEventListener('load', function() {
   const pageLanguage = elem('body').dataset.lang;
   const searchIndexLangSlug = pageLanguage === 'en' ? '': `${pageLanguage}/`;
   const searchIndex = `${searchIndexLangSlug}index.json`;
-
-  console.log(searchIndex, 'search index');
-
   fetch(new URL(baseURL + searchIndex).href)
   .then(response => response.json())
   .then(function(data) {

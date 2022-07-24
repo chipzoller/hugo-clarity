@@ -233,8 +233,12 @@ function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') 
 }
 
 window.addEventListener('load', function() {
-  const pageLanguage = document.documentElement.lang;
-  const searchIndex = `${ pageLanguage === 'en' ? '': pageLanguage}/index.json`;
+  const pageLanguage = elem('body').dataset.lang;
+  const searchIndexLangSlug = pageLanguage === 'en' ? '': `${pageLanguage}/`;
+  const searchIndex = `${searchIndexLangSlug}index.json`;
+
+  console.log(searchIndex, 'search index');
+
   fetch(new URL(baseURL + searchIndex).href)
   .then(response => response.json())
   .then(function(data) {

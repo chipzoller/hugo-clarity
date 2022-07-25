@@ -56,10 +56,10 @@
       </ul>
     {{ end }}
 
-    {{- $posts := where (where .Site.RegularPages "Permalink" "!=" .Permalink) "Type" "in" $s.mainSections }}
+    {{- $posts := where .Site.RegularPages "Type" "in" $s.mainSections }}
     {{- $featured := default 8 $s.numberOfFeaturedPosts }}
-    {{- $featured_posts := first $featured (where $posts "Params.featured" true)}}
-    {{- with $featured_posts }}
+    {{- $featuredPosts := first $featured (where $posts "Params.featured" true)}}
+    {{- with $featuredPosts }}
     <h2 class="mt-4">{{ T "featured_posts" }}</h2>
     <ul>
       {{- range . }}
@@ -72,7 +72,7 @@
     <h2 class="mt-4">{{ T "recent_posts" }}</h2>
     <ul class="flex-column">
       {{- $recent := default 8 $s.numberOfRecentPosts }}
-      {{- range first $recent $posts | symdiff $featured_posts }}
+      {{- range first $recent $posts | symdiff $featuredPosts }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>

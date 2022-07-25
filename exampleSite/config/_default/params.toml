@@ -105,11 +105,17 @@ languageMenuName = "🌐"
 # utterancesTheme = "github-light" # Default: github-dark
 # utterancesIssueTerm = "pathname" # Default: pathname
 
-# Maximum number of recent posts.
+# Maximum number of recent posts. (default: 8)
 # numberOfRecentPosts = 8
 
-# Maximum number of featured posts.
+# Maximum number of featured posts. (default: 8)
 # numberOfFeaturedPosts = 8
+
+# Pin featured posts in list.
+# pinFeatured = true
+
+# Maximum number of pinned featured posts. (default: 8)
+# numberOfPinnedPosts = 8
 
 # Date format. Checkout https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference for details.
 # dateFormat = "2006-01-02" # Default to "Jan 2, 2006".

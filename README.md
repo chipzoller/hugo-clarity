@@ -235,6 +235,8 @@ These options set global values that some pages or all pages in the site use by 
 | comments                   | boolean                     | yes                 |
 | numberOfRecentPosts        | integer                     | no                  |
 | numberOfFeaturedPosts      | integer                     | no                  |
+| pinFeatured                | boolean                     | no                  |
+| numberOfPinnedPosts        | integer                     | no                  |
 | dateFormat                 | string                      | no                  |
 | enableMathNotation         | boolean                     | yes                 |
 | customFonts                | boolean                     | no                  |
@@ -798,13 +800,13 @@ You can override these setting from each post individually. For example, you may
 
  If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
 
- * Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances). 
+ * Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances).
  * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
  * Set `comments = true` in the `/config/_default/params.toml` file.
  * Configure the utterances parameters in the `/config/_default/params.toml` file.
 
  Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
- 
+
 
 
 
@@ -925,3 +927,9 @@ __Search Scope__
 - Searching outside a section will search the entire site.
 
      For example, with the above setup, searching from the homepage will produce results from the entire site.
+
+### Pinning Featured Posts
+
+This allows you to show the featured posts at the top of the post list.
+
+Using the site configuration option `pinFeatured` to enable/disable it, and the option `numberOfPinnedPosts` to control how many posts to be pinned.

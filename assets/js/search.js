@@ -130,15 +130,6 @@ function initializeSearch(index) {
     }
   }
 
-  function findQuery(query = 'query') {
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.has(query)){
-      let c = urlParams.get(query);
-      return c;
-    }
-    return "";
-  }
-
   function passiveSearch() {
     if(searchPageElement) {
       const searchTerm = findQuery();
@@ -208,27 +199,32 @@ function initializeSearch(index) {
 }
 
 function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') {
-  let container = elem(context);
-  let reg = new RegExp("(" + search + ")", "gi");
+  const query = findQuery()
+  if(query){
 
-  function searchInNode(parentNode, search) {
-    forEach(parentNode, function (node) {
-      if (node.nodeType === 1) {
-        searchInNode(node, search);
-      } else if (
-        node.nodeType === 3 &&
-        reg.test(node.nodeValue)
-      ) {
-        let string = node.nodeValue.replace(reg, `<${wrapper} class="${cssClass}">$1</${wrapper}>`);
-        let span = document.createElement("span");
-        span.dataset.searched = "true";
-        span.innerHTML = string;
-        parentNode.replaceChild(span, node);
-      }
-    });
-  };
+    let container = elem(context);
+    let reg = new RegExp("(" + search + ")", "gi");
 
-  searchInNode(container, search);
+    function searchInNode(parentNode, search) {
+      forEach(parentNode, function (node) {
+        if (node.nodeType === 1) {
+          searchInNode(node, search);
+        } else if (
+          node.nodeType === 3 &&
+          reg.test(node.nodeValue)
+        ) {
+          let string = node.nodeValue.replace(reg, `<${wrapper} class="${cssClass}">$1</${wrapper}>`);
+          let span = document.createElement("span");
+          span.dataset.searched = "true";
+          span.innerHTML = string;
+          parentNode.replaceChild(span, node);
+        }
+      });
+    };
+
+    searchInNode(container, search);
+
+  }
 }
 
 window.addEventListener('load', function() {

@@ -33,3 +33,4 @@ Issue Number(s):
 
 - [ ] **Bug-fixes and new features:** I have tested locally with the [latest release of Hugo extended](https://github.com/gohugoio/hugo/releases). This requirement is [a standard](https://github.com/gohugoio/hugoThemes#theme-maintenance).
 - [ ] **Bug-fixes, new features, and doc changes:** I have updated the relevant documentation as part of this PR.
+- [ ] **All PRs:** I have [signed off](https://github.com/chipzoller/hugo-clarity/blob/master/CONTRIBUTING.md#how-to-submit-a-pull-request) (using `git commit -s ...`), or if not possible due to developer environment constraints, will comment below confirming that I am adhering to the [Developer Certificate of Origin](https://probot.github.io/apps/dco/).

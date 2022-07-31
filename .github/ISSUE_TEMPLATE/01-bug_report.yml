@@ -18,9 +18,9 @@ body:
     attributes:
       label: "I confirm:"
       options:
-        - label: "I am running the [extended version of Hugo version 0.91.0 or above](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#prerequisites) installed."
+        - label: "I am running the [extended version of Hugo version 0.91.0 or above](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#prerequisites) to build my site."
           required: true
-        - label: "I have read the [theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
+        - label: "I have read the [Hugo Clarity theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
           required: true
         - label: "I have used the [example site's config files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default) as reference."
           required: true

@@ -1,5 +1,5 @@
 name: Documentation change
-description: Suggest a change to theme documentation
+description: Suggest a change to theme documentation.
 title: "[Docs] "
 labels: ["documentation"]
 body:

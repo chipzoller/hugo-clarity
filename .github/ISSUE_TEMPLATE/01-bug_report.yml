@@ -1,5 +1,5 @@
 name: Bug report
-description: Something isn't working correctly with the theme
+description: Something isn't working correctly with the theme.
 title: "[Bug] "
 labels: ["bug"]
 body:

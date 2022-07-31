@@ -67,7 +67,7 @@ order to help us help you, create bug reports that are:
 
 3. [Fork the project](https://docs.github.com/en/get-started/quickstart/fork-a-repo),
    then checkout your fork using
-   [Gitpod](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#getting-up-and-running)
+   [Gitpod](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#option-1a-development-in-the-browser)
    or
    [locally on your machine](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#option-1b-development-on-your-machine)
 

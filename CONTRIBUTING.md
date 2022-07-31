@@ -60,7 +60,7 @@ order to help us help you, create bug reports that are:
    open-source project (i.e. it is not proprietary or trade-secret code) and
    that the record of your contribution will be recorded. **This is required
    in order to contribute to Hugo Clarity**, and you'll need to confirm your
-   consent in the final steps below.
+   consent when committing, as shown below.
 
 3. Clone the project using [Gitpod](https://github.com/chipzoller/hugo-clarity#option-1a-development-in-the-browser)
    or [locally on your machine](https://github.com/chipzoller/hugo-clarity#option-1b-development-on-your-machine)
@@ -80,7 +80,7 @@ order to help us help you, create bug reports that are:
    ```
 
   The `-s` flag is the short form of `--signoff` and signals to us that you are
-  abiding by the Developer Certificate of Origin (see step 2, above).
+  abiding by the [Developer Certificate of Origin](https://developercertificate.org/) (see step 2, above).
 
   If you are in an environment in which you cannot provide this cryptographic
   signoff (for instance, Gitpod) you will need to leave a comment on the PR you

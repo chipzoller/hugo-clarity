@@ -33,6 +33,15 @@ body:
       description: 'Run `hugo version` and paste the output here.'
     validations:
       required: true
+  - type: dropdown
+    id: bug_location
+    attributes:
+      label: Where is this bug showing up?
+      options:
+        - "On the command line: Hugo won't build the site and shows warnings or errors."
+        - "In the browser: Hugo builds the site, but something doesn't look right."
+    validations:
+      required: true
   - type: input
     id: os
     attributes:
@@ -43,10 +52,8 @@ body:
   - type: input
     id: browser
     attributes:
-      label: Browser
+      label: Browser (if applicable)
       description: For example, Chrome 76, Safari 13, etc.
-    validations:
-      required: true
   - type: textarea
     id: current_behavior
     attributes:

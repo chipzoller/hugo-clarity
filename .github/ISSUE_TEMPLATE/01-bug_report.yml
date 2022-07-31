@@ -40,6 +40,7 @@ body:
       options:
         - "On the command line: Hugo won't build the site and shows warnings or errors."
         - "In the browser: Hugo builds the site, but something doesn't look right."
+        - "Other: Both, neither, or somewhere else."
     validations:
       required: true
   - type: input

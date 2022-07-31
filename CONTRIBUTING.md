@@ -2,9 +2,11 @@
 
 Thank you for taking the time to contribute!
 
-Hugo Clarity is open-source, and contributions are what make the open-source
-community such an amazing place to learn, inspire, and create. Any contributions
-you make will benefit everybody else and are **greatly appreciated**!
+Hugo Clarity is 
+[open-source](https://github.com/chipzoller/hugo-clarity/blob/master/LICENSE.md),
+and contributions are what make the open-source community such an amazing place
+to learn, inspire, and create. Any contributions you make will benefit others,
+and are **greatly appreciated**!
 
 When contributing, especially for the first time, consider starting by
 [creating an issue](https://github.com/chipzoller/hugo-clarity/issues/new) so

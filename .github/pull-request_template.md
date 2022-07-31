@@ -1,17 +1,34 @@
-This PR...
+<!--- Please provide a general summary of your changes in the title above -->
 
-## Changes / fixes
+## Pull Request type
 
--
+<!-- To ensure we're able to review your PR quickly, limit your pull request to one type of change. Submit multiple pull requests if needed. -->
 
-## Screenshots (if applicable)
+Please check the type of change your PR introduces:
 
-(prefer animated gif)
+- [ ] Bug-fix
+- [ ] Feature (functionality, design, translations, etc.)
+- [ ] Documentation change
+- [ ] Project management (tests, CI, GitHub configuration, etc.)
+- [ ] Other (please describe):
+
+## Current state
+
+<!-- Please describe the current behavior, content, or docs that you are modifying -- or link to relevant issue(s). -->
+
+Issue Number(s): 
+
+## Proposed changes
+
+<!-- Please describe the changes this PR makes. -->
+
+## Screenshots, if applicable
+
+<!-- For visual changes to the theme, this is required. -->
 
 ## Checklist
 
-_Ensure you have checked off the following before submitting your PR._
+<!-- Ensure you've completed the following items, as appropriate, before submitting your PR. -->
 
-- [ ] tested locally with the [latest release of Hugo](https://github.com/gohugoio/hugo/releases). This requirement is [a standard](https://github.com/gohugoio/hugoThemes#theme-maintenance)
-- [ ] added new dependencies
-- [ ] updated the [docs]() ⚠️
+- [ ] **Bug-fixes and new features:** I have tested locally with the [latest release of Hugo extended](https://github.com/gohugoio/hugo/releases). This requirement is [a standard](https://github.com/gohugoio/hugoThemes#theme-maintenance).
+- [ ] **Bug-fixes, new features, and doc changes:** I have updated the relevant documentation as part of this PR.

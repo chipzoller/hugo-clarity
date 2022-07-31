@@ -24,7 +24,7 @@ body:
           required: true
         - label: "I have used the [example site's config files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default) as reference."
           required: true
-        - label: "I have searched other issues in this repository and mine is not recorded."
+        - label: "I have reviewed [other issues in this repository](https://github.com/chipzoller/hugo-clarity/issues) and mine is not recorded."
           required: true
   - type: input
     id: v_hugo

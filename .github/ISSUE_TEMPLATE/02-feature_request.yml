@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest a new feature for the theme
+description: Suggest a new feature for the theme.
 title: "[Feature] "
 labels: ["enhancement"]
 body:
@@ -8,7 +8,7 @@ body:
     attributes:
       label: "I confirm:"
       options:
-        - label: "I have read the [theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
+        - label: "I have read the [Hugo Clarity theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
           required: true
         - label: "I have reviewed [other issues in this repository](https://github.com/chipzoller/hugo-clarity/issues), and this feature has not already been requested."
           required: true
@@ -53,12 +53,10 @@ body:
     id: context
     attributes:
       label: Additional Context
-      description: Any additional context for this feature request.
-      placeholder: 
+      description:
         This could include examples of this feature in websites or other Hugo
         themes, links to blog posts or other documentation of this feature or
-        descriptions about why it would be a useful addition, use cases or
-        problem statements, etc.
+        why it would be a useful addition, use cases or problem statements, etc.
     validations:
       required: false
   - type: markdown

@@ -1,5 +1,5 @@
 name: Bug report
-description: Something isn't working correctly with the theme
+description: Something isn't working correctly with the theme.
 title: "[Bug] "
 labels: ["bug"]
 body:
@@ -18,9 +18,9 @@ body:
     attributes:
       label: "I confirm:"
       options:
-        - label: "I am running the [extended version of Hugo version 0.91.0 or above](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#prerequisites) installed."
+        - label: "I am running the [extended version of Hugo version 0.91.0 or above](https://github.com/chipzoller/hugo-clarity/blob/master/README.md#prerequisites) to build my site."
           required: true
-        - label: "I have read the [theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
+        - label: "I have read the [Hugo Clarity theme documentation](https://github.com/chipzoller/hugo-clarity/blob/master/README.md)."
           required: true
         - label: "I have used the [example site's config files](https://github.com/chipzoller/hugo-clarity/tree/master/exampleSite/config/_default) as reference."
           required: true
@@ -40,13 +40,16 @@ body:
       options:
         - "On the command line: Hugo won't build the site and shows warnings or errors."
         - "In the browser: Hugo builds the site, but something doesn't look right."
+        - "Other: Both, neither, or somewhere else."
     validations:
       required: true
   - type: input
     id: os
     attributes:
       label: Operating system
-      description: For example, iOS 14, Windows 10, macOS 12.5, Linux Ubuntu 22.04, Android 12, etc.
+      description:
+        For example, iOS 14, Windows 10, macOS 12.5, Linux Ubuntu 22.04, Android
+        12, etc.
     validations:
       required: true
   - type: input
@@ -82,7 +85,8 @@ body:
     attributes:
       label: Relevant log output
       description:
-        If applicable, provide any errors, stacktraces or other output from Hugo.
+        If applicable, provide any errors, stacktraces or other output from
+        Hugo.
       render: shell
   - type: textarea
     id: related_code
@@ -103,7 +107,10 @@ body:
     id: other_info
     attributes:
       label: Other information
-      description: Any other information that might be relevant to this bug.
+      description:
+        Any other information that might be relevant to this bug. Do you know on
+        what date or git commit this bug might have appeared? If so, please let
+        us know!
   - type: markdown
     attributes:
       value: |

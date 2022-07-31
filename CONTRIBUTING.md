@@ -86,21 +86,21 @@ order to help us help you, create bug reports that are:
   signoff (for instance, Gitpod) you will need to leave a comment on the PR you
   submit confirming that you certify compliance with the DCO.
 
-6. Repeat steps 5-6 as necessary.
+7. Repeat steps 5-6 as necessary.
 
-7. Unless your PR is documentation-only, **test your work 
+8. Unless your PR is documentation-only, **test your work 
    [using Hugo extended](https://github.com/chipzoller/hugo-clarity#prerequisites)
    to build a site.** When you submit your PR we'll run test-builds of a Hugo
    site with your PR applied, so you'll save time if you fix any build issues
    before submitting.
 
-8. Push the branch:
+9. Push the branch:
 
    ```sh
    git push origin amazing_feature
    ```
 
-9. [Open a Pull Request](https://github.com/chipzoller/hugo-clarity/compare?expand=1)
+10. [Open a Pull Request](https://github.com/chipzoller/hugo-clarity/compare?expand=1)
    and wait for feedback. Filling out the PR as requested will ensure your work
    gets reviewed by maintainers promptly.
 

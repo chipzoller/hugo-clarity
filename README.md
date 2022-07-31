@@ -46,6 +46,7 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
     * [Logo alignment](#logo-alignment)
   * [Code](#code)
   * [Table of contents](#table-of-contents-1)
+  * [Pinning featured posts](#pinning-featured-posts)
   * [Notices](#notices)
   * [Custom CSS and JS](#custom-css-and-js)
   * [Custom Site Disclaimer](#site-disclaimer)
@@ -56,6 +57,9 @@ A technology-minded theme for Hugo based on VMware's open-source [Clarity Design
   * [Math notation](#math-notation)
   * [Open Street Map](#map)
   * [Search](#search)
+* [Contributing](#contributing)
+* [Code of conduct](#code-of-conduct)
+* [License](#license)
 
 ## Features
 
@@ -119,7 +123,7 @@ There are several ways to use this theme:
 
 For trying out the theme, quick experimentation, and to contribute Pull Requests, Gitpod is the easiest option. Use the button above and it will spin up a prebuilt environment with a site ready to go.
 
-If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://www.gitpod.io/docs/browser-extension).
+If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://www.gitpod.io/docs/browser-extension). [Read more about contributing to Hugo Clarity](CONTRIBUTING.md)
 
 ### Option 1b: Development on your machine
 
@@ -132,6 +136,8 @@ hugo server --themesDir ../..
 ```
 
 > Note that while this is a good way to work on Hugo Clarity, isn't a good way to work on your own site, since it uses the content from `exampleSite`, and wouldn't be aware of any overrides your site might apply to the theme.
+
+[Read more about contributing to Hugo Clarity](CONTRIBUTING.md)
 
 ### Option 2: Hugo modules
 
@@ -643,6 +649,12 @@ Each article can optionally have a table of contents (TOC) generated for it base
 
 ![Article table of contents](https://github.com/chipzoller/hugo-clarity/blob/master/images/article-toc.png)
 
+### Pinning featured posts
+
+This allows you to show the featured posts at the top of the post list.
+
+Use the [site configuration option](#global-parameters) `pinFeatured` to enable/disable it, and the option `numberOfPinnedPosts` to control how many posts to be pinned.
+
 ### Custom CSS and JS
 
 To minimize HTTP requests per page, we would recommend loading CSS styles and JavaScript helpers in single bundles. That is to say, one CSS file and one JavaScript file. Using Hugo minify functions, these files will be minified to optimize the size.
@@ -859,7 +871,7 @@ The site configuration option `showRelatedInArticle` controls if this option is 
 
 Likewise, the site configuration option `showRelatedInSidebar` controls if related content is shown on the sidebar. There is no corresponding option within a post to disable this.
 
-### Map
+### Maps
 
 #### Creating and including a map
 
@@ -928,8 +940,14 @@ __Search Scope__
 
      For example, with the above setup, searching from the homepage will produce results from the entire site.
 
-### Pinning Featured Posts
+## Contributing
 
-This allows you to show the featured posts at the top of the post list.
+Please read our [contribution guidelines](CONTRIBUTING.md), and thank you for being involved!
 
-Using the site configuration option `pinFeatured` to enable/disable it, and the option `numberOfPinnedPosts` to control how many posts to be pinned.
+## Code of conduct
+
+Hugo Clarity has a [code of conduct](CODE_OF_CONDUCT.md). Please follow it in all your interactions with the project.
+
+## License
+
+Hugo Clarity is open-sourced under the [MIT license](https://github.com/chipzoller/hugo-clarity/blob/master/LICENSE.md).

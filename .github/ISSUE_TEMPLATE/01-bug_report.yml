@@ -47,7 +47,9 @@ body:
     id: os
     attributes:
       label: Operating system
-      description: For example, iOS 14, Windows 10, macOS 12.5, Linux Ubuntu 22.04, Android 12, etc.
+      description:
+        For example, iOS 14, Windows 10, macOS 12.5, Linux Ubuntu 22.04, Android
+        12, etc.
     validations:
       required: true
   - type: input
@@ -83,7 +85,8 @@ body:
     attributes:
       label: Relevant log output
       description:
-        If applicable, provide any errors, stacktraces or other output from Hugo.
+        If applicable, provide any errors, stacktraces or other output from
+        Hugo.
       render: shell
   - type: textarea
     id: related_code
@@ -104,7 +107,10 @@ body:
     id: other_info
     attributes:
       label: Other information
-      description: Any other information that might be relevant to this bug.
+      description:
+        Any other information that might be relevant to this bug. Do you know on
+        what date or git commit this bug might have appeared? If so, please let
+        us know!
   - type: markdown
     attributes:
       value: |

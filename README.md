@@ -327,10 +327,9 @@ If using Matomo Analytics, configure the `matomo_analytics` global parameters in
 
 ### Blog directory
 
-Edit `config.toml` and change the `mainSections` key. Values will be directories where the blogs reside.
+Edit `params.toml` and change the `mainSections` key. Values will be directories where the blogs reside.
 
 ```yaml
-[params]
 ...
 mainSections = ["posts", "docs", "blogs"]
 ...

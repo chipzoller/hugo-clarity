@@ -2,25 +2,25 @@ const codeActionButtons = [
   {
     icon: 'copy',
     id: 'copy',
-    title: 'Copy Code',
+    title: '{{ T "copy_code" }}',
     show: true
   },
   {
     icon: 'order',
     id: 'lines',
-    title: 'Toggle Line Numbers',
+    title: '{{ T "toggle_line_numbers" }}',
     show: true
   },
   {
     icon: 'carly',
     id: 'wrap',
-    title: 'Toggle Line Wrap',
+    title: '{{ T "toggle_line_wrap" }}',
     show: false
   },
   {
     icon: 'expand',
     id: 'expand',
-    title: 'Toggle code block expand',
+    title: '{{ T "block_expand" }}',
     show: false
   }
 ];

@@ -156,7 +156,7 @@ hugo mod init <sitename>
 ```bash
 wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
 ```
-Or if you are using PowerShell, grab this:
+Or if you are using PowerShell, grab this instead:
 ```bash
 wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz -and cp -a hugo-clarity-master/exampleSite/* . -and rm -rf hugo-clarity-master -and rm -f config.toml
 ```

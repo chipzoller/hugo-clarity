@@ -50,7 +50,7 @@ other = "所有專欄"
 other = "文章目錄"
 
 [reading_time]
-other = "{{ .ReadingTime }} min read"
+other = "{{ .ReadingTime }} 分鐘長"
 
 [series_posts]
-other = "Posts in this series"
+other = "此系列文章"

@@ -156,6 +156,10 @@ hugo mod init <sitename>
 ```bash
 wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz && cp -a hugo-clarity-master/exampleSite/* . && rm -rf hugo-clarity-master && rm -f config.toml
 ```
+If you are using PowerShell, paste this instead:
+```bash
+wget -O - https://github.com/chipzoller/hugo-clarity/archive/master.tar.gz | tar xz -and cp -a hugo-clarity-master/exampleSite/* . -and rm -rf hugo-clarity-master -and rm -f config.toml
+```
 If you do already have a site and don't want to risk overwriting anything, we suggest copying the contents of [`config`](exampleSite/config/) over, as well as replacing your `archetypes/post.md` (if it exists) with [Hugo Clarity's](exampleSite/archetypes/post.md). Then migrate any necessary settings from `<sitename>/config.toml` to `<sitename>/config/_default/config.toml` and remove the original `<sitename>/config.toml` file.
 
 4. Open `<sitename>/config/_default/config.toml` and change `theme = "hugo-clarity"` to `theme = ["github.com/chipzoller/hugo-clarity"]`
@@ -670,26 +674,26 @@ Going by the above 👆🏻 reason, we recommend adding custom CSS and JS via th
 
 ```
 ├── yourSite
-│   ├── archetypes
-│   │   └── post.md
-│   ├── assets
-│   │   ├── js
-│   │   │   └── custom.js
-│   │   └── sass
-│   │       ├── _custom.sass
-│   │       └── _override.sass
-│   ├── config
-│   │   └── _default
-│   │       ├── config.toml
-│   │       ├── configTaxo.toml
-│   │       ├── languages.toml
-│   │       ├── markup.toml
-│   │       ├── menus
-│   │       │   ├── menu.en.toml
-│   │       │   └── menu.pt.toml
-│   │       └── params.toml
-│   ├── content
-│   │   ├── _index.md
+│   ├── archetypes
+│   │   └── post.md
+│   ├── assets
+│   │   ├── js
+│   │   │   └── custom.js
+│   │   └── sass
+│   │       ├── _custom.sass
+│   │       └── _override.sass
+│   ├── config
+│   │   └── _default
+│   │       ├── config.toml
+│   │       ├── configTaxo.toml
+│   │       ├── languages.toml
+│   │       ├── markup.toml
+│   │       ├── menus
+│   │       │   ├── menu.en.toml
+│   │       │   └── menu.pt.toml
+│   │       └── params.toml
+│   ├── content
+│   │   ├── _index.md
 ```
 
 However, sometimes you may need to load additional style or script files. In such cases, you can add custom `.css` and `.js` files by listing them in the `config.toml` file (see the snippet below). Similar to images, these paths should be relative to the `static` directory.

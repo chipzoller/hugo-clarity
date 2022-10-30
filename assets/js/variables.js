@@ -2,9 +2,11 @@ const featuredImageClass = 'image_featured';
 const imageScalableClass = 'image-scalable';
 const scaleImageClass = 'image-scale';
 const pageHasLoaded = 'DOMContentLoaded';
-const imageAltClass = 'img_alt'
+const imageAltClass = 'img_alt';
 
-const baseURL = '{{ .Site.BaseURL }}';
+
+const defaultSiteLanguage = '{{ partialCached "func/getDefaultLanguage" . }}';
+const baseURL = '{{ site.BaseURL }}';
 const searchFieldClass = '.search_field';
 const searchClass = '.search';
 const goBackClass = 'button_back';

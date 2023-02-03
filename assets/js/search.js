@@ -229,9 +229,10 @@ function highlightSearchTerms(search, context, wrapper = 'mark', cssClass = '') 
 
 window.addEventListener('load', function() {
   const pageLanguage = elem('body').dataset.lang;
-  const searchIndexLangSlug = pageLanguage === 'en' ? '': `${pageLanguage}/`;
-  const searchIndex = `${searchIndexLangSlug}index.json`;
-  fetch(new URL(baseURL + searchIndex).href)
+  const searchIndexLangSlug = pageLanguage === defaultSiteLanguage ? '': `${pageLanguage}/`;
+  let searchIndex = `${searchIndexLangSlug}index.json`;
+  searchIndex = new URL(`${baseURL}${searchIndex}`).href;
+  fetch(searchIndex)
   .then(response => response.json())
   .then(function(data) {
     data = data.length ? data : [];

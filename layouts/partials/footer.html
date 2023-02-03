@@ -1,5 +1,5 @@
 {{- $s := .Site.Params }}
-{{- $c := or .Site.Copyright .Site.Title }}
+{{- $c := default .Site.Title .Site.Copyright  }}
 {{- if or .Params.enableMathNotation $s.enableMathNotation }}
   {{ partialCached "math" . }}
 {{- end }}

@@ -1,5 +1,6 @@
 {{- $menu := .menu }}
-{{ $menuData := .context.Site.Data.menu }}
+{{- $iconsDir := default "icons/" site.Params.iconsDir }}
+{{ $menuData := site.Data.menu }}
 {{- $link := .context.Permalink }}
 {{- $url := "" }}
 {{- $name := "" }}
@@ -16,7 +17,7 @@
     {{- $url = absLangURL .URL }}
   {{- end }}
   <div class="nav_parent{{ if (and (not .Children) (eq (trim $url $forwardSlash) (trim $link $forwardSlash))) }} nav_active{{ end}}">
-    <a href="{{ $url }}" class="nav_item" title="{{ $name }}">{{ $name }} {{ with $children }}<img src='{{ absURL "icons/caret-icon.svg" }}' alt="icon" class="nav_icon">{{ end }}</a>
+    <a href="{{ $url }}" class="nav_item" title="{{ $name }}">{{ $name }} {{ with $children }}<img src='{{ absURL (printf "%scaret-icon.svg" $iconsDir) }}' alt="icon" class="nav_icon">{{ end }}</a>
     {{- with $children }}
     <div class="nav_sub">
       <span class="nav_child"></span>

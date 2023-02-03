@@ -41,6 +41,21 @@ usePageBundles = false
 imagesDir = "images/" # without a leading forward slash
 # Icons:
 iconsDir = "icons/" # without a leading forward slash
+# Only load icons that you're actually using on your website. Remove from or add to the list below: If an icon doesn't show after adding it to this least, ensure it exists under `layouts/partials/sprites` directory.
+icons = [
+  "facebook",
+  "twitter",
+  "linkedin",
+  "github",
+  "gitlab",
+  "rss",
+  "instagram",
+  "youtube",
+  "discord",
+  "stackoverflow",
+  "mastodon",
+  "xing"
+]
 # Fonts:
 fontsDir = "fonts/" # without a leading forward slash
 

@@ -232,6 +232,7 @@ These options set global values that some pages or all pages in the site use by 
 | mainSections               | array/string                | no                  |
 | centerLogo                 | boolean                     | no                  |
 | logo                       | file path (string)          | no                  |
+| icons                      | Array of icon name (string) | no                  |
 | iconsDir                   | dir path (string)           | no                  |
 | mobileNavigation           | string                      | no                  |
 | figurePositionShow         | boolean                     | yes                 |
@@ -308,6 +309,20 @@ If you prefer the more [traditional approach](https://gohugo.io/content-manageme
 To edit your social media profile links, edit the files referenced above. Specifically, look for items with `[[social]]`
 
 If you wish to globally use a [large Twitter summary card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image) when sharing posts, set the global parameter `largeTwitterCard` to `true`.
+
+Social media icons are loaded as SVG sprites. Check if your platform icons is listed under `layouts/partials/sprites` directory. If not, grab an svg icon, [convert it into a sprite](https://svgsprit.es/) and add a filename under the aforementioned dir. Make sure the ID in the sprite matches this filename.
+
+Finally, got to `config/_default/params.toml` and ensure that icon is listed under the `icons` array. Like so:
+
+```toml
+icons = [
+  ...
+  "mastodon",
+  ...
+]
+```
+
+If you're not using certain icons, remove them from the list.
 
 ### Web site analytics
 

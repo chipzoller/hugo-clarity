@@ -27,6 +27,7 @@
     id="documentTop"
     data-lang="{{ .Lang }}"
   >
+    {{- partialCached "vendor/google/tag-manager" (dict "noscript" true) }}
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}

@@ -217,6 +217,7 @@ These options set global values that some pages or all pages in the site use by 
 | twitter                    | string                      | no                  |
 | largeTwitterCard           | boolean                     | no                  |
 | ga_analytics               | string                      | no                  |
+| google_tag_manager_id      | string                      | no                  |
 | baidu_analytics            | string                      | no                  |
 | plausible_analytics        | boolean                     | no                  |
 | matomo_analytics           | boolean                     | no                  |
@@ -311,7 +312,7 @@ If you wish to globally use a [large Twitter summary card](https://developer.twi
 
 ### Web site analytics
 
-If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID.
+If using Google Analytics, configure the `ga_analytics` global parameter in your site with your ID. You can opt to set a google tag manager using `google_tag_manager_id`.
 
 If using Baidu Analytics, configure the `baidu_analytics` global parameter in your site with your ID.
 

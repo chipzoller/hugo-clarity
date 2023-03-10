@@ -18,8 +18,7 @@ categories:
   - syntax
 tags:
   - Hugo
-series:
-  - Themes Guide
+series: Themes Guide
 ---
 
 [Page bundles](https://gohugo.io/content-management/page-bundles/) are an optional way to [organize page resources](https://gohugo.io/content-management/page-resources/) within Hugo.

@@ -1,7 +1,7 @@
 {{$related := where .Site.RegularPages ".Params.series" "eq" .Params.series }}
 <h2 class="post_related">{{ T "series_posts" }}</h2>
 <ul>
-{{ range $related }}
+{{ range sort $related "Date" }}
   <li><a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a></li>
 {{ end }}
 </ul>

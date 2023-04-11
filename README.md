@@ -814,7 +814,7 @@ You can override these setting from each post individually. For example, you may
 
 #### Utterances Commenting Support
 
- If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
+If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
 
  * Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances).
  * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
@@ -822,7 +822,7 @@ You can override these setting from each post individually. For example, you may
  * Configure the utterances parameters in the `/config/_default/params.toml` file.
  * Optionally, you can choose a label that will be assigned to all issues created by Utterances. The label must exist in your Github repository, as Utterances cannot attach labels that do not exist. Configure `utterancesLabel` parameter in `/config/_default/params.toml` file, after you have added a label to your Github repository Issues labels. Labels are case sensitive and support Emoji in label names. ✨💬✨
 
- Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
+Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
 
 
 

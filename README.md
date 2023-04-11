@@ -820,6 +820,7 @@ You can override these setting from each post individually. For example, you may
  * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
  * Set `comments = true` in the `/config/_default/params.toml` file.
  * Configure the utterances parameters in the `/config/_default/params.toml` file.
+ * Optionally, you can choose a label that will be assigned to all issues created by Utterances. The label must exist in your Github repository, as Utterances cannot attach labels that do not exist. Configure `utterancesLabel` parameter in `/config/_default/params.toml` file, after you have added a label to your Github repository Issues labels. Labels are case sensitive and support Emoji in label names. ✨💬✨
 
  Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
 

@@ -267,6 +267,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 |:-------------------- | ------------------ | ---------------- |
 | title                | string             | N/A              |
 | date                 | date               | N/A              |
+| lastmod              | date               | N/A              |
 | description          | string             | N/A              |
 | keywords             | array of strings   | yes              |
 | introDescription     | string             | yes              |

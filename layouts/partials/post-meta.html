@@ -11,6 +11,10 @@
     <span>{{ partial "sprite" (dict "icon" "calendar") }}</span>
     <span class="post_date">
       {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) -}}
+      {{ if ne .Date .Lastmod }}
+        / <time datetime="{{ .Lastmod.Format "Mon Jan 10 17:13:38 2020 -0700" }}">
+        {{ .Lastmod.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) }}</time>
+      {{ end }}	  
     </span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}

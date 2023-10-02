@@ -291,6 +291,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | comments             | boolean            | yes              |
 | enableMathNotation   | boolean            | yes              |
 | showDate             | boolean            | N/A              |
+| showLastmod          | boolean            | N/A              |
+| lastmodSeparator     | string             | N/A              |
 | showShare            | boolean            | N/A              |
 | showReadTime         | boolean            | N/A              |
 | sidebar              | boolean            | N/A              |

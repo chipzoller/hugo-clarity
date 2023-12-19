@@ -72,7 +72,7 @@
     <h2 class="mt-4">{{ T "recent_posts" }}</h2>
     <ul class="flex-column">
       {{- $recent := default 8 $s.numberOfRecentPosts }}
-      {{- range first $recent $posts | symdiff $featuredPosts }}
+      {{- range first $recent ($posts | symdiff $featuredPosts) }}
       <li>
         <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>

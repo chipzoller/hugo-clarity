@@ -129,7 +129,8 @@ languageMenuName = "🌐"
 # notice of the footer.
 # since = 2016
 
-# Show related content at the end of an article based on the 'series' taxonomy. Can be set in post front matter.
+# Show related content at the end of an article or in the sidebar, based on the 'series' taxonomy.
+# Both parameters can be overridden in the post's front matter.
 # showRelatedInArticle = false
 # showRelatedInSidebar = false
 

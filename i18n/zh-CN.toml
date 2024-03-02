@@ -50,7 +50,23 @@ other = "所有专栏"
 other = "文章目录"
 
 [reading_time]
-other = "{{ .ReadingTime }} min read"
+other = "{{ .ReadingTime }} 分钟阅读"
 
 [series_posts]
-other = "Posts in this series"
+other = "相关系列文章"
+
+# search
+[quick_links]
+  other = "搜索到的结果"
+[no_matches]
+  other = "未找到结果"
+[search_field_placeholder]
+  other = "搜索知识库"
+[blog_search_field_placeholder]
+  other = "搜索内容..."
+[search_results_label]
+  other = "搜索到的结果"
+[short_search_query]
+  other = "搜索字符太短"
+[type_to_search]
+  other = "请输入内容查找"

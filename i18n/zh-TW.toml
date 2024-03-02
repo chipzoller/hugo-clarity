@@ -50,7 +50,23 @@ other = "所有專欄"
 other = "文章目錄"
 
 [reading_time]
-other = "{{ .ReadingTime }} 分鐘長"
+other = "{{ .ReadingTime }} 分鐘閱讀"
 
 [series_posts]
-other = "此系列文章"
+other = "相關係列文章"
+
+# search
+[quick_links]
+  other = "搜尋到的結果"
+[no_matches]
+  other = "未找到結果"
+[search_field_placeholder]
+  other = "搜尋知識庫"
+[blog_search_field_placeholder]
+  other = "搜尋內容..."
+[search_results_label]
+  other = "搜尋到的結果"
+[short_search_query]
+  other = "搜尋字元太短"
+[type_to_search]
+  other = "請輸入內容尋找"

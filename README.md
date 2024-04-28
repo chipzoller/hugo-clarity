@@ -258,7 +258,6 @@ These options set global values that some pages or all pages in the site use by 
 | showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
 | enableSearch               | boolean                     | N/A                 |
-| noindex                    | boolean                     | N/A                 |
 
 ### Page Parameters
 
@@ -296,6 +295,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | sidebar              | boolean            | N/A              |
 | singleColumn         | boolean            | N/A              |
 | showRelatedInArticle | boolean            | N/A              |
+| noindex              | boolean            | N/A              |
 
 ### Modify Menus
 

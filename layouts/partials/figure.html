@@ -54,10 +54,10 @@
         class="{{ $classes }} image_processed"
         width="{{ .Width }}"
         height="{{ .Height }}"
-        src="{{ .RelPermalink }}"
+        src="{{ .RelPermalink | absURL }}"
       {{ else }}
         class="{{ $classes }} image_unprocessed"
-        src="{{ $fileWeb }}"
+        src="{{ $fileWeb | absURL }}"
       {{ end }}
       {{ with $cap }}
         title="{{ safeHTML $cap }}"

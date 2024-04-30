@@ -109,6 +109,19 @@ languageMenuName = "🌐"
 # utterancesTheme = "github-light" # Default: github-dark
 # utterancesIssueTerm = "pathname" # Default: pathname
 
+
+# Enable or disable Giscus comments globally. Default to false.
+# giscus = true
+# giscusRepo = "GHUsername/Repository.Name" # Giscus is enabled when this param is set
+# giscusRepoId = "RepositoryID=" # Required for Giscus to work
+# giscusCategory = "Blog"
+# giscusCategoryId = "CategoryID" # Required for Giscus to work
+# giscusMapping = "pathname" # Default: pathname
+# giscusReactionsEnabled = "1" # Default: 1 = true
+# giscusTheme = "dark_protanopia" # Default: dark_dimmed
+# giscusLang = "en" # Default: en
+
+
 # Maximum number of recent posts. (default: 8)
 # numberOfRecentPosts = 8
 

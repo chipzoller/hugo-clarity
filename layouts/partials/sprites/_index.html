@@ -1,0 +1,12 @@
+{{- $icons := slice "closeme" "open-menu" "copy" "carly" "calendar" "mail" "to-top" }}
+{{- $additionalIcons := site.Params.icons }}
+{{- if and $additionalIcons (reflect.IsSlice $additionalIcons) }}
+  {{- range $additionalIcons }}
+    {{- $icons = append . $icons }}
+  {{- end }}
+{{- end }}
+<svg width="0" height="0" class="hidden">
+  {{- range $icons }}
+    {{- partial (printf "sprites/%s" .) . }}
+  {{- end }}
+</svg>

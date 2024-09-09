@@ -258,6 +258,7 @@ These options set global values that some pages or all pages in the site use by 
 | showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
 | enableSearch               | boolean                     | N/A                 |
+| blogDir                    | string                      | no                  |
 
 ### Page Parameters
 

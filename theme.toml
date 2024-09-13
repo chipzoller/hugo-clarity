@@ -6,7 +6,7 @@ homepage = "https://github.com/chipzoller/hugo-clarity"
 demosite = "https://neonmirrors.net/"
 tags = ["blog", "technical", "simple", "dark", "syntax highlighting"]
 features = ["blog", "technical", "simple", "dark", "syntax highlighting"]
-min_version = "0.91.0"
+min_version = "0.128.0"
 
 # If the theme has multiple authors
 authors = [

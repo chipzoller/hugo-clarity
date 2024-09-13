@@ -16,7 +16,7 @@
       {{- else }}
         {{ partial "nav" (dict "context" . "menu" .Site.Menus.main) }}
       {{- end }}
-      {{ if .Site.IsMultiLingual }}
+      {{ if hugo.IsMultilingual }}
       <div class="nav_parent">
         <a href="#" class="nav_item">{{ $params.languageMenuName }}</a>
         <div class="nav_sub">

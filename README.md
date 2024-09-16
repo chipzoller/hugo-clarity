@@ -710,7 +710,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 
 ### Notices
 
-This theme includes functionality to display some "hightlight blocks" - called "notices" using a shortcode.
+This theme includes functionality to display some "highlight blocks" - called "notices" using a shortcode.
 
 For example, see the shortcode markup below will render as a notice:
 

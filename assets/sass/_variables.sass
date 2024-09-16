@@ -110,7 +110,9 @@ html
         img
           background: none
         svg
-          fill: #fafafa
+          fill: #fafafa 
+        &:not(svg)
+          filter: invert(0.87)
       .sidebar
         &_inner
           &::before

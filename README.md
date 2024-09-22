@@ -296,6 +296,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | sidebar              | boolean            | N/A              |
 | singleColumn         | boolean            | N/A              |
 | showRelatedInArticle | boolean            | N/A              |
+| noindex              | boolean            | N/A              |
 
 ### Modify Menus
 
@@ -710,7 +711,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 
 ### Notices
 
-This theme includes functionality to display some "hightlight blocks" - called "notices" using a shortcode.
+This theme includes functionality to display some "highlight blocks" - called "notices" using a shortcode.
 
 For example, see the shortcode markup below will render as a notice:
 

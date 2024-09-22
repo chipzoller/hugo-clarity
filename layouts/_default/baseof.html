@@ -27,6 +27,7 @@
     id="documentTop"
     data-lang="{{ .Lang }}"
   >
+    {{- partialCached "scripts/google/tag-manager" (dict "noscript" true) }}
     {{- partial "header" . }}
     <main>
       {{- block "main" . }}{{ end }}
@@ -34,7 +35,7 @@
 
     {{- partialCached "sprites/_index" . }}
     {{- partialCached "footer" . }}
-    {{- partialCached "scripts" . }}
+    {{- partialCached "scripts/index" . }}
     {{- partialCached "hooks/body-end" . }}
   </body>
 </html>

@@ -5,7 +5,7 @@
   {{- $simple := true }}
   {{- if and (eq $section "support") (eq .CurrentSection .FirstSection) }}
   {{- else }}
-    {{- $placeholder = "Search..." }}
+    {{- $placeholder =  T "blog_search_field_placeholder" }}
     {{- $simple = false }}
   {{ end }}
   <div class="search">

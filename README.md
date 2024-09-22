@@ -827,7 +827,7 @@ Utterances is loaded in the `comments.html` partial by referring to the `utteran
 
 #### Giscus Commenting Support
 
-If you wish use [giscus](https://giscus.app/) comments on your site, you'll need to perform the following:
+If you wish to use [giscus](https://giscus.app/) comments on your site, you'll need to perform the following:
 
  * Ensure your repository is [public](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/setting-repository-visibility#making-a-repository-public), otherwise visitors will not be able to view the discussion.
  * The [giscus app](https://github.com/apps/giscus) is installed, otherwise visitors will not be able to comment and react.

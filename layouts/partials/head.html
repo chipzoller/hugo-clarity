@@ -10,6 +10,9 @@
 {{- end }}
 <title>{{ with $title }}{{ . }} {{ $separator }} {{ end }}{{ .Site.Title }}</title>
 <meta charset="utf-8">
+{{ if .Params.noindex }}
+<meta name="robots" content="noindex" />
+{{ end }}
 {{- with $params.ga_verify }}
   <meta name="google-site-verification" content="{{ . }}">
 {{- end }}

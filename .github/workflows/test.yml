@@ -9,12 +9,12 @@ jobs:
       matrix:
         hugo-version:
           - 'latest'
-          - '0.95.0'
+          - '0.128.0'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: ${{ matrix.hugo-version }}
           extended: true

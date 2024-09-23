@@ -59,20 +59,46 @@
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $summary }}" />
 <meta property="og:image" content="{{ $image }}" />
-{{- $keywords := "" }}
+{{- $mergedKeywords := slice }}
 {{- with $s.keywords }}
-  {{- $keywords = delimit $s.keywords "," }}
+  {{- range . }}
+    {{- $mergedKeywords = $mergedKeywords | append . }}
+  {{- end }}
 {{- end }}
 {{- with $p.keywords }}
-  {{- $keywords = delimit . "," }}
+  {{- range . }}
+    {{- $mergedKeywords = $mergedKeywords | append . }}
+  {{- end }}
 {{- end }}
-{{- with $keywords }}
-  <meta name="keywords" content="{{ $keywords }}" />
+{{- with $s.tags }}
+  {{- range . }}
+    {{- $mergedKeywords = $mergedKeywords | append . }}
+  {{- end }}
+{{- end }}
+{{- with $p.tags }}
+  {{- range . }}
+    {{- $mergedKeywords = $mergedKeywords | append . }}
+  {{- end }}
+{{- end }}
+{{- $mergedKeywordsString := delimit $mergedKeywords "," }}
+{{- with $mergedKeywordsString }}
+  <meta name="keywords" content="{{ $mergedKeywordsString }}" />
 {{- end }}
 {{- if eq .Section $s.blogDir -}}
   {{- $date := ( .Date.Format "2006-02-01") -}}
   {{- $date := (time .Date) }}
   {{- $lastMod := (time .Lastmod) }}
+  {{- $categories := slice }}
+  {{- with $s.categories }}
+    {{- range . }}
+      {{- $categories = $categories | append . }}
+    {{- end }}
+  {{- end }}
+  {{- with $p.categories }}
+    {{- range . }}
+      {{- $categories = $categories | append . }}
+    {{- end }}
+  {{- end }}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -84,6 +110,10 @@
       "url": "{{ $permalink }}",
       "datePublished": {{ $date  }},
       "dateModified": {{ $lastMod }},
+      "keywords": {{ $mergedKeywords }},
+      {{- with $categories }}
+        "articleSection": {{ $categories }},
+      {{- end }}
       "author": {
         "@type": "Person",
         "name": "{{ $author }}"

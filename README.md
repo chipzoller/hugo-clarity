@@ -258,6 +258,7 @@ These options set global values that some pages or all pages in the site use by 
 | showRelatedInSidebar       | boolean                     | no                  |
 | footerLogo                 | string                      | N/A                 |
 | enableSearch               | boolean                     | N/A                 |
+| blogDir                    | string                      | no                  |
 
 ### Page Parameters
 
@@ -295,6 +296,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | sidebar              | boolean            | N/A              |
 | singleColumn         | boolean            | N/A              |
 | showRelatedInArticle | boolean            | N/A              |
+| noindex              | boolean            | N/A              |
 
 ### Modify Menus
 
@@ -709,7 +711,7 @@ customJS = ["js/custom.js"] # Include custom JS files
 
 ### Notices
 
-This theme includes functionality to display some "hightlight blocks" - called "notices" using a shortcode.
+This theme includes functionality to display some "highlight blocks" - called "notices" using a shortcode.
 
 For example, see the shortcode markup below will render as a notice:
 
@@ -814,16 +816,28 @@ You can override these setting from each post individually. For example, you may
 
 #### Utterances Commenting Support
 
- If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
+If you wish use [Utterances](https://github.com/utterance/utterances) comments on your site, you'll need to perform the following:
 
  * Ensure you have a GitHub public repository, which you've granted permissions to the [Utterances GitHub App](https://github.com/apps/utterances).
  * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
  * Set `comments = true` in the `/config/_default/params.toml` file.
  * Configure the utterances parameters in the `/config/_default/params.toml` file.
+ * Optionally, you can choose a label that will be assigned to all issues created by Utterances. The label must exist in your Github repository, as Utterances cannot attach labels that do not exist. Configure `utterancesLabel` parameter in `/config/_default/params.toml` file, after you have added a label to your Github repository Issues labels. Labels are case sensitive and support Emoji in label names. ✨💬✨
 
- Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
+Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
 
+#### Giscus Commenting Support
 
+If you wish to use [giscus](https://giscus.app/) comments on your site, you'll need to perform the following:
+
+ * Ensure your repository is [public](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/setting-repository-visibility#making-a-repository-public), otherwise visitors will not be able to view the discussion.
+ * The [giscus app](https://github.com/apps/giscus) is installed, otherwise visitors will not be able to comment and react.
+ * The Discussions feature is turned on by [enabling it for your repository](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/enabling-or-disabling-github-discussions-for-a-repository).
+ * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
+ * Set `comments = true` in the `/config/_default/params.toml` file.
+ * Configure the giscus parameters in the `/config/_default/params.toml` file.
+
+Giscus is loaded in the `comments.html` partial by referring to the `giscus.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `giscus` parameters are configured.
 
 
 ### Math notation
@@ -842,13 +856,13 @@ mkdir -p layouts/partials && cp themes/clarity/layouts/partials/math.html layout
 Then add the corresponding line as its [README](https://github.com/KaTeX/KaTeX/tree/master/contrib/mhchem) suggested (without the `+` sign):
 
 ```diff
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"></script>
 
-+ <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/mhchem.min.js" integrity="sha384-5gCAXJ0ZgozlShOzzT0OWArn7yCPGWVIvgo+BAd8NUKbCmulrJiQuCVR9cHlPHeG" crossorigin="anonymous"></script>
++ <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/mhchem.min.js" integrity="sha384-ifpG+NlgMq0kvOSGqGQxW1mJKpjjMDmZdpKGq3tbvD3WPhyshCEEYClriK/wRVU0" crossorigin="anonymous"></script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
   onload="renderMathInElement(document.body);"></script>
 ```
 

@@ -79,7 +79,7 @@ mobileNavigation = "left" # if you prefer right change to 'right'
 
 # some site owners want to decide how they would like their sites to be introduced users. These settings give you as a site owner to decide how the user will view your site for the first time.
 
-# please note that you cannot enforce both modes at the same time. i.e by enforcing one mode, you priotise it over the other (by setting it to true). enforceDarkMode will be commented out
+# please note that you cannot enforce both modes at the same time. i.e by enforcing one mode, you prioritise it over the other (by setting it to true). enforceDarkMode will be commented out
 
 # please also not that mode toggle UI will remain in place. That way, if a user prefers darkmode, they can have their way.
 
@@ -102,11 +102,27 @@ languageMenuName = "🌐"
 # Enable or disable comments globally. Default to true.
 # comments = false
 
+# Activate meta ld+json for blog
+blogDir = "post"
+
 # Enable or disable Utterances (https://github.com/utterance/utterances) Github Issue-Based Commenting
-# utterances = true  #Run the utterances script in the single.html layout to load https://utteranc.es comments
+# utterances = true  # Run the utterances script in the single.html layout to load https://utteranc.es comments
 # utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
+# utterancesLabel = "blog comments ✨💬✨" # The label needs to be manually added to your Github repository issues before configuring here
 # utterancesTheme = "github-light" # Default: github-dark
 # utterancesIssueTerm = "pathname" # Default: pathname
+
+# Enable or disable Giscus comments globally. Default to false.
+# giscus = true
+# giscusRepo = "GHUsername/Repository.Name" # Giscus is enabled when this param is set
+# giscusRepoId = "RepositoryID" # Required for Giscus to work
+# giscusCategory = "Blog"
+# giscusCategoryId = "CategoryID" # Required for Giscus to work
+# giscusMapping = "pathname" # Default: pathname
+# giscusReactionsEnabled = "1" # Default: 1 = true
+# giscusTheme = "dark_protanopia" # Default: dark_dimmed
+# giscusLang = "en" # Default: en
+
 
 # Maximum number of recent posts. (default: 8)
 # numberOfRecentPosts = 8
@@ -124,7 +140,7 @@ languageMenuName = "🌐"
 # dateFormat = "2006-01-02" # Default to "Jan 2, 2006".
 # customFonts = false # toggle to true if you want to use custom fonts only.
 
-# The year when ths website was created, this value is used in the copyright
+# The year when this website was created, this value is used in the copyright
 # notice of the footer.
 # since = 2016
 
@@ -141,8 +157,8 @@ name = "Jane Doe"
 [plausible_analytics]
 enable = false # to enable plausible analytics set to true.
 websiteDomain = "example.com" # domain name of your website, most cases same as your base url
-# plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is selfhosted
-# scritpName = "plausible" # default is set to plausible, only required if using a custome name for script
+# plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is self hosted
+# scriptName = "plausible" # default is set to plausible, only required if using a custom name for script
 
 [matomo_analytics]
 enable = false # To enable matomo analytics change to `true`.

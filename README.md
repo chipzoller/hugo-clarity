@@ -826,7 +826,18 @@ If you wish use [Utterances](https://github.com/utterance/utterances) comments o
 
 Utterances is loaded in the `comments.html` partial by referring to the `utterances.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `utterances` parameters are configured.
 
+#### Giscus Commenting Support
 
+If you wish to use [giscus](https://giscus.app/) comments on your site, you'll need to perform the following:
+
+ * Ensure your repository is [public](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/setting-repository-visibility#making-a-repository-public), otherwise visitors will not be able to view the discussion.
+ * The [giscus app](https://github.com/apps/giscus) is installed, otherwise visitors will not be able to comment and react.
+ * The Discussions feature is turned on by [enabling it for your repository](https://docs.github.com/en/github/administering-a-repository/managing-repository-settings/enabling-or-disabling-github-discussions-for-a-repository).
+ * Comment out the line for `disqusShortname = ""` in the `/config/_default/config.toml` file.
+ * Set `comments = true` in the `/config/_default/params.toml` file.
+ * Configure the giscus parameters in the `/config/_default/params.toml` file.
+
+Giscus is loaded in the `comments.html` partial by referring to the `giscus.html` partial.   Since `single.html` layout loads comments if comments are enabled, you must ensure *both* the `comments` and `giscus` parameters are configured.
 
 
 ### Math notation

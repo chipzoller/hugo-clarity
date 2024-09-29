@@ -5,5 +5,8 @@
   {{ if .Site.Params.utterances }}
     {{ template "partials/utterances.html" . }}
   {{ end }}
+  {{ if .Site.Params.giscus }}
+    {{ template "partials/giscus.html" . }}
+  {{ end }}
   <!-- add custom comments markup here -->
 </div>

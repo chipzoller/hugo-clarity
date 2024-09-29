@@ -102,12 +102,27 @@ languageMenuName = "🌐"
 # Enable or disable comments globally. Default to true.
 # comments = false
 
+# Activate meta ld+json for blog
+blogDir = "post"
+
 # Enable or disable Utterances (https://github.com/utterance/utterances) Github Issue-Based Commenting
 # utterances = true  # Run the utterances script in the single.html layout to load https://utteranc.es comments
 # utterancesRepo = "GHUsername/Repository.Name" # Utterances is enabled when this param is set
 # utterancesLabel = "blog comments ✨💬✨" # The label needs to be manually added to your Github repository issues before configuring here
 # utterancesTheme = "github-light" # Default: github-dark
 # utterancesIssueTerm = "pathname" # Default: pathname
+
+# Enable or disable Giscus comments globally. Default to false.
+# giscus = true
+# giscusRepo = "GHUsername/Repository.Name" # Giscus is enabled when this param is set
+# giscusRepoId = "RepositoryID" # Required for Giscus to work
+# giscusCategory = "Blog"
+# giscusCategoryId = "CategoryID" # Required for Giscus to work
+# giscusMapping = "pathname" # Default: pathname
+# giscusReactionsEnabled = "1" # Default: 1 = true
+# giscusTheme = "dark_protanopia" # Default: dark_dimmed
+# giscusLang = "en" # Default: en
+
 
 # Maximum number of recent posts. (default: 8)
 # numberOfRecentPosts = 8

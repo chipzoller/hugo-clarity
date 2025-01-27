@@ -167,3 +167,9 @@ matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracke
 
 # Umami Analytics -- https://umami.is/
 # umami_data_website_id = "GUID-8-4-4-4-12" # Umami Analytics data website id - GUID format (8-4-4-4-12)
+
+[cdn] # a CDN shortcode to generate links for your images and files in buckets such as B2, S3, etc.  
+# url = "https://some.url.scheme/"  # your base CDN url such as "https://images.site.com/" (including the trailing slash)
+# imagesdir = "images/" # Include trailing slash -- this is where you store images
+# filesdir = "files/" # Include trailing slash -- this is where you store files to be downloaded
+# hotlinkdir = "images/hotlink-ok/" # Include trailing slash -- this is where you store images that are allowed to be hotlinked

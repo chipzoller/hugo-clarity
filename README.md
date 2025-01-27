@@ -963,6 +963,23 @@ __Search Scope__
 
      For example, with the above setup, searching from the homepage will produce results from the entire site.
 
+### Basic Content Delivery Network (CDN) for Images and Files
+
+If you intend to host images and files, you may decide you do not want to include them in your Git repository, as this can bloat the repository size.  If you create a basic CDN for your Hugo Site, this shortcode can assist with the embeds.  A basic CDN could be something like an S3 bucket, B2 bucket, B2 bucket behind Cloudflare transforms, etc.
+
+In `params.toml`, configure the `[cdn]` section to include the following.  These are used by the "cdn" partial to generate the correct URLs for images and files:
+
+* `url` -- your base CDN url such as "https://images.site.com/" (including the trailing slash)
+* `imagesdir` = The url path for image files, such as "images/" (including the  trailing slash)
+* `filesdir` = The url path for downloadable files, such as "files/" (including the trailing slash)
+* `hotlinkdir` = The url path for images that can be hotlinked, such as "images/hotlink-ok/" (including the trailing slash)
+
+With the params in place, you can use the shortcode as follows: `{{< cdn [img|file|hlimg] [filename.extension] [alt name or link name] >}}`
+* Example: `{{< cdn img "avatar.jpg" "My Avatar" >}}`
+* Example: `{{< cdn file "resume.pdf" "My Resume" >}}`
+* Example: `{{< cdn hlimg "hotlinkable-image.jpg" "My Image You Can Reference On Your Site" >}}`
+
+
 ## Contributing
 
 Please read our [contribution guidelines](CONTRIBUTING.md), and thank you for being involved!

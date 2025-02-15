@@ -51,3 +51,7 @@ src='https://{{ default "plausible.io" $plausible.plausibleDomain }}/js/{{ defau
 <noscript><p><img src="//{{ $matomo.matomoDomain }}/matomo.php?idsite={{ default 1 $matomo.matomoSiteID }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Matomo Code -->
 {{- end }}
+
+{{- with $config.umami_data_website_id }}
+<script defer src="{{ $config.umami_script_url }}" data-website-id="{{ . }}"></script>
+{{- end }}

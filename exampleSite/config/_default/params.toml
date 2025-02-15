@@ -164,3 +164,7 @@ enable = false # To enable matomo analytics change to `true`.
 websiteDomain = "example.com" # Set the domain name of your website, in most cases same as your base URL this is required.
 matomoDomain = "matomo.example.com" # Set to Matomo domain
 matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracked
+
+# Umami Analytics -- https://umami.is/
+# umami_data_website_id = "GUID-8-4-4-4-12" # Umami Analytics data website id - GUID format (8-4-4-4-12)
+# umami_script_url = "https://cloud.umami.is/script.js" # Umami Analytics script URL

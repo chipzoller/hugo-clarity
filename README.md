@@ -339,7 +339,10 @@ If using Matomo Analytics, configure the `matomo_analytics` global parameters in
 
 `matomoSiteID`  Default is set to 1, change this to the siteid being tracked
 
-If using [Umami Analytics](https://umami.is/), uncomment and configure the `umami_data_website_id` global parameter in your site with the data website ID provided in the script by Umami.  It should be in the form of a GUID (# characters):  8-4-4-4-12.  
+If using [Umami Analytics](https://umami.is/), uncomment and configure the following in *params.toml*:
+
+* `umami_data_website_id` - The data website ID provided in the script by Umami.  It should be in the form of a GUID (# characters):  8-4-4-4-12.
+* `umami_script_url` - This is pre-loaded with the cloud-hosted Umami Script URL, but can be changed if you are self-hosting.
 
 > NOTE:  The head partial only loads analytics if the hugo environment is NOT `development`.  
 

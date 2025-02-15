@@ -15,7 +15,7 @@ categories = [
     "temas",
     "sintaxe",
 ]
-series = ["Guia de Temas"]
+series = "Guia de Temas"
 aliases = ["migrar-de-jekyl"]
 thumbnail = "images/building.png"
 +++

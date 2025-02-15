@@ -29,13 +29,13 @@
       {{- .Content }}
     </div>
 
-    {{- $showRelatedInArticle := true }}
-    {{- if eq $s.showRelatedInArticle false }}
-      {{- $showRelatedInArticle = false }}
+    {{- $showRelatedInArticle := $s.showRelatedInArticle }}
+    {{- if eq $p.showRelatedInArticle true }}
+      {{- $showRelatedInArticle = true }}
     {{- else if eq $p.showRelatedInArticle false }}
       {{- $showRelatedInArticle = false }}
     {{- end }}
-    {{- if ne $showRelatedInArticle false }}
+    {{- if (and ($showRelatedInArticle) (isset $p "series")) }}
       {{- partial "related" . }}
     {{- end }}
 

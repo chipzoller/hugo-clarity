@@ -1,5 +1,7 @@
 {{- $showShare := ne (.Param "showshare") false }}
 {{- $showDate := ne (.Param "showdate") false }}
+{{- $showLastmod := default false (.Param "showLastmod") }}
+{{- $lastmodSeparator := default "/" (.Param "lastmodSeparator") }}
 {{- $showReadTime := ne (.Param "showreadtime") false }}
 {{- $showPostMeta := or ($showShare) ($showDate) ($showReadTime) (isset .Params "tags") }}
 {{- $scratch := newScratch }}
@@ -11,6 +13,10 @@
     <span>{{ partial "sprite" (dict "icon" "calendar") }}</span>
     <span class="post_date">
       {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) -}}
+      {{ if (and $showLastmod (ne .Date .Lastmod)) }}
+        {{ $lastmodSeparator }} <time datetime="{{ .Lastmod.Format "Mon Jan 10 17:13:38 2020 -0700" }}">
+        {{ .Lastmod.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) }}</time>
+      {{ end }}	  
     </span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}

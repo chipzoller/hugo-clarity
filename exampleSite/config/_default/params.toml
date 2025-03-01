@@ -3,7 +3,7 @@ enableSearch = true
 
 # socials
 twitter = "@janedoe"
-largeTwitterCard = false # set to true if you want to show a large twitter card image. The default is a small twitter card image
+largeTwitterCard = false                                                                          # set to true if you want to show a large twitter card image. The default is a small twitter card image
 introDescription = "Technologist, perpetual student, teacher, continual incremental improvement."
 # introURL = "about/" # set the url for the 'read more' button below the introDescription, or set to false to not show the button
 # description = "A theme based on VMware's Clarity Design System for publishing technical blogs with Hugo." # Set your site's meta tag (SEO) description here. Alternatively set this description in your home page content file e.g. content/_index.md. Whatever is set in the latter will take precedence.
@@ -67,7 +67,9 @@ codeLineNumbers = false
 enableMathNotation = false
 
 # directory(s) where your articles are located
-mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
+mainSections = [
+  "post",
+] # see config details here https://gohugo.io/functions/where/#mainsections
 
 # Label Non inline images on an article body
 figurePositionShow = false # toggle on or off globally
@@ -154,17 +156,23 @@ name = "Jane Doe"
 # photo = "images/jane-doe.png" #include this if you would like to show the author photo on the sidebar
 
 [plausible_analytics]
-enable = false # to enable plausible analytics set to true.
+enable = false                # to enable plausible analytics set to true.
 websiteDomain = "example.com" # domain name of your website, most cases same as your base url
 # plausibleDomain = "plausible.io" # default is set to plausible.io, only required if plausible is self hosted
 # scriptName = "plausible" # default is set to plausible, only required if using a custom name for script
 
 [matomo_analytics]
-enable = false # To enable matomo analytics change to `true`.
-websiteDomain = "example.com" # Set the domain name of your website, in most cases same as your base URL this is required.
+enable = false                      # To enable matomo analytics change to `true`.
+websiteDomain = "example.com"       # Set the domain name of your website, in most cases same as your base URL this is required.
 matomoDomain = "matomo.example.com" # Set to Matomo domain
-matomoSiteID = "1" # Default is set to 1, change this to the siteid being tracked
+matomoSiteID = "1"                  # Default is set to 1, change this to the siteid being tracked
 
 # Umami Analytics -- https://umami.is/
 # umami_data_website_id = "GUID-8-4-4-4-12" # Umami Analytics data website id - GUID format (8-4-4-4-12)
 # umami_script_url = "https://cloud.umami.is/script.js" # Umami Analytics script URL
+
+[cdn] # a CDN shortcode to generate links for your images and files in buckets such as B2, S3, etc.  
+url = "https://some.url.scheme/"  # your base CDN url such as "https://images.site.com/" (including the trailing slash)
+imagesdir = "images/"             # Include trailing slash -- this is where you store images
+filesdir = "files/"               # Include trailing slash -- this is where you store files to be downloaded
+hotlinkdir = "images/hotlink-ok/" # Include trailing slash -- this is where you store images that are allowed to be hotlinked

@@ -18,8 +18,10 @@ categories:
   - syntax
 tags:
   - Hugo
-series:
-  - Themes Guide
+series: Themes Guide
+# the following overrides the settings from params.toml:
+showRelatedInArticle: true
+showRelatedInSidebar: true
 ---
 
 [Page bundles](https://gohugo.io/content-management/page-bundles/) are an optional way to [organize page resources](https://gohugo.io/content-management/page-resources/) within Hugo.

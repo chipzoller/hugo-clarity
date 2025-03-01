@@ -260,6 +260,7 @@ These options set global values that some pages or all pages in the site use by 
 | footerLogo                 | string                      | N/A                 |
 | enableSearch               | boolean                     | N/A                 |
 | blogDir                    | string                      | no                  |
+| cdn                        | map                         | no                  |
 
 ### Page Parameters
 
@@ -339,7 +340,10 @@ If using Matomo Analytics, configure the `matomo_analytics` global parameters in
 
 `matomoSiteID`  Default is set to 1, change this to the siteid being tracked
 
-If using [Umami Analytics](https://umami.is/), uncomment and configure the `umami_data_website_id` global parameter in your site with the data website ID provided in the script by Umami.  It should be in the form of a GUID (# characters):  8-4-4-4-12.  
+If using [Umami Analytics](https://umami.is/), uncomment and configure the following in *params.toml*:
+
+* `umami_data_website_id` - The data website ID provided in the script by Umami.  It should be in the form of a GUID (# characters):  8-4-4-4-12.
+* `umami_script_url` - This is pre-loaded with the cloud-hosted Umami Script URL, but can be changed if you are self-hosting.
 
 > NOTE:  The head partial only loads analytics if the hugo environment is NOT `development`.  
 
@@ -975,10 +979,9 @@ In `params.toml`, configure the `[cdn]` section to include the following.  These
 * `hotlinkdir` = The url path for images that can be hotlinked, such as "images/hotlink-ok/" (including the trailing slash)
 
 With the params in place, you can use the shortcode as follows: `{{< cdn [img|file|hlimg] [filename.extension] [alt name or link name] >}}`
-* Example: `{{< cdn img "avatar.jpg" "My Avatar" >}}`
-* Example: `{{< cdn file "resume.pdf" "My Resume" >}}`
-* Example: `{{< cdn hlimg "hotlinkable-image.jpg" "My Image You Can Reference On Your Site" >}}`
-
+* Example: `{{< cdn "img" "avatar.jpg" "My Avatar" >}}`
+* Example: `{{< cdn "file" "resume.pdf" "My Resume" >}}`
+* Example: `{{< cdn "hlimg" "hotlinkable-image.jpg" "My Image You Can Reference On Your Site" >}}`
 
 ## Contributing
 

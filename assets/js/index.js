@@ -308,28 +308,25 @@ function fileClosure(){
     hljs.initHighlightingOnLoad();
   }
 
-  function largeImages(baseParent, images = []) {
-    if(images) {
-      images.forEach(function(image) {
-        window.setTimeout(function(){
-          let actualWidth = image.naturalWidth;
-          let parentWidth = baseParent.offsetWidth;
-          let actionableRatio = actualWidth / parentWidth;
+ function mark_image_as_scalable(baseParent, image) {
+  let actualWidth = image.naturalWidth;
+  let parentWidth = baseParent.offsetWidth;
+  let actionableRatio = actualWidth / parentWidth;
 
-          if (actionableRatio > 1) {
-            pushClass(image.parentNode.parentNode, imageScalableClass);
-            image.parentNode.parentNode.dataset.scale = actionableRatio;
-          }
-        }, 100)
-      });
-    }
+  if (actionableRatio > 1) {
+    pushClass(image.parentNode.parentNode, imageScalableClass);
+    image.parentNode.parentNode.dataset.scale = actionableRatio;
   }
+ }
 
   (function AltImage() {
     let post = elem('.post_content');
     let images = post ? post.querySelectorAll('img') : false;
     images ? populateAlt(images) : false;
-    largeImages(post, images);
+
+    images.forEach((image) => image.addEventListener('load', (e) => {
+      mark_image_as_scalable(post, image);
+    }));
   })();
 
   doc.addEventListener('click', function(event) {

@@ -40,21 +40,23 @@
       </div>
     {{ end }}
 
-    {{- $relatedInSidebar := true }}
-    {{- if eq $s.showRelatedInSidebar false }}
-      {{ $relatedInSidebar = false }}
+    {{- $showRelatedInSidebar := $s.showRelatedInSidebar }}
+    {{- if eq .Params.showRelatedInSidebar true }}
+      {{- $showRelatedInSidebar = true }}
+    {{- else if eq .Params.showRelatedInSidebar false }}
+      {{- $showRelatedInSidebar = false }}
     {{- end }}
-    {{ if (and ($relatedInSidebar) (isset .Params "series") ) }}
+    {{- if (and ($showRelatedInSidebar) (isset .Params "series")) }}
       {{$related := where .Site.RegularPages ".Params.series" "eq" .Params.series }}
-	    <h2 class="mt-4">{{ T "series_posts" }}</h2>
+      <h2 class="mt-4">{{ T "series_posts" }}</h2>
       <ul>
-        {{ range $related }}
+        {{ range sort $related "Date" }}
         <li>
           <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
         </li>
         {{ end }}
       </ul>
-    {{ end }}
+    {{- end }}
 
     {{- $posts := where .Site.RegularPages "Type" "in" $s.mainSections }}
     {{- $featured := default 8 $s.numberOfFeaturedPosts }}

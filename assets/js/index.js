@@ -397,6 +397,10 @@ function fileClosure(){
   })();
 
   (function navToggle() {
+    elems('.nav_parent').forEach((link) => link.addEventListener('mouseleave', function(event) {
+      modifyClass(event.target.children[0], 'nav_open');
+    }));
+
     doc.addEventListener('click', function(event){
       const target = event.target;
       const open = 'jsopen';

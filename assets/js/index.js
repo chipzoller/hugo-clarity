@@ -327,7 +327,7 @@ function fileClosure(){
 
   (function AltImage() {
     let post = elem('.post_content');
-    let images = post ? post.querySelectorAll('img') : false;
+    let images = post ? post.querySelectorAll('img') : [];
     images ? populateAlt(images) : false;
     largeImages(post, images);
   })();

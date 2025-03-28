@@ -270,6 +270,7 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 |:-------------------- | ------------------ | ---------------- |
 | title                | string             | N/A              |
 | date                 | date               | N/A              |
+| lastmod              | date               | N/A              |
 | description          | string             | N/A              |
 | keywords             | array of strings   | yes              |
 | introDescription     | string             | yes              |
@@ -293,6 +294,8 @@ These options can be set from a page [frontmatter](https://gohugo.io/content-man
 | comments             | boolean            | yes              |
 | enableMathNotation   | boolean            | yes              |
 | showDate             | boolean            | N/A              |
+| showLastmod          | boolean            | N/A              |
+| lastmodSeparator     | string             | N/A              |
 | showShare            | boolean            | N/A              |
 | showReadTime         | boolean            | N/A              |
 | sidebar              | boolean            | N/A              |

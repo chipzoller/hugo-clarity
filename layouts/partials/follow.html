@@ -2,15 +2,19 @@
 .Site.Menus.social }} {{- with $social }} {{- $items = . }} {{- end }}
 <div class="follow">
     {{- range $items }} {{- $url := .URL }} {{- $label := lower .Name }} {{-
-    $verify := false }} {{- if eq $social nil }} {{ $url = .url }} {{ $label =
-    lower .item }} {{ $verify = .verify }} {{- else }} {{ $verify =
-    .Params.verify }} {{- end }} {{- if and (eq (hasPrefix $url $base) false)
-    (eq (hasPrefix $url "http") false) }} {{ $url = absLangURL $url }} {{- end
-    }} {{- if and (eq $label "mastodon") ($verify) }}
+    $verify := false }} {{- if eq $social nil }} {{- $url = .url }} {{- $label =
+    lower .item }} {{- if isset . "verify" }} {{- $verify = .verify }} {{- end
+    }} {{- else }} {{- if isset .Params "verify" }} {{- $verify = .Params.verify
+    }} {{- end }} {{- end }} {{- if and (eq (hasPrefix $url $base) false) (eq
+    (hasPrefix $url "http") false) }} {{- $url = absLangURL $url }} {{- end }}
+    {{- if and (eq $label "mastodon") $verify }}
     <a rel="me" href="{{ $url }}">
-        {{ partial "sprite" (dict "icon" $label) }} Mastodon
+        <svg class="icon">
+            <title>mastodon</title>
+            <use xlink:href="#mastodon"></use>
+        </svg>
+        Mastodon
     </a>
-    {{- else }}
-    <a href="{{ $url }}"> {{ partial "sprite" (dict "icon" $label) }} </a>
-    {{- end }} {{- end }} {{- partialCached "mode" . }}
+    {{- else }} {{- partial "sprite" (dict "icon" $label) }} {{- end }} {{- end
+    }} {{- partialCached "mode" . }}
 </div>

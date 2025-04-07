@@ -2,13 +2,23 @@
 .Site.Menus.social }} {{- with $social }} {{- $items = . }} {{- end }}
 <div class="follow">
     {{- range $items }} {{- $url := .URL }} {{- $label := lower .Name }} {{-
-    $verify := false }} {{- if eq $social nil }} {{ $url = .url }} {{ $label =
-    lower .item }} {{ $verify = .verify }} {{- else }} {{ $verify =
-    .Params.verify }} {{- end }} {{- if and (eq (hasPrefix $url $base) false)
-    (eq (hasPrefix $url "http") false) }} {{ $url = absLangURL $url }} {{- end
-    }}
+    $verify := false }}
+
+    <!-- Debug info -->
+    <!-- {{ printf "Processing item: %s" $label }} -->
+
+    {{- if eq $social nil }} {{ $url = .url }} {{ $label = lower .item }} {{-
+    with .verify }} {{ $verify = . }}
+    <!-- {{ printf "Found verify property in data: %t" $verify }} -->
+    {{- end }} {{- else }} {{- with .Params.verify }} {{ $verify = . }}
+    <!-- {{ printf "Found verify property in menu: %t" $verify }} -->
+    {{- end }} {{- end }} {{- if and (eq (hasPrefix $url $base) false) (eq
+    (hasPrefix $url "http") false) }} {{ $url = absLangURL $url }} {{- end }}
+
     <a href="{{ $url }}"> {{ partial "sprite" (dict "icon" $label) }} </a>
+
     {{- if and (eq $label "mastodon") $verify }}
+    <!-- {{ printf "Rendering Mastodon verification link" }} -->
     <a rel="me" href="{{ $url }}">Mastodon</a>
     {{- end }} {{- end }} {{- partialCached "mode" . }}
 </div>

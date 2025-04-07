@@ -17,7 +17,7 @@
 
     <a href="{{ $url }}"> {{ partial "sprite" (dict "icon" $label) }} </a>
 
-    {{- if and (eq $label "mastodon") $verify }}
+    {{- if eq $label "mastodon" }}
     <!-- {{ printf "Rendering Mastodon verification link" }} -->
     <a rel="me" href="{{ $url }}">Mastodon</a>
     {{- end }} {{- end }} {{- partialCached "mode" . }}

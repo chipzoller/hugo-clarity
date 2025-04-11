@@ -1,15 +1,3 @@
-// add custom js in this file
-function checkReferer() {
-    var referer = document.referrer;
-    var sourceUrl = 'https://edwardgaming.github.io/link/';
-    console.log(referer);
-    if (referer.startsWith(sourceUrl)) {
-        window.location.href = 'https://edwardgaming.github.io/link/';
-    }
-}
-window.onload = checkReferer;
-
-// vim key bindings
 let gPressCount = 0;
 let lastKeyPressTime = 0;
 const doublePressTimeout = 500;

@@ -53,5 +53,5 @@ src='https://{{ default "plausible.io" $plausible.plausibleDomain }}/js/{{ defau
 {{- end }}
 
 {{- with $config.umami_data_website_id }}
-<script defer src="https://cloud.umami.is/script.js" data-website-id="{{ . }}"></script>
+<script defer src="{{ $config.umami_script_url }}" data-website-id="{{ . }}"></script>
 {{- end }}

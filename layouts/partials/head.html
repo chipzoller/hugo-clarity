@@ -21,6 +21,7 @@
 {{- if (ne hugo.Environment "development") }}
   {{- partialCached "analytics" . }}
 {{- end }}
+{{- partialCached "mastodon" . }}
 {{- partial "opengraph" . }}
 {{- partialCached "favicon" . }}
 <link rel="canonical" href="{{ .Permalink }}">

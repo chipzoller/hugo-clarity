@@ -261,6 +261,7 @@ These options set global values that some pages or all pages in the site use by 
 | enableSearch               | boolean                     | N/A                 |
 | blogDir                    | string                      | no                  |
 | cdn                        | map                         | no                  |
+| mastodon                   | boolean                     | no                  |
 
 ### Page Parameters
 
@@ -348,7 +349,22 @@ If using [Umami Analytics](https://umami.is/), uncomment and configure the follo
 * `umami_data_website_id` - The data website ID provided in the script by Umami.  It should be in the form of a GUID (# characters):  8-4-4-4-12.
 * `umami_script_url` - This is pre-loaded with the cloud-hosted Umami Script URL, but can be changed if you are self-hosting.
 
-> NOTE:  The head partial only loads analytics if the hugo environment is NOT `development`.  
+> NOTE:  The head partial only loads analytics if the hugo environment is NOT `development`.
+
+### Mastodon verification
+
+When you link to this website from your profile, Mastodon will
+check that the website links back to your profile and show a visual indicator on it.
+So you can verify your identity on Mastodon.
+
+Edit `params.toml` to adjust your site configuration.
+
+```toml
+[mastodon]
+verify = false               # To enable Mastodon verification change to `true`.
+instance = "mastodon.social" # Set to Matodon instance name
+username = "johndoe"         # Set to Matodon username (without instance name)
+```
 
 ### Blog directory
 

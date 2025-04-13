@@ -1,0 +1,6 @@
+{{- $config := site.Params }}
+{{- with $config.mastodon }}
+  {{- if .verify }}
+    <a rel="me" href="https://{{ .instance }}/@{{ .username }}">Mastodon</a>
+  {{- end }}
+{{- end }}

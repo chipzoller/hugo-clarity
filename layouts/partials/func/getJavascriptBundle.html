@@ -20,7 +20,13 @@
 {{ $mainScriptPath := "js/index.js" }}
 {{ $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
 
+{{ $keybindingsScriptPath := "js/keybindings.js" }}
+{{ if (fileExists "../../assets/js/keybindings.js") }}
+  {{ $keybindingsScriptPath := "../../assets/js/keybindings.js" }}
+{{ end }}
+{{ $keybindings := resources.Get $keybindingsScriptPath | resources.ExecuteAsTemplate $keybindingsScriptPath . }}
+
 {{ $bundlePath := (printf "%s/js/bundle.js" .Lang ) }}
-{{ $bundle := slice $highlight $variables $functions $code $main $custom | resources.Concat $bundlePath | resources.Fingerprint "sha512" }}
+{{ $bundle := slice $highlight $variables $functions $code $main $custom $keybindings | resources.Concat $bundlePath | resources.Fingerprint "sha512" }}
 
 {{ return $bundle }}

@@ -1,3 +1,11 @@
+// keybindigs:
+
+// gg -> scroll to top of page
+// shift + g -> scroll to bottom of page
+// shift + n -> toggle night mode
+// j/k -> scroll up/down half page
+// / -> focus search bar
+
 let gPressCount = 0;
 let lastKeyPressTime = 0;
 const doublePressTimeout = 500;

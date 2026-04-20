@@ -46,7 +46,15 @@
   {{- $scratch.Add "classes" " image_internal" -}}
   {{ $file = (path.Clean $file) }}
   {{- if eq $bundle true -}}
-    {{ $image = .Resources.GetMatch $file }}
+    {{ $image = .Page.Resources.GetMatch $file }}
+    {{- if $image -}}
+      {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $image = "" -}}
+        {{- $scratch.Add "classes" " image_svg" -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $bundle = false -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 

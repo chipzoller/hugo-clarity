@@ -1,5 +1,5 @@
 {{- $base := absURL "" }}
-{{- $items := .Site.Data.social }}
+{{- $items := hugo.Data.social }}
 {{- $social := .Site.Menus.social }}
 {{- with $social }}
   {{- $items = . }}

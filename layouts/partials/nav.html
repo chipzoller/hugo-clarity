@@ -1,6 +1,6 @@
 {{- $menu := .menu }}
 {{- $iconsDir := default "icons/" site.Params.iconsDir }}
-{{ $menuData := site.Data.menu }}
+{{ $menuData := hugo.Data.menu }}
 {{- $link := .context.Permalink }}
 {{- $url := "" }}
 {{- $name := "" }}

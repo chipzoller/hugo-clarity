@@ -20,6 +20,10 @@ google_tag_manager_id = ""
 # Baidu analytics Id
 # baidu_analytics = "XXXXXXXX"
 
+# Umami Analytics -- https://umami.is/
+# umami_data_website_id = "GUID-8-4-4-4-12" # Umami Analytics data website id - GUID format (8-4-4-4-12)
+# umami_script_url = "https://cloud.umami.is/script.js" # Umami Analytics script URL
+
 # limit the number of taxonomies links shown on the sidebar of each page by default.
 numberOfTagsShown = 14 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
 
@@ -167,10 +171,6 @@ enable = false                      # To enable matomo analytics change to `true
 websiteDomain = "example.com"       # Set the domain name of your website, in most cases same as your base URL this is required.
 matomoDomain = "matomo.example.com" # Set to Matomo domain
 matomoSiteID = "1"                  # Default is set to 1, change this to the siteid being tracked
-
-# Umami Analytics -- https://umami.is/
-# umami_data_website_id = "GUID-8-4-4-4-12" # Umami Analytics data website id - GUID format (8-4-4-4-12)
-# umami_script_url = "https://cloud.umami.is/script.js" # Umami Analytics script URL
 
 [cdn] # a CDN shortcode to generate links for your images and files in buckets such as B2, S3, etc.  
 url = "https://some.url.scheme/"  # your base CDN url such as "https://images.site.com/" (including the trailing slash)

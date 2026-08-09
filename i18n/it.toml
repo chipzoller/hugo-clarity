@@ -1,0 +1,72 @@
+[read_more]
+other = "Continua a leggere"
+
+[copyright]
+other = "Copyright"
+
+[all_rights]
+other = "Tutti i diritti sono riservati"
+
+[share_on]
+other = "Condividi su"
+
+[featured_posts]
+other = "Articoli in evidenza"
+
+[recent_posts]
+other = "Articoli recenti"
+
+[404_title]
+other = "Perso"
+
+[could_not_find]
+other = "Non è possibile trovare la pagina che stavi cercando"
+
+[go_back]
+other = "Torna indietro"
+
+[translations]
+other = "Traduzioni"
+
+[categories]
+other = "Categorie"
+
+[tags]
+other = "Tag"
+
+[series]
+other = "Serie"
+
+[all_categories]
+other = "Tutte le categorie"
+
+[all_tags]
+other = "Tutti i tag"
+
+[all_series]
+other = "Tutte le serie"
+
+[overview]
+other = "Panoramica"
+
+[reading_time]
+other = "{{ .ReadingTime }} min lettura"
+
+[series_posts]
+other = "Articoli in questa serie" # search
+
+# search
+[quick_links]
+  other = "Risultati"
+[no_matches]
+  other = "Nessun risultato trovato"
+[search_field_placeholder]
+  other = "Cerca nell'archivio"
+[blog_search_field_placeholder]
+  other = "Cerca..."
+[search_results_label]
+  other = "Risultati di ricerca"
+[short_search_query]
+  other = "La richiesta è troppo corta"
+[type_to_search]
+  other = "Digita per iniziare la ricerca"

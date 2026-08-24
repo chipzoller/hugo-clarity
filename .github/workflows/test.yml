@@ -10,7 +10,7 @@ jobs:
         hugo-version:
           - 'latest'
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v7
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

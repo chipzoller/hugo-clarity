@@ -9,9 +9,8 @@ jobs:
       matrix:
         hugo-version:
           - 'latest'
-          - '0.143.1'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

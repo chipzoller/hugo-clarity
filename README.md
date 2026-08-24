@@ -123,7 +123,7 @@ There are several ways to use this theme:
 
 For trying out the theme, quick experimentation, and to contribute Pull Requests, Gitpod is the easiest option. Use the button above and it will spin up a prebuilt environment with a site ready to go.
 
-If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://www.gitpod.io/docs/browser-extension). [Read more about contributing to Hugo Clarity](CONTRIBUTING.md)
+If you want to contribute a PR, [this is a good overview of that process](https://jldec.me/using-gitpod-to-create-a-pr), and there's also an [optional browser extension](https://ona.com/docs/classic/user/introduction/getting-started/quickstart/overview#installing-the-gitpod-browser-extension). [Read more about contributing to Hugo Clarity](CONTRIBUTING.md)
 
 ### Option 1b: Development on your machine
 

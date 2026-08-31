@@ -1,0 +1,72 @@
+[read_more]
+other = "Ćíst dál"
+
+[copyright]
+other = "Copyright"
+
+[all_rights]
+other = "Všechna práva vyhrazena"
+
+[share_on]
+other = "Sdílet dál"
+
+[featured_posts]
+other = "Vybrané příspěvky"
+
+[recent_posts]
+other = "Nedávné příspěvky"
+
+[404_title]
+other = "Ztraceno"
+
+[could_not_find]
+other = "Nemůžeme najít stránku, kterou hledáte"
+
+[go_back]
+other = "Jdi zpět"
+
+[translations]
+other = "Překlady"
+
+[categories]
+other = "Kategorie"
+
+[tags]
+other = "Tagy"
+
+[series]
+other = "Series"
+
+[all_categories]
+other = "Všechny kategorie"
+
+[all_tags]
+other = "Všechny tagy"
+
+[all_series]
+other = "All Series"
+
+[overview]
+other = "Přehled"
+
+[reading_time]
+other = "doba čtení {reading time} min"
+
+[series_posts]
+other = "Posts in this series"
+
+# search
+[quick_links]
+  other = "Výsledky"
+[no_matches]
+  other = "Nenalezeny žádné výsledky"
+[search_field_placeholder]
+  other = "Hledej ve znalostní bázi"
+[blog_search_field_placeholder]
+  other = "Hledej..."
+[search_results_label]
+  other = "Výsledky vyhledávání"
+[short_search_query]
+  other = "Dotaz je příliš krátký"
+[type_to_search]
+  other = "Pište pro hledání"

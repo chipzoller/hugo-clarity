@@ -50,7 +50,7 @@ other = "All Series"
 other = "Přehled"
 
 [reading_time]
-other = "doba čtení {reading time} min"
+other = "Doba čtení {{ .ReadingTime }} min"
 
 [series_posts]
 other = "Posts in this series"

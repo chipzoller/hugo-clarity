@@ -1,11 +1,13 @@
 [en]
   title = "Clarity"
-  LanguageName = "English"
+  label = "English" # label was added in Hugo v0.158.0
+  LanguageName = "English" # LanguageName was deprecated in Hugo v0.158.0
   weight = 1
 
 [pt]
   title = "Claridade" # just for the sake of showing this is possible
-  LanguageName = "Português"
+  label = "Português" # label was added in Hugo v0.158.0
+  LanguageName = "Português" # LanguageName was deprecated in Hugo v0.158.0
   weight = 2
 
   # tip: assign the default language the lowest Weight

@@ -1,2 +1,6 @@
 .DS_Store
 public
+
+# IDEs
+.vscode/
+.idea/

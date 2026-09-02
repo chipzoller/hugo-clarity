@@ -22,7 +22,13 @@
         <div class="nav_sub">
           <span class="nav_child"></span>
           {{ range .Site.Home.AllTranslations }}
-          <a href="{{ .Permalink }}" class="nav_child nav_item">{{ .Language.LanguageName }}</a>
+          <a href="{{ .Permalink }}" class="nav_child nav_item">
+            {{- if lt hugo.Version "0.158.0" -}}
+            {{ .Language.LanguageName }}
+            {{- else -}}
+            {{ .Language.Label }}
+            {{- end -}}
+          </a>
           {{ end }}
         </div>
       </div>

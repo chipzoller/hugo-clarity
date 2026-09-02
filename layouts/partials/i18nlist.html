@@ -4,7 +4,13 @@
   <h3 class="mb-0">{{ T "translations" }}:</h3>
   <nav class="tags_nav">
     {{ range $index, $_ := . }}
-      <a href="{{ .Permalink }}" class="post_tag button button_translucent">{{ replace (printf "%#v" .Language.LanguageName) "\"" "" }}</a> 
+      {{- $label := "" -}}
+      {{- if lt hugo.Version "0.158.0" -}}
+      {{- $label = .Language.LanguageName -}}
+      {{- else -}}
+      {{- $label = .Language.Label -}}
+      {{- end -}}
+      <a href="{{ .Permalink }}" class="post_tag button button_translucent">{{ replace (printf "%#v" $label) "\"" "" }}</a>
       <!-- {{ if lt $index (sub $translationsSize 1)}} |{{ end }} -->
     {{ end }}
     </nav>

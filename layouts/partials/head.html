@@ -23,23 +23,23 @@
 {{- end }}
 {{- partial "opengraph" . }}
 {{- partialCached "favicon" . }}
-<link rel="canonical" href="{{ .Permalink }}">
+<link rel="canonical" href="{{ .RelPermalink }}">
 {{ range .AlternativeOutputFormats -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 {{ end -}}
 
 <!-- preload assets declaration -->
 <!-- preload main css file -->
 {{ $styles := partialCached "func/getStylesBundle" . }}
-<link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
+<link rel="preload" href="{{ $styles.RelPermalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style">
 
 <!-- preload main javascript file -->
 {{ $bundle := partialCached "func/getJavascriptBundle" . }}
-<link rel="preload" href="{{ $bundle.Permalink }}" as="script" integrity=
-"{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
+<link rel="preload" href="{{ $bundle.RelPermalink }}" as="script" integrity=
+"{{ $bundle.Data.Integrity }}">
 
 <!-- link main css file -->
-<link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 <!-- load all custom css files -->
 {{- with $params.customCSS }}
   {{- range . -}}

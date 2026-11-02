@@ -2,8 +2,8 @@
 {{- $imagesDir := .Page.Site.Params.imagesDir -}}
 {{- $alt := .Text -}}
 {{- $cap := .Title -}}
-{{- $scratch := newScratch -}}
-{{- $scratch.Set "classes" "image_figure" -}}
+
+{{- $classes := "image_figure" -}}
 
 {{/* Determine if page bundles are set. */}}
 {{- $bundle := .Page.Site.Params.usePageBundles -}}
@@ -17,13 +17,13 @@
 {{/* Determine source of image and get attributes. */}}
 {{- $image := "" -}}
 {{- if strings.HasPrefix $file "http" -}}
-  {{- $scratch.Add "classes" " image_external" -}}
+  {{- $classes = printf "%s %s" $classes "image_external" -}}
   {{- $image = resources.GetRemote $file -}}
-  {{- with $image }}
+  {{- with $image -}}
     {{- if eq $image.MediaType.MainType "image" -}}
       {{- if eq $image.MediaType.SubType "svg" -}}
         {{- $image = "" -}}
-        {{- $scratch.Add "classes" " image_svg" -}}
+        {{- $classes = printf "%s %s" $classes "image_svg" -}}
       {{- else -}}
         {{- $file = path.Join $imagesDir $image -}}
         {{- $image = $image.Content | resources.FromString $file -}}
@@ -33,13 +33,13 @@
     {{- end -}}
   {{- end -}}
 {{- else -}}
-  {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $file = (path.Clean $file) }}
+  {{- $classes = printf "%s %s" $classes "image_internal" -}}
+  {{- $file = path.Clean $file -}}
   {{- if eq $bundle true -}}
-    {{ $image = .Page.Resources.GetMatch $file }}
+    {{- $image = .Page.Resources.GetMatch $file -}}
     {{- if and (not $image) .Page.File -}}
-      {{ $file = path.Join .Page.RelPermalink $file }}
-      {{ $image = resources.Get $file }}
+      {{- $file = path.Join .Page.RelPermalink $file -}}
+      {{- $image = resources.Get $file -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -52,6 +52,6 @@
     "webPath" $.Page.RelPermalink
     "alt" $alt
     "cap" $cap
-    "classes" ($scratch.Get "classes")
+    "classes" $classes
     "bundle" $bundle
 ) -}}

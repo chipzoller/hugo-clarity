@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

@@ -1,3 +1,7 @@
+@use "sass:color"
+@use "variables" as *
+@use "override" as *
+
 *
   box-sizing: border-box
   -webkit-appearance: none
@@ -86,10 +90,10 @@ em
 b, strong
   font-weight: 700
 
-hr 
+hr
   border: none
   padding: 1px
-  background: darken($haze, 7.5%)
+  background: color.adjust($haze, $lightness: -7.5%)
   opacity: 0.5
   margin: 1rem 0
   @media (prefers-color-scheme: dark)

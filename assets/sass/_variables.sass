@@ -1,12 +1,16 @@
+@use "sass:color"
+
 $light: #fff
 $haze: #fafafa
-$xhaze: darken($haze, 11%)
+$xhaze: color.adjust($haze, $lightness: -11%)
 $bg: #002538
 $theme: #0077b8
 $mobile-menu-breakpoint: 769px
 $single-column-breakpoint: 42rem
 
-@mixin  content()
+$imagesPath: '../images/' !default
+
+@mixin content()
   --maxWidth: 1440px
   max-width: var(--maxWidth)
   margin-left: auto

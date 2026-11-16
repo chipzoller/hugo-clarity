@@ -1,3 +1,6 @@
+@use "variables" as *
+@use "override" as *
+
 @media screen and (max-width: $mobile-menu-breakpoint)
   .nav
     // padding-bottom: 2rem
@@ -72,7 +75,7 @@
         padding-right: 1.5rem
       &_parent
         &:first-child
-         margin-top: 4.4rem
+          margin-top: 4.4rem
 
       .follow
         justify-content: flex-start

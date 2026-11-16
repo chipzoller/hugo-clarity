@@ -1,3 +1,10 @@
+@use "sass:color"
+@use "variables" as *
+@use "override" as *
+
+$imagesPath: '../images/' !default
+$iconsPath: '../icons/' !default
+
 %upcaret
   width: 0
   height: 0
@@ -13,7 +20,6 @@
   &_active
     background-color: rgba($light, 0.05)
     border-radius: 0.25rem
-  &, &_body
   &_icon
     width: 0.7rem
     margin-left: 0.33rem
@@ -102,14 +108,14 @@
   &_sub &_item
     &:not(.nav_child)
       position: relative
-    z-index: 5
-    display: block
-    padding-top: 0.75rem
-    padding-bottom: 0.75rem
-    transition: background 0.3s ease-out
-    margin: 0
-    &:hover
-      color: var(--text-hover)
+      z-index: 5
+      display: block
+      padding-top: 0.75rem
+      padding-bottom: 0.75rem
+      transition: background 0.3s ease-out
+      margin: 0
+      &:hover
+        color: var(--text-hover)
 
   &_brand
     img
@@ -182,9 +188,9 @@
     margin-bottom: 1.33rem
     border-radius: 1.5rem
   &:hover, &:focus
-    background-color: darken($theme, 20%)
+    background-color: color.adjust($theme, $lightness: -20%)
     color: $light
-    border: 1px solid darken($theme, 20%)
+    border: 1px solid color.adjust($theme, $lightness: -20%)
 
   &_translucent
     background-color: rgba($theme, 0.15)
@@ -493,7 +499,7 @@
     &:first-child, &:last-child
       display: none
     &.active a
-      background-color: darken($theme, 20%)
+      background-color: color.adjust($theme, $lightness: -20%)
   &-link
     padding: 0.25rem 0.75rem
     background-color: $theme
@@ -768,5 +774,4 @@ figcaption
       padding: 0.5rem 0
 
 .openstreetmap
-	border: none
-	
+  border: none

@@ -1,5 +1,5 @@
 <!-- styles definition-->
-{{ $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") }}
+{{ $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true" "transpiler" "dartsass") }}
 {{ $mainSassFile :=  "sass/main.sass" }}
 {{ $styles := resources.Get $mainSassFile | resources.ExecuteAsTemplate $mainSassFile . | css.Sass $options | resources.Fingerprint "sha512" }}
 

@@ -1,27 +1,30 @@
 {{- $file := .Destination -}}
-{{- $imagesDir := .Page.Site.Params.imagesDir -}}
+{{- $page := .Page -}}
+{{- $imagesDir := $page.Site.Params.imagesDir -}}
 {{- $alt := .Text -}}
 {{- $cap := .Title -}}
 {{- $scratch := newScratch -}}
 {{- $scratch.Set "classes" "image_figure" -}}
 
 {{/* Determine if page bundles are set. */}}
-{{- $bundle := .Page.Site.Params.usePageBundles -}}
-{{- if eq .Page.Params.usePageBundles false -}}
+{{- $bundle := $page.Site.Params.usePageBundles -}}
+{{- if eq $page.Params.usePageBundles false -}}
   {{- $bundle = false -}}
 {{- end -}}
-{{- if eq .Page.Params.usePageBundles true -}}
+{{- if eq $page.Params.usePageBundles true -}}
   {{- $bundle = true -}}
 {{- end -}}
 
 {{/* Determine source of image and get attributes. */}}
 {{- $image := "" -}}
+{{- $svgContent := "" -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
   {{- with $image }}
     {{- if eq $image.MediaType.MainType "image" -}}
       {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $svgContent = $image.Content -}}
         {{- $image = "" -}}
         {{- $scratch.Add "classes" " image_svg" -}}
       {{- else -}}
@@ -34,22 +37,59 @@
   {{- end -}}
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
-  {{ $file = (path.Clean $file) }}
+  {{- $file = (path.Clean $file) -}}
+  {{/* If the file path starts with the page's RelPermalink (root-relative path into a page bundle),
+       strip the prefix so GetMatch and sibling format lookup can resolve the relative resource. */}}
+  {{- if and (ne $page.RelPermalink "/") (strings.HasPrefix $file $page.RelPermalink) -}}
+    {{- $file = strings.TrimPrefix $page.RelPermalink $file -}}
+  {{- else if and (strings.HasPrefix $file "/") (not (fileExists (path.Join "static" $file))) -}}
+    {{/* If rendered outside of its owning page context (e.g. via markdownify on a list page),
+         resolve the owning page bundle by RelPermalink. */}}
+    {{- $ownerPermalink := printf "%s/" (path.Dir $file) -}}
+    {{- range first 1 (where $page.Site.RegularPages "RelPermalink" $ownerPermalink) -}}
+      {{- $page = . -}}
+      {{- $file = strings.TrimPrefix $page.RelPermalink $file -}}
+      {{- if eq $page.Params.usePageBundles false -}}
+        {{- $bundle = false -}}
+      {{- else if eq $page.Params.usePageBundles true -}}
+        {{- $bundle = true -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
   {{- if eq $bundle true -}}
-    {{ $image = .Page.Resources.GetMatch $file }}
-    {{- if and (not $image) .Page.File -}}
-      {{ $file = path.Join .Page.RelPermalink $file }}
-      {{ $image = resources.Get $file }}
+    {{- $image = $page.Resources.GetMatch $file -}}
+    {{- if and (not $image) $page.File -}}
+      {{- $joined := path.Join $page.RelPermalink $file -}}
+      {{- $image = resources.Get $joined -}}
+      {{- if $image -}}
+        {{- $file = $joined -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $image -}}
+      {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $svgContent = $image.Content -}}
+        {{- $file = $image.RelPermalink -}}
+        {{- $image = "" -}}
+        {{- $bundle = false -}}
+        {{- $scratch.Add "classes" " image_svg" -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $bundle = false -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
+{{- $diskPath := "" -}}
+{{- with $page.File -}}
+  {{- $diskPath = .Dir -}}
+{{- end -}}
 {{- partial "figure" (
   dict
     "file" $file
     "image" $image
-    "diskPath" $.Page.File.Dir
-    "webPath" $.Page.RelPermalink
+    "svgContent" $svgContent
+    "diskPath" $diskPath
+    "webPath" $page.RelPermalink
     "alt" $alt
     "cap" $cap
     "classes" ($scratch.Get "classes")

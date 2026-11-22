@@ -11,6 +11,7 @@
 
 {{- $file := .file -}}
 {{- $image := .image -}}
+{{- $svgContent := .svgContent | default "" -}}
 {{- $diskPath := .diskPath -}}
 {{- $webPath := .webPath -}}
 {{- $alt := .alt -}}
@@ -18,13 +19,45 @@
 {{- $classes := .classes -}}
 {{- $bundle := .bundle -}}
 
+{{/* For SVG images (which Hugo cannot decode as raster resources to provide .Width/.Height),
+     read the <svg> root element to extract explicit width and height attributes for <img>. */}}
+{{- $svgWidth := "" -}}
+{{- $svgHeight := "" -}}
+{{- if and (not $image) (or $svgContent (in $classes "image_svg") (strings.HasSuffix (lower $file) ".svg")) -}}
+  {{- if not (in $classes "image_svg") -}}
+    {{- $classes = printf "%s image_svg" $classes -}}
+  {{- end -}}
+  {{- if and (not $svgContent) (not (strings.HasPrefix $file "http")) -}}
+    {{- $bundleSvgPath := path.Join "content" $diskPath $file -}}
+    {{- $staticSvgPath := path.Join "static" $file -}}
+    {{- if and $diskPath (not (strings.HasPrefix $file "/")) (fileExists $bundleSvgPath) -}}
+      {{- $svgContent = readFile $bundleSvgPath -}}
+    {{- else if fileExists $staticSvgPath -}}
+      {{- $svgContent = readFile $staticSvgPath -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $svgContent -}}
+    {{- range first 1 (findRE "(?s)<svg[^>]*>" . 1) -}}
+      {{- $wMatch := findRESubmatch `\swidth=["']\s*(\d+(?:\.\d+)?)\s*(?:px)?\s*["']` . 1 -}}
+      {{- $hMatch := findRESubmatch `\sheight=["']\s*(\d+(?:\.\d+)?)\s*(?:px)?\s*["']` . 1 -}}
+      {{- if $wMatch }}{{ $svgWidth = printf "%.0f" (math.Round (float (index (index $wMatch 0) 1))) }}{{ end -}}
+      {{- if $hMatch }}{{ $svgHeight = printf "%.0f" (math.Round (float (index (index $hMatch 0) 1))) }}{{ end -}}
+      {{- if or (not $svgWidth) (not $svgHeight) -}}
+        {{- $vbMatch := findRESubmatch `\sviewBox=["']\s*[\d.-]+[\s,]+[\d.-]+[\s,]+(\d+(?:\.\d+)?)[\s,]+(\d+(?:\.\d+)?)\s*["']` . 1 -}}
+        {{- if $vbMatch -}}
+          {{- $svgWidth = printf "%.0f" (math.Round (float (index (index $vbMatch 0) 1))) -}}
+          {{- $svgHeight = printf "%.0f" (math.Round (float (index (index $vbMatch 0) 2))) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- $fileWeb := .file -}}
 {{- if eq $bundle true -}}
-  {{ $fileWeb = path.Join $webPath $file }}
-  {{ if in $classes "image_svg" }}
-    {{ if strings.HasPrefix $file "http" }}
-      {{ $fileWeb = $file }}
-    {{- end -}}
+  {{- $fileWeb = path.Join $webPath $file -}}
+  {{- if or (strings.HasPrefix $file "http") (strings.HasPrefix $file "/") -}}
+    {{- $fileWeb = $file -}}
   {{- end -}}
 {{- end -}}
 
@@ -57,6 +90,10 @@
         src="{{ .RelPermalink | absURL }}"
       {{ else }}
         class="{{ $classes }} image_unprocessed"
+        {{- if and $svgWidth $svgHeight (ne $svgWidth "0") (ne $svgHeight "0") }}
+        width="{{ $svgWidth }}"
+        height="{{ $svgHeight }}"
+        {{- end }}
         src="{{ $fileWeb | absURL }}"
       {{ end }}
       {{ with $cap }}

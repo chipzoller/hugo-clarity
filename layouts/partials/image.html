@@ -26,12 +26,14 @@
 
 {{/* Determine source of image and get attributes. */}}
 {{- $image := "" -}}
+{{- $svgContent := "" -}}
 {{- if strings.HasPrefix $file "http" -}}
   {{- $scratch.Add "classes" " image_external" -}}
   {{- $image = resources.GetRemote $file -}}
   {{- with $image }}
     {{- if eq $image.MediaType.MainType "image" -}}
       {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $svgContent = $image.Content -}}
         {{- $image = "" -}}
         {{- $scratch.Add "classes" " image_svg" -}}
       {{- else -}}
@@ -45,11 +47,17 @@
 {{- else -}}
   {{- $scratch.Add "classes" " image_internal" -}}
   {{ $file = (path.Clean $file) }}
+  {{- if and (ne .Page.RelPermalink "/") (strings.HasPrefix $file .Page.RelPermalink) -}}
+    {{- $file = strings.TrimPrefix .Page.RelPermalink $file -}}
+  {{- end -}}
   {{- if eq $bundle true -}}
     {{ $image = .Page.Resources.GetMatch $file }}
     {{- if $image -}}
       {{- if eq $image.MediaType.SubType "svg" -}}
+        {{- $svgContent = $image.Content -}}
+        {{- $file = $image.RelPermalink -}}
         {{- $image = "" -}}
+        {{- $bundle = false -}}
         {{- $scratch.Add "classes" " image_svg" -}}
       {{- end -}}
     {{- else -}}
@@ -58,11 +66,16 @@
   {{- end -}}
 {{- end -}}
 
+{{- $diskPath := "" -}}
+{{- with $.Page.File -}}
+  {{- $diskPath = .Dir -}}
+{{- end -}}
 {{- partial "figure" (
   dict
     "file" $file
     "image" $image
-    "diskPath" $.Page.File.Dir
+    "svgContent" $svgContent
+    "diskPath" $diskPath
     "webPath" $.Page.RelPermalink
     "alt" $alt
     "cap" $cap
